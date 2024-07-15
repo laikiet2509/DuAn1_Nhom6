@@ -21,5 +21,10 @@ namespace DuAn1_NHOM6
         {
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var c = 5;
+        }
     }
 }
