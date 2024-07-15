@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             panel_Left = new Panel();
-            panel1 = new Panel();
             pictureBox1 = new PictureBox();
+            panel1 = new Panel();
             panel_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -45,22 +45,22 @@
             panel_Left.Size = new Size(241, 711);
             panel_Left.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.z5617964633251_d61a48bc7d803871b3e5c7fb4c38be69_removebg_preview;
+            pictureBox1.Location = new Point(0, 34);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(241, 157);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
             // panel1
             // 
             panel1.Location = new Point(256, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(250, 125);
             panel1.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.z5617964633251_d61a48bc7d803871b3e5c7fb4c38be69_removebg_preview;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(241, 157);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
             // 
             // SanPham
             // 
