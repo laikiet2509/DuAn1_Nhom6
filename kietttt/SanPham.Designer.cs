@@ -57,9 +57,10 @@
             // 
             // panel1
             // 
-            panel1.Location = new Point(256, 0);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 125);
+            panel1.Size = new Size(241, 711);
             panel1.TabIndex = 1;
             // 
             // SanPham
