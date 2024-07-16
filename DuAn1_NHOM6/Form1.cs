@@ -6,5 +6,10 @@ namespace DuAn1_NHOM6
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
