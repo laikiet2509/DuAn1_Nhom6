@@ -38,8 +38,8 @@
             btn_banhang = new Button();
             pictureBox1 = new PictureBox();
             panel_top = new Panel();
-            panel_body = new Panel();
             label1 = new Label();
+            panel_body = new Panel();
             panel_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel_top.SuspendLayout();
@@ -59,7 +59,7 @@
             panel_left.Dock = DockStyle.Left;
             panel_left.Location = new Point(0, 0);
             panel_left.Name = "panel_left";
-            panel_left.Size = new Size(213, 725);
+            panel_left.Size = new Size(213, 809);
             panel_left.TabIndex = 0;
             // 
             // btn_khachhang
@@ -172,16 +172,8 @@
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(213, 0);
             panel_top.Name = "panel_top";
-            panel_top.Size = new Size(1138, 89);
+            panel_top.Size = new Size(1237, 89);
             panel_top.TabIndex = 1;
-            // 
-            // panel_body
-            // 
-            panel_body.Dock = DockStyle.Fill;
-            panel_body.Location = new Point(213, 89);
-            panel_body.Name = "panel_body";
-            panel_body.Size = new Size(1138, 636);
-            panel_body.TabIndex = 2;
             // 
             // label1
             // 
@@ -193,11 +185,19 @@
             label1.TabIndex = 0;
             label1.Text = "Home";
             // 
+            // panel_body
+            // 
+            panel_body.Dock = DockStyle.Fill;
+            panel_body.Location = new Point(213, 89);
+            panel_body.Name = "panel_body";
+            panel_body.Size = new Size(1237, 720);
+            panel_body.TabIndex = 2;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1351, 725);
+            ClientSize = new Size(1450, 809);
             Controls.Add(panel_body);
             Controls.Add(panel_top);
             Controls.Add(panel_left);
