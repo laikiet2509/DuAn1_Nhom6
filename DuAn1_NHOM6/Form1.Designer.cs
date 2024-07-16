@@ -38,8 +38,6 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            txt_NgaySinh = new TextBox();
-            rdb_GTNam = new RadioButton();
             rdb_GTNu = new RadioButton();
             txt_DiaChi = new TextBox();
             txt_SDT = new TextBox();
@@ -47,6 +45,12 @@
             btn_Xoa = new Button();
             btn_Sua = new Button();
             groupBox2 = new GroupBox();
+            label7 = new Label();
+            label8 = new Label();
+            txt_Email = new TextBox();
+            cbb_TrangThai = new ComboBox();
+            rdb_Nam = new RadioButton();
+            dtp_NgaySinh = new DateTimePicker();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_ThongTin).BeginInit();
             groupBox2.SuspendLayout();
@@ -142,25 +146,6 @@
             label6.TabIndex = 9;
             label6.Text = "Số điện thoại";
             // 
-            // txt_NgaySinh
-            // 
-            txt_NgaySinh.Location = new Point(612, 48);
-            txt_NgaySinh.Multiline = true;
-            txt_NgaySinh.Name = "txt_NgaySinh";
-            txt_NgaySinh.Size = new Size(199, 34);
-            txt_NgaySinh.TabIndex = 10;
-            // 
-            // rdb_GTNam
-            // 
-            rdb_GTNam.AutoSize = true;
-            rdb_GTNam.Location = new Point(164, 181);
-            rdb_GTNam.Name = "rdb_GTNam";
-            rdb_GTNam.Size = new Size(62, 24);
-            rdb_GTNam.TabIndex = 16;
-            rdb_GTNam.TabStop = true;
-            rdb_GTNam.Text = "Nam";
-            rdb_GTNam.UseVisualStyleBackColor = true;
-            // 
             // rdb_GTNu
             // 
             rdb_GTNu.AutoSize = true;
@@ -177,19 +162,19 @@
             txt_DiaChi.Location = new Point(612, 115);
             txt_DiaChi.Multiline = true;
             txt_DiaChi.Name = "txt_DiaChi";
-            txt_DiaChi.Size = new Size(199, 34);
+            txt_DiaChi.Size = new Size(266, 34);
             txt_DiaChi.TabIndex = 18;
             // 
             // txt_SDT
             // 
             txt_SDT.Location = new Point(612, 182);
             txt_SDT.Name = "txt_SDT";
-            txt_SDT.Size = new Size(199, 27);
+            txt_SDT.Size = new Size(266, 27);
             txt_SDT.TabIndex = 19;
             // 
             // btn_Them
             // 
-            btn_Them.Location = new Point(936, 46);
+            btn_Them.Location = new Point(965, 80);
             btn_Them.Name = "btn_Them";
             btn_Them.Size = new Size(94, 29);
             btn_Them.TabIndex = 20;
@@ -198,7 +183,7 @@
             // 
             // btn_Xoa
             // 
-            btn_Xoa.Location = new Point(936, 116);
+            btn_Xoa.Location = new Point(965, 153);
             btn_Xoa.Name = "btn_Xoa";
             btn_Xoa.Size = new Size(94, 29);
             btn_Xoa.TabIndex = 21;
@@ -207,7 +192,7 @@
             // 
             // btn_Sua
             // 
-            btn_Sua.Location = new Point(936, 183);
+            btn_Sua.Location = new Point(965, 214);
             btn_Sua.Name = "btn_Sua";
             btn_Sua.Size = new Size(94, 29);
             btn_Sua.TabIndex = 22;
@@ -216,8 +201,13 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(dtp_NgaySinh);
+            groupBox2.Controls.Add(rdb_Nam);
+            groupBox2.Controls.Add(cbb_TrangThai);
+            groupBox2.Controls.Add(txt_Email);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(btn_Sua);
-            groupBox2.Controls.Add(txt_NgaySinh);
             groupBox2.Controls.Add(btn_Xoa);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label6);
@@ -226,7 +216,6 @@
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(txt_TenNV);
             groupBox2.Controls.Add(txt_SDT);
-            groupBox2.Controls.Add(rdb_GTNam);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(txt_MaNV);
             groupBox2.Controls.Add(txt_DiaChi);
@@ -238,6 +227,57 @@
             groupBox2.Size = new Size(1135, 307);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(484, 236);
+            label7.Name = "label7";
+            label7.Size = new Size(46, 20);
+            label7.TabIndex = 23;
+            label7.Text = "Email";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(50, 242);
+            label8.Name = "label8";
+            label8.Size = new Size(75, 20);
+            label8.TabIndex = 24;
+            label8.Text = "Trạng thái";
+            // 
+            // txt_Email
+            // 
+            txt_Email.Location = new Point(612, 235);
+            txt_Email.Name = "txt_Email";
+            txt_Email.Size = new Size(266, 27);
+            txt_Email.TabIndex = 25;
+            // 
+            // cbb_TrangThai
+            // 
+            cbb_TrangThai.FormattingEnabled = true;
+            cbb_TrangThai.Location = new Point(164, 236);
+            cbb_TrangThai.Name = "cbb_TrangThai";
+            cbb_TrangThai.Size = new Size(158, 28);
+            cbb_TrangThai.TabIndex = 26;
+            // 
+            // rdb_Nam
+            // 
+            rdb_Nam.AutoSize = true;
+            rdb_Nam.Location = new Point(164, 182);
+            rdb_Nam.Name = "rdb_Nam";
+            rdb_Nam.Size = new Size(62, 24);
+            rdb_Nam.TabIndex = 27;
+            rdb_Nam.TabStop = true;
+            rdb_Nam.Text = "Nam";
+            rdb_Nam.UseVisualStyleBackColor = true;
+            // 
+            // dtp_NgaySinh
+            // 
+            dtp_NgaySinh.Location = new Point(612, 49);
+            dtp_NgaySinh.Name = "dtp_NgaySinh";
+            dtp_NgaySinh.Size = new Size(266, 27);
+            dtp_NgaySinh.TabIndex = 28;
             // 
             // Form1
             // 
@@ -259,7 +299,6 @@
         private GroupBox groupBox1;
         private Button btn_Sua;
         private Button btn_Xoa;
-        private TextBox txt_NgaySinh;
         private Button btn_Them;
         private Label label1;
         private TextBox txt_SDT;
@@ -268,12 +307,17 @@
         private Label label3;
         private RadioButton rdb_GTNu;
         private TextBox txt_MaNV;
-        private RadioButton rdb_GTNam;
         private TextBox txt_TenNV;
         private Label label4;
         private Label label6;
         private Label label5;
         private GroupBox groupBox2;
         private DataGridView dgv_ThongTin;
+        private RadioButton rdb_Nam;
+        private ComboBox cbb_TrangThai;
+        private TextBox txt_Email;
+        private Label label8;
+        private Label label7;
+        private DateTimePicker dtp_NgaySinh;
     }
 }
