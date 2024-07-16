@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            cbb_TrangThai = new ComboBox();
+            label14 = new Label();
+            dtpk_NgayBan = new DateTimePicker();
+            label13 = new Label();
             btn_Huy = new Button();
             btn_InHoaDon = new Button();
             btn_ThanhToan = new Button();
@@ -63,10 +67,6 @@
             label9 = new Label();
             label8 = new Label();
             dgv_DanhSachSanPham = new DataGridView();
-            label13 = new Label();
-            dtpk_NgayBan = new DateTimePicker();
-            label14 = new Label();
-            cbb_TrangThai = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_GioHang).BeginInit();
@@ -109,6 +109,39 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin hóa đơn";
+            // 
+            // cbb_TrangThai
+            // 
+            cbb_TrangThai.FormattingEnabled = true;
+            cbb_TrangThai.Location = new Point(245, 377);
+            cbb_TrangThai.Name = "cbb_TrangThai";
+            cbb_TrangThai.Size = new Size(151, 28);
+            cbb_TrangThai.TabIndex = 25;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(28, 380);
+            label14.Name = "label14";
+            label14.Size = new Size(82, 20);
+            label14.TabIndex = 24;
+            label14.Text = "Trạng thái: ";
+            // 
+            // dtpk_NgayBan
+            // 
+            dtpk_NgayBan.Location = new Point(245, 115);
+            dtpk_NgayBan.Name = "dtpk_NgayBan";
+            dtpk_NgayBan.Size = new Size(275, 27);
+            dtpk_NgayBan.TabIndex = 23;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(28, 338);
+            label13.Name = "label13";
+            label13.Size = new Size(104, 20);
+            label13.TabIndex = 22;
+            label13.Text = "Số tiền trả lại: ";
             // 
             // btn_Huy
             // 
@@ -197,11 +230,11 @@
             // dgv_GioHang
             // 
             dgv_GioHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_GioHang.Location = new Point(0, 26);
+            dgv_GioHang.Location = new Point(6, 26);
             dgv_GioHang.Name = "dgv_GioHang";
             dgv_GioHang.RowHeadersWidth = 51;
             dgv_GioHang.RowTemplate.Height = 29;
-            dgv_GioHang.Size = new Size(596, 287);
+            dgv_GioHang.Size = new Size(590, 287);
             dgv_GioHang.TabIndex = 0;
             // 
             // txt_TienThua
@@ -413,39 +446,6 @@
             dgv_DanhSachSanPham.RowTemplate.Height = 29;
             dgv_DanhSachSanPham.Size = new Size(1245, 186);
             dgv_DanhSachSanPham.TabIndex = 0;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(28, 338);
-            label13.Name = "label13";
-            label13.Size = new Size(104, 20);
-            label13.TabIndex = 22;
-            label13.Text = "Số tiền trả lại: ";
-            // 
-            // dtpk_NgayBan
-            // 
-            dtpk_NgayBan.Location = new Point(245, 115);
-            dtpk_NgayBan.Name = "dtpk_NgayBan";
-            dtpk_NgayBan.Size = new Size(275, 27);
-            dtpk_NgayBan.TabIndex = 23;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(28, 380);
-            label14.Name = "label14";
-            label14.Size = new Size(82, 20);
-            label14.TabIndex = 24;
-            label14.Text = "Trạng thái: ";
-            // 
-            // cbb_TrangThai
-            // 
-            cbb_TrangThai.FormattingEnabled = true;
-            cbb_TrangThai.Location = new Point(245, 377);
-            cbb_TrangThai.Name = "cbb_TrangThai";
-            cbb_TrangThai.Size = new Size(151, 28);
-            cbb_TrangThai.TabIndex = 25;
             // 
             // BanHang
             // 

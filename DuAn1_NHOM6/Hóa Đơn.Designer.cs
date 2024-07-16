@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            pictureBox1 = new PictureBox();
             groupBox1 = new GroupBox();
             button8 = new Button();
             button7 = new Button();
@@ -55,31 +53,11 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             dataGridView2 = new DataGridView();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(225, 723);
-            panel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(0, 32);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(225, 189);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
             // 
             // groupBox1
             // 
@@ -105,7 +83,7 @@
             groupBox1.Controls.Add(comboBox1);
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(231, 0);
+            groupBox1.Location = new Point(12, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(910, 396);
             groupBox1.TabIndex = 1;
@@ -311,9 +289,9 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(dataGridView2);
-            groupBox2.Location = new Point(231, 402);
+            groupBox2.Location = new Point(12, 405);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(910, 321);
+            groupBox2.Size = new Size(910, 295);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Hóa đơn chi tiết";
@@ -321,26 +299,23 @@
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(6, 39);
+            dataGridView2.Location = new Point(0, 39);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(898, 271);
+            dataGridView2.Size = new Size(898, 250);
             dataGridView2.TabIndex = 0;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1153, 724);
+            ClientSize = new Size(934, 712);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(panel1);
             Name = "Form1";
             Text = " Hóa Đơn";
             Load += Form1_Load;
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -350,8 +325,6 @@
         }
 
         #endregion
-
-        private Panel panel1;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private TextBox textBox1;
@@ -377,6 +350,5 @@
         private Button button6;
         private Button button5;
         private DataGridView dataGridView2;
-        private PictureBox pictureBox1;
     }
 }
