@@ -74,7 +74,6 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.z5617964633251_d61a48bc7d803871b3e5c7fb4c38be69_removebg_preview;
             pictureBox1.Location = new Point(0, 32);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(225, 189);
@@ -338,7 +337,7 @@
             Controls.Add(groupBox1);
             Controls.Add(panel1);
             Name = "Form1";
-            Text = " Phần Mềm Bán Giày Sneaker";
+            Text = " Hóa Đơn";
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
