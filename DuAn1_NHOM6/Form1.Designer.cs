@@ -42,7 +42,6 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = SystemColors.Control;
-            //pictureBox1.Image = Properties.Resources.z5633333237850_10078fc172ecaf654b71ffee78293f12;
             pictureBox1.Location = new Point(86, 126);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(207, 199);
@@ -113,7 +112,6 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            //BackgroundImage = Properties.Resources.cute_abstract_modern_background_free_vector;
             BackgroundImageLayout = ImageLayout.Stretch;
             CausesValidation = false;
             ClientSize = new Size(800, 450);

@@ -73,6 +73,16 @@ namespace PRL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap z5617964633251_d61a48bc7d803871b3e5c7fb4c38be69_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("z5617964633251_d61a48bc7d803871b3e5c7fb4c38be69-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap z5633333237850_10078fc172ecaf654b71ffee78293f12 {
             get {
                 object obj = ResourceManager.GetObject("z5633333237850_10078fc172ecaf654b71ffee78293f12", resourceCulture);
