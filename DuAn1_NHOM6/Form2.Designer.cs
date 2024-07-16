@@ -168,6 +168,7 @@
             // 
             // panel_top
             // 
+            panel_top.BackColor = Color.IndianRed;
             panel_top.Controls.Add(label1);
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(213, 0);

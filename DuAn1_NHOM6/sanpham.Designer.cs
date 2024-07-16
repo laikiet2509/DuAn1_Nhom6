@@ -59,10 +59,12 @@
             button5 = new Button();
             label11 = new Label();
             textBox3 = new TextBox();
+            groupBox3 = new GroupBox();
             dataGridView1 = new DataGridView();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -329,18 +331,17 @@
             groupBox2.Controls.Add(button5);
             groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(textBox3);
-            groupBox2.Controls.Add(dataGridView1);
-            groupBox2.Dock = DockStyle.Fill;
+            groupBox2.Dock = DockStyle.Top;
             groupBox2.Location = new Point(672, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(674, 883);
+            groupBox2.Size = new Size(674, 116);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Danh Sách Sản Phẩm";
+            groupBox2.Text = "Bộ Lọc";
             // 
             // button5
             // 
-            button5.Location = new Point(411, 50);
+            button5.Location = new Point(339, 65);
             button5.Name = "button5";
             button5.Size = new Size(94, 29);
             button5.TabIndex = 7;
@@ -350,27 +351,39 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(45, 50);
+            label11.Location = new Point(76, 33);
             label11.Name = "label11";
-            label11.Size = new Size(72, 20);
+            label11.Size = new Size(101, 20);
             label11.TabIndex = 6;
-            label11.Text = "Tìm Kiếm";
+            label11.Text = "Tên Sản Phẩm";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(150, 48);
+            textBox3.Location = new Point(76, 65);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(226, 27);
             textBox3.TabIndex = 5;
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(dataGridView1);
+            groupBox3.Dock = DockStyle.Top;
+            groupBox3.Location = new Point(672, 116);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(674, 767);
+            groupBox3.TabIndex = 3;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Danh Sách Sản Phẩm";
+            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 101);
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 23);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(668, 779);
+            dataGridView1.Size = new Size(668, 741);
             dataGridView1.TabIndex = 0;
             // 
             // sanpham
@@ -378,6 +391,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1346, 883);
+            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "sanpham";
@@ -387,6 +401,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -413,7 +428,6 @@
         private TextBox txt_soluong;
         private Label label9;
         private TextBox txt_ngaynhap;
-        private DataGridView dataGridView1;
         private ComboBox cmbx_mausac;
         private ComboBox cmbx_thuonghieu;
         private ComboBox cmbx_chatlieu;
@@ -425,5 +439,7 @@
         private Button button5;
         private Label label11;
         private TextBox textBox3;
+        private GroupBox groupBox3;
+        private DataGridView dataGridView1;
     }
 }
