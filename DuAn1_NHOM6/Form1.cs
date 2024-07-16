@@ -11,5 +11,10 @@ namespace DuAn1_NHOM6
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
