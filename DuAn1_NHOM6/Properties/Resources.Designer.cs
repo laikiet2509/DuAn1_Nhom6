@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DuAn1_NHOM6.Properties {
+namespace PRL.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace DuAn1_NHOM6.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DuAn1_NHOM6.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PRL.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -76,6 +76,16 @@ namespace DuAn1_NHOM6.Properties {
         internal static System.Drawing.Bitmap z5633333237850_10078fc172ecaf654b71ffee78293f12 {
             get {
                 object obj = ResourceManager.GetObject("z5633333237850_10078fc172ecaf654b71ffee78293f12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z5633333237850_10078fc172ecaf654b71ffee78293f121 {
+            get {
+                object obj = ResourceManager.GetObject("z5633333237850_10078fc172ecaf654b71ffee78293f121", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
