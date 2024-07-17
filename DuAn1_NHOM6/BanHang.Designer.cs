@@ -103,9 +103,9 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(12, 3);
+            groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1267, 418);
+            groupBox1.Size = new Size(1291, 418);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin hóa đơn";
@@ -363,9 +363,9 @@
             groupBox3.Controls.Add(label9);
             groupBox3.Controls.Add(label8);
             groupBox3.Controls.Add(dgv_DanhSachSanPham);
-            groupBox3.Location = new Point(12, 427);
+            groupBox3.Location = new Point(0, 439);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1267, 267);
+            groupBox3.Size = new Size(1291, 267);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Danh sách sản phẩm";

@@ -120,6 +120,7 @@
             button6.TabIndex = 20;
             button6.Text = "Xem Chi Tiết";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // button5
             // 
