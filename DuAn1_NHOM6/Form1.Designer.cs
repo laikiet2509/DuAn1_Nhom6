@@ -335,7 +335,7 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Nhân viên";
             Load += Form1_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
