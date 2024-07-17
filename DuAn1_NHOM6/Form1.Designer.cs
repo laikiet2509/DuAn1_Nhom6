@@ -49,13 +49,13 @@
             txt_Email = new TextBox();
             label8 = new Label();
             label7 = new Label();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox3 = new GroupBox();
             btn_TimKiem = new Button();
             txt_TimKiemNV = new TextBox();
             label9 = new Label();
             groupBox1 = new GroupBox();
             dgv_DanhSachNV = new DataGridView();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -368,12 +368,12 @@
         private Label label8;
         private Label label7;
         private DateTimePicker dtp_NgaySinh;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private GroupBox groupBox3;
         private Button btn_TimKiem;
         private TextBox txt_TimKiemNV;
         private Label label9;
         private GroupBox groupBox1;
         private DataGridView dgv_DanhSachNV;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
