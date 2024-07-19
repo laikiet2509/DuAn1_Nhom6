@@ -49,13 +49,14 @@
             txt_Email = new TextBox();
             label8 = new Label();
             label7 = new Label();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox3 = new GroupBox();
             btn_TimKiem = new Button();
             txt_TimKiemNV = new TextBox();
             label9 = new Label();
             groupBox1 = new GroupBox();
             dgv_DanhSachNV = new DataGridView();
+            label10 = new Label();
+            txt_ChucVu = new TextBox();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -106,7 +107,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(41, 305);
+            label4.Location = new Point(41, 366);
             label4.Name = "label4";
             label4.Size = new Size(74, 20);
             label4.TabIndex = 7;
@@ -115,7 +116,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(41, 378);
+            label5.Location = new Point(41, 439);
             label5.Name = "label5";
             label5.Size = new Size(55, 20);
             label5.TabIndex = 8;
@@ -124,7 +125,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(41, 443);
+            label6.Location = new Point(41, 504);
             label6.Name = "label6";
             label6.Size = new Size(97, 20);
             label6.TabIndex = 9;
@@ -143,7 +144,7 @@
             // 
             // txt_DiaChi
             // 
-            txt_DiaChi.Location = new Point(164, 364);
+            txt_DiaChi.Location = new Point(164, 425);
             txt_DiaChi.Multiline = true;
             txt_DiaChi.Name = "txt_DiaChi";
             txt_DiaChi.Size = new Size(367, 34);
@@ -151,14 +152,14 @@
             // 
             // txt_SDT
             // 
-            txt_SDT.Location = new Point(164, 436);
+            txt_SDT.Location = new Point(164, 497);
             txt_SDT.Name = "txt_SDT";
             txt_SDT.Size = new Size(367, 27);
             txt_SDT.TabIndex = 19;
             // 
             // btn_Them
             // 
-            btn_Them.Location = new Point(44, 588);
+            btn_Them.Location = new Point(44, 639);
             btn_Them.Name = "btn_Them";
             btn_Them.Size = new Size(94, 29);
             btn_Them.TabIndex = 20;
@@ -167,7 +168,7 @@
             // 
             // btn_Xoa
             // 
-            btn_Xoa.Location = new Point(240, 588);
+            btn_Xoa.Location = new Point(240, 639);
             btn_Xoa.Name = "btn_Xoa";
             btn_Xoa.Size = new Size(94, 29);
             btn_Xoa.TabIndex = 21;
@@ -176,7 +177,7 @@
             // 
             // btn_Sua
             // 
-            btn_Sua.Location = new Point(437, 588);
+            btn_Sua.Location = new Point(437, 639);
             btn_Sua.Name = "btn_Sua";
             btn_Sua.Size = new Size(94, 29);
             btn_Sua.TabIndex = 22;
@@ -185,6 +186,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(txt_ChucVu);
+            groupBox2.Controls.Add(label10);
             groupBox2.Controls.Add(dtp_NgaySinh);
             groupBox2.Controls.Add(rdb_Nam);
             groupBox2.Controls.Add(cbb_TrangThai);
@@ -208,7 +211,7 @@
             groupBox2.Dock = DockStyle.Left;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(573, 664);
+            groupBox2.Size = new Size(573, 715);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin nhân viên";
@@ -216,7 +219,7 @@
             // 
             // dtp_NgaySinh
             // 
-            dtp_NgaySinh.Location = new Point(164, 298);
+            dtp_NgaySinh.Location = new Point(164, 359);
             dtp_NgaySinh.Name = "dtp_NgaySinh";
             dtp_NgaySinh.Size = new Size(367, 27);
             dtp_NgaySinh.TabIndex = 28;
@@ -243,7 +246,7 @@
             // 
             // txt_Email
             // 
-            txt_Email.Location = new Point(164, 509);
+            txt_Email.Location = new Point(164, 570);
             txt_Email.Name = "txt_Email";
             txt_Email.Size = new Size(367, 27);
             txt_Email.TabIndex = 25;
@@ -260,7 +263,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(41, 516);
+            label7.Location = new Point(41, 577);
             label7.Name = "label7";
             label7.Size = new Size(46, 20);
             label7.TabIndex = 23;
@@ -310,7 +313,7 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(573, 125);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(649, 539);
+            groupBox1.Size = new Size(649, 590);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách nhân viên";
@@ -323,14 +326,30 @@
             dgv_DanhSachNV.Name = "dgv_DanhSachNV";
             dgv_DanhSachNV.RowHeadersWidth = 51;
             dgv_DanhSachNV.RowTemplate.Height = 29;
-            dgv_DanhSachNV.Size = new Size(643, 513);
+            dgv_DanhSachNV.Size = new Size(643, 564);
             dgv_DanhSachNV.TabIndex = 0;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(44, 306);
+            label10.Name = "label10";
+            label10.Size = new Size(61, 20);
+            label10.TabIndex = 29;
+            label10.Text = "Chức vụ";
+            // 
+            // txt_ChucVu
+            // 
+            txt_ChucVu.Location = new Point(164, 299);
+            txt_ChucVu.Name = "txt_ChucVu";
+            txt_ChucVu.Size = new Size(367, 27);
+            txt_ChucVu.TabIndex = 30;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1222, 664);
+            ClientSize = new Size(1222, 715);
             Controls.Add(groupBox1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
@@ -368,12 +387,13 @@
         private Label label8;
         private Label label7;
         private DateTimePicker dtp_NgaySinh;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private GroupBox groupBox3;
         private Button btn_TimKiem;
         private TextBox txt_TimKiemNV;
         private Label label9;
         private GroupBox groupBox1;
         private DataGridView dgv_DanhSachNV;
+        private TextBox txt_ChucVu;
+        private Label label10;
     }
 }
