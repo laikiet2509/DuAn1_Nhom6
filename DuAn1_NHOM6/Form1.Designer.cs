@@ -55,7 +55,7 @@
             btn_thoat.Location = new Point(586, 287);
             btn_thoat.Name = "btn_thoat";
             btn_thoat.Size = new Size(129, 41);
-            btn_thoat.TabIndex = 13;
+            btn_thoat.TabIndex = 4;
             btn_thoat.Text = "Thoát";
             btn_thoat.UseVisualStyleBackColor = true;
             btn_thoat.Click += btn_thoat_Click;
@@ -66,7 +66,7 @@
             btn_dangnhap.Location = new Point(408, 287);
             btn_dangnhap.Name = "btn_dangnhap";
             btn_dangnhap.Size = new Size(129, 41);
-            btn_dangnhap.TabIndex = 12;
+            btn_dangnhap.TabIndex = 3;
             btn_dangnhap.Text = "Đăng Nhập";
             btn_dangnhap.UseVisualStyleBackColor = true;
             btn_dangnhap.Click += btn_dangnhap_Click;
@@ -78,7 +78,7 @@
             label2.Location = new Point(334, 204);
             label2.Name = "label2";
             label2.Size = new Size(96, 28);
-            label2.TabIndex = 11;
+            label2.TabIndex = 0;
             label2.Text = "Mật Khẩu";
             // 
             // txt_matkhau
@@ -87,7 +87,7 @@
             txt_matkhau.Location = new Point(462, 201);
             txt_matkhau.Name = "txt_matkhau";
             txt_matkhau.Size = new Size(253, 34);
-            txt_matkhau.TabIndex = 10;
+            txt_matkhau.TabIndex = 2;
             // 
             // label1
             // 
@@ -96,7 +96,7 @@
             label1.Location = new Point(334, 126);
             label1.Name = "label1";
             label1.Size = new Size(96, 28);
-            label1.TabIndex = 9;
+            label1.TabIndex = 0;
             label1.Text = "Tài Khoản";
             // 
             // txt_taikhoan
@@ -105,7 +105,7 @@
             txt_taikhoan.Location = new Point(462, 123);
             txt_taikhoan.Name = "txt_taikhoan";
             txt_taikhoan.Size = new Size(253, 34);
-            txt_taikhoan.TabIndex = 8;
+            txt_taikhoan.TabIndex = 1;
             // 
             // Form1
             // 
