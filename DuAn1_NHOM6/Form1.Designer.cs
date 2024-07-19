@@ -55,8 +55,12 @@
             label9 = new Label();
             groupBox1 = new GroupBox();
             dgv_DanhSachNV = new DataGridView();
+/*<<<<<<<*/ /*HEAD*/
             label10 = new Label();
             txt_ChucVu = new TextBox();
+//=======
+//            /*backgroundWorker1*/ = new System.ComponentModel.BackgroundWorker();
+//>>>>>>> 899/*a5feebe9cef5523a8094616fa28d1635ac3b5*/
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -393,7 +397,11 @@
         private Label label9;
         private GroupBox groupBox1;
         private DataGridView dgv_DanhSachNV;
+//<<<<<<< HEAD
         private TextBox txt_ChucVu;
         private Label label10;
+//=======
+//        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+//>>>>>>> 899a5feebe9cef5523a8094616fa28d1635ac3b5
     }
 }
