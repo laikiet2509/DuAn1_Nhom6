@@ -1,6 +1,6 @@
 ﻿namespace DuAn1_NHOM6
 {
-    partial class Form1
+    partial class nhanvien
     {
         /// <summary>
         ///  Required designer variable.
