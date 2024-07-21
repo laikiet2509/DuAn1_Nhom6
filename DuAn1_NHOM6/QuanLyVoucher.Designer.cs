@@ -34,13 +34,9 @@
             dtpkNgayapdung = new DateTimePicker();
             lblNgayketthuc = new Label();
             tbcMota = new TextBox();
-            tbxTenvc = new TextBox();
             tbxDieuKien = new TextBox();
-            tbxGiatri = new TextBox();
             tbxMavc = new TextBox();
             lblMota = new Label();
-            lblTenvc = new Label();
-            lblGiatri = new Label();
             lblDieuKien = new Label();
             lblNAP = new Label();
             lblMaVC = new Label();
@@ -50,21 +46,26 @@
             btnThem = new Button();
             grbDataVc = new GroupBox();
             dgvDataVC = new DataGridView();
+            groupBox1 = new GroupBox();
+            lbngoiy = new Label();
+            txbTimkiem = new TextBox();
+            BtnTimkiem = new Button();
             grbThongTin.SuspendLayout();
             grbChucNang.SuspendLayout();
             grbDataVc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDataVC).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // lblQLVoucher
             // 
             lblQLVoucher.AutoSize = true;
             lblQLVoucher.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            lblQLVoucher.Location = new Point(431, 9);
+            lblQLVoucher.Location = new Point(511, 9);
             lblQLVoucher.Name = "lblQLVoucher";
-            lblQLVoucher.Size = new Size(401, 67);
+            lblQLVoucher.Size = new Size(495, 67);
             lblQLVoucher.TabIndex = 0;
-            lblQLVoucher.Text = "Quản Lý Voucher";
+            lblQLVoucher.Text = "Quản Lý Khuyến Mãi ";
             // 
             // grbThongTin
             // 
@@ -72,33 +73,29 @@
             grbThongTin.Controls.Add(dtpkNgayapdung);
             grbThongTin.Controls.Add(lblNgayketthuc);
             grbThongTin.Controls.Add(tbcMota);
-            grbThongTin.Controls.Add(tbxTenvc);
             grbThongTin.Controls.Add(tbxDieuKien);
-            grbThongTin.Controls.Add(tbxGiatri);
             grbThongTin.Controls.Add(tbxMavc);
             grbThongTin.Controls.Add(lblMota);
-            grbThongTin.Controls.Add(lblTenvc);
-            grbThongTin.Controls.Add(lblGiatri);
             grbThongTin.Controls.Add(lblDieuKien);
             grbThongTin.Controls.Add(lblNAP);
             grbThongTin.Controls.Add(lblMaVC);
             grbThongTin.Location = new Point(26, 94);
             grbThongTin.Name = "grbThongTin";
-            grbThongTin.Size = new Size(1103, 272);
+            grbThongTin.Size = new Size(477, 272);
             grbThongTin.TabIndex = 1;
             grbThongTin.TabStop = false;
             grbThongTin.Text = "Thông tin";
             // 
             // dtpkNKT
             // 
-            dtpkNKT.Location = new Point(778, 209);
+            dtpkNKT.Location = new Point(152, 220);
             dtpkNKT.Name = "dtpkNKT";
             dtpkNKT.Size = new Size(250, 27);
             dtpkNKT.TabIndex = 13;
             // 
             // dtpkNgayapdung
             // 
-            dtpkNgayapdung.Location = new Point(152, 226);
+            dtpkNgayapdung.Location = new Point(152, 161);
             dtpkNgayapdung.Name = "dtpkNgayapdung";
             dtpkNgayapdung.Size = new Size(250, 27);
             dtpkNgayapdung.TabIndex = 12;
@@ -106,7 +103,7 @@
             // lblNgayketthuc
             // 
             lblNgayketthuc.AutoSize = true;
-            lblNgayketthuc.Location = new Point(649, 216);
+            lblNgayketthuc.Location = new Point(37, 227);
             lblNgayketthuc.Name = "lblNgayketthuc";
             lblNgayketthuc.Size = new Size(100, 20);
             lblNgayketthuc.TabIndex = 11;
@@ -114,32 +111,18 @@
             // 
             // tbcMota
             // 
-            tbcMota.Location = new Point(778, 97);
+            tbcMota.Location = new Point(152, 80);
             tbcMota.Multiline = true;
             tbcMota.Name = "tbcMota";
-            tbcMota.Size = new Size(301, 54);
+            tbcMota.Size = new Size(277, 28);
             tbcMota.TabIndex = 10;
-            // 
-            // tbxTenvc
-            // 
-            tbxTenvc.Location = new Point(778, 43);
-            tbxTenvc.Name = "tbxTenvc";
-            tbxTenvc.Size = new Size(301, 27);
-            tbxTenvc.TabIndex = 9;
             // 
             // tbxDieuKien
             // 
-            tbxDieuKien.Location = new Point(152, 163);
+            tbxDieuKien.Location = new Point(152, 119);
             tbxDieuKien.Name = "tbxDieuKien";
             tbxDieuKien.Size = new Size(277, 27);
             tbxDieuKien.TabIndex = 8;
-            // 
-            // tbxGiatri
-            // 
-            tbxGiatri.Location = new Point(152, 107);
-            tbxGiatri.Name = "tbxGiatri";
-            tbxGiatri.Size = new Size(277, 27);
-            tbxGiatri.TabIndex = 7;
             // 
             // tbxMavc
             // 
@@ -151,34 +134,16 @@
             // lblMota
             // 
             lblMota.AutoSize = true;
-            lblMota.Location = new Point(649, 107);
+            lblMota.Location = new Point(37, 88);
             lblMota.Name = "lblMota";
             lblMota.Size = new Size(48, 20);
             lblMota.TabIndex = 5;
             lblMota.Text = "Mô tả";
             // 
-            // lblTenvc
-            // 
-            lblTenvc.AutoSize = true;
-            lblTenvc.Location = new Point(649, 50);
-            lblTenvc.Name = "lblTenvc";
-            lblTenvc.Size = new Size(88, 20);
-            lblTenvc.TabIndex = 4;
-            lblTenvc.Text = "Tên voucher";
-            // 
-            // lblGiatri
-            // 
-            lblGiatri.AutoSize = true;
-            lblGiatri.Location = new Point(34, 110);
-            lblGiatri.Name = "lblGiatri";
-            lblGiatri.Size = new Size(51, 20);
-            lblGiatri.TabIndex = 3;
-            lblGiatri.Text = "Giá Trị";
-            // 
             // lblDieuKien
             // 
             lblDieuKien.AutoSize = true;
-            lblDieuKien.Location = new Point(34, 170);
+            lblDieuKien.Location = new Point(34, 126);
             lblDieuKien.Name = "lblDieuKien";
             lblDieuKien.Size = new Size(73, 20);
             lblDieuKien.TabIndex = 2;
@@ -187,7 +152,7 @@
             // lblNAP
             // 
             lblNAP.AutoSize = true;
-            lblNAP.Location = new Point(34, 231);
+            lblNAP.Location = new Point(34, 168);
             lblNAP.Name = "lblNAP";
             lblNAP.Size = new Size(103, 20);
             lblNAP.TabIndex = 1;
@@ -207,39 +172,44 @@
             grbChucNang.Controls.Add(btnXoa);
             grbChucNang.Controls.Add(btnSua);
             grbChucNang.Controls.Add(btnThem);
-            grbChucNang.Location = new Point(1156, 94);
+            grbChucNang.Location = new Point(525, 94);
             grbChucNang.Name = "grbChucNang";
-            grbChucNang.Size = new Size(183, 272);
+            grbChucNang.Size = new Size(370, 272);
             grbChucNang.TabIndex = 2;
             grbChucNang.TabStop = false;
             grbChucNang.Text = "Chức Năng";
             // 
             // btnXoa
             // 
-            btnXoa.Location = new Point(25, 192);
+            btnXoa.BackColor = Color.Red;
+            btnXoa.ForeColor = Color.White;
+            btnXoa.Location = new Point(263, 34);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(142, 44);
+            btnXoa.Size = new Size(92, 54);
             btnXoa.TabIndex = 2;
             btnXoa.Text = "Xóa";
-            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
-            btnSua.Location = new Point(25, 107);
+            btnSua.Location = new Point(152, 34);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(142, 44);
+            btnSua.Size = new Size(86, 54);
             btnSua.TabIndex = 1;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
-            btnThem.Location = new Point(25, 34);
+            btnThem.Location = new Point(24, 34);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(142, 44);
+            btnThem.Size = new Size(91, 54);
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // grbDataVc
             // 
@@ -262,22 +232,65 @@
             dgvDataVC.Size = new Size(1301, 275);
             dgvDataVC.TabIndex = 0;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(lbngoiy);
+            groupBox1.Controls.Add(txbTimkiem);
+            groupBox1.Controls.Add(BtnTimkiem);
+            groupBox1.Location = new Point(934, 98);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(370, 268);
+            groupBox1.TabIndex = 3;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Bộ Lọc";
+            // 
+            // lbngoiy
+            // 
+            lbngoiy.AutoSize = true;
+            lbngoiy.ForeColor = Color.Red;
+            lbngoiy.Location = new Point(6, 173);
+            lbngoiy.Name = "lbngoiy";
+            lbngoiy.Size = new Size(117, 20);
+            lbngoiy.TabIndex = 4;
+            lbngoiy.Text = "Nhập mã để tìm";
+            // 
+            // txbTimkiem
+            // 
+            txbTimkiem.Location = new Point(6, 34);
+            txbTimkiem.Multiline = true;
+            txbTimkiem.Name = "txbTimkiem";
+            txbTimkiem.Size = new Size(339, 136);
+            txbTimkiem.TabIndex = 3;
+            // 
+            // BtnTimkiem
+            // 
+            BtnTimkiem.Location = new Point(6, 223);
+            BtnTimkiem.Name = "BtnTimkiem";
+            BtnTimkiem.Size = new Size(92, 32);
+            BtnTimkiem.TabIndex = 2;
+            BtnTimkiem.Text = "Tìm";
+            BtnTimkiem.UseVisualStyleBackColor = true;
+            // 
             // QuanLyVoucher
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1351, 714);
+            Controls.Add(groupBox1);
             Controls.Add(grbDataVc);
             Controls.Add(grbChucNang);
             Controls.Add(grbThongTin);
             Controls.Add(lblQLVoucher);
             Name = "QuanLyVoucher";
             Text = "Quản Lý Voucher";
+            Load += QuanLyVoucher_Load;
             grbThongTin.ResumeLayout(false);
             grbThongTin.PerformLayout();
             grbChucNang.ResumeLayout(false);
             grbDataVc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvDataVC).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -289,22 +302,22 @@
         private Label lblMaVC;
         private GroupBox grbChucNang;
         private GroupBox grbDataVc;
-        private Label lblGiatri;
         private Label lblDieuKien;
         private Label lblNAP;
         private DateTimePicker dtpkNKT;
         private DateTimePicker dtpkNgayapdung;
         private Label lblNgayketthuc;
         private TextBox tbcMota;
-        private TextBox tbxTenvc;
         private TextBox tbxDieuKien;
-        private TextBox tbxGiatri;
         private TextBox tbxMavc;
         private Label lblMota;
-        private Label lblTenvc;
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
         private DataGridView dgvDataVC;
+        private GroupBox groupBox1;
+        private TextBox txbTimkiem;
+        private Button BtnTimkiem;
+        private Label lbngoiy;
     }
 }
