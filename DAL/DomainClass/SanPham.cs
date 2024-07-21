@@ -31,8 +31,8 @@ namespace DAL.DomainClass
         public string? ChatLieu { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? NgayNhap { get; set; }
-        [StringLength(255)]
-        public string? HinhAnh { get; set; }
+        [Column(TypeName = "image")]
+        public byte[]? HinhAnh { get; set; }
         public int? SoLuongTon { get; set; }
         [StringLength(10)]
         public string? MaKhuyenMai { get; set; }

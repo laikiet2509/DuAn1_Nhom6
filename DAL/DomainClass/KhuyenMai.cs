@@ -20,7 +20,9 @@ namespace DAL.DomainClass
         [StringLength(255)]
         public string? DieuKienApDung { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime? ThoiGianApDung { get; set; }
+        public DateTime? NgayBatDau { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? NgayKetThuc { get; set; }
         [StringLength(255)]
         public string? MoTaKhuyenMai { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using PRL;
+﻿using DAL.DomainClass;
+using PRL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,9 @@ using System.Windows.Forms;
 
 namespace DuAn1_NHOM6
 {
-    public partial class Form2 : Form
+    public partial class home : Form
     {
-        public Form2()
+        public home()
         {
             InitializeComponent();
         }
@@ -36,7 +37,7 @@ namespace DuAn1_NHOM6
 
         private void btn_sanpham_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new sanpham());       
+            OpenChildForm(new sanpham());
             label1.Text = btn_sanpham.Text;
         }
 
@@ -44,6 +45,27 @@ namespace DuAn1_NHOM6
         {
             OpenChildForm(new khachhang());
             label1.Text = btn_khachhang.Text;
+        }
+
+        private void btn_banhang_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new banhang());
+            label1.Text = btn_banhang.Text;
+        }
+
+        private void btn_hoadon_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new hoadon());
+            label1.Text = btn_hoadon.Text;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if(currentFormChild != null)
+            {
+                currentFormChild.Close();
+            }
+            label1.Text = "Home";
         }
     }
 }

@@ -49,6 +49,6 @@ namespace BUS.Repository
             context.SanPhams.Remove(sp);
             context.SaveChanges();
             return true;
-        }
+        }       
     }
 }

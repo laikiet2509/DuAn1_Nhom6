@@ -42,7 +42,7 @@ namespace DAL.Context
             modelBuilder.Entity<ChiTietHoaDon>(entity =>
             {
                 entity.HasKey(e => new { e.MaHd, e.MaSp })
-                    .HasName("PK__ChiTietH__F557F661DFFB832E");
+                    .HasName("PK__ChiTietH__F557F6617C88856E");
 
                 entity.HasOne(d => d.MaHdNavigation)
                     .WithMany(p => p.ChiTietHoaDons)
@@ -60,13 +60,13 @@ namespace DAL.Context
             modelBuilder.Entity<ChucVu>(entity =>
             {
                 entity.HasKey(e => e.MaChucVu)
-                    .HasName("PK__ChucVu__D46395331EB75B41");
+                    .HasName("PK__ChucVu__D463953322E945B3");
             });
 
             modelBuilder.Entity<HoaDon>(entity =>
             {
                 entity.HasKey(e => e.MaHoaDon)
-                    .HasName("PK__HoaDon__835ED13B1AEEA659");
+                    .HasName("PK__HoaDon__835ED13BA9B2845F");
 
                 entity.HasOne(d => d.MaKhachHangNavigation)
                     .WithMany(p => p.HoaDons)
@@ -82,31 +82,31 @@ namespace DAL.Context
             modelBuilder.Entity<KhachHang>(entity =>
             {
                 entity.HasKey(e => e.MaKhachHang)
-                    .HasName("PK__KhachHan__88D2F0E559C1D7CF");
+                    .HasName("PK__KhachHan__88D2F0E52178F7DF");
             });
 
             modelBuilder.Entity<KhuyenMai>(entity =>
             {
                 entity.HasKey(e => e.MaKhuyenMai)
-                    .HasName("PK__KhuyenMa__6F56B3BD3979CDEE");
+                    .HasName("PK__KhuyenMa__6F56B3BDC9B2E308");
             });
 
             modelBuilder.Entity<KichCo>(entity =>
             {
                 entity.HasKey(e => e.MaKichCoSp)
-                    .HasName("PK__KichCo__75335AFF6D636A8A");
+                    .HasName("PK__KichCo__75335AFFAA73FD2D");
             });
 
             modelBuilder.Entity<MauSac>(entity =>
             {
                 entity.HasKey(e => e.MaMauSp)
-                    .HasName("PK__MauSac__487A0E4C9B640343");
+                    .HasName("PK__MauSac__487A0E4C9CE4293D");
             });
 
             modelBuilder.Entity<NhanVien>(entity =>
             {
                 entity.HasKey(e => e.MaNhanVien)
-                    .HasName("PK__NhanVien__77B2CA47014A6D66");
+                    .HasName("PK__NhanVien__77B2CA47B135DF94");
 
                 entity.HasOne(d => d.MaChucVuNavigation)
                     .WithMany(p => p.NhanViens)
@@ -117,7 +117,7 @@ namespace DAL.Context
             modelBuilder.Entity<SanPham>(entity =>
             {
                 entity.HasKey(e => e.MaSanPham)
-                    .HasName("PK__SanPham__FAC7442D075961BD");
+                    .HasName("PK__SanPham__FAC7442DD5FA5C2E");
 
                 entity.HasOne(d => d.MaKhuyenMaiNavigation)
                     .WithMany(p => p.SanPhams)
@@ -138,7 +138,7 @@ namespace DAL.Context
             modelBuilder.Entity<TaiKhoan>(entity =>
             {
                 entity.HasKey(e => e.Idtk)
-                    .HasName("PK__TaiKhoan__B87C3A83677F9200");
+                    .HasName("PK__TaiKhoan__B87C3A83AC5A28C6");
 
                 entity.HasOne(d => d.MaNhanVienNavigation)
                     .WithMany(p => p.TaiKhoans)

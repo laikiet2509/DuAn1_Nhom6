@@ -1,6 +1,6 @@
 ﻿namespace DuAn1_NHOM6
 {
-    partial class Form2
+    partial class home
     {
         /// <summary>
         /// Required designer variable.
@@ -29,31 +29,36 @@
         private void InitializeComponent()
         {
             panel_left = new Panel();
+            button2 = new Button();
             btn_khachhang = new Button();
             button5 = new Button();
             button4 = new Button();
             button3 = new Button();
             btn_sanpham = new Button();
-            button1 = new Button();
+            btn_hoadon = new Button();
             btn_banhang = new Button();
             pictureBox1 = new PictureBox();
             panel_top = new Panel();
             label1 = new Label();
             panel_body = new Panel();
+            pictureBox2 = new PictureBox();
             panel_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel_top.SuspendLayout();
+            panel_body.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel_left
             // 
             panel_left.BackColor = Color.Cyan;
+            panel_left.Controls.Add(button2);
             panel_left.Controls.Add(btn_khachhang);
             panel_left.Controls.Add(button5);
             panel_left.Controls.Add(button4);
             panel_left.Controls.Add(button3);
             panel_left.Controls.Add(btn_sanpham);
-            panel_left.Controls.Add(button1);
+            panel_left.Controls.Add(btn_hoadon);
             panel_left.Controls.Add(btn_banhang);
             panel_left.Controls.Add(pictureBox1);
             panel_left.Dock = DockStyle.Left;
@@ -62,8 +67,23 @@
             panel_left.Size = new Size(213, 809);
             panel_left.TabIndex = 0;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Snow;
+            button2.Dock = DockStyle.Top;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(0, 711);
+            button2.Name = "button2";
+            button2.Size = new Size(213, 77);
+            button2.TabIndex = 7;
+            button2.Text = "Thiết Lập";
+            button2.UseVisualStyleBackColor = false;
+            // 
             // btn_khachhang
             // 
+            btn_khachhang.BackColor = Color.SandyBrown;
             btn_khachhang.Dock = DockStyle.Top;
             btn_khachhang.FlatAppearance.BorderSize = 0;
             btn_khachhang.FlatStyle = FlatStyle.Flat;
@@ -73,11 +93,12 @@
             btn_khachhang.Size = new Size(213, 77);
             btn_khachhang.TabIndex = 6;
             btn_khachhang.Text = "Khách Hàng";
-            btn_khachhang.UseVisualStyleBackColor = true;
+            btn_khachhang.UseVisualStyleBackColor = false;
             btn_khachhang.Click += btn_khachhang_Click;
             // 
             // button5
             // 
+            button5.BackColor = Color.Orchid;
             button5.Dock = DockStyle.Top;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
@@ -87,10 +108,11 @@
             button5.Size = new Size(213, 77);
             button5.TabIndex = 5;
             button5.Text = "Nhân Viên";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
+            button4.BackColor = Color.Pink;
             button4.Dock = DockStyle.Top;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
@@ -100,10 +122,11 @@
             button4.Size = new Size(213, 77);
             button4.TabIndex = 4;
             button4.Text = "Thông Kê";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
+            button3.BackColor = Color.Plum;
             button3.Dock = DockStyle.Top;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
@@ -113,10 +136,11 @@
             button3.Size = new Size(213, 77);
             button3.TabIndex = 3;
             button3.Text = "Khuyến Mãi";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             // 
             // btn_sanpham
             // 
+            btn_sanpham.BackColor = Color.SteelBlue;
             btn_sanpham.Dock = DockStyle.Top;
             btn_sanpham.FlatAppearance.BorderSize = 0;
             btn_sanpham.FlatStyle = FlatStyle.Flat;
@@ -126,25 +150,27 @@
             btn_sanpham.Size = new Size(213, 77);
             btn_sanpham.TabIndex = 2;
             btn_sanpham.Text = "Sản Phẩm";
-            btn_sanpham.UseVisualStyleBackColor = true;
+            btn_sanpham.UseVisualStyleBackColor = false;
             btn_sanpham.Click += btn_sanpham_Click;
             // 
-            // button1
+            // btn_hoadon
             // 
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(0, 249);
-            button1.Name = "button1";
-            button1.Size = new Size(213, 77);
-            button1.TabIndex = 1;
-            button1.Text = "Hóa Đơn";
-            button1.UseVisualStyleBackColor = true;
+            btn_hoadon.BackColor = Color.LightSkyBlue;
+            btn_hoadon.Dock = DockStyle.Top;
+            btn_hoadon.FlatAppearance.BorderSize = 0;
+            btn_hoadon.FlatStyle = FlatStyle.Flat;
+            btn_hoadon.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_hoadon.Location = new Point(0, 249);
+            btn_hoadon.Name = "btn_hoadon";
+            btn_hoadon.Size = new Size(213, 77);
+            btn_hoadon.TabIndex = 1;
+            btn_hoadon.Text = "Hóa Đơn";
+            btn_hoadon.UseVisualStyleBackColor = false;
+            btn_hoadon.Click += btn_hoadon_Click;
             // 
             // btn_banhang
             // 
-            btn_banhang.BackColor = Color.Cyan;
+            btn_banhang.BackColor = Color.RosyBrown;
             btn_banhang.Dock = DockStyle.Top;
             btn_banhang.FlatAppearance.BorderSize = 0;
             btn_banhang.FlatStyle = FlatStyle.Flat;
@@ -155,16 +181,21 @@
             btn_banhang.TabIndex = 0;
             btn_banhang.Text = "Bán Hàng";
             btn_banhang.UseVisualStyleBackColor = false;
+            btn_banhang.Click += btn_banhang_Click;
             // 
             // pictureBox1
             // 
+            pictureBox1.BackColor = Color.MintCream;
+            pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Dock = DockStyle.Top;
+            pictureBox1.Image = PRL.Properties.Resources._12;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(213, 172);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // panel_top
             // 
@@ -188,13 +219,27 @@
             // 
             // panel_body
             // 
+            panel_body.BackColor = SystemColors.Control;
+            panel_body.BackgroundImageLayout = ImageLayout.Stretch;
+            panel_body.Controls.Add(pictureBox2);
             panel_body.Dock = DockStyle.Fill;
             panel_body.Location = new Point(213, 89);
             panel_body.Name = "panel_body";
             panel_body.Size = new Size(1237, 720);
             panel_body.TabIndex = 2;
             // 
-            // Form2
+            // pictureBox2
+            // 
+            pictureBox2.BackgroundImage = PRL.Properties.Resources._4;
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.Dock = DockStyle.Fill;
+            pictureBox2.Location = new Point(0, 0);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(1237, 720);
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
+            // 
+            // home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -202,12 +247,14 @@
             Controls.Add(panel_body);
             Controls.Add(panel_top);
             Controls.Add(panel_left);
-            Name = "Form2";
+            Name = "home";
             Text = "Form2";
             panel_left.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel_top.ResumeLayout(false);
             panel_top.PerformLayout();
+            panel_body.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -215,7 +262,6 @@
 
         private Panel panel_left;
         private Panel panel_top;
-        private Panel panel_body;
         private PictureBox pictureBox1;
         private Button button7;
         private Button btn_banhang;
@@ -223,8 +269,11 @@
         private Button button4;
         private Button button3;
         private Button btn_sanpham;
-        private Button button1;
+        private Button btn_hoadon;
         private Button btn_khachhang;
         private Label label1;
+        private Button button2;
+        private Panel panel_body;
+        private PictureBox pictureBox2;
     }
 }
