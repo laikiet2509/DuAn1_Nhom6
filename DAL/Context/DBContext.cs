@@ -33,7 +33,7 @@ namespace DAL.Context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source= LAPTOP-6JARI0UA\\SQLEXPRESS ;Initial Catalog= QuanLyBanHang12;Integrated Security=True;TrustServerCertificate=true");
+                optionsBuilder.UseSqlServer("Data Source= LAPTOP-PH9VPOUT\\SQLEXPRESS ;Initial Catalog= QuanLyBanHang12;Integrated Security=True;TrustServerCertificate=true");
             }
         }
 
@@ -42,7 +42,7 @@ namespace DAL.Context
             modelBuilder.Entity<ChiTietHoaDon>(entity =>
             {
                 entity.HasKey(e => new { e.MaHd, e.MaSp })
-                    .HasName("PK__ChiTietH__F557F6617C88856E");
+                    .HasName("PK__ChiTietH__F557F66103FC5ACF");
 
                 entity.HasOne(d => d.MaHdNavigation)
                     .WithMany(p => p.ChiTietHoaDons)
@@ -60,13 +60,13 @@ namespace DAL.Context
             modelBuilder.Entity<ChucVu>(entity =>
             {
                 entity.HasKey(e => e.MaChucVu)
-                    .HasName("PK__ChucVu__D463953322E945B3");
+                    .HasName("PK__ChucVu__D4639533E236DB0B");
             });
 
             modelBuilder.Entity<HoaDon>(entity =>
             {
                 entity.HasKey(e => e.MaHoaDon)
-                    .HasName("PK__HoaDon__835ED13BA9B2845F");
+                    .HasName("PK__HoaDon__835ED13B6EA49293");
 
                 entity.HasOne(d => d.MaKhachHangNavigation)
                     .WithMany(p => p.HoaDons)
@@ -82,31 +82,31 @@ namespace DAL.Context
             modelBuilder.Entity<KhachHang>(entity =>
             {
                 entity.HasKey(e => e.MaKhachHang)
-                    .HasName("PK__KhachHan__88D2F0E52178F7DF");
+                    .HasName("PK__KhachHan__88D2F0E549A36A29");
             });
 
             modelBuilder.Entity<KhuyenMai>(entity =>
             {
                 entity.HasKey(e => e.MaKhuyenMai)
-                    .HasName("PK__KhuyenMa__6F56B3BDC9B2E308");
+                    .HasName("PK__KhuyenMa__6F56B3BD1D115350");
             });
 
             modelBuilder.Entity<KichCo>(entity =>
             {
                 entity.HasKey(e => e.MaKichCoSp)
-                    .HasName("PK__KichCo__75335AFFAA73FD2D");
+                    .HasName("PK__KichCo__75335AFF1E6AD506");
             });
 
             modelBuilder.Entity<MauSac>(entity =>
             {
                 entity.HasKey(e => e.MaMauSp)
-                    .HasName("PK__MauSac__487A0E4C9CE4293D");
+                    .HasName("PK__MauSac__487A0E4CF54E0B19");
             });
 
             modelBuilder.Entity<NhanVien>(entity =>
             {
                 entity.HasKey(e => e.MaNhanVien)
-                    .HasName("PK__NhanVien__77B2CA47B135DF94");
+                    .HasName("PK__NhanVien__77B2CA47042F9857");
 
                 entity.HasOne(d => d.MaChucVuNavigation)
                     .WithMany(p => p.NhanViens)
@@ -117,7 +117,7 @@ namespace DAL.Context
             modelBuilder.Entity<SanPham>(entity =>
             {
                 entity.HasKey(e => e.MaSanPham)
-                    .HasName("PK__SanPham__FAC7442DD5FA5C2E");
+                    .HasName("PK__SanPham__FAC7442D7AFF69F0");
 
                 entity.HasOne(d => d.MaKhuyenMaiNavigation)
                     .WithMany(p => p.SanPhams)
@@ -138,7 +138,7 @@ namespace DAL.Context
             modelBuilder.Entity<TaiKhoan>(entity =>
             {
                 entity.HasKey(e => e.Idtk)
-                    .HasName("PK__TaiKhoan__B87C3A83AC5A28C6");
+                    .HasName("PK__TaiKhoan__B87C3A8364812235");
 
                 entity.HasOne(d => d.MaNhanVienNavigation)
                     .WithMany(p => p.TaiKhoans)

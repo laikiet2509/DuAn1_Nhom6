@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btn_chonanh = new Button();
             txt_Thuonghieu = new TextBox();
             cmbx_kichthuoc = new ComboBox();
             dtp_ngaynhap = new DateTimePicker();
@@ -58,7 +59,6 @@
             txt_search = new TextBox();
             groupBox3 = new GroupBox();
             dtgView_sp = new DataGridView();
-            btn_chonanh = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
@@ -102,6 +102,17 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông Tin Sản Phẩm";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // btn_chonanh
+            // 
+            btn_chonanh.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_chonanh.Location = new Point(489, 299);
+            btn_chonanh.Name = "btn_chonanh";
+            btn_chonanh.Size = new Size(117, 41);
+            btn_chonanh.TabIndex = 34;
+            btn_chonanh.Text = "Chọn Ảnh";
+            btn_chonanh.UseVisualStyleBackColor = true;
+            btn_chonanh.Click += btn_chonanh_Click;
             // 
             // txt_Thuonghieu
             // 
@@ -378,17 +389,6 @@
             dtgView_sp.TabIndex = 0;
             dtgView_sp.CellClick += dtgView_sp_CellClick;
             // 
-            // btn_chonanh
-            // 
-            btn_chonanh.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_chonanh.Location = new Point(489, 299);
-            btn_chonanh.Name = "btn_chonanh";
-            btn_chonanh.Size = new Size(117, 41);
-            btn_chonanh.TabIndex = 34;
-            btn_chonanh.Text = "Chọn Ảnh";
-            btn_chonanh.UseVisualStyleBackColor = true;
-            btn_chonanh.Click += btn_chonanh_Click;
-            // 
             // sanpham
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -399,6 +399,7 @@
             Controls.Add(groupBox1);
             Name = "sanpham";
             Text = "Sản Phẩm";
+            Load += sanpham_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

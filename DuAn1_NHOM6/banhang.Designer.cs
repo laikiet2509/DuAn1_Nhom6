@@ -362,7 +362,7 @@
             // 
             btn_xoa.BackColor = SystemColors.Control;
             btn_xoa.Image = Properties.Resources.Delete1;
-            btn_xoa.Location = new Point(48, 125);
+            btn_xoa.Location = new Point(17, 106);
             btn_xoa.Name = "btn_xoa";
             btn_xoa.Size = new Size(66, 67);
             btn_xoa.TabIndex = 2;
@@ -373,11 +373,11 @@
             dtgView_GioHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgView_GioHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_GioHang.Dock = DockStyle.Right;
-            dtgView_GioHang.Location = new Point(-102, 24);
+            dtgView_GioHang.Location = new Point(-158, 24);
             dtgView_GioHang.Name = "dtgView_GioHang";
             dtgView_GioHang.RowHeadersWidth = 51;
             dtgView_GioHang.RowTemplate.Height = 29;
-            dtgView_GioHang.Size = new Size(1158, 259);
+            dtgView_GioHang.Size = new Size(1214, 259);
             dtgView_GioHang.TabIndex = 1;
             // 
             // groupBox4

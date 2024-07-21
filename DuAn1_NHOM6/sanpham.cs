@@ -40,7 +40,7 @@ namespace PRL
             dtgView_sp.Rows.Clear();
             foreach (var sp in service.GetSanPhams(txt_search.Text))
             {
-                dtgView_sp.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaKichCoSp, sp.ThuongHieu,sp.HinhAnh);
+                dtgView_sp.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaKichCoSp, sp.ThuongHieu, sp.HinhAnh);
             }
         }
         public void FillData()
@@ -63,11 +63,11 @@ namespace PRL
             //    // Hiển thị hình ảnh trên pictureBox
             //    pictureBox1.Image = image;
             //}
-        }       
+        }
         private void dtgView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }        
+        }
         private void btn_them_Click(object sender, EventArgs e)
         {
             SanPham sp = new SanPham();
@@ -79,7 +79,7 @@ namespace PRL
             sp.NgayNhap = DateTime.Parse(dtp_ngaynhap.Text);
             sp.SoLuongTon = int.Parse(txt_soluong.Text);
             sp.MaKichCoSp = cmbx_kichthuoc.Text;
-            sp.ThuongHieu = txt_Thuonghieu.Text;  
+            sp.ThuongHieu = txt_Thuonghieu.Text;
             //sp.HinhAnh = pictureBox1.Image;
             MessageBox.Show(service.Them(sp));
             LoadGird();
@@ -145,10 +145,15 @@ namespace PRL
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Chọn Ảnh";
             openFileDialog.Filter = "Image Files(*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.ImageLocation = openFileDialog.FileName;
             }
+        }
+
+        private void sanpham_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

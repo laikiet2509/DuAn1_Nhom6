@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BUS.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,13 @@ namespace PRL
 {
     public partial class banhang : Form
     {
+        public BanHangServices service;
+        public string idWhenClick; 
+
         public banhang()
         {
             InitializeComponent();
+            service = new BanHangServices();
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
