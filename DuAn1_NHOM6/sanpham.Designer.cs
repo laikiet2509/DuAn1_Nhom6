@@ -187,9 +187,11 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Location = new Point(428, 65);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(229, 198);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 25;
             pictureBox1.TabStop = false;
             // 

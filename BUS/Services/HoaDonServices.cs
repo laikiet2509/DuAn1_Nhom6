@@ -15,40 +15,29 @@ namespace BUS.Services
         {
             repos = new HoaDonRepository();
         }
-        List<HoaDon> lstHD = new List<HoaDon>();
-        public List<HoaDon> GetHoaDons(string search)
+        public HoaDon? GetHoaDonbyMaHoaDon(string maHoaDon)
         {
-            if (search == null || search == string.Empty)
-            {
-                return repos.GetAllHD();
-            }
-            return repos.GetAllHD().FindAll(x => x.MaHoaDon.ToString().Contains(search) || x.MaNhanVien.Contains(search));
+            return repos.GetHoaDonbyMaHoaDon(maHoaDon);
         }
-        public string ThemHD(HoaDon hd)
-        {
-            if (repos.AddHD(hd))
-            {
-                return "Thêm thành công";
-            }
-            return "Thêm thất bại";
-        }
-        public string SuaHD(HoaDon hd)
-        {
-            if (repos.UpdateHD(hd))
-            {
-                return "Sửa thành công";
-            }
-            return "Sửa thất bại";
 
-        }
-        public string XoaHD(string ma)
+        public List<HoaDon> GetAllHoaDons()
         {
-            var hd = repos.GetAllHD().Find(x => x.MaHoaDon.ToString() == ma);
-            if (repos.DeleteHD(hd))
-            {
-                return "Xóa thành công";
-            }
-            return "Xóa thất bại";
+            return repos.GetAllHoaDons();
+        }
+
+        public List<HoaDon> GetAllHoaDonChos()
+        {
+            return repos.GetAllHoaDons().Where(hd => hd.TrangThai == 0).ToList();
+        }
+
+        public void TaoHoaDonCho(HoaDon hoaDon)
+        {
+            repos.TaoHoaDonCho(hoaDon);
+        }
+
+        public void SuaTrangThai(string maHoaDon, int trangThai)
+        {
+            repos.SuaTrangThai(maHoaDon, trangThai);
         }
     }
 }

@@ -21,8 +21,7 @@ namespace DAL.DomainClass
         public DateTime? NgayLapHoaDon { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
         public decimal? TongTien { get; set; }
-        [StringLength(50)]
-        public string? TrangThai { get; set; }
+        public int? TrangThai { get; set; }
         [StringLength(10)]
         public string? MaKhachHang { get; set; }
         [StringLength(10)]

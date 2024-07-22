@@ -30,22 +30,22 @@
         {
             groupBox1 = new GroupBox();
             groupBox6 = new GroupBox();
-            button2 = new Button();
+            btn_TaoHoaDon = new Button();
             btn_huy = new Button();
             btn_thanhtoan = new Button();
-            label10 = new Label();
+            lblTienThua = new Label();
             label11 = new Label();
             txt_tienkhachdua = new TextBox();
             label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
+            lblTongTien = new Label();
+            lblTongHoaDon = new Label();
             txt_khuyenmai = new TextBox();
             label6 = new Label();
-            txt_tennhanvien = new TextBox();
+            txt_manhanvien = new TextBox();
             label5 = new Label();
             txt_mahoadon = new TextBox();
             label4 = new Label();
-            label3 = new Label();
+            lblQuyen = new Label();
             groupBox5 = new GroupBox();
             button3 = new Button();
             txt_tenkhachhang = new TextBox();
@@ -94,22 +94,22 @@
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(button2);
+            groupBox6.Controls.Add(btn_TaoHoaDon);
             groupBox6.Controls.Add(btn_huy);
             groupBox6.Controls.Add(btn_thanhtoan);
-            groupBox6.Controls.Add(label10);
+            groupBox6.Controls.Add(lblTienThua);
             groupBox6.Controls.Add(label11);
             groupBox6.Controls.Add(txt_tienkhachdua);
             groupBox6.Controls.Add(label9);
-            groupBox6.Controls.Add(label8);
-            groupBox6.Controls.Add(label7);
+            groupBox6.Controls.Add(lblTongTien);
+            groupBox6.Controls.Add(lblTongHoaDon);
             groupBox6.Controls.Add(txt_khuyenmai);
             groupBox6.Controls.Add(label6);
-            groupBox6.Controls.Add(txt_tennhanvien);
+            groupBox6.Controls.Add(txt_manhanvien);
             groupBox6.Controls.Add(label5);
             groupBox6.Controls.Add(txt_mahoadon);
             groupBox6.Controls.Add(label4);
-            groupBox6.Controls.Add(label3);
+            groupBox6.Controls.Add(lblQuyen);
             groupBox6.Dock = DockStyle.Fill;
             groupBox6.Location = new Point(3, 233);
             groupBox6.Name = "groupBox6";
@@ -118,16 +118,17 @@
             groupBox6.TabStop = false;
             groupBox6.Text = "Thông Tin Hóa Đơn";
             // 
-            // button2
+            // btn_TaoHoaDon
             // 
-            button2.Image = Properties.Resources.Add1;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(95, 543);
-            button2.Name = "button2";
-            button2.Size = new Size(179, 34);
-            button2.TabIndex = 4;
-            button2.Text = "Tạo Hóa Đơn";
-            button2.UseVisualStyleBackColor = true;
+            btn_TaoHoaDon.Image = Properties.Resources.Add1;
+            btn_TaoHoaDon.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_TaoHoaDon.Location = new Point(95, 543);
+            btn_TaoHoaDon.Name = "btn_TaoHoaDon";
+            btn_TaoHoaDon.Size = new Size(179, 34);
+            btn_TaoHoaDon.TabIndex = 4;
+            btn_TaoHoaDon.Text = "Tạo Hóa Đơn";
+            btn_TaoHoaDon.UseVisualStyleBackColor = true;
+            btn_TaoHoaDon.Click += button2_Click;
             // 
             // btn_huy
             // 
@@ -149,15 +150,15 @@
             btn_thanhtoan.Text = "Thanh Toán";
             btn_thanhtoan.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // lblTienThua
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(206, 489);
-            label10.Name = "label10";
-            label10.Size = new Size(123, 29);
-            label10.TabIndex = 15;
-            label10.Text = "Tiền Thừa";
+            lblTienThua.AutoSize = true;
+            lblTienThua.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTienThua.Location = new Point(206, 489);
+            lblTienThua.Name = "lblTienThua";
+            lblTienThua.Size = new Size(123, 29);
+            lblTienThua.TabIndex = 15;
+            lblTienThua.Text = "Tiền Thừa";
             // 
             // label11
             // 
@@ -174,6 +175,7 @@
             txt_tienkhachdua.Name = "txt_tienkhachdua";
             txt_tienkhachdua.Size = new Size(232, 30);
             txt_tienkhachdua.TabIndex = 13;
+            txt_tienkhachdua.TextChanged += txt_tienkhachdua_TextChanged;
             // 
             // label9
             // 
@@ -184,24 +186,24 @@
             label9.TabIndex = 12;
             label9.Text = "Tiền Khách Đưa";
             // 
-            // label8
+            // lblTongTien
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(206, 351);
-            label8.Name = "label8";
-            label8.Size = new Size(125, 29);
-            label8.TabIndex = 11;
-            label8.Text = "Tổng Tiền";
+            lblTongTien.AutoSize = true;
+            lblTongTien.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTongTien.Location = new Point(203, 355);
+            lblTongTien.Name = "lblTongTien";
+            lblTongTien.Size = new Size(125, 29);
+            lblTongTien.TabIndex = 11;
+            lblTongTien.Text = "Tổng Tiền";
             // 
-            // label7
+            // lblTongHoaDon
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(48, 355);
-            label7.Name = "label7";
-            label7.Size = new Size(140, 25);
-            label7.TabIndex = 10;
-            label7.Text = "Tổng Hóa Đơn";
+            lblTongHoaDon.AutoSize = true;
+            lblTongHoaDon.Location = new Point(48, 355);
+            lblTongHoaDon.Name = "lblTongHoaDon";
+            lblTongHoaDon.Size = new Size(140, 25);
+            lblTongHoaDon.TabIndex = 10;
+            lblTongHoaDon.Text = "Tổng Hóa Đơn";
             // 
             // txt_khuyenmai
             // 
@@ -219,21 +221,21 @@
             label6.TabIndex = 8;
             label6.Text = "Khuyến Mãi";
             // 
-            // txt_tennhanvien
+            // txt_manhanvien
             // 
-            txt_tennhanvien.Location = new Point(48, 116);
-            txt_tennhanvien.Name = "txt_tennhanvien";
-            txt_tennhanvien.Size = new Size(232, 30);
-            txt_tennhanvien.TabIndex = 7;
+            txt_manhanvien.Location = new Point(48, 116);
+            txt_manhanvien.Name = "txt_manhanvien";
+            txt_manhanvien.Size = new Size(232, 30);
+            txt_manhanvien.TabIndex = 7;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(48, 78);
             label5.Name = "label5";
-            label5.Size = new Size(144, 25);
+            label5.Size = new Size(137, 25);
             label5.TabIndex = 6;
-            label5.Text = "Tên Nhân Viên";
+            label5.Text = "Mã Nhân Viên";
             // 
             // txt_mahoadon
             // 
@@ -251,14 +253,14 @@
             label4.TabIndex = 4;
             label4.Text = "Mã Hóa Đơn";
             // 
-            // label3
+            // lblQuyen
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(42, 36);
-            label3.Name = "label3";
-            label3.Size = new Size(71, 25);
-            label3.TabIndex = 3;
-            label3.Text = "Quyền";
+            lblQuyen.AutoSize = true;
+            lblQuyen.Location = new Point(42, 36);
+            lblQuyen.Name = "lblQuyen";
+            lblQuyen.Size = new Size(71, 25);
+            lblQuyen.TabIndex = 3;
+            lblQuyen.Text = "Quyền";
             // 
             // groupBox5
             // 
@@ -329,7 +331,7 @@
             groupBox2.Size = new Size(1059, 205);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Hóa Đơn";
+            groupBox2.Text = "Hóa Đơn Chờ";
             // 
             // dtgView_hoadon
             // 
@@ -481,6 +483,7 @@
             dtgView_danhsachsanpham.RowTemplate.Height = 29;
             dtgView_danhsachsanpham.Size = new Size(1053, 292);
             dtgView_danhsachsanpham.TabIndex = 2;
+            dtgView_danhsachsanpham.CellClick += dtgView_danhsachsanpham_CellClick;
             // 
             // banhang
             // 
@@ -522,23 +525,23 @@
         private DataGridView dtgView_danhsachsanpham;
         private GroupBox groupBox6;
         private GroupBox groupBox5;
-        private Label label3;
-        private Button button2;
+        private Label lblQuyen;
+        private Button btn_TaoHoaDon;
         private TextBox txt_tenkhachhang;
         private Label label2;
         private TextBox txt_makhachhang;
         private Label label1;
         private TextBox txt_tienkhachdua;
         private Label label9;
-        private Label label8;
-        private Label label7;
+        private Label lblTongTien;
+        private Label lblTongHoaDon;
         private TextBox txt_khuyenmai;
         private Label label6;
-        private TextBox txt_tennhanvien;
+        private TextBox txt_manhanvien;
         private Label label5;
         private TextBox txt_mahoadon;
         private Label label4;
-        private Label label10;
+        private Label lblTienThua;
         private Label label11;
         private Button btn_huy;
         private Button btn_thanhtoan;

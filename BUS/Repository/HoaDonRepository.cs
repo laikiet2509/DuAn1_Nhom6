@@ -1,5 +1,6 @@
 ﻿using DAL.Context;
 using DAL.DomainClass;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,39 +16,30 @@ namespace BUS.Repository
         {
             context = new DBContext();
         }
-        public List<HoaDon> GetAllHD()
+        public HoaDon? GetHoaDonbyMaHoaDon(string maHoaDon)
+        {
+            return context.HoaDons.Find(maHoaDon);
+        }
+
+        public List<HoaDon> GetAllHoaDons()
         {
             return context.HoaDons.ToList();
         }
-        public bool AddHD(HoaDon hd)
+
+        public void TaoHoaDonCho(HoaDon hoaDon)
         {
-            if (hd == null)
-            {
-                return false;
-            }
-            context.HoaDons.Add(hd);
+            context.HoaDons.Add(hoaDon);
             context.SaveChanges();
-            return true;
         }
-        public bool UpdateHD(HoaDon hd)
+
+        public void SuaTrangThai(string maHoaDon, int trangThai)
         {
-            if (hd == null)
+            var hoaDonSua = context.HoaDons.Find(maHoaDon);
+            if (hoaDonSua != null)
             {
-                return false;
+                hoaDonSua.TrangThai = trangThai;
             }
-            context.HoaDons.Update(hd);
             context.SaveChanges();
-            return true;
-        }
-        public bool DeleteHD(HoaDon hd)
-        {
-            if (hd == null)
-            {
-                return false;
-            }
-            context.HoaDons.Remove(hd);
-            context.SaveChanges();
-            return true;
         }
     }
 }
