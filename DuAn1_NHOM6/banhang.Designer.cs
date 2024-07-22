@@ -39,7 +39,7 @@
             label9 = new Label();
             lblTongTien = new Label();
             lblTongHoaDon = new Label();
-            txt_khuyenmai = new TextBox();
+            txt_maVoucher = new TextBox();
             label6 = new Label();
             txt_manhanvien = new TextBox();
             label5 = new Label();
@@ -47,10 +47,10 @@
             label4 = new Label();
             lblQuyen = new Label();
             groupBox5 = new GroupBox();
-            button3 = new Button();
+            btn_timkiemKhachHang = new Button();
             txt_tenkhachhang = new TextBox();
             label2 = new Label();
-            txt_makhachhang = new TextBox();
+            txt_SDT = new TextBox();
             label1 = new Label();
             groupBox2 = new GroupBox();
             dtgView_hoadon = new DataGridView();
@@ -103,7 +103,7 @@
             groupBox6.Controls.Add(label9);
             groupBox6.Controls.Add(lblTongTien);
             groupBox6.Controls.Add(lblTongHoaDon);
-            groupBox6.Controls.Add(txt_khuyenmai);
+            groupBox6.Controls.Add(txt_maVoucher);
             groupBox6.Controls.Add(label6);
             groupBox6.Controls.Add(txt_manhanvien);
             groupBox6.Controls.Add(label5);
@@ -140,6 +140,7 @@
             btn_huy.TabIndex = 17;
             btn_huy.Text = "Hủy";
             btn_huy.UseVisualStyleBackColor = true;
+            btn_huy.Click += btn_huy_Click;
             // 
             // btn_thanhtoan
             // 
@@ -205,21 +206,21 @@
             lblTongHoaDon.TabIndex = 10;
             lblTongHoaDon.Text = "Tổng Hóa Đơn";
             // 
-            // txt_khuyenmai
+            // txt_maVoucher
             // 
-            txt_khuyenmai.Location = new Point(44, 302);
-            txt_khuyenmai.Name = "txt_khuyenmai";
-            txt_khuyenmai.Size = new Size(232, 30);
-            txt_khuyenmai.TabIndex = 9;
+            txt_maVoucher.Location = new Point(44, 302);
+            txt_maVoucher.Name = "txt_maVoucher";
+            txt_maVoucher.Size = new Size(232, 30);
+            txt_maVoucher.TabIndex = 9;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Location = new Point(44, 264);
             label6.Name = "label6";
-            label6.Size = new Size(117, 25);
+            label6.Size = new Size(86, 25);
             label6.TabIndex = 8;
-            label6.Text = "Khuyến Mãi";
+            label6.Text = "Voucher";
             // 
             // txt_manhanvien
             // 
@@ -264,10 +265,10 @@
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(button3);
+            groupBox5.Controls.Add(btn_timkiemKhachHang);
             groupBox5.Controls.Add(txt_tenkhachhang);
             groupBox5.Controls.Add(label2);
-            groupBox5.Controls.Add(txt_makhachhang);
+            groupBox5.Controls.Add(txt_SDT);
             groupBox5.Controls.Add(label1);
             groupBox5.Dock = DockStyle.Top;
             groupBox5.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -278,14 +279,14 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Thông Tin Khách Hàng";
             // 
-            // button3
+            // btn_timkiemKhachHang
             // 
-            button3.Image = Properties.Resources.Search3;
-            button3.Location = new Point(287, 53);
-            button3.Name = "button3";
-            button3.Size = new Size(44, 34);
-            button3.TabIndex = 18;
-            button3.UseVisualStyleBackColor = true;
+            btn_timkiemKhachHang.Image = Properties.Resources.Search3;
+            btn_timkiemKhachHang.Location = new Point(287, 53);
+            btn_timkiemKhachHang.Name = "btn_timkiemKhachHang";
+            btn_timkiemKhachHang.Size = new Size(44, 34);
+            btn_timkiemKhachHang.TabIndex = 18;
+            btn_timkiemKhachHang.UseVisualStyleBackColor = true;
             // 
             // txt_tenkhachhang
             // 
@@ -304,21 +305,21 @@
             label2.TabIndex = 2;
             label2.Text = "Tên Khách Hàng";
             // 
-            // txt_makhachhang
+            // txt_SDT
             // 
-            txt_makhachhang.Location = new Point(42, 59);
-            txt_makhachhang.Name = "txt_makhachhang";
-            txt_makhachhang.Size = new Size(232, 28);
-            txt_makhachhang.TabIndex = 1;
+            txt_SDT.Location = new Point(42, 59);
+            txt_SDT.Name = "txt_SDT";
+            txt_SDT.Size = new Size(232, 28);
+            txt_SDT.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new Point(42, 34);
             label1.Name = "label1";
-            label1.Size = new Size(138, 22);
+            label1.Size = new Size(47, 22);
             label1.TabIndex = 0;
-            label1.Text = "Mã Khách Hàng";
+            label1.Text = "SĐT";
             // 
             // groupBox2
             // 
@@ -529,13 +530,13 @@
         private Button btn_TaoHoaDon;
         private TextBox txt_tenkhachhang;
         private Label label2;
-        private TextBox txt_makhachhang;
+        private TextBox txt_SDT;
         private Label label1;
         private TextBox txt_tienkhachdua;
         private Label label9;
         private Label lblTongTien;
         private Label lblTongHoaDon;
-        private TextBox txt_khuyenmai;
+        private TextBox txt_maVoucher;
         private Label label6;
         private TextBox txt_manhanvien;
         private Label label5;
@@ -551,7 +552,7 @@
         private ComboBox comboBox3;
         private ComboBox comboBox2;
         private ComboBox comboBox1;
-        private Button button3;
+        private Button btn_timkiemKhachHang;
         private Button button1;
     }
 }

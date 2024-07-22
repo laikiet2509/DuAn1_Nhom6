@@ -87,7 +87,7 @@ namespace PRL
             var km = serviceKM.GetKhuyenMais(txt_search.Text).Find(x => x.MaKhuyenMai.ToString() == idWhenClick);
             txt_manhanvien.Text = nv.MaNhanVien;
             txt_mahoadon.Text = hd.MaHoaDon;
-            txt_khuyenmai.Text = km.MaKhuyenMai;
+            txt_maVoucher.Text = km.MaKhuyenMai;
         }
         private decimal TinhTongTienHoaDon(string maHoaDon)
         {
@@ -138,7 +138,7 @@ namespace PRL
             KhuyenMai km = new KhuyenMai();
             NhanVien nv = new NhanVien();
             hd.MaHoaDon = "HĐ" + (serviceHD.GetAllHoaDons().Count + 1);
-            hd.MaKhachHang = txt_makhachhang.Text;
+            hd.MaKhachHang = txt_SDT.Text;
             hd.NgayLapHoaDon = DateTime.Now;
             hd.TrangThai = 0;
             serviceHD.TaoHoaDonCho(hd);
@@ -167,6 +167,43 @@ namespace PRL
             {
                 MessageBox.Show("Hãy nhập đúng số tiền!");
             }
+        }
+
+        private void btn_huy_Click(object sender, EventArgs e)
+        {
+            //var listHDCT = serviceHDCT.GetAllHoaDonCTByMaHoaDon(txt_tienkhachdua.Text);
+            //foreach (var hdct in listHDCT)
+            //{
+            //    var spct = serviceSP.GetSanPhams(hdct.MaSp);
+            //    // hoàn lại số lượng sản phẩm đã chọn trong hóa đơn vào lại danh sách sản phẩm
+            //    spct.SoLuongTon += hdct.SoLuong;
+
+            //    sanPhamChiTietBLL.UpdateSoLuong(spct);
+            //}
+
+            //hoaDonBLL.SuaTrangThai(cbbHoaDonCho.SelectedValue.ToString(), 2);
+            //MessageBox.Show("Đã hủy hóa đơn!");
+            RefreshToanBoForm();
+        }
+        private void RefreshToanBoForm()
+        {
+            txt_SDT.Text = string.Empty;
+            txt_tenkhachhang.Text = string.Empty;
+            txt_search.Text = string.Empty;
+            txt_tienkhachdua.Text = "0";
+            lblTienThua.Text = "Tiền thừa";
+            lblTongTien.Text = "Tổng tiền";
+
+            //LoadData_cbbHoaDonCho();
+            //LoadData_dgvSanPhamChiTiet(sanPhamChiTietBLL.GetAllSanPhamChiTiets());
+            //if (cbbHoaDonCho.SelectedValue != null)
+            //{
+            //    LoadData_dgvHoaDonChiTiet(hoaDonChiTietBLL.GetAllHoaDonCTByMaHoaDon(cbbHoaDonCho.SelectedValue.ToString()));
+            //}
+            //else
+            //{
+            //    LoadData_dgvHoaDonChiTiet(new List<HoaDonChiTiet>());
+            //}
         }
     }
 }
