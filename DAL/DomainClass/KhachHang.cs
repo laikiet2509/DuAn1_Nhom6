@@ -28,8 +28,7 @@ namespace DAL.DomainClass
         public string? DiaChi { get; set; }
         [StringLength(255)]
         public string? Email { get; set; }
-        [StringLength(10)]
-        public string? GioiTinh { get; set; }
+        public bool? GioiTinh { get; set; }
         [StringLength(50)]
         public string? TrangThai { get; set; }
         [StringLength(255)]

@@ -36,18 +36,26 @@ namespace PRL
             dtgView_khachhang.Rows.Clear();
             foreach (var kh in service.GetKhachHangs(txt_search.Text))
             {
-                dtgView_khachhang.Rows.Add(kh.TenKhachHang, kh.GioiTinh, kh.NgayDangKy, kh.Sdt, kh.DiaChi, kh.GhiChu);
+                dtgView_khachhang.Rows.Add(kh.TenKhachHang, kh.GioiTinh == true ? "Nam" : "Nữ", kh.NgayDangKy, kh.Sdt, kh.DiaChi, kh.GhiChu);
             }
         }
         public void FillData()
         {
-            var sp = service.GetKhachHangs(txt_search.Text).Find(x => x.TenKhachHang.ToString() == idWhenClick);
+            var sp = service.GetKhachHangs(txt_search.Text).Find(x => x.TenKhachHang == idWhenClick);
             txt_tenkhachhang.Text = sp.TenKhachHang;
-            cmbx_gioitinh.Text = sp.GioiTinh;
             dtp_ngaydangky.Text = sp.NgayDangKy.ToString();
             txt_sdt.Text = sp.Sdt;
             txt_diachi.Text = sp.DiaChi;
             rtxt_ghichu.Text = sp.GhiChu;
+            if (sp.GioiTinh == true)
+            {
+                rbtn_nam.Checked = true;
+            }
+            else
+            {
+                rbtn_nu.Checked = true;
+            }
+            
         }
 
         private void dtgView_khachhang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -65,7 +73,14 @@ namespace PRL
         {
             KhachHang kh = new KhachHang();
             kh.TenKhachHang = txt_tenkhachhang.Text;
-            kh.GioiTinh = cmbx_gioitinh.Text;
+            if (kh.GioiTinh == true)
+            {
+                rbtn_nam.Checked = true;
+            }
+            else
+            {
+                rbtn_nu.Checked = true;
+            }
             kh.NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text);
             kh.Sdt = txt_sdt.Text;
             kh.DiaChi = txt_diachi.Text;
@@ -78,7 +93,14 @@ namespace PRL
         {
             var kh = service.GetKhachHangs(txt_search.Text).Find(x => x.TenKhachHang == idWhenClick);
             kh.TenKhachHang = txt_tenkhachhang.Text;
-            kh.GioiTinh = cmbx_gioitinh.Text;
+            if (kh.GioiTinh == true)
+            {
+                rbtn_nam.Checked = true;
+            }
+            else
+            {
+                rbtn_nu.Checked = true;
+            }
             kh.NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text);
             kh.Sdt = txt_sdt.Text;
             kh.DiaChi = txt_diachi.Text;
@@ -96,11 +118,10 @@ namespace PRL
         private void btn_lammoi_Click(object sender, EventArgs e)
         {
             txt_tenkhachhang.Clear();
-            cmbx_gioitinh.Items.Clear();
-            cmbx_gioitinh.Text = string.Empty;
             txt_sdt.Clear();
             txt_diachi.Clear();
             rtxt_ghichu.Clear();
+            rbtn_nam.Checked = true;
         }
 
         private void cmbx_gioitinh_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,9 +131,6 @@ namespace PRL
 
         private void khachhang_Load(object sender, EventArgs e)
         {
-            cmbx_gioitinh.Items.Add("Nam");
-            cmbx_gioitinh.Items.Add("Nữ");
-            cmbx_gioitinh.Items.Add("Khác");
         }
     }
 }

@@ -31,13 +31,14 @@ namespace DAL.DomainClass
         public string? ChatLieu { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? NgayNhap { get; set; }
-        [Column(TypeName = "image")]
-        public byte[]? HinhAnh { get; set; }
+        public string? HinhAnh { get; set; }
         public int? SoLuongTon { get; set; }
         [StringLength(10)]
         public string? MaKhuyenMai { get; set; }
-        [StringLength(255)]
-        public string? ThuongHieu { get; set; }
+        [StringLength(10)]
+        public string? MaThuongHieu { get; set; }
+        [StringLength(50)]
+        public string? TrangThai { get; set; }
 
         [ForeignKey(nameof(MaKhuyenMai))]
         [InverseProperty(nameof(KhuyenMai.SanPhams))]
@@ -48,6 +49,9 @@ namespace DAL.DomainClass
         [ForeignKey(nameof(MaMauSp))]
         [InverseProperty(nameof(MauSac.SanPhams))]
         public virtual MauSac? MaMauSpNavigation { get; set; }
+        [ForeignKey(nameof(MaThuongHieu))]
+        [InverseProperty(nameof(ThuongHieu.SanPhams))]
+        public virtual ThuongHieu? MaThuongHieuNavigation { get; set; }
         [InverseProperty(nameof(ChiTietHoaDon.MaSpNavigation))]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
     }

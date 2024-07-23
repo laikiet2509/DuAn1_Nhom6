@@ -20,10 +20,36 @@ namespace BUS.Repository
         {
             return context.NhanViens.ToList();
         }
-        //public bool ValidateUser(string username, string password)
-        //{
-        //    return context.TaiKhoans.Any(u => u.TaiKhoan1 == username && u.MatKhau == password);
-        //}
+        public bool Add(NhanVien nv)
+        {
+            if (nv == null)
+            {
+                return false;
+            }
+            context.NhanViens.Add(nv);
+            context.SaveChanges();
+            return true;
+        }
+        public bool Update(NhanVien nv)
+        {
+            if (nv == null)
+            {
+                return false;
+            }
+            context.NhanViens.Update(nv);
+            context.SaveChanges();
+            return true;
+        }
+        public bool Delete(NhanVien nv)
+        {
+            if (nv == null)
+            {
+                return false;
+            }
+            context.NhanViens.Remove(nv);
+            context.SaveChanges();
+            return true;
+        }
 
     }
 }

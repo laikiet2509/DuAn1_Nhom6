@@ -61,11 +61,28 @@ namespace DuAn1_NHOM6
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if(currentFormChild != null)
+            if (currentFormChild != null)
             {
                 currentFormChild.Close();
             }
             label1.Text = "Home";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new voucher());
+            label1.Text = btn_khuyenmai.Text;
+        }
+
+        private void btn_thongke_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_nhanvien_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new nhanvien());
+            label1.Text = btn_nhanvien.Text;
         }
     }
 }

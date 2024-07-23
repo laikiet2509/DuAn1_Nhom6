@@ -24,10 +24,30 @@ namespace BUS.Services
             }
             return repos.GetAll().FindAll(x => x.Ten.ToString().Contains(search) || x.MaNhanVien.Contains(search));
         }
-        //public bool Dangki(string ten, string sdt, string email, string diachi, string username, string password)
-        //{
-        //    // Thêm các logic nghiệp vụ nếu cần
-        //    return repos.Dangki(ten, sdt, email, diachi, username, password);
-        //}
+        public string Them(NhanVien nv)
+        {
+            if (repos.Add(nv))
+            {
+                return "Thêm thành công";
+            }
+            return "Thêm thất bại";
+        }
+        public string Sua(NhanVien nv)
+        {
+            if (repos.Update(nv))
+            {
+                return "Sửa thành công";
+            }
+            return "Sửa thất bại";
+        }
+        public string Xoa(string ma)
+        {
+            var nv = repos.GetAll().Find(x => x.MaNhanVien.ToString() == ma);
+            if (repos.Delete(nv))
+            {
+                return "Xóa thành công";
+            }
+            return "Xóa thất bại";
+        }
     }
 }

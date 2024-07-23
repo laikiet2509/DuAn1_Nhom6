@@ -41,11 +41,7 @@
             lblTongHoaDon = new Label();
             txt_maVoucher = new TextBox();
             label6 = new Label();
-            txt_manhanvien = new TextBox();
-            label5 = new Label();
-            txt_mahoadon = new TextBox();
             label4 = new Label();
-            lblQuyen = new Label();
             groupBox5 = new GroupBox();
             btn_timkiemKhachHang = new Button();
             txt_tenkhachhang = new TextBox();
@@ -67,6 +63,7 @@
             comboBox1 = new ComboBox();
             txt_search = new TextBox();
             dtgView_danhsachsanpham = new DataGridView();
+            comboBox4 = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -84,7 +81,7 @@
             groupBox1.Controls.Add(groupBox6);
             groupBox1.Controls.Add(groupBox5);
             groupBox1.Dock = DockStyle.Left;
-            groupBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(387, 883);
@@ -94,7 +91,7 @@
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(btn_TaoHoaDon);
+            groupBox6.Controls.Add(comboBox4);
             groupBox6.Controls.Add(btn_huy);
             groupBox6.Controls.Add(btn_thanhtoan);
             groupBox6.Controls.Add(lblTienThua);
@@ -105,24 +102,22 @@
             groupBox6.Controls.Add(lblTongHoaDon);
             groupBox6.Controls.Add(txt_maVoucher);
             groupBox6.Controls.Add(label6);
-            groupBox6.Controls.Add(txt_manhanvien);
-            groupBox6.Controls.Add(label5);
-            groupBox6.Controls.Add(txt_mahoadon);
             groupBox6.Controls.Add(label4);
-            groupBox6.Controls.Add(lblQuyen);
             groupBox6.Dock = DockStyle.Fill;
-            groupBox6.Location = new Point(3, 233);
+            groupBox6.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Italic, GraphicsUnit.Point);
+            groupBox6.Location = new Point(3, 292);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(381, 647);
+            groupBox6.Size = new Size(381, 588);
             groupBox6.TabIndex = 1;
             groupBox6.TabStop = false;
             groupBox6.Text = "Thông Tin Hóa Đơn";
             // 
             // btn_TaoHoaDon
             // 
+            btn_TaoHoaDon.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btn_TaoHoaDon.Image = Properties.Resources.Add1;
             btn_TaoHoaDon.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_TaoHoaDon.Location = new Point(95, 543);
+            btn_TaoHoaDon.Location = new Point(62, 203);
             btn_TaoHoaDon.Name = "btn_TaoHoaDon";
             btn_TaoHoaDon.Size = new Size(179, 34);
             btn_TaoHoaDon.TabIndex = 4;
@@ -132,11 +127,12 @@
             // 
             // btn_huy
             // 
+            btn_huy.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btn_huy.Image = Properties.Resources.cancel;
             btn_huy.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_huy.Location = new Point(203, 593);
+            btn_huy.Location = new Point(206, 504);
             btn_huy.Name = "btn_huy";
-            btn_huy.Size = new Size(140, 34);
+            btn_huy.Size = new Size(147, 44);
             btn_huy.TabIndex = 17;
             btn_huy.Text = "Hủy";
             btn_huy.UseVisualStyleBackColor = true;
@@ -144,9 +140,10 @@
             // 
             // btn_thanhtoan
             // 
-            btn_thanhtoan.Location = new Point(21, 593);
+            btn_thanhtoan.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_thanhtoan.Location = new Point(24, 504);
             btn_thanhtoan.Name = "btn_thanhtoan";
-            btn_thanhtoan.Size = new Size(140, 34);
+            btn_thanhtoan.Size = new Size(147, 44);
             btn_thanhtoan.TabIndex = 16;
             btn_thanhtoan.Text = "Thanh Toán";
             btn_thanhtoan.UseVisualStyleBackColor = true;
@@ -156,7 +153,7 @@
             // 
             lblTienThua.AutoSize = true;
             lblTienThua.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTienThua.Location = new Point(206, 489);
+            lblTienThua.Location = new Point(195, 431);
             lblTienThua.Name = "lblTienThua";
             lblTienThua.Size = new Size(123, 29);
             lblTienThua.TabIndex = 15;
@@ -165,7 +162,8 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(48, 489);
+            label11.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(62, 436);
             label11.Name = "label11";
             label11.Size = new Size(102, 25);
             label11.TabIndex = 14;
@@ -173,7 +171,8 @@
             // 
             // txt_tienkhachdua
             // 
-            txt_tienkhachdua.Location = new Point(48, 440);
+            txt_tienkhachdua.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_tienkhachdua.Location = new Point(42, 370);
             txt_tienkhachdua.Name = "txt_tienkhachdua";
             txt_tienkhachdua.Size = new Size(232, 30);
             txt_tienkhachdua.TabIndex = 13;
@@ -182,7 +181,8 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(48, 401);
+            label9.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(48, 332);
             label9.Name = "label9";
             label9.Size = new Size(154, 25);
             label9.TabIndex = 12;
@@ -192,7 +192,7 @@
             // 
             lblTongTien.AutoSize = true;
             lblTongTien.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTongTien.Location = new Point(203, 355);
+            lblTongTien.Location = new Point(193, 271);
             lblTongTien.Name = "lblTongTien";
             lblTongTien.Size = new Size(125, 29);
             lblTongTien.TabIndex = 11;
@@ -201,7 +201,8 @@
             // lblTongHoaDon
             // 
             lblTongHoaDon.AutoSize = true;
-            lblTongHoaDon.Location = new Point(48, 355);
+            lblTongHoaDon.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTongHoaDon.Location = new Point(48, 276);
             lblTongHoaDon.Name = "lblTongHoaDon";
             lblTongHoaDon.Size = new Size(140, 25);
             lblTongHoaDon.TabIndex = 10;
@@ -209,7 +210,8 @@
             // 
             // txt_maVoucher
             // 
-            txt_maVoucher.Location = new Point(44, 302);
+            txt_maVoucher.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_maVoucher.Location = new Point(42, 202);
             txt_maVoucher.Name = "txt_maVoucher";
             txt_maVoucher.Size = new Size(232, 30);
             txt_maVoucher.TabIndex = 9;
@@ -217,65 +219,36 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(44, 264);
+            label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(48, 161);
             label6.Name = "label6";
             label6.Size = new Size(86, 25);
             label6.TabIndex = 8;
             label6.Text = "Voucher";
             // 
-            // txt_manhanvien
-            // 
-            txt_manhanvien.Location = new Point(48, 116);
-            txt_manhanvien.Name = "txt_manhanvien";
-            txt_manhanvien.Size = new Size(232, 30);
-            txt_manhanvien.TabIndex = 7;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(48, 78);
-            label5.Name = "label5";
-            label5.Size = new Size(137, 25);
-            label5.TabIndex = 6;
-            label5.Text = "Mã Nhân Viên";
-            // 
-            // txt_mahoadon
-            // 
-            txt_mahoadon.Location = new Point(48, 207);
-            txt_mahoadon.Name = "txt_mahoadon";
-            txt_mahoadon.Size = new Size(232, 30);
-            txt_mahoadon.TabIndex = 5;
-            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(48, 169);
+            label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(42, 50);
             label4.Name = "label4";
             label4.Size = new Size(122, 25);
             label4.TabIndex = 4;
             label4.Text = "Mã Hóa Đơn";
             // 
-            // lblQuyen
-            // 
-            lblQuyen.AutoSize = true;
-            lblQuyen.Location = new Point(42, 36);
-            lblQuyen.Name = "lblQuyen";
-            lblQuyen.Size = new Size(71, 25);
-            lblQuyen.TabIndex = 3;
-            lblQuyen.Text = "Quyền";
-            // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(btn_TaoHoaDon);
             groupBox5.Controls.Add(btn_timkiemKhachHang);
             groupBox5.Controls.Add(txt_tenkhachhang);
             groupBox5.Controls.Add(label2);
             groupBox5.Controls.Add(txt_SDT);
             groupBox5.Controls.Add(label1);
             groupBox5.Dock = DockStyle.Top;
-            groupBox5.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox5.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Italic, GraphicsUnit.Point);
             groupBox5.Location = new Point(3, 26);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(381, 207);
+            groupBox5.Size = new Size(381, 266);
             groupBox5.TabIndex = 0;
             groupBox5.TabStop = false;
             groupBox5.Text = "Thông Tin Khách Hàng";
@@ -291,34 +264,38 @@
             // 
             // txt_tenkhachhang
             // 
+            txt_tenkhachhang.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt_tenkhachhang.Location = new Point(42, 152);
             txt_tenkhachhang.Name = "txt_tenkhachhang";
-            txt_tenkhachhang.Size = new Size(232, 28);
+            txt_tenkhachhang.Size = new Size(232, 30);
             txt_tenkhachhang.TabIndex = 3;
             txt_tenkhachhang.TextChanged += textBox3_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(42, 116);
             label2.Name = "label2";
-            label2.Size = new Size(146, 22);
+            label2.Size = new Size(161, 25);
             label2.TabIndex = 2;
             label2.Text = "Tên Khách Hàng";
             // 
             // txt_SDT
             // 
+            txt_SDT.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt_SDT.Location = new Point(42, 59);
             txt_SDT.Name = "txt_SDT";
-            txt_SDT.Size = new Size(232, 28);
+            txt_SDT.Size = new Size(232, 30);
             txt_SDT.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(42, 34);
             label1.Name = "label1";
-            label1.Size = new Size(47, 22);
+            label1.Size = new Size(53, 25);
             label1.TabIndex = 0;
             label1.Text = "SĐT";
             // 
@@ -487,6 +464,14 @@
             dtgView_danhsachsanpham.TabIndex = 2;
             dtgView_danhsachsanpham.CellClick += dtgView_danhsachsanpham_CellClick;
             // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(42, 97);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(232, 30);
+            comboBox4.TabIndex = 18;
+            // 
             // banhang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -527,7 +512,6 @@
         private DataGridView dtgView_danhsachsanpham;
         private GroupBox groupBox6;
         private GroupBox groupBox5;
-        private Label lblQuyen;
         private Button btn_TaoHoaDon;
         private TextBox txt_tenkhachhang;
         private Label label2;
@@ -539,9 +523,6 @@
         private Label lblTongHoaDon;
         private TextBox txt_maVoucher;
         private Label label6;
-        private TextBox txt_manhanvien;
-        private Label label5;
-        private TextBox txt_mahoadon;
         private Label label4;
         private Label lblTienThua;
         private Label label11;
@@ -555,5 +536,6 @@
         private ComboBox comboBox1;
         private Button btn_timkiemKhachHang;
         private Button button1;
+        private ComboBox comboBox4;
     }
 }

@@ -83,41 +83,41 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            dateTimePicker2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point);
             dateTimePicker2.ImeMode = ImeMode.NoControl;
             dateTimePicker2.Location = new Point(599, 71);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(298, 24);
+            dateTimePicker2.Size = new Size(298, 27);
             dateTimePicker2.TabIndex = 3;
             dateTimePicker2.Value = new DateTime(2024, 7, 20, 0, 0, 0, 0);
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point);
             label2.Location = new Point(479, 71);
             label2.Name = "label2";
-            label2.Size = new Size(81, 18);
+            label2.Size = new Size(92, 20);
             label2.TabIndex = 2;
             label2.Text = "Đến Ngày :";
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            dateTimePicker1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point);
             dateTimePicker1.ImeMode = ImeMode.NoControl;
             dateTimePicker1.Location = new Point(168, 71);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(298, 24);
+            dateTimePicker1.Size = new Size(298, 27);
             dateTimePicker1.TabIndex = 1;
             dateTimePicker1.Value = new DateTime(2024, 7, 20, 0, 0, 0, 0);
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point);
             label1.Location = new Point(77, 71);
             label1.Name = "label1";
-            label1.Size = new Size(71, 18);
+            label1.Size = new Size(81, 20);
             label1.TabIndex = 0;
             label1.Text = "Từ Ngày :";
             // 
