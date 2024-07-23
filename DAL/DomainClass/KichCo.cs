@@ -11,6 +11,7 @@ namespace DAL.DomainClass
     {
         public KichCo()
         {
+            ChiTietSanPhams = new HashSet<ChiTietSanPham>();
             SanPhams = new HashSet<SanPham>();
         }
 
@@ -22,6 +23,8 @@ namespace DAL.DomainClass
         [StringLength(50)]
         public string? KichCo1 { get; set; }
 
+        [InverseProperty(nameof(ChiTietSanPham.MaKichCoSpNavigation))]
+        public virtual ICollection<ChiTietSanPham> ChiTietSanPhams { get; set; }
         [InverseProperty(nameof(SanPham.MaKichCoSpNavigation))]
         public virtual ICollection<SanPham> SanPhams { get; set; }
     }

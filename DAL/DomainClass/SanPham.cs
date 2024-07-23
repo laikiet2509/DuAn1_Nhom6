@@ -12,6 +12,7 @@ namespace DAL.DomainClass
         public SanPham()
         {
             ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+            ChiTietSanPhams = new HashSet<ChiTietSanPham>();
         }
 
         [Key]
@@ -54,5 +55,7 @@ namespace DAL.DomainClass
         public virtual ThuongHieu? MaThuongHieuNavigation { get; set; }
         [InverseProperty(nameof(ChiTietHoaDon.MaSpNavigation))]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        [InverseProperty(nameof(ChiTietSanPham.MaSanPhamNavigation))]
+        public virtual ICollection<ChiTietSanPham> ChiTietSanPhams { get; set; }
     }
 }

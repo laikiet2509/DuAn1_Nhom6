@@ -30,7 +30,7 @@
         {
             groupBox1 = new GroupBox();
             groupBox6 = new GroupBox();
-            btn_TaoHoaDon = new Button();
+            cbb_hoadoncho = new ComboBox();
             btn_huy = new Button();
             btn_thanhtoan = new Button();
             lblTienThua = new Label();
@@ -43,6 +43,7 @@
             label6 = new Label();
             label4 = new Label();
             groupBox5 = new GroupBox();
+            btn_TaoHoaDon = new Button();
             btn_timkiemKhachHang = new Button();
             txt_tenkhachhang = new TextBox();
             label2 = new Label();
@@ -63,7 +64,6 @@
             comboBox1 = new ComboBox();
             txt_search = new TextBox();
             dtgView_danhsachsanpham = new DataGridView();
-            comboBox4 = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -91,7 +91,7 @@
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(comboBox4);
+            groupBox6.Controls.Add(cbb_hoadoncho);
             groupBox6.Controls.Add(btn_huy);
             groupBox6.Controls.Add(btn_thanhtoan);
             groupBox6.Controls.Add(lblTienThua);
@@ -112,18 +112,13 @@
             groupBox6.TabStop = false;
             groupBox6.Text = "Thông Tin Hóa Đơn";
             // 
-            // btn_TaoHoaDon
+            // cbb_hoadoncho
             // 
-            btn_TaoHoaDon.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_TaoHoaDon.Image = Properties.Resources.Add1;
-            btn_TaoHoaDon.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_TaoHoaDon.Location = new Point(62, 203);
-            btn_TaoHoaDon.Name = "btn_TaoHoaDon";
-            btn_TaoHoaDon.Size = new Size(179, 34);
-            btn_TaoHoaDon.TabIndex = 4;
-            btn_TaoHoaDon.Text = "Tạo Hóa Đơn";
-            btn_TaoHoaDon.UseVisualStyleBackColor = true;
-            btn_TaoHoaDon.Click += button2_Click;
+            cbb_hoadoncho.FormattingEnabled = true;
+            cbb_hoadoncho.Location = new Point(42, 97);
+            cbb_hoadoncho.Name = "cbb_hoadoncho";
+            cbb_hoadoncho.Size = new Size(232, 30);
+            cbb_hoadoncho.TabIndex = 18;
             // 
             // btn_huy
             // 
@@ -253,6 +248,19 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Thông Tin Khách Hàng";
             // 
+            // btn_TaoHoaDon
+            // 
+            btn_TaoHoaDon.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_TaoHoaDon.Image = Properties.Resources.Add1;
+            btn_TaoHoaDon.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_TaoHoaDon.Location = new Point(62, 203);
+            btn_TaoHoaDon.Name = "btn_TaoHoaDon";
+            btn_TaoHoaDon.Size = new Size(179, 34);
+            btn_TaoHoaDon.TabIndex = 4;
+            btn_TaoHoaDon.Text = "Tạo Hóa Đơn";
+            btn_TaoHoaDon.UseVisualStyleBackColor = true;
+            btn_TaoHoaDon.Click += button2_Click;
+            // 
             // btn_timkiemKhachHang
             // 
             btn_timkiemKhachHang.Image = Properties.Resources.Search3;
@@ -324,6 +332,7 @@
             dtgView_hoadon.RowTemplate.Height = 29;
             dtgView_hoadon.Size = new Size(1053, 178);
             dtgView_hoadon.TabIndex = 0;
+            dtgView_hoadon.CellContentClick += dtgView_hoadon_CellContentClick;
             // 
             // groupBox3
             // 
@@ -464,14 +473,6 @@
             dtgView_danhsachsanpham.TabIndex = 2;
             dtgView_danhsachsanpham.CellClick += dtgView_danhsachsanpham_CellClick;
             // 
-            // comboBox4
-            // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(42, 97);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(232, 30);
-            comboBox4.TabIndex = 18;
-            // 
             // banhang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -536,6 +537,6 @@
         private ComboBox comboBox1;
         private Button btn_timkiemKhachHang;
         private Button button1;
-        private ComboBox comboBox4;
+        private ComboBox cbb_hoadoncho;
     }
 }
