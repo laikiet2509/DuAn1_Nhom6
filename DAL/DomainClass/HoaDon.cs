@@ -22,17 +22,18 @@ namespace DAL.DomainClass
         [Column(TypeName = "decimal(18, 2)")]
         public decimal? TongTien { get; set; }
         public int? TrangThai { get; set; }
-        [StringLength(10)]
-        public string? MaKhachHang { get; set; }
+        [Column("SDT")]
+        [StringLength(15)]
+        public string? Sdt { get; set; }
         [StringLength(10)]
         public string? MaNhanVien { get; set; }
 
-        [ForeignKey(nameof(MaKhachHang))]
-        [InverseProperty(nameof(KhachHang.HoaDons))]
-        public virtual KhachHang? MaKhachHangNavigation { get; set; }
         [ForeignKey(nameof(MaNhanVien))]
         [InverseProperty(nameof(NhanVien.HoaDons))]
         public virtual NhanVien? MaNhanVienNavigation { get; set; }
+        [ForeignKey(nameof(Sdt))]
+        [InverseProperty(nameof(KhachHang.HoaDons))]
+        public virtual KhachHang? SdtNavigation { get; set; }
         [InverseProperty(nameof(ChiTietHoaDon.MaHdNavigation))]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
     }

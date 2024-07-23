@@ -59,7 +59,7 @@ namespace PRL
             dtgView_hoadon.Rows.Clear();
             foreach (var hd in serviceBH.GetHoaDons(txt_search.Text))
             {
-                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.TrangThai, hd.MaKhachHang, hd.MaNhanVien);
+                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.TrangThai, hd.Sdt, hd.MaNhanVien);
             }
         }
         public void LoadGirdSP()
@@ -129,7 +129,7 @@ namespace PRL
             KhuyenMai km = new KhuyenMai();
             NhanVien nv = new NhanVien();
             hd.MaHoaDon = "HĐ" + (serviceHD.GetAllHoaDons().Count + 1);
-            hd.MaKhachHang = txt_SDT.Text;
+            hd.Sdt = txt_SDT.Text;
             hd.NgayLapHoaDon = DateTime.Now;
             hd.TrangThai = 0;
             serviceHD.TaoHoaDonCho(hd);

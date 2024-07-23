@@ -15,13 +15,11 @@ namespace DAL.DomainClass
         }
 
         [Key]
-        [StringLength(10)]
-        public string MaKhachHang { get; set; } = null!;
-        [StringLength(255)]
-        public string? TenKhachHang { get; set; }
         [Column("SDT")]
         [StringLength(15)]
-        public string? Sdt { get; set; }
+        public string Sdt { get; set; } = null!;
+        [StringLength(255)]
+        public string? TenKhachHang { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? NgayDangKy { get; set; }
         [StringLength(255)]
@@ -36,7 +34,7 @@ namespace DAL.DomainClass
         [StringLength(255)]
         public string? GhiChu { get; set; }
 
-        [InverseProperty(nameof(HoaDon.MaKhachHangNavigation))]
+        [InverseProperty(nameof(HoaDon.SdtNavigation))]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

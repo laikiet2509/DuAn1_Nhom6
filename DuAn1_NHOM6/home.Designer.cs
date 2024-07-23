@@ -213,10 +213,10 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = SystemColors.Control;
+            pictureBox1.BackColor = SystemColors.MenuHighlight;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Dock = DockStyle.Top;
-            pictureBox1.Image = PRL.Properties.Resources._12;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(213, 184);

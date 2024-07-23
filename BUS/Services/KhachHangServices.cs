@@ -42,7 +42,7 @@ namespace BUS.Services
         }
         public string Xoa(string ma)
         {
-            var kh = repos.GetAll().Find(x => x.MaKhachHang.ToString() == ma);
+            var kh = repos.GetAll().Find(x => x.Sdt.ToString() == ma);
             if (repos.Delete(kh))
             {
                 return "Xóa thành công";
