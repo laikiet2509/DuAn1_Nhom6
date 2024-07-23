@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BUS.Repository
 {
-    internal class ChiTietSanPham
+    public class ChiTietSanPhamRepository
     {
     }
 }

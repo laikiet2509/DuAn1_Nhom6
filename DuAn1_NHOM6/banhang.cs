@@ -81,17 +81,6 @@ namespace PRL
                 dtgView_danhsachsanpham.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaThuongHieu, sp.MaKichCoSp, sp.HinhAnh);
             }
         }
-        public void FillDataSP()
-        {
-            var sp = serviceSP.GetSanPhams(txt_search.Text).Find(x => x.MaSanPham.ToString() == idWhenClick);
-            var ms = serviceMS.GetMauSacs(txt_search.Text).Find(x => x.MaMauSp.ToString() == idWhenClick);
-            var kc = serviceKC.GetKichCos(txt_search.Text).Find(x => x.MaKichCoSp.ToString() == idWhenClick);
-            var nv = serviceNV.GetNhanViens(txt_search.Text).Find(x => x.MaNhanVien.ToString() == idWhenClick);
-            var hd = serviceBH.GetHoaDons(txt_search.Text).Find(x => x.MaHoaDon.ToString() == idWhenClick);
-            var km = serviceKM.GetKhuyenMais(txt_search.Text).Find(x => x.MaKhuyenMai.ToString() == idWhenClick);
-
-            txt_maVoucher.Text = km.MaKhuyenMai;
-        }
         private decimal TinhTongTienHoaDon(string maHoaDon)
         {
             var listHDCT = serviceHDCT.GetAllHoaDonCTByMaHoaDon(maHoaDon);
@@ -102,7 +91,7 @@ namespace PRL
                 //tongTien += hdct.GiaBan * hdct.SoLuong;
             }
 
-            return tongTien;
+           return tongTien;
         }
         private void groupBox3_Enter(object sender, EventArgs e)
         {
@@ -132,7 +121,6 @@ namespace PRL
                 return;
             }
             idWhenClick = dtgView_danhsachsanpham.Rows[rowIndex].Cells[0].Value.ToString();
-            FillDataSP();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -188,46 +176,46 @@ namespace PRL
             //MessageBox.Show("Đã hủy hóa đơn!");
             //RefreshToanBoForm();
         }
-        private void RefreshToanBoForm()
-        {
-            txt_SDT.Text = string.Empty;
-            txt_tenkhachhang.Text = string.Empty;
-            txt_search.Text = string.Empty;
-            txt_tienkhachdua.Text = "0";
-            lblTienThua.Text = "Tiền thừa";
-            lblTongTien.Text = "Tổng tiền";
+        //private void RefreshToanBoForm()
+        //{
+        //    txt_SDT.Text = string.Empty;
+        //    txt_tenkhachhang.Text = string.Empty;
+        //    txt_search.Text = string.Empty;
+        //    txt_tienkhachdua.Text = "0";
+        //    lblTienThua.Text = "Tiền thừa";
+        //    lblTongTien.Text = "Tổng tiền";
 
-            //LoadData_cbbHoaDonCho();
-            //LoadData_dgvSanPhamChiTiet(sanPhamChiTietBLL.GetAllSanPhamChiTiets());
-            //if (cbbHoaDonCho.SelectedValue != null)
-            //{
-            //    LoadData_dgvHoaDonChiTiet(hoaDonChiTietBLL.GetAllHoaDonCTByMaHoaDon(cbbHoaDonCho.SelectedValue.ToString()));
-            //}
-            //else
-            //{
-            //    LoadData_dgvHoaDonChiTiet(new List<HoaDonChiTiet>());
-            //}
-        }
+        //    LoadData_cbbHoaDonCho();
+        //    LoadData_dgvSanPhamChiTiet(sanPhamChiTietBLL.GetAllSanPhamChiTiets());
+        //    if (cbbHoaDonCho.SelectedValue != null)
+        //    {
+        //        LoadData_dgvHoaDonChiTiet(hoaDonChiTietBLL.GetAllHoaDonCTByMaHoaDon(cbbHoaDonCho.SelectedValue.ToString()));
+        //    }
+        //    else
+        //    {
+        //        LoadData_dgvHoaDonChiTiet(new List<HoaDonChiTiet>());
+        //    }
+        //}
 
         private void btn_thanhtoan_Click(object sender, EventArgs e)
         {
-            if (TinhTongTienHoaDon(cbb_hoadoncho.SelectedValue.ToString()) > 0)
-            {
-                if (daThanhToanDu)
-                {
-                    serviceHD.SuaTrangThai(cbb_hoadoncho.SelectedValue.ToString(), 1);
-                    MessageBox.Show("Đã thanh toán hóa đơn!");
-                    RefreshToanBoForm();
-                }
-                else
-                {
-                    MessageBox.Show("Tiền khách đưa chưa đủ!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Hóa đơn trống!");
-            }
+            //if (TinhTongTienHoaDon(cbb_hoadoncho.SelectedValue.ToString()) > 0)
+            //{
+            //    if (daThanhToanDu)
+            //    {
+            //        serviceHD.SuaTrangThai(cbb_hoadoncho.SelectedValue.ToString(), 1);
+            //        MessageBox.Show("Đã thanh toán hóa đơn!");
+            //        RefreshToanBoForm();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Tiền khách đưa chưa đủ!");
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Hóa đơn trống!");
+            //}
         }
         //private void RefreshToanBoForm()
         //{
@@ -266,23 +254,23 @@ namespace PRL
         //    }
         //    dtgView_danhsachsanpham.DataSource = dataTableSPCT;
         //}
-        private void LoadData_cbbHoaDonCho()
-        {
-            cbb_hoadoncho.DataSource = null;
-            cbb_hoadoncho.Items.Clear();
+        //private void LoadData_cbbHoaDonCho()
+        //{
+        //    cbb_hoadoncho.DataSource = null;
+        //    cbb_hoadoncho.Items.Clear();
 
-            // Load dữ liệu lên combobox
-            var listHoaDonCho = serviceHD.GetAllHoaDonChos();
-            cbb_hoadoncho.DataSource = listHoaDonCho; // nguồn dữ liệu combobox
-            cbb_hoadoncho.DisplayMember = "MaHoaDon"; // mỗi item hiển thị mã hóa đơn
-            cbb_hoadoncho.ValueMember = "MaHoaDon"; // mỗi item có giá trị là mã hóa đơn
-            cbb_hoadoncho.SelectedItem = listHoaDonCho.FirstOrDefault();
+        //    // Load dữ liệu lên combobox
+        //    var listHoaDonCho = serviceHD.GetAllHoaDonChos();
+        //    cbb_hoadoncho.DataSource = listHoaDonCho; // nguồn dữ liệu combobox
+        //    cbb_hoadoncho.DisplayMember = "MaHoaDon"; // mỗi item hiển thị mã hóa đơn
+        //    cbb_hoadoncho.ValueMember = "MaHoaDon"; // mỗi item có giá trị là mã hóa đơn
+        //    cbb_hoadoncho.SelectedItem = listHoaDonCho.FirstOrDefault();
 
-            if (listHoaDonCho.Count == 0)
-            {
-                cbb_hoadoncho.SelectedIndex = -1; // Không chọn mục nào cả
-            }
-        }
+        //    if (listHoaDonCho.Count == 0)
+        //    {
+        //        cbb_hoadoncho.SelectedIndex = -1; // Không chọn mục nào cả
+        //    }
+        //}
 
         private void dtgView_hoadon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

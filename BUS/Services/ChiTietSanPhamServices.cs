@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BUS.Services
 {
-    internal class ChiTietSanPhamServices
+    public class ChiTietSanPhamServices
     {
     }
 }
