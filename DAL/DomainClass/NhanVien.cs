@@ -20,8 +20,7 @@ namespace DAL.DomainClass
         public string MaNhanVien { get; set; } = null!;
         [StringLength(255)]
         public string? Ten { get; set; }
-        [StringLength(10)]
-        public string? GioiTinh { get; set; }
+        public bool? GioiTinh { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? NgaySinh { get; set; }
         [Column("SDT")]

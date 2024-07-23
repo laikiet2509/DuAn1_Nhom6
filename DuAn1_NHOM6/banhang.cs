@@ -74,7 +74,7 @@ namespace PRL
             dtgView_danhsachsanpham.Rows.Clear();
             foreach (var sp in serviceSP.GetSanPhams(txt_search.Text))
             {
-                dtgView_danhsachsanpham.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaKichCoSp, sp.ThuongHieu, sp.HinhAnh);
+                dtgView_danhsachsanpham.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaKichCoSp, sp.MaThuongHieu, sp.HinhAnh);
             }
         }
         public void FillDataSP()
@@ -85,8 +85,7 @@ namespace PRL
             var nv = serviceNV.GetNhanViens(txt_search.Text).Find(x => x.MaNhanVien.ToString() == idWhenClick);
             var hd = serviceBH.GetHoaDons(txt_search.Text).Find(x => x.MaHoaDon.ToString() == idWhenClick);
             var km = serviceKM.GetKhuyenMais(txt_search.Text).Find(x => x.MaKhuyenMai.ToString() == idWhenClick);
-            txt_manhanvien.Text = nv.MaNhanVien;
-            txt_mahoadon.Text = hd.MaHoaDon;
+            
             txt_maVoucher.Text = km.MaKhuyenMai;
         }
         private decimal TinhTongTienHoaDon(string maHoaDon)

@@ -40,7 +40,7 @@ namespace PRL
             dtgView_sp.Rows.Clear();
             foreach (var sp in service.GetSanPhams(txt_search.Text))
             {
-                dtgView_sp.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaKichCoSp, sp.ThuongHieu, sp.HinhAnh);
+                dtgView_sp.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaKichCoSp, sp.MaThuongHieu, sp.HinhAnh);
             }
         }
         public void FillData()
@@ -50,11 +50,11 @@ namespace PRL
             txt_tensanpham.Text = sp.TenSanPham;
             cmbx_mausac.Text = sp.MaMauSp;
             txt_giatien.Text = sp.GiaBan.ToString();
-            cmbx_chatlieu.Text = sp.ChatLieu;
+            txt_chatlieu.Text = sp.ChatLieu;
             dtp_ngaynhap.Text = sp.NgayNhap.ToString();
             txt_soluong.Text = sp.SoLuongTon.ToString();
             cmbx_kichthuoc.Text = sp.MaKichCoSp;
-            txt_Thuonghieu.Text = sp.ThuongHieu;
+            cmbx_thuonghieu.Text = sp.MaThuongHieu;
             //if (sp.HinhAnh != null)
             //{
             //    // Chuyển đổi hinhAnh sang Image
@@ -75,11 +75,11 @@ namespace PRL
             sp.TenSanPham = txt_tensanpham.Text;
             sp.MaMauSp = cmbx_mausac.Text;
             sp.GiaBan = decimal.Parse(txt_giatien.Text);
-            sp.ChatLieu = cmbx_chatlieu.Text;
+            sp.ChatLieu = txt_chatlieu.Text;
             sp.NgayNhap = DateTime.Parse(dtp_ngaynhap.Text);
             sp.SoLuongTon = int.Parse(txt_soluong.Text);
             sp.MaKichCoSp = cmbx_kichthuoc.Text;
-            sp.ThuongHieu = txt_Thuonghieu.Text;
+            sp.MaThuongHieu = cmbx_thuonghieu.Text;
             //sp.HinhAnh = pictureBox1.Image;
             MessageBox.Show(service.Them(sp));
             LoadGird();
@@ -92,11 +92,11 @@ namespace PRL
             sp.TenSanPham = txt_tensanpham.Text;
             sp.MaMauSp = cmbx_mausac.Text;
             sp.GiaBan = decimal.Parse(txt_giatien.Text);
-            sp.ChatLieu = cmbx_chatlieu.Text;
+            sp.ChatLieu = cmbx_thuonghieu.Text;
             sp.NgayNhap = DateTime.Parse(dtp_ngaynhap.Text);
             sp.SoLuongTon = int.Parse(txt_soluong.Text);
             sp.MaKichCoSp = cmbx_kichthuoc.Text;
-            sp.ThuongHieu = txt_Thuonghieu.Text;
+            sp.MaThuongHieu = cmbx_thuonghieu.Text;
             MessageBox.Show(service.Sua(sp));
             LoadGird();
         }
@@ -113,10 +113,10 @@ namespace PRL
             txt_tensanpham.Clear();
             cmbx_mausac.Items.Clear();
             txt_giatien.Clear();
-            cmbx_chatlieu.Items.Clear();
+            txt_chatlieu.Clear();
             txt_soluong.Clear();
             cmbx_kichthuoc.Items.Clear();
-            txt_Thuonghieu.Clear();
+            cmbx_thuonghieu.Items.Clear();
         }
 
         private void dtgView_sp_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -152,6 +152,11 @@ namespace PRL
         }
 
         private void sanpham_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
         {
 
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PRL
 {
-    public partial class bh : Form
+    public partial class voucher : Form
     {
-        public bh()
+        public voucher()
         {
             InitializeComponent();
         }
