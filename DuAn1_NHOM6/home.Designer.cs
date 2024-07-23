@@ -227,7 +227,7 @@
             // 
             // panel_top
             // 
-            panel_top.BackColor = Color.FromArgb(0, 135, 137);
+            panel_top.BackColor = Color.Lime;
             panel_top.Controls.Add(label1);
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(213, 0);
@@ -238,11 +238,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.Control;
+            label1.BackColor = Color.Yellow;
+            label1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
             label1.Location = new Point(86, 35);
             label1.Name = "label1";
-            label1.Size = new Size(68, 25);
+            label1.Size = new Size(70, 28);
             label1.TabIndex = 0;
             label1.Text = "Home";
             // 
