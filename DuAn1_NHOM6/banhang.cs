@@ -74,11 +74,7 @@ namespace PRL
             dtgView_danhsachsanpham.Rows.Clear();
             foreach(var sp in serviceSP.GetSanPhams(txt_search.Text))
             {
-<<<<<<< HEAD
-                dtgView_danhsachsanpham.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.ThuongHieu, sp.MaKichCoSp, sp.HinhAnh);
-=======
-                dtgView_danhsachsanpham.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaKichCoSp, sp.MaThuongHieu, sp.HinhAnh);
->>>>>>> 6632eb2f60b23dff9676f5bebb889d09ba0b9106
+                dtgView_danhsachsanpham.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaThuongHieu, sp.MaKichCoSp, sp.HinhAnh);
             }
         }
         public void FillDataSP()
