@@ -48,5 +48,9 @@ namespace BUS.Services
             }
             return "Xóa thất bại";
         }
+        public KichCo? GetKichCoById(string maKichCo)
+        {
+            return repos.GetKichCoById(maKichCo);
+        }
     }
 }

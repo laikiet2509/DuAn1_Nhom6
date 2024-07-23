@@ -1,5 +1,6 @@
 ﻿using DAL.Context;
 using DAL.DomainClass;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,10 @@ namespace BUS.Repository
             context.KhachHangs.Remove(kh);
             context.SaveChanges();
             return true;
+        }
+        public KhachHang? GetKhachHangBySDT(string sdt)
+        {
+            return context.KhachHangs.FirstOrDefault(kh => kh.Sdt == sdt);
         }
     }
 }

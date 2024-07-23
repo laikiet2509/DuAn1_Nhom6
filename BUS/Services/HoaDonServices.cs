@@ -33,7 +33,7 @@ namespace BUS.Services
         public void TaoHoaDonCho(HoaDon hoaDon)
         {
             repos.TaoHoaDonCho(hoaDon);
-        }
+        }   
 
         public void SuaTrangThai(string maHoaDon, int trangThai)
         {

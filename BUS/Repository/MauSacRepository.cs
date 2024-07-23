@@ -1,5 +1,6 @@
 ﻿using DAL.Context;
 using DAL.DomainClass;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,10 @@ namespace BUS.Repository
             context.MauSacs.Remove(ms);
             context.SaveChanges();
             return true;
+        }
+        public MauSac? GetMauSacById(string maMauSac)
+        {
+            return context.MauSacs.FirstOrDefault(ms => ms.MaMauSp == maMauSac);
         }
     }
 }

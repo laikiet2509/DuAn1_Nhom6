@@ -49,5 +49,9 @@ namespace BUS.Services
             }
             return "Xóa thất bại";
         }
+        public KhachHang? GetKhachHangBySDT(string sdt)
+        {
+            return repos.GetKhachHangBySDT(sdt);
+        }
     }
 }

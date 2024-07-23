@@ -1,6 +1,7 @@
 ﻿using DAL.Context;
 using DAL.DomainClass;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,5 @@ namespace BUS.Repository
             context.SaveChanges();
             return true;
         }
-
     }
 }

@@ -49,5 +49,9 @@ namespace BUS.Services
             }
             return "Xóa thất bại";
         }
+        public MauSac? GetMauSacById(string maMauSac)
+        {
+            return repos.GetMauSacById(maMauSac);
+        }
     }
 }

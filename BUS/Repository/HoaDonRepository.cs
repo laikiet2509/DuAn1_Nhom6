@@ -16,6 +16,7 @@ namespace BUS.Repository
         {
             context = new DBContext();
         }
+        
         public HoaDon? GetHoaDonbyMaHoaDon(string maHoaDon)
         {
             return context.HoaDons.Find(maHoaDon);

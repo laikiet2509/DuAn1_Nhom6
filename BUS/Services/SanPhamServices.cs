@@ -48,6 +48,15 @@ namespace BUS.Services
                 return "Xóa thành công";
             }
             return "Xóa thất bại";
-        }    
+        }
+        public List<SanPham> GetAllSanPhams()
+        {
+            return repos.GetAllSanPhams();
+        }
+
+        public SanPham? GetSanPhamById(string maSanPham)
+        {
+            return repos.GetSanPhamById(maSanPham);
+        }
     }
 }

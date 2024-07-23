@@ -1,6 +1,7 @@
 ﻿
 using DAL.Context;
 using DAL.DomainClass;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,15 @@ namespace BUS.Repository
             context.SanPhams.Remove(sp);
             context.SaveChanges();
             return true;
-        }       
+        }
+        public List<SanPham> GetAllSanPhams()
+        {
+            return context.SanPhams.ToList();
+        }
+
+        public SanPham? GetSanPhamById(string maSanPham)
+        {
+            return context.SanPhams.FirstOrDefault(sp => sp.MaSanPham == maSanPham);
+        }
     }
 }
