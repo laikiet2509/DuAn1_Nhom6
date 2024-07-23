@@ -16,13 +16,17 @@ namespace BUS.Services
         {
             repos = new SanPhamRepository();
         }
-        public List<SanPham> GetSanPhams(string search)
+        //public List<SanPham> GetSanPhams(string search)
+        //{
+        //    if (search == null || search == string.Empty)
+        //    {
+        //        return repos.GetAll();
+        //    }
+        //    return repos.GetAll().FindAll(x => x.TenSanPham.ToString().Contains(search) || x.MaSanPham.Contains(search));
+        //}
+        public List<SanPham> GetSanPhams()
         {
-            if (search == null || search == string.Empty)
-            {
-                return repos.GetAll();
-            }
-            return repos.GetAll().FindAll(x => x.TenSanPham.ToString().Contains(search) || x.MaSanPham.Contains(search));
+            return repos.GetAll();
         }
         public string Them(SanPham sp)
         {
@@ -49,14 +53,16 @@ namespace BUS.Services
             }
             return "Xóa thất bại";
         }
-        public List<SanPham> GetAllSanPhams()
+        
+
+        public SanPham GetAllSanPhamChiTietById(string maSPCT)
         {
-            return repos.GetAllSanPhams();
+            return repos.GetAllSanPhamChiTietById(maSPCT);
         }
 
-        public SanPham? GetSanPhamById(string maSanPham)
+        public void UpdateSoLuong(SanPham spctNew)
         {
-            return repos.GetSanPhamById(maSanPham);
+            repos.UpdateSoLuong(spctNew);
         }
     }
 }

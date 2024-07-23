@@ -49,6 +49,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(461, 41);
             textBox1.TabIndex = 1;
+            textBox1.KeyDown += textBox1_KeyDown;
             // 
             // NhapSoLuongSanPham
             // 

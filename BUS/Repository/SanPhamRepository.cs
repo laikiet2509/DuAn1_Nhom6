@@ -51,14 +51,19 @@ namespace BUS.Repository
             context.SaveChanges();
             return true;
         }
-        public List<SanPham> GetAllSanPhams()
+        public SanPham GetAllSanPhamChiTietById(string maSPCT)
         {
-            return context.SanPhams.ToList();
+            return context.SanPhams.Find(maSPCT);
         }
 
-        public SanPham? GetSanPhamById(string maSanPham)
+        public void UpdateSoLuong(SanPham spctNew)
         {
-            return context.SanPhams.FirstOrDefault(sp => sp.MaSanPham == maSanPham);
+            var spctOld = GetAllSanPhamChiTietById(spctNew.MaSanPham);
+            if (spctOld != null)
+            {
+                spctOld.SoLuongTon = spctNew.SoLuongTon;
+            }
+            context.SaveChanges();
         }
     }
 }

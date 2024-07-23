@@ -38,14 +38,14 @@ namespace PRL
             dtgView_sp.Columns[8].Name = "Thương Hiệu";
             dtgView_sp.Columns[9].Name = "Hình Ảnh";
             dtgView_sp.Rows.Clear();
-            foreach (var sp in service.GetSanPhams(txt_search.Text))
+            foreach (var sp in service.GetSanPhams())
             {
                 dtgView_sp.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaKichCoSp, sp.MaThuongHieu, sp.HinhAnh);
             }
         }
         public void FillData()
         {
-            var sp = service.GetSanPhams(txt_search.Text).Find(x => x.MaSanPham.ToString() == idWhenClick);
+            var sp = service.GetSanPhams().Find(x => x.MaSanPham.ToString() == idWhenClick);
             txt_masanpham.Text = sp.MaSanPham;
             txt_tensanpham.Text = sp.TenSanPham;
             cmbx_mausac.Text = sp.MaMauSp;
@@ -87,7 +87,7 @@ namespace PRL
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
-            var sp = service.GetSanPhams(txt_search.Text).Find(x => x.MaSanPham == idWhenClick);
+            var sp = service.GetSanPhams().Find(x => x.MaSanPham == idWhenClick);
             sp.MaSanPham = txt_masanpham.Text;
             sp.TenSanPham = txt_tensanpham.Text;
             sp.MaMauSp = cmbx_mausac.Text;
@@ -122,7 +122,7 @@ namespace PRL
         private void dtgView_sp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
-            if (rowIndex < 0 || rowIndex >= service.GetSanPhams(txt_search.Text).Count)
+            if (rowIndex < 0 || rowIndex >= service.GetSanPhams().Count)
             {
                 return;
             }

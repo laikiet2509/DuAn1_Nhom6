@@ -30,7 +30,7 @@
         {
             groupBox1 = new GroupBox();
             groupBox6 = new GroupBox();
-            cbb_hoadoncho = new ComboBox();
+            cmbx_hoadoncho = new ComboBox();
             btn_huy = new Button();
             btn_thanhtoan = new Button();
             lblTienThua = new Label();
@@ -91,7 +91,7 @@
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(cbb_hoadoncho);
+            groupBox6.Controls.Add(cmbx_hoadoncho);
             groupBox6.Controls.Add(btn_huy);
             groupBox6.Controls.Add(btn_thanhtoan);
             groupBox6.Controls.Add(lblTienThua);
@@ -112,13 +112,13 @@
             groupBox6.TabStop = false;
             groupBox6.Text = "Thông Tin Hóa Đơn";
             // 
-            // cbb_hoadoncho
+            // cmbx_hoadoncho
             // 
-            cbb_hoadoncho.FormattingEnabled = true;
-            cbb_hoadoncho.Location = new Point(42, 97);
-            cbb_hoadoncho.Name = "cbb_hoadoncho";
-            cbb_hoadoncho.Size = new Size(232, 30);
-            cbb_hoadoncho.TabIndex = 18;
+            cmbx_hoadoncho.FormattingEnabled = true;
+            cmbx_hoadoncho.Location = new Point(42, 97);
+            cmbx_hoadoncho.Name = "cmbx_hoadoncho";
+            cmbx_hoadoncho.Size = new Size(232, 30);
+            cmbx_hoadoncho.TabIndex = 18;
             // 
             // btn_huy
             // 
@@ -472,6 +472,7 @@
             dtgView_danhsachsanpham.Size = new Size(1053, 292);
             dtgView_danhsachsanpham.TabIndex = 2;
             dtgView_danhsachsanpham.CellClick += dtgView_danhsachsanpham_CellClick;
+            dtgView_danhsachsanpham.CellDoubleClick += dtgView_danhsachsanpham_CellDoubleClick;
             // 
             // banhang
             // 
@@ -537,6 +538,6 @@
         private ComboBox comboBox1;
         private Button btn_timkiemKhachHang;
         private Button button1;
-        private ComboBox cbb_hoadoncho;
+        private ComboBox cmbx_hoadoncho;
     }
 }
