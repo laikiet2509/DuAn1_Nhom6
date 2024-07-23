@@ -68,13 +68,13 @@ namespace PRL
             dtgView_danhsachsanpham.Columns[4].Name = "Giá Tiền";
             dtgView_danhsachsanpham.Columns[5].Name = "Ngày Nhập";
             dtgView_danhsachsanpham.Columns[6].Name = "Số Lượng";
-            dtgView_danhsachsanpham.Columns[7].Name = "Kích Thước";
-            dtgView_danhsachsanpham.Columns[8].Name = "Thương Hiệu";
+            dtgView_danhsachsanpham.Columns[7].Name = "Thương Hiệu";
+            dtgView_danhsachsanpham.Columns[8].Name = "Kích Thước";
             dtgView_danhsachsanpham.Columns[9].Name = "Hình Ảnh";
             dtgView_danhsachsanpham.Rows.Clear();
-            foreach (var sp in serviceSP.GetSanPhams(txt_search.Text))
+            foreach(var sp in serviceSP.GetSanPhams(txt_search.Text))
             {
-                dtgView_danhsachsanpham.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.MaKichCoSp, sp.ThuongHieu, sp.HinhAnh);
+                dtgView_danhsachsanpham.Rows.Add(sp.MaSanPham, sp.TenSanPham, sp.MaMauSp, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, sp.ThuongHieu, sp.MaKichCoSp, sp.HinhAnh);
             }
         }
         public void FillDataSP()
@@ -204,6 +204,11 @@ namespace PRL
             //{
             //    LoadData_dgvHoaDonChiTiet(new List<HoaDonChiTiet>());
             //}
+        }
+
+        private void btn_thanhtoan_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

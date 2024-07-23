@@ -150,6 +150,7 @@
             btn_thanhtoan.TabIndex = 16;
             btn_thanhtoan.Text = "Thanh Toán";
             btn_thanhtoan.UseVisualStyleBackColor = true;
+            btn_thanhtoan.Click += btn_thanhtoan_Click;
             // 
             // lblTienThua
             // 
