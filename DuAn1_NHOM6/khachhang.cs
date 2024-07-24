@@ -55,18 +55,12 @@ namespace PRL
             {
                 rbtn_nu.Checked = true;
             }
-            
+
         }
 
         private void dtgView_khachhang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rowIndex = e.RowIndex;
-            if (rowIndex < 0 || rowIndex >= service.GetKhachHangs(txt_search.Text).Count)
-            {
-                return;
-            }
-            idWhenClick = dtgView_khachhang.Rows[rowIndex].Cells[0].Value.ToString();
-            FillData();
+            
         }
 
         private void btn_them_Click(object sender, EventArgs e)
@@ -131,6 +125,17 @@ namespace PRL
 
         private void khachhang_Load(object sender, EventArgs e)
         {
+        }
+
+        private void dtgView_khachhang_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            if (rowIndex < 0 || rowIndex >= service.GetKhachHangs(txt_search.Text).Count)
+            {
+                return;
+            }
+            idWhenClick = dtgView_khachhang.Rows[rowIndex].Cells[0].Value.ToString();
+            FillData();
         }
     }
 }

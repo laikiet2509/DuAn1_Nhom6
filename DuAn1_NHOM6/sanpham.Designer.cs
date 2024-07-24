@@ -424,6 +424,7 @@
             dtgView_sp.RowTemplate.Height = 29;
             dtgView_sp.Size = new Size(668, 741);
             dtgView_sp.TabIndex = 0;
+            dtgView_sp.CellClick += dtgView_sp_CellClick_1;
             // 
             // sanpham
             // 

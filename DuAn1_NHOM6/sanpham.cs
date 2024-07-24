@@ -121,13 +121,7 @@ namespace PRL
 
         private void dtgView_sp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rowIndex = e.RowIndex;
-            if (rowIndex < 0 || rowIndex >= service.GetSanPhams().Count)
-            {
-                return;
-            }
-            idWhenClick = dtgView_sp.Rows[rowIndex].Cells[0].Value.ToString();
-            FillData();
+            
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -159,6 +153,17 @@ namespace PRL
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void dtgView_sp_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            if (rowIndex < 0 || rowIndex >= service.GetSanPhams().Count)
+            {
+                return;
+            }
+            idWhenClick = dtgView_sp.Rows[rowIndex].Cells[0].Value.ToString();
+            FillData();
         }
     }
 }

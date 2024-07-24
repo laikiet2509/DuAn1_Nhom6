@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            rbtn_nu = new RadioButton();
+            rbtn_nam = new RadioButton();
             label4 = new Label();
             dtp_ngaydangky = new DateTimePicker();
             txt_sdt = new TextBox();
@@ -49,8 +51,6 @@
             txt_search = new TextBox();
             label7 = new Label();
             groupBox3 = new GroupBox();
-            rbtn_nu = new RadioButton();
-            rbtn_nam = new RadioButton();
             dtgView_khachhang = new DataGridView();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -87,6 +87,30 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông Tin Khách Hàng";
+            // 
+            // rbtn_nu
+            // 
+            rbtn_nu.AutoSize = true;
+            rbtn_nu.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            rbtn_nu.Location = new Point(332, 310);
+            rbtn_nu.Name = "rbtn_nu";
+            rbtn_nu.Size = new Size(51, 24);
+            rbtn_nu.TabIndex = 40;
+            rbtn_nu.TabStop = true;
+            rbtn_nu.Text = "Nữ";
+            rbtn_nu.UseVisualStyleBackColor = true;
+            // 
+            // rbtn_nam
+            // 
+            rbtn_nam.AutoSize = true;
+            rbtn_nam.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            rbtn_nam.Location = new Point(175, 310);
+            rbtn_nam.Name = "rbtn_nam";
+            rbtn_nam.Size = new Size(65, 24);
+            rbtn_nam.TabIndex = 39;
+            rbtn_nam.TabStop = true;
+            rbtn_nam.Text = "Nam";
+            rbtn_nam.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -295,30 +319,6 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Danh Sách Khách Hàng";
             // 
-            // rbtn_nu
-            // 
-            rbtn_nu.AutoSize = true;
-            rbtn_nu.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            rbtn_nu.Location = new Point(332, 310);
-            rbtn_nu.Name = "rbtn_nu";
-            rbtn_nu.Size = new Size(51, 24);
-            rbtn_nu.TabIndex = 40;
-            rbtn_nu.TabStop = true;
-            rbtn_nu.Text = "Nữ";
-            rbtn_nu.UseVisualStyleBackColor = true;
-            // 
-            // rbtn_nam
-            // 
-            rbtn_nam.AutoSize = true;
-            rbtn_nam.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            rbtn_nam.Location = new Point(175, 310);
-            rbtn_nam.Name = "rbtn_nam";
-            rbtn_nam.Size = new Size(65, 24);
-            rbtn_nam.TabIndex = 39;
-            rbtn_nam.TabStop = true;
-            rbtn_nam.Text = "Nam";
-            rbtn_nam.UseVisualStyleBackColor = true;
-            // 
             // dtgView_khachhang
             // 
             dtgView_khachhang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -329,6 +329,7 @@
             dtgView_khachhang.RowTemplate.Height = 29;
             dtgView_khachhang.Size = new Size(802, 699);
             dtgView_khachhang.TabIndex = 0;
+            dtgView_khachhang.CellClick += dtgView_khachhang_CellClick_1;
             // 
             // khachhang
             // 
