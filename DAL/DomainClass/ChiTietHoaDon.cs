@@ -19,7 +19,7 @@ namespace DAL.DomainClass
         public string MaSp { get; set; } = null!;
         public int/*?*/ SoLuong { get; set; }
         //[Column(TypeName = "decimal(18, 2)")]
-        public decimal/*?*/ GiaBan { get; set; }
+        public decimal/*? */GiaBan { get; set; }
         //[Column(TypeName = "decimal(18, 2)")]
         public decimal? ThanhTien { get; set; }
 

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btn_lammoi = new Button();
+            btn_sua = new Button();
+            btn_them = new Button();
             dtpkNKT = new DateTimePicker();
             dtpkNgayapdung = new DateTimePicker();
             lblNgayketthuc = new Label();
@@ -40,18 +43,15 @@
             lblNAP = new Label();
             lblMaVC = new Label();
             groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
             btn_timkiem = new Button();
             label11 = new Label();
             txt_search = new TextBox();
-            dataGridView1 = new DataGridView();
-            btn_lammoi = new Button();
-            btn_sua = new Button();
-            btn_them = new Button();
+            groupBox3 = new GroupBox();
+            dgvDataVC = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDataVC).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -78,8 +78,45 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông Tin Voucher";
             // 
+            // btn_lammoi
+            // 
+            btn_lammoi.Image = Properties.Resources.update;
+            btn_lammoi.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_lammoi.Location = new Point(325, 577);
+            btn_lammoi.Name = "btn_lammoi";
+            btn_lammoi.Size = new Size(128, 47);
+            btn_lammoi.TabIndex = 26;
+            btn_lammoi.Text = "Làm Mới";
+            btn_lammoi.UseVisualStyleBackColor = true;
+            btn_lammoi.Click += btn_lammoi_Click;
+            // 
+            // btn_sua
+            // 
+            btn_sua.Image = Properties.Resources.Edit1;
+            btn_sua.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_sua.Location = new Point(175, 577);
+            btn_sua.Name = "btn_sua";
+            btn_sua.Size = new Size(109, 47);
+            btn_sua.TabIndex = 25;
+            btn_sua.Text = "Sửa ";
+            btn_sua.UseVisualStyleBackColor = true;
+            btn_sua.Click += btn_sua_Click;
+            // 
+            // btn_them
+            // 
+            btn_them.Image = Properties.Resources.Add2;
+            btn_them.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_them.Location = new Point(26, 577);
+            btn_them.Name = "btn_them";
+            btn_them.Size = new Size(109, 47);
+            btn_them.TabIndex = 24;
+            btn_them.Text = "Thêm";
+            btn_them.UseVisualStyleBackColor = true;
+            btn_them.Click += btn_them_Click;
+            // 
             // dtpkNKT
             // 
+            dtpkNKT.CustomFormat = "dd/mm/yyyy";
             dtpkNKT.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             dtpkNKT.Location = new Point(152, 384);
             dtpkNKT.Name = "dtpkNKT";
@@ -88,6 +125,7 @@
             // 
             // dtpkNgayapdung
             // 
+            dtpkNgayapdung.CustomFormat = "dd/mm/yyyy";
             dtpkNgayapdung.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             dtpkNgayapdung.Location = new Point(152, 306);
             dtpkNgayapdung.Name = "dtpkNgayapdung";
@@ -183,18 +221,6 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Bộ Lọc";
             // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(dataGridView1);
-            groupBox3.Dock = DockStyle.Top;
-            groupBox3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            groupBox3.Location = new Point(470, 166);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(876, 717);
-            groupBox3.TabIndex = 2;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Danh Sách Voucher";
-            // 
             // btn_timkiem
             // 
             btn_timkiem.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
@@ -227,49 +253,30 @@
             txt_search.Size = new Size(226, 27);
             txt_search.TabIndex = 8;
             // 
-            // dataGridView1
+            // groupBox3
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 23);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(870, 691);
-            dataGridView1.TabIndex = 0;
+            groupBox3.Controls.Add(dgvDataVC);
+            groupBox3.Dock = DockStyle.Top;
+            groupBox3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            groupBox3.Location = new Point(470, 166);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(876, 717);
+            groupBox3.TabIndex = 2;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Danh Sách Voucher";
             // 
-            // btn_lammoi
+            // dgvDataVC
             // 
-            btn_lammoi.Image = Properties.Resources.update;
-            btn_lammoi.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_lammoi.Location = new Point(325, 577);
-            btn_lammoi.Name = "btn_lammoi";
-            btn_lammoi.Size = new Size(128, 47);
-            btn_lammoi.TabIndex = 26;
-            btn_lammoi.Text = "Làm Mới";
-            btn_lammoi.UseVisualStyleBackColor = true;
-            // 
-            // btn_sua
-            // 
-            btn_sua.Image = Properties.Resources.Edit1;
-            btn_sua.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_sua.Location = new Point(175, 577);
-            btn_sua.Name = "btn_sua";
-            btn_sua.Size = new Size(109, 47);
-            btn_sua.TabIndex = 25;
-            btn_sua.Text = "Sửa ";
-            btn_sua.UseVisualStyleBackColor = true;
-            // 
-            // btn_them
-            // 
-            btn_them.Image = Properties.Resources.Add2;
-            btn_them.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_them.Location = new Point(26, 577);
-            btn_them.Name = "btn_them";
-            btn_them.Size = new Size(109, 47);
-            btn_them.TabIndex = 24;
-            btn_them.Text = "Thêm";
-            btn_them.UseVisualStyleBackColor = true;
+            dgvDataVC.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDataVC.Dock = DockStyle.Fill;
+            dgvDataVC.Location = new Point(3, 23);
+            dgvDataVC.Name = "dgvDataVC";
+            dgvDataVC.RowHeadersWidth = 51;
+            dgvDataVC.RowTemplate.Height = 29;
+            dgvDataVC.Size = new Size(870, 691);
+            dgvDataVC.TabIndex = 0;
+            dgvDataVC.CellClick += dgvDataVC_CellClick;
+            dgvDataVC.CellContentClick += dgvDataVC_CellContentClick;
             // 
             // voucher
             // 
@@ -286,7 +293,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDataVC).EndInit();
             ResumeLayout(false);
         }
 
@@ -308,7 +315,7 @@
         private Button btn_timkiem;
         private Label label11;
         private TextBox txt_search;
-        private DataGridView dataGridView1;
+        private DataGridView dgvDataVC;
         private Button btn_lammoi;
         private Button btn_sua;
         private Button btn_them;
