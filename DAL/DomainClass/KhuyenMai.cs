@@ -11,7 +11,7 @@ namespace DAL.DomainClass
     {
         public KhuyenMai()
         {
-            SanPhams = new HashSet<SanPham>();
+            HoaDons = new HashSet<HoaDon>();
         }
 
         [Key]
@@ -26,7 +26,7 @@ namespace DAL.DomainClass
         [StringLength(255)]
         public string? MoTaKhuyenMai { get; set; }
 
-        [InverseProperty(nameof(SanPham.MaKhuyenMaiNavigation))]
-        public virtual ICollection<SanPham> SanPhams { get; set; }
+        [InverseProperty(nameof(HoaDon.MaKhuyenMaiNavigation))]
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

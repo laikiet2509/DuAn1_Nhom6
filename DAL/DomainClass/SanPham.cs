@@ -20,7 +20,7 @@ namespace DAL.DomainClass
         [StringLength(255)]
         public string? TenSanPham { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
-        public decimal? GiaBan { get; set; }
+        public decimal/*?*/ GiaBan { get; set; }
         [Column("MaMauSP")]
         [StringLength(10)]
         public string? MaMauSp { get; set; }
@@ -34,15 +34,10 @@ namespace DAL.DomainClass
         public string? HinhAnh { get; set; }
         public int? SoLuongTon { get; set; }
         [StringLength(10)]
-        public string? MaKhuyenMai { get; set; }
-        [StringLength(10)]
         public string? MaThuongHieu { get; set; }
         [StringLength(50)]
         public string? TrangThai { get; set; }
 
-        [ForeignKey(nameof(MaKhuyenMai))]
-        [InverseProperty(nameof(KhuyenMai.SanPhams))]
-        public virtual KhuyenMai? MaKhuyenMaiNavigation { get; set; }
         [ForeignKey(nameof(MaKichCoSp))]
         [InverseProperty(nameof(KichCo.SanPhams))]
         public virtual KichCo? MaKichCoSpNavigation { get; set; }

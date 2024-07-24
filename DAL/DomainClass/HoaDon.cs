@@ -27,7 +27,12 @@ namespace DAL.DomainClass
         public string? Sdt { get; set; }
         [StringLength(10)]
         public string? MaNhanVien { get; set; }
+        [StringLength(10)]
+        public string? MaKhuyenMai { get; set; }
 
+        [ForeignKey(nameof(MaKhuyenMai))]
+        [InverseProperty(nameof(KhuyenMai.HoaDons))]
+        public virtual KhuyenMai? MaKhuyenMaiNavigation { get; set; }
         [ForeignKey(nameof(MaNhanVien))]
         [InverseProperty(nameof(NhanVien.HoaDons))]
         public virtual NhanVien? MaNhanVienNavigation { get; set; }

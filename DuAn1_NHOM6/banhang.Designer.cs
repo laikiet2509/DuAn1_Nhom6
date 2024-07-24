@@ -119,6 +119,7 @@
             cmbx_hoadoncho.Name = "cmbx_hoadoncho";
             cmbx_hoadoncho.Size = new Size(232, 30);
             cmbx_hoadoncho.TabIndex = 18;
+            cmbx_hoadoncho.SelectedIndexChanged += cmbx_hoadoncho_SelectedIndexChanged;
             // 
             // btn_huy
             // 
@@ -296,6 +297,7 @@
             txt_SDT.Name = "txt_SDT";
             txt_SDT.Size = new Size(232, 30);
             txt_SDT.TabIndex = 1;
+            txt_SDT.KeyDown += txt_SDT_KeyDown;
             // 
             // label1
             // 
@@ -458,6 +460,7 @@
             txt_search.Size = new Size(198, 28);
             txt_search.TabIndex = 3;
             txt_search.Text = "Tìm Kiếm";
+            txt_search.TextChanged += txt_search_TextChanged;
             // 
             // dtgView_danhsachsanpham
             // 

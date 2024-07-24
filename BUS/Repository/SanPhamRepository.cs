@@ -65,5 +65,9 @@ namespace BUS.Repository
             }
             context.SaveChanges();
         }
+        public SanPham? GetSanPhamById(string maSanPham)
+        {
+            return context.SanPhams.FirstOrDefault(sp => sp.MaSanPham == maSanPham);
+        }
     }
 }

@@ -52,7 +52,7 @@ namespace PRL
 
             foreach (var hdct in listHDCT)
             {
-                //tongTien += hdct.GiaBan * hdct.SoLuong;
+                tongTien += hdct.GiaBan * hdct.SoLuong;
             }
 
             return tongTien;
@@ -187,7 +187,7 @@ namespace PRL
         private void txt_tienkhachdua_TextChanged(object sender, EventArgs e)
         {
             decimal tienKhachDua = 0;
-            var tongSoTien = TinhTongTienHoaDon(txt_tienkhachdua.Text);
+            var tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
 
             if (decimal.TryParse(txt_tienkhachdua.Text, out tienKhachDua))
             {
@@ -312,6 +312,43 @@ namespace PRL
             txt_search.Text = string.Empty;
             LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
             LoadData_dgvHoaDonChiTiet(serviceHDCT.GetAllHoaDonCTByMaHoaDon(cmbx_hoadoncho.SelectedValue.ToString()));
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+            //var listSPTimKiem = serviceSP.GetSanPhams()
+            //    .Where(sp => sp.TenSanPham.ToLower().Contains(txt_search.Text.ToLower())).ToList();
+
+            //var listSPCTTimKiem = serviceSP.GetSanPhams()
+            //    .Where(spct => listSPTimKiem.Contains(serviceSP.GetSanPhams(spct.MaSanPham))).ToList();
+            var listSPTimKiem = serviceSP.GetSanPhams()
+        .Where(sp => sp.TenSanPham.ToLower().Contains(txt_search.Text.ToLower())).ToList();
+
+            var listSPCTTimKiem = serviceSP.GetSanPhams()
+                .Where(spct => listSPTimKiem.Any(sp => sp.MaSanPham == spct.MaSanPham)).ToList();
+
+            LoadData_dgvSanPhamChiTiet(listSPCTTimKiem);
+        }
+
+        private void cmbx_hoadoncho_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_SDT_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var khachHang = serviceKH.GetKhachHangBySDT(txt_SDT.Text);
+                if (khachHang == null)
+                {
+                    MessageBox.Show("SĐT khách hàng không hợp lệ!");
+                }
+                else
+                {
+                    txt_tenkhachhang.Text = khachHang.TenKhachHang;
+                }
+            }
         }
     }
 }

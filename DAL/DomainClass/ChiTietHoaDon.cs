@@ -17,10 +17,10 @@ namespace DAL.DomainClass
         [Column("MaSP")]
         [StringLength(10)]
         public string MaSp { get; set; } = null!;
-        public int? SoLuong { get; set; }
-        [Column(TypeName = "decimal(18, 2)")]
-        public decimal? GiaBan { get; set; }
-        [Column(TypeName = "decimal(18, 2)")]
+        public int/*?*/ SoLuong { get; set; }
+        //[Column(TypeName = "decimal(18, 2)")]
+        public decimal/*?*/ GiaBan { get; set; }
+        //[Column(TypeName = "decimal(18, 2)")]
         public decimal? ThanhTien { get; set; }
 
         [ForeignKey(nameof(MaHd))]
