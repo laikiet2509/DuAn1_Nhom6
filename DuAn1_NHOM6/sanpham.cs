@@ -66,7 +66,7 @@ namespace PRL
                     cmbx_mausac.SelectedValue = sp.MaMauSp;
                     txt_giatien.Text = sp.GiaBan.ToString();
                     txt_chatlieu.Text = sp.ChatLieu;
-                    dtp_ngaynhap.Value = sp.NgayNhap;
+                    dtp_ngaynhap.Text = sp.NgayNhap.ToString();
                     txt_soluong.Text = sp.SoLuongTon.ToString();
                     cmbx_kichthuoc.SelectedValue = sp.MaKichCoSp;
                     cmbx_thuonghieu.SelectedValue = sp.MaThuongHieu;

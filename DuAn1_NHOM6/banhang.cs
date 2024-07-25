@@ -322,7 +322,7 @@ namespace PRL
             //var listSPCTTimKiem = serviceSP.GetSanPhams()
             //    .Where(spct => listSPTimKiem.Contains(serviceSP.GetSanPhams(spct.MaSanPham))).ToList();
             var listSPTimKiem = serviceSP.GetSanPhams()
-        .Where(sp => sp.TenSanPham.ToLower().Contains(txt_search.Text.ToLower())).ToList();
+            .Where(sp => sp.TenSanPham.ToLower().Contains(txt_search.Text.ToLower())).ToList();
 
             var listSPCTTimKiem = serviceSP.GetSanPhams()
                 .Where(spct => listSPTimKiem.Any(sp => sp.MaSanPham == spct.MaSanPham)).ToList();
@@ -332,7 +332,14 @@ namespace PRL
 
         private void cmbx_hoadoncho_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var hoaDonDangChon = cmbx_hoadoncho.SelectedItem as HoaDon;
 
+            if (hoaDonDangChon != null)
+            {
+                txt_SDT.Text = hoaDonDangChon.Sdt;
+                txt_tenkhachhang.Text = serviceKH.GetKhachHangBySDT(hoaDonDangChon.Sdt).TenKhachHang;
+                LoadData_dgvHoaDonChiTiet(serviceHDCT.GetAllHoaDonCTByMaHoaDon(hoaDonDangChon.MaHoaDon));
+            }
         }
 
         private void txt_SDT_KeyDown(object sender, KeyEventArgs e)

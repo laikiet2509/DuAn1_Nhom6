@@ -31,5 +31,9 @@ namespace BUS.Services
         {
             repos.UpdateSoLuong(hdctNew);
         }
+        public List<ChiTietHoaDon> GetChiTietHoaDons()
+        {
+            return repos.GetAll();
+        }
     }
 }

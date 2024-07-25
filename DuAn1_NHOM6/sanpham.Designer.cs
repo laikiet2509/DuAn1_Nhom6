@@ -416,6 +416,7 @@
             // 
             // dtgView_sp
             // 
+            dtgView_sp.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgView_sp.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_sp.Dock = DockStyle.Fill;
             dtgView_sp.Location = new Point(3, 23);

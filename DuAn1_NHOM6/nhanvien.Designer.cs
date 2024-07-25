@@ -56,6 +56,8 @@
             pictureBox1 = new PictureBox();
             txt_tennhanvien = new TextBox();
             label1 = new Label();
+            txt_manhanvien = new TextBox();
+            label10 = new Label();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgView_nhanvien).BeginInit();
             groupBox2.SuspendLayout();
@@ -78,6 +80,7 @@
             // 
             // dtgView_nhanvien
             // 
+            dtgView_nhanvien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgView_nhanvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_nhanvien.Dock = DockStyle.Fill;
             dtgView_nhanvien.Location = new Point(3, 23);
@@ -137,6 +140,8 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ButtonHighlight;
+            groupBox1.Controls.Add(txt_manhanvien);
+            groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(cmbx_trangthai);
             groupBox1.Controls.Add(rbtn_nu);
             groupBox1.Controls.Add(rbtn_nam);
@@ -355,7 +360,7 @@
             // 
             pictureBox1.Location = new Point(166, 45);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(217, 150);
+            pictureBox1.Size = new Size(118, 61);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
@@ -376,6 +381,24 @@
             label1.Size = new Size(119, 20);
             label1.TabIndex = 0;
             label1.Text = "Tên Nhân Viên";
+            // 
+            // txt_manhanvien
+            // 
+            txt_manhanvien.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_manhanvien.Location = new Point(166, 169);
+            txt_manhanvien.Name = "txt_manhanvien";
+            txt_manhanvien.Size = new Size(299, 27);
+            txt_manhanvien.TabIndex = 41;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(21, 172);
+            label10.Name = "label10";
+            label10.Size = new Size(114, 20);
+            label10.TabIndex = 40;
+            label10.Text = "Mã Nhân Viên";
             // 
             // nhanvien
             // 
@@ -428,5 +451,7 @@
         private RadioButton rbtn_nam;
         private DataGridView dtgView_nhanvien;
         private ComboBox cmbx_trangthai;
+        private TextBox txt_manhanvien;
+        private Label label10;
     }
 }

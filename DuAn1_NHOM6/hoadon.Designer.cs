@@ -30,27 +30,27 @@
         {
             groupBox1 = new GroupBox();
             button2 = new Button();
-            button1 = new Button();
+            btn_timkiem = new Button();
             dateTimePicker2 = new DateTimePicker();
             label2 = new Label();
             dateTimePicker1 = new DateTimePicker();
             label1 = new Label();
             groupBox2 = new GroupBox();
-            dataGridView1 = new DataGridView();
+            dtgView_hoadon = new DataGridView();
             groupBox3 = new GroupBox();
-            dataGridView2 = new DataGridView();
+            dtgView_chitiethoadon = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgView_hoadon).BeginInit();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgView_chitiethoadon).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.Linen;
             groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(btn_timkiem);
             groupBox1.Controls.Add(dateTimePicker2);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(dateTimePicker1);
@@ -72,15 +72,15 @@
             button2.TabIndex = 5;
             button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_timkiem
             // 
-            button1.Image = Properties.Resources.Search1;
-            button1.Location = new Point(914, 51);
-            button1.Name = "button1";
-            button1.Size = new Size(76, 61);
-            button1.TabIndex = 4;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btn_timkiem.Image = Properties.Resources.Search1;
+            btn_timkiem.Location = new Point(914, 51);
+            btn_timkiem.Name = "btn_timkiem";
+            btn_timkiem.Size = new Size(76, 61);
+            btn_timkiem.TabIndex = 4;
+            btn_timkiem.UseVisualStyleBackColor = true;
+            btn_timkiem.Click += button1_Click;
             // 
             // dateTimePicker2
             // 
@@ -125,7 +125,7 @@
             // groupBox2
             // 
             groupBox2.BackColor = SystemColors.ButtonShadow;
-            groupBox2.Controls.Add(dataGridView1);
+            groupBox2.Controls.Add(dtgView_hoadon);
             groupBox2.Dock = DockStyle.Top;
             groupBox2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point);
             groupBox2.Location = new Point(0, 145);
@@ -135,22 +135,23 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh Sách Hóa Đơn";
             // 
-            // dataGridView1
+            // dtgView_hoadon
             // 
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 23);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1340, 326);
-            dataGridView1.TabIndex = 0;
+            dtgView_hoadon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgView_hoadon.BackgroundColor = SystemColors.Control;
+            dtgView_hoadon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgView_hoadon.Dock = DockStyle.Fill;
+            dtgView_hoadon.Location = new Point(3, 23);
+            dtgView_hoadon.Name = "dtgView_hoadon";
+            dtgView_hoadon.RowHeadersWidth = 51;
+            dtgView_hoadon.RowTemplate.Height = 29;
+            dtgView_hoadon.Size = new Size(1340, 326);
+            dtgView_hoadon.TabIndex = 0;
             // 
             // groupBox3
             // 
             groupBox3.BackColor = SystemColors.ButtonShadow;
-            groupBox3.Controls.Add(dataGridView2);
+            groupBox3.Controls.Add(dtgView_chitiethoadon);
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point);
             groupBox3.Location = new Point(0, 497);
@@ -160,17 +161,18 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Chi Tiết Hóa Đơn";
             // 
-            // dataGridView2
+            // dtgView_chitiethoadon
             // 
-            dataGridView2.BackgroundColor = SystemColors.Control;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(3, 23);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(1340, 360);
-            dataGridView2.TabIndex = 1;
+            dtgView_chitiethoadon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgView_chitiethoadon.BackgroundColor = SystemColors.Control;
+            dtgView_chitiethoadon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgView_chitiethoadon.Dock = DockStyle.Fill;
+            dtgView_chitiethoadon.Location = new Point(3, 23);
+            dtgView_chitiethoadon.Name = "dtgView_chitiethoadon";
+            dtgView_chitiethoadon.RowHeadersWidth = 51;
+            dtgView_chitiethoadon.RowTemplate.Height = 29;
+            dtgView_chitiethoadon.Size = new Size(1340, 360);
+            dtgView_chitiethoadon.TabIndex = 1;
             // 
             // hoadon
             // 
@@ -185,9 +187,9 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgView_hoadon).EndInit();
             groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgView_chitiethoadon).EndInit();
             ResumeLayout(false);
         }
 
@@ -195,14 +197,14 @@
 
         private GroupBox groupBox1;
         private Button button2;
-        private Button button1;
+        private Button btn_timkiem;
         private DateTimePicker dateTimePicker2;
         private Label label2;
         private DateTimePicker dateTimePicker1;
         private Label label1;
         private GroupBox groupBox2;
-        private DataGridView dataGridView1;
+        private DataGridView dtgView_hoadon;
         private GroupBox groupBox3;
-        private DataGridView dataGridView2;
+        private DataGridView dtgView_chitiethoadon;
     }
 }

@@ -38,5 +38,9 @@ namespace BUS.Repository
             }
             context.SaveChanges();
         }
+        public List<ChiTietHoaDon> GetAll()
+        {
+            return context.ChiTietHoaDons.ToList();
+        }
     }
 }

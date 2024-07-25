@@ -44,16 +44,12 @@
             label4 = new Label();
             groupBox5 = new GroupBox();
             btn_TaoHoaDon = new Button();
-            btn_timkiemKhachHang = new Button();
             txt_tenkhachhang = new TextBox();
             label2 = new Label();
             txt_SDT = new TextBox();
             label1 = new Label();
             groupBox2 = new GroupBox();
             dtgView_hoadon = new DataGridView();
-            groupBox3 = new GroupBox();
-            btn_xoa = new Button();
-            dtgView_GioHang = new DataGridView();
             groupBox4 = new GroupBox();
             button1 = new Button();
             label14 = new Label();
@@ -69,8 +65,6 @@
             groupBox5.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgView_hoadon).BeginInit();
-            groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgView_GioHang).BeginInit();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgView_danhsachsanpham).BeginInit();
             SuspendLayout();
@@ -115,7 +109,7 @@
             // cmbx_hoadoncho
             // 
             cmbx_hoadoncho.FormattingEnabled = true;
-            cmbx_hoadoncho.Location = new Point(42, 97);
+            cmbx_hoadoncho.Location = new Point(62, 101);
             cmbx_hoadoncho.Name = "cmbx_hoadoncho";
             cmbx_hoadoncho.Size = new Size(232, 30);
             cmbx_hoadoncho.TabIndex = 18;
@@ -168,7 +162,7 @@
             // txt_tienkhachdua
             // 
             txt_tienkhachdua.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_tienkhachdua.Location = new Point(42, 370);
+            txt_tienkhachdua.Location = new Point(62, 378);
             txt_tienkhachdua.Name = "txt_tienkhachdua";
             txt_tienkhachdua.Size = new Size(232, 30);
             txt_tienkhachdua.TabIndex = 13;
@@ -178,7 +172,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(48, 332);
+            label9.Location = new Point(62, 330);
             label9.Name = "label9";
             label9.Size = new Size(154, 25);
             label9.TabIndex = 12;
@@ -188,7 +182,7 @@
             // 
             lblTongTien.AutoSize = true;
             lblTongTien.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTongTien.Location = new Point(193, 271);
+            lblTongTien.Location = new Point(207, 269);
             lblTongTien.Name = "lblTongTien";
             lblTongTien.Size = new Size(125, 29);
             lblTongTien.TabIndex = 11;
@@ -198,7 +192,7 @@
             // 
             lblTongHoaDon.AutoSize = true;
             lblTongHoaDon.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTongHoaDon.Location = new Point(48, 276);
+            lblTongHoaDon.Location = new Point(62, 274);
             lblTongHoaDon.Name = "lblTongHoaDon";
             lblTongHoaDon.Size = new Size(140, 25);
             lblTongHoaDon.TabIndex = 10;
@@ -207,7 +201,7 @@
             // txt_maVoucher
             // 
             txt_maVoucher.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_maVoucher.Location = new Point(42, 202);
+            txt_maVoucher.Location = new Point(62, 206);
             txt_maVoucher.Name = "txt_maVoucher";
             txt_maVoucher.Size = new Size(232, 30);
             txt_maVoucher.TabIndex = 9;
@@ -216,7 +210,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(48, 161);
+            label6.Location = new Point(68, 165);
             label6.Name = "label6";
             label6.Size = new Size(86, 25);
             label6.TabIndex = 8;
@@ -226,7 +220,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(42, 50);
+            label4.Location = new Point(62, 54);
             label4.Name = "label4";
             label4.Size = new Size(122, 25);
             label4.TabIndex = 4;
@@ -235,7 +229,6 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(btn_TaoHoaDon);
-            groupBox5.Controls.Add(btn_timkiemKhachHang);
             groupBox5.Controls.Add(txt_tenkhachhang);
             groupBox5.Controls.Add(label2);
             groupBox5.Controls.Add(txt_SDT);
@@ -254,7 +247,7 @@
             btn_TaoHoaDon.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btn_TaoHoaDon.Image = Properties.Resources.Add1;
             btn_TaoHoaDon.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_TaoHoaDon.Location = new Point(62, 203);
+            btn_TaoHoaDon.Location = new Point(82, 200);
             btn_TaoHoaDon.Name = "btn_TaoHoaDon";
             btn_TaoHoaDon.Size = new Size(179, 34);
             btn_TaoHoaDon.TabIndex = 4;
@@ -262,19 +255,10 @@
             btn_TaoHoaDon.UseVisualStyleBackColor = true;
             btn_TaoHoaDon.Click += button2_Click;
             // 
-            // btn_timkiemKhachHang
-            // 
-            btn_timkiemKhachHang.Image = Properties.Resources.Search3;
-            btn_timkiemKhachHang.Location = new Point(287, 53);
-            btn_timkiemKhachHang.Name = "btn_timkiemKhachHang";
-            btn_timkiemKhachHang.Size = new Size(44, 34);
-            btn_timkiemKhachHang.TabIndex = 18;
-            btn_timkiemKhachHang.UseVisualStyleBackColor = true;
-            // 
             // txt_tenkhachhang
             // 
             txt_tenkhachhang.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_tenkhachhang.Location = new Point(42, 152);
+            txt_tenkhachhang.Location = new Point(62, 149);
             txt_tenkhachhang.Name = "txt_tenkhachhang";
             txt_tenkhachhang.Size = new Size(232, 30);
             txt_tenkhachhang.TabIndex = 3;
@@ -284,7 +268,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(42, 116);
+            label2.Location = new Point(62, 113);
             label2.Name = "label2";
             label2.Size = new Size(161, 25);
             label2.TabIndex = 2;
@@ -293,7 +277,7 @@
             // txt_SDT
             // 
             txt_SDT.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_SDT.Location = new Point(42, 59);
+            txt_SDT.Location = new Point(62, 56);
             txt_SDT.Name = "txt_SDT";
             txt_SDT.Size = new Size(232, 30);
             txt_SDT.TabIndex = 1;
@@ -303,7 +287,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(42, 34);
+            label1.Location = new Point(62, 31);
             label1.Name = "label1";
             label1.Size = new Size(53, 25);
             label1.TabIndex = 0;
@@ -317,7 +301,7 @@
             groupBox2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox2.Location = new Point(387, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1059, 205);
+            groupBox2.Size = new Size(1059, 374);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Hóa Đơn Chờ";
@@ -325,52 +309,15 @@
             // dtgView_hoadon
             // 
             dtgView_hoadon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgView_hoadon.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dtgView_hoadon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_hoadon.Dock = DockStyle.Fill;
             dtgView_hoadon.Location = new Point(3, 24);
             dtgView_hoadon.Name = "dtgView_hoadon";
             dtgView_hoadon.RowHeadersWidth = 51;
             dtgView_hoadon.RowTemplate.Height = 29;
-            dtgView_hoadon.Size = new Size(1053, 178);
+            dtgView_hoadon.Size = new Size(1053, 347);
             dtgView_hoadon.TabIndex = 0;
             dtgView_hoadon.CellContentClick += dtgView_hoadon_CellContentClick;
-            // 
-            // groupBox3
-            // 
-            groupBox3.BackColor = Color.AntiqueWhite;
-            groupBox3.Controls.Add(btn_xoa);
-            groupBox3.Controls.Add(dtgView_GioHang);
-            groupBox3.Dock = DockStyle.Top;
-            groupBox3.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox3.Location = new Point(387, 205);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1059, 286);
-            groupBox3.TabIndex = 2;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Giỏ Hàng";
-            // 
-            // btn_xoa
-            // 
-            btn_xoa.BackColor = SystemColors.Control;
-            btn_xoa.Image = Properties.Resources.Delete1;
-            btn_xoa.Location = new Point(17, 106);
-            btn_xoa.Name = "btn_xoa";
-            btn_xoa.Size = new Size(66, 67);
-            btn_xoa.TabIndex = 2;
-            btn_xoa.UseVisualStyleBackColor = false;
-            // 
-            // dtgView_GioHang
-            // 
-            dtgView_GioHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgView_GioHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgView_GioHang.Dock = DockStyle.Right;
-            dtgView_GioHang.Location = new Point(-158, 24);
-            dtgView_GioHang.Name = "dtgView_GioHang";
-            dtgView_GioHang.RowHeadersWidth = 51;
-            dtgView_GioHang.RowTemplate.Height = 29;
-            dtgView_GioHang.Size = new Size(1214, 259);
-            dtgView_GioHang.TabIndex = 1;
             // 
             // groupBox4
             // 
@@ -386,9 +333,9 @@
             groupBox4.Controls.Add(dtgView_danhsachsanpham);
             groupBox4.Dock = DockStyle.Top;
             groupBox4.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox4.Location = new Point(387, 491);
+            groupBox4.Location = new Point(387, 374);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(1059, 392);
+            groupBox4.Size = new Size(1059, 516);
             groupBox4.TabIndex = 3;
             groupBox4.TabStop = false;
             groupBox4.Text = "Danh Sách Sản Phẩm";
@@ -459,20 +406,18 @@
             txt_search.Name = "txt_search";
             txt_search.Size = new Size(198, 28);
             txt_search.TabIndex = 3;
-            txt_search.Text = "Tìm Kiếm";
             txt_search.TextChanged += txt_search_TextChanged;
             // 
             // dtgView_danhsachsanpham
             // 
             dtgView_danhsachsanpham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgView_danhsachsanpham.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dtgView_danhsachsanpham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_danhsachsanpham.Dock = DockStyle.Bottom;
-            dtgView_danhsachsanpham.Location = new Point(3, 97);
+            dtgView_danhsachsanpham.Location = new Point(3, 117);
             dtgView_danhsachsanpham.Name = "dtgView_danhsachsanpham";
             dtgView_danhsachsanpham.RowHeadersWidth = 51;
             dtgView_danhsachsanpham.RowTemplate.Height = 29;
-            dtgView_danhsachsanpham.Size = new Size(1053, 292);
+            dtgView_danhsachsanpham.Size = new Size(1053, 396);
             dtgView_danhsachsanpham.TabIndex = 2;
             dtgView_danhsachsanpham.CellClick += dtgView_danhsachsanpham_CellClick;
             dtgView_danhsachsanpham.CellDoubleClick += dtgView_danhsachsanpham_CellDoubleClick;
@@ -483,7 +428,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1446, 883);
             Controls.Add(groupBox4);
-            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "banhang";
@@ -496,8 +440,6 @@
             groupBox5.PerformLayout();
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgView_hoadon).EndInit();
-            groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgView_GioHang).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgView_danhsachsanpham).EndInit();
@@ -509,10 +451,7 @@
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private DataGridView dtgView_hoadon;
-        private GroupBox groupBox3;
-        private DataGridView dtgView_GioHang;
         private GroupBox groupBox4;
-        private Button btn_xoa;
         private TextBox txt_search;
         private DataGridView dtgView_danhsachsanpham;
         private GroupBox groupBox6;
@@ -539,7 +478,6 @@
         private ComboBox comboBox3;
         private ComboBox comboBox2;
         private ComboBox comboBox1;
-        private Button btn_timkiemKhachHang;
         private Button button1;
         private ComboBox cmbx_hoadoncho;
     }

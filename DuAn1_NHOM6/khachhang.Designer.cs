@@ -321,6 +321,7 @@
             // 
             // dtgView_khachhang
             // 
+            dtgView_khachhang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgView_khachhang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_khachhang.Dock = DockStyle.Fill;
             dtgView_khachhang.Location = new Point(3, 23);

@@ -267,6 +267,7 @@
             // 
             // dgvDataVC
             // 
+            dgvDataVC.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDataVC.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDataVC.Dock = DockStyle.Fill;
             dgvDataVC.Location = new Point(3, 23);

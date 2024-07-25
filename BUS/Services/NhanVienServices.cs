@@ -16,13 +16,10 @@ namespace BUS.Services
         {
             repos = new NhanVienRepository();
         }
-        public List<NhanVien> GetNhanViens(string search)
+        public List<NhanVien> GetNhanViens()
         {
-            if (search == null || search == string.Empty)
-            {
                 return repos.GetAll();
-            }
-            return repos.GetAll().FindAll(x => x.Ten.ToString().Contains(search) || x.Sdt.Contains(search));
+ 
         }
         public string Them(NhanVien nv)
         {
