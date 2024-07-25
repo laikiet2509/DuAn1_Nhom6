@@ -30,7 +30,7 @@ namespace DAL.DomainClass
         [StringLength(255)]
         public string? ChatLieu { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime? NgayNhap { get; set; }
+        public DateTime/*?*/ NgayNhap { get; set; }
         public string? HinhAnh { get; set; }
         public int? SoLuongTon { get; set; }
         [StringLength(10)]

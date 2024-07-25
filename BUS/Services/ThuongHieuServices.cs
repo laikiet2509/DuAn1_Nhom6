@@ -8,29 +8,29 @@ using System.Threading.Tasks;
 
 namespace BUS.Services
 {
-    public class MauSacServices
+    public class ThuongHieuServices
     {
-        public MauSacRepository repos;
-        public MauSacServices()
+        public ThuongHieuRepository repos;
+        public ThuongHieuServices()
         {
-            repos = new MauSacRepository();
+            repos = new ThuongHieuRepository();
         }
-        List<MauSac> lstMS = new List<MauSac>();
-        public List<MauSac> GetMauSacs()
+        List<ThuongHieu> lstMS = new List<ThuongHieu>();
+        public List<ThuongHieu> GetThuongHieus()
         {
                 return repos.GetAllMS();
         }
-        public string ThemMS(MauSac ms)
+        public string ThemTH(ThuongHieu th)
         {
-            if (repos.AddMS(ms))
+            if (repos.AddTH(th))
             {
                 return "Thêm thành công";
             }
             return "Thêm thất bại";
         }
-        public string SuaMS(MauSac ms)
+        public string SuaTH(ThuongHieu th)
         {
-            if (repos.UpdateMS(ms))
+            if (repos.UpdateTH(th))
             {
                 return "Sửa thành công";
             }
@@ -38,16 +38,16 @@ namespace BUS.Services
         }
         public string XoaMS(string ma)
         {
-            var ms = repos.GetAllMS().Find(x => x.MaMauSp.ToString() == ma);
-            if (repos.DeleteMS(ms))
+            var ms = repos.GetAllMS().Find(x => x.MaThuongHieu.ToString() == ma);
+            if (repos.DeleteTH(ms))
             {
                 return "Xóa thành công";
             }
             return "Xóa thất bại";
         }
-        public MauSac? GetMauSacById(string maMauSac)
+        public ThuongHieu? GetThuongHieuById(string maThuongHieu)
         {
-            return repos.GetMauSacById(maMauSac);
+            return repos.GetThuongHieuById(maThuongHieu);
         }
     }
 }

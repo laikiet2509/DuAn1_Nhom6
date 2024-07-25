@@ -22,7 +22,7 @@ namespace BUS.Services
             {
                 return repos.GetAll();
             }
-            return repos.GetAll().FindAll(x => x.Ten.ToString().Contains(search) || x.MaNhanVien.Contains(search));
+            return repos.GetAll().FindAll(x => x.Ten.ToString().Contains(search) || x.Sdt.Contains(search));
         }
         public string Them(NhanVien nv)
         {
@@ -42,7 +42,7 @@ namespace BUS.Services
         }
         public string Xoa(string ma)
         {
-            var nv = repos.GetAll().Find(x => x.MaNhanVien.ToString() == ma);
+            var nv = repos.GetAll().Find(x => x.Ten.ToString() == ma);
             if (repos.Delete(nv))
             {
                 return "Xóa thành công";

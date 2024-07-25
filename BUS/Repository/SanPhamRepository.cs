@@ -69,5 +69,7 @@ namespace BUS.Repository
         {
             return context.SanPhams.FirstOrDefault(sp => sp.MaSanPham == maSanPham);
         }
+        
+
     }
 }

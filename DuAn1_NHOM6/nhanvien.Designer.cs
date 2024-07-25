@@ -114,6 +114,7 @@
             btn_loc.TabIndex = 18;
             btn_loc.Text = "Lọc";
             btn_loc.UseVisualStyleBackColor = true;
+            btn_loc.Click += btn_loc_Click;
             // 
             // txt_search
             // 

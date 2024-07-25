@@ -15,13 +15,9 @@ namespace BUS.Services
         {
             repos = new KichCoRepository();
         }
-        public List<KichCo> GetKichCos(string search)
+        public List<KichCo> GetKichCos()
         {
-            if (search == null || search == string.Empty)
-            {
                 return repos.GetAllKC();
-            }
-            return repos.GetAllKC().FindAll(x => x.MaKichCoSp.ToString().Contains(search) || x.KichCo1.Contains(search));
         }
         public string ThemKC(KichCo kc)
         {

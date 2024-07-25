@@ -36,7 +36,7 @@ namespace PRL
             dtgView_nhanvien.Rows.Clear();
             foreach (var kh in service.GetNhanViens(txt_search.Text))
             {
-                dtgView_nhanvien.Rows.Add(kh.Ten, kh.GioiTinh == true ? "Nam" : "Nữ", kh.Email ,kh.NgaySinh, kh.Sdt, kh.DiaChi, kh.MaChucVu, kh.TrangThai);
+                dtgView_nhanvien.Rows.Add(kh.Ten, kh.GioiTinh == true ? "Nam" : "Nữ", kh.Email, kh.NgaySinh, kh.Sdt, kh.DiaChi, kh.MaChucVu, kh.TrangThai);
             }
         }
         public void FillData()
@@ -61,7 +61,7 @@ namespace PRL
 
         private void dtgView_nhanvien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void btn_them_Click(object sender, EventArgs e)
@@ -130,6 +130,11 @@ namespace PRL
             }
             idWhenClick = dtgView_nhanvien.Rows[rowIndex].Cells[0].Value.ToString();
             FillData();
+        }
+
+        private void btn_loc_Click(object sender, EventArgs e)
+        {
+            LoadGird();
         }
     }
 }
