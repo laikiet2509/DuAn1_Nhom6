@@ -14,7 +14,7 @@ namespace PRL
 {
     public partial class banhang : Form
     {
-        
+        NhanVien _nhanVien { get; set; }
         public BanHangServices serviceBH;
         public HoaDonServices serviceHD;
         public KhachHangServices serviceKH;
@@ -28,13 +28,13 @@ namespace PRL
         public DataTable dataTableSPCT;
         public DataTable dataTableHDCT;
 
-        
+
         private bool daThanhToanDu = false;
         private string maNhanVien;
-        public banhang()
+        public banhang(/*NhanVien nhanVien*/)
         {
             InitializeComponent();
-            
+
             serviceBH = new BanHangServices();
             serviceHD = new HoaDonServices();
             serviceKH = new KhachHangServices();
@@ -47,7 +47,8 @@ namespace PRL
             serviceHDCT = new HoaDonChiTietServices();
             dataTableSPCT = new DataTable();
             dataTableHDCT = new DataTable();
-            
+            //_nhanVien = nhanVien;
+
         }
         private decimal TinhTongTienHoaDon(string maHoaDon)
         {
@@ -169,7 +170,7 @@ namespace PRL
             {
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.MaHoaDon = "HD" + (serviceHD.GetAllHoaDons().Count + 1);
-                //hoaDon.MaNhanVien = _nhanVien.MaNhanVien;
+                hoaDon.MaNhanVien = _nhanVien.MaNhanVien;
                 hoaDon.Sdt = txt_SDT.Text;
                 hoaDon.NgayLapHoaDon = DateTime.Now;
                 hoaDon.TrangThai = 0; // 0: hóa đơn chờ, 1: đã thanh toán, 2: đã hủy (tự quy định)
@@ -354,6 +355,12 @@ namespace PRL
                     txt_tenkhachhang.Text = khachHang.TenKhachHang;
                 }
             }
+        }
+
+        private void dtgView_hoadon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
         }
     }
 }

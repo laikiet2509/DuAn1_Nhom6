@@ -28,21 +28,6 @@ namespace PRL
         }
         public void LoadGird()
         {
-            //dtgView_nhanvien.ColumnCount = 9;
-            //dtgView_nhanvien.Columns[0].Name = "Mã Nhân Viên";
-            //dtgView_nhanvien.Columns[1].Name = "Tên Nhân Viên";
-            //dtgView_nhanvien.Columns[2].Name = "Giới tính";
-            //dtgView_nhanvien.Columns[3].Name = "Ngày Sinh";
-            //dtgView_nhanvien.Columns[4].Name = "Gmail";
-            //dtgView_nhanvien.Columns[5].Name = "Số Điện Thoại";
-            //dtgView_nhanvien.Columns[6].Name = "Địa Chỉ";
-            //dtgView_nhanvien.Columns[7].Name = "Chức Vụ";
-            //dtgView_nhanvien.Columns[8].Name = "Trạng Thái";
-            //dtgView_nhanvien.Rows.Clear();
-            //foreach (var kh in service.GetNhanViens())
-            //{
-            //    dtgView_nhanvien.Rows.Add(kh.MaNhanVien, kh.Ten, kh.GioiTinh == true ? "Nam" : "Nữ", kh.Email, kh.NgaySinh, kh.Sdt, kh.DiaChi, serviceCV.GetChucVuById(kh.MaChucVu).TenChucVu, kh.TrangThai);
-            //}
             dtgView_nhanvien.ColumnCount = 9;
             dtgView_nhanvien.Columns[0].Name = "Mã Nhân Viên";
             dtgView_nhanvien.Columns[1].Name = "Tên Nhân Viên";
@@ -61,23 +46,6 @@ namespace PRL
         }
         public void FillData()
         {
-            //var sp = service.GetNhanViens(txt_search.Text).Find(x => x.MaNhanVien == idWhenClick);
-            //txt_manhanvien.Text = sp.MaNhanVien;
-            //txt_tennhanvien.Text = sp.Ten;
-            //if (sp.GioiTinh == true)
-            //{
-            //    rbtn_nam.Checked = true;
-            //}
-            //else
-            //{
-            //    rbtn_nu.Checked = true;
-            //}
-            //dtp_ngaydangky.Text = sp.NgaySinh.ToString();
-            //txt_sdt.Text = sp.Sdt;
-            //txt_diachi.Text = sp.DiaChi;
-            //txt_gmail.Text = sp.Email;
-            //cmbx_chucvu.SelectedValue = sp.MaChucVu;
-            //cmbx_trangthai.Text = sp.TrangThai;
             var sp = service.GetNhanViens().Find(x => x.MaNhanVien.ToString() == idWhenClick);
             if (sp != null)
             {
@@ -107,25 +75,7 @@ namespace PRL
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            //NhanVien nv = new NhanVien();
-            //nv.MaNhanVien = txt_manhanvien.Text;
-            //nv.Ten = txt_tennhanvien.Text;
-            //if (nv.GioiTinh == true)
-            //{
-            //    rbtn_nam.Checked = true;
-            //}
-            //else
-            //{
-            //    rbtn_nu.Checked = true;
-            //}
-            //nv.NgaySinh = DateTime.Parse(dtp_ngaydangky.Text);
-            //nv.Sdt = txt_sdt.Text;
-            //nv.DiaChi = txt_diachi.Text;
-            //nv.Email = txt_gmail.Text;
-            //MaChucVu = (string)cmbx_chucvu.SelectedValue;
-            //nv.TrangThai = cmbx_trangthai.Text;
-            //MessageBox.Show(service.Them(nv));
-            //LoadGird();
+            
             try
             {
                 NhanVien nv = new NhanVien
@@ -152,25 +102,6 @@ namespace PRL
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
-            //var nv = service.GetNhanViens().Find(x => x.MaNhanVien == idWhenClick);
-            //nv.MaNhanVien = txt_manhanvien.Text;
-            //nv.Ten = txt_tennhanvien.Text;
-            //if (nv.GioiTinh == true)
-            //{
-            //    rbtn_nam.Checked = true;
-            //}
-            //else
-            //{
-            //    rbtn_nu.Checked = true;
-            //}
-            //nv.NgaySinh = DateTime.Parse(dtp_ngaydangky.Text);
-            //nv.Sdt = txt_sdt.Text;
-            //nv.DiaChi = txt_diachi.Text;
-            //nv.Email = txt_gmail.Text;
-            //nv.MaChucVu = cmbx_chucvu.Text;
-            //nv.TrangThai = cmbx_trangthai.Text;
-            //MessageBox.Show(service.Sua(nv));
-            //LoadGird();
             try
             {
                 var nv = service.GetNhanViens().Find(x => x.MaNhanVien == idWhenClick);

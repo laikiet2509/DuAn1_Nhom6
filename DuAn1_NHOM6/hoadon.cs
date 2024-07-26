@@ -15,11 +15,13 @@ namespace PRL
     {
         public HoaDonServices serviceHD;
         public HoaDonChiTietServices serviceHDCT;
+        public NhanVienServices serviceNV;
         public hoadon()
         {
             InitializeComponent();
             serviceHD = new HoaDonServices();
             serviceHDCT = new HoaDonChiTietServices();
+            serviceNV = new NhanVienServices();
             LoadGirdHD();
             LoadGirdHDCT();
         }
@@ -50,12 +52,12 @@ namespace PRL
             dtgView_hoadon.Columns[0].Name = "Mã Hóa Đơn";
             dtgView_hoadon.Columns[1].Name = "Ngày Lập Hóa Đơn";
             dtgView_hoadon.Columns[2].Name = "Tổng Tiền";
-            dtgView_hoadon.Columns[3].Name = "Mã Nhân Viên";
+            dtgView_hoadon.Columns[3].Name = "Tên Nhân Viên";
             dtgView_hoadon.Columns[4].Name = "Trạng Thái";
             dtgView_hoadon.Rows.Clear();
             foreach (var hd in serviceHD.GetAllHoaDons())
             {
-                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.TongTien, hd.MaNhanVien, hd.TrangThai);
+                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.TongTien, serviceNV.GetNhanVienById(hd.MaNhanVien).Ten, hd.TrangThai);
             }
         }
         public void LoadGirdHDCT()

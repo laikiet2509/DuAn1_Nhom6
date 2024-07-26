@@ -65,48 +65,38 @@ namespace PRL
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            KhachHang kh = new KhachHang();
-            kh.TenKhachHang = txt_tenkhachhang.Text;
-            if (kh.GioiTinh == true)
-            {
-                rbtn_nam.Checked = true;
-            }
-            else
-            {
-                rbtn_nu.Checked = true;
-            }
-            kh.NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text);
-            kh.Sdt = txt_sdt.Text;
-            kh.DiaChi = txt_diachi.Text;
-            kh.GhiChu = rtxt_ghichu.Text;
-            MessageBox.Show(service.Them(kh));
-            LoadGird();
+            
+                KhachHang kh = new KhachHang
+                {
+                    TenKhachHang = txt_tenkhachhang.Text,
+                    GioiTinh = rbtn_nam.Checked,
+                    NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text),
+                    Sdt = txt_sdt.Text,
+                    DiaChi = txt_diachi.Text,
+                    GhiChu = rtxt_ghichu.Text,
+            };
+                MessageBox.Show(service.Them(kh));
+                LoadGird();
+            
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
-        {
-            var kh = service.GetKhachHangs(txt_search.Text).Find(x => x.TenKhachHang == idWhenClick);
-            kh.TenKhachHang = txt_tenkhachhang.Text;
-            if (kh.GioiTinh == true)
-            {
-                rbtn_nam.Checked = true;
-            }
-            else
-            {
-                rbtn_nu.Checked = true;
-            }
-            kh.NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text);
-            kh.Sdt = txt_sdt.Text;
-            kh.DiaChi = txt_diachi.Text;
-            kh.GhiChu = rtxt_ghichu.Text;
-            MessageBox.Show(service.Sua(kh));
-            LoadGird();
+        { 
+                var kh = service.GetKhachHangs(txt_search.Text).Find(x => x.TenKhachHang == idWhenClick);
+                if (kh != null)
+                {
+                    kh.TenKhachHang = txt_tenkhachhang.Text;
+                    kh.GioiTinh = rbtn_nam.Checked;
+                    kh.NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text);
+                    kh.Sdt = txt_sdt.Text;
+                    kh.DiaChi = txt_diachi.Text;
+                    kh.GhiChu = rtxt_ghichu.Text;
+                    MessageBox.Show(service.Sua(kh));
+                    LoadGird();
+                }
         }
-
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(service.Xoa(idWhenClick));
-            LoadGird();
         }
 
         private void btn_lammoi_Click(object sender, EventArgs e)
@@ -115,7 +105,8 @@ namespace PRL
             txt_sdt.Clear();
             txt_diachi.Clear();
             rtxt_ghichu.Clear();
-            rbtn_nam.Checked = true;
+            rbtn_nam.Checked = false;
+            rbtn_nu.Checked = false;
         }
 
         private void cmbx_gioitinh_SelectedIndexChanged(object sender, EventArgs e)

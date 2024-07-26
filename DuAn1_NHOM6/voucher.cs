@@ -14,6 +14,8 @@ namespace PRL
 {
     public partial class voucher : Form
     {
+        public KhuyenMaiServices service;
+        public string idWhenClick;
         public voucher()
         {
             InitializeComponent();
@@ -21,8 +23,7 @@ namespace PRL
             LoadGrid();
         }
 
-        public KhuyenMaiServices service;
-        public string idWhenClick;
+        
 
         public void LoadGrid()
         {
@@ -73,6 +74,7 @@ namespace PRL
             km.MoTaKhuyenMai = tbcMota.Text;
             km.NgayBatDau = DateTime.Parse(dtpkNgayapdung.Text);
             km.NgayKetThuc = DateTime.Parse(dtpkNKT.Text);
+            MessageBox.Show(service.ThemKM(km));
             LoadGrid();
         }
 
@@ -84,13 +86,15 @@ namespace PRL
             km.MoTaKhuyenMai = tbcMota.Text;
             km.NgayBatDau = DateTime.Parse(dtpkNgayapdung.Text);
             km.NgayKetThuc = DateTime.Parse(dtpkNKT.Text);
+            MessageBox.Show(service.SuaKM(km));
             LoadGrid();
         }
 
         private void btn_lammoi_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(service.XoaKM(idWhenClick));
-            LoadGrid();
+            tbxMavc.Clear();
+            tbxDieuKien.Clear();
+            tbcMota.Clear();
         }
     }
 }

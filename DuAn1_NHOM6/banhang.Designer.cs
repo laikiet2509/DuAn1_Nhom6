@@ -318,6 +318,7 @@
             dtgView_hoadon.Size = new Size(1053, 347);
             dtgView_hoadon.TabIndex = 0;
             dtgView_hoadon.CellContentClick += dtgView_hoadon_CellContentClick;
+            dtgView_hoadon.CellDoubleClick += dtgView_hoadon_CellDoubleClick;
             // 
             // groupBox4
             // 
