@@ -14,6 +14,7 @@ namespace PRL
 {
     public partial class banhang : Form
     {
+        
         public BanHangServices serviceBH;
         public HoaDonServices serviceHD;
         public KhachHangServices serviceKH;
@@ -27,11 +28,13 @@ namespace PRL
         public DataTable dataTableSPCT;
         public DataTable dataTableHDCT;
 
-        public string idWhenClick;
+        
         private bool daThanhToanDu = false;
+        private string maNhanVien;
         public banhang()
         {
             InitializeComponent();
+            
             serviceBH = new BanHangServices();
             serviceHD = new HoaDonServices();
             serviceKH = new KhachHangServices();
@@ -44,6 +47,7 @@ namespace PRL
             serviceHDCT = new HoaDonChiTietServices();
             dataTableSPCT = new DataTable();
             dataTableHDCT = new DataTable();
+            
         }
         private decimal TinhTongTienHoaDon(string maHoaDon)
         {
@@ -152,12 +156,6 @@ namespace PRL
 
         private void dtgView_danhsachsanpham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rowIndex = e.RowIndex;
-            if (rowIndex < 0 || rowIndex >= serviceSP.GetSanPhams().Count)
-            {
-                return;
-            }
-            idWhenClick = dtgView_danhsachsanpham.Rows[rowIndex].Cells[0].Value.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)

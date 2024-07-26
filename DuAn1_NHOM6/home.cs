@@ -9,14 +9,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Xml.Linq;
+using BUS.Services;
 
 namespace DuAn1_NHOM6
 {
     public partial class home : Form
     {
-        public home()
+        private string userRole;
+        private string userName;
+        private string userId; // Track the user ID to fetch updated info
+        private readonly TaiKhoanServices taiKhoanServices;
+        private readonly NhanVienServices nhanVienServices;
+
+        public home(string role, string name, string id)
         {
             InitializeComponent();
+            userRole = role;
+            userName = name;
+            userId = id;
+            taiKhoanServices = new TaiKhoanServices();
+            nhanVienServices = new NhanVienServices();
+            LoadUserInfo();
+        }
+        private void LoadUserInfo()
+        {
+            lblquyen.Text = "Chức Vụ: " + userRole;
+            lblten.Text = "Tên: " + userName;
         }
         private Form currentFormChild;
         private void OpenChildForm(Form childForm)
@@ -72,17 +92,21 @@ namespace DuAn1_NHOM6
         {
             OpenChildForm(new voucher());
             label1.Text = btn_khuyenmai.Text;
+            
         }
 
         private void btn_thongke_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btn_nhanvien_Click(object sender, EventArgs e)
         {
             OpenChildForm(new nhanvien());
             label1.Text = btn_nhanvien.Text;
+            
+
         }
+        
     }
 }

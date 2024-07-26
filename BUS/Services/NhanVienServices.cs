@@ -46,5 +46,14 @@ namespace BUS.Services
             }
             return "Xóa thất bại";
         }
+        public NhanVien GetNhanVienById(string id)
+        {
+            return repos.GetNhanVienById(id);
+        }
+
+        public bool UpdateNhanVien(NhanVien nhanVien)
+        {
+            return repos.UpdateNhanVien(nhanVien);
+        }
     }
 }

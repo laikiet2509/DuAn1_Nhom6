@@ -16,13 +16,11 @@ namespace BUS.Services
             repos = new ChucVuRepository();
         }
         List<ChucVu> lstCV = new List<ChucVu>();
-        public List<ChucVu> GetChucVus(string search)
+        public List<ChucVu> GetChucVus()
         {
-            if (search == null || search == string.Empty)
-            {
                 return repos.GetAllCV();
-            }
-            return repos.GetAllCV().FindAll(x => x.MaChucVu.ToString().Contains(search) || x.TenChucVu.Contains(search));
+            
+            
         }
         public string ThemCV(ChucVu cv)
         {

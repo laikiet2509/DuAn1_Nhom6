@@ -19,34 +19,36 @@ namespace BUS.Repository
         }
         public List<TaiKhoan> GetAll()
         {
-            return context.TaiKhoans.ToList();
+            return context.TaiKhoans
+                .Include(tk => tk.MaNhanVienNavigation)
+                .ThenInclude(nv => nv.MaChucVuNavigation)
+                .ToList();
         }
 
-        //public bool ValidateUser(string username, string password)
-        //{
-        //    return context.TaiKhoans.Any(u => u.TaiKhoan1 == username && u.MatKhau == password);
-        //}
-
-        //public bool RegisterUser(string username, string password)
-        //{
-        //    if (context.TaiKhoans.Any(u => u.TaiKhoan1 == username))
-        //    {
-        //        return false; // Người dùng đã tồn tại
-        //    }
-
-        //    var newUser = new TaiKhoan
-        //    {
-        //        TaiKhoan1 = username,
-        //        MatKhau = password
-        //    };
-
-        //    context.TaiKhoans.Add(newUser);
-        //    context.SaveChanges();
-        //    return true;
-        //}
         public bool ValidateUser(string username, string password)
         {
             return context.TaiKhoans.Any(u => u.TaiKhoan1 == username && u.MatKhau == password);
+        }
+
+        public string GetUserRole(string username)
+        {
+            var user = context.TaiKhoans.Include(tk => tk.MaNhanVienNavigation)
+                                        .ThenInclude(nv => nv.MaChucVuNavigation)
+                                        .FirstOrDefault(u => u.TaiKhoan1 == username);
+
+            return user?.MaNhanVienNavigation?.MaChucVuNavigation?.TenChucVu;
+        }
+
+        public bool RegisterUser(TaiKhoan newUser)
+        {
+            if (context.TaiKhoans.Any(u => u.TaiKhoan1 == newUser.TaiKhoan1))
+            {
+                return false; // User already exists
+            }
+
+            context.TaiKhoans.Add(newUser);
+            context.SaveChanges();
+            return true;
         }
     }
 }

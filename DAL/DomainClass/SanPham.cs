@@ -20,7 +20,7 @@ namespace DAL.DomainClass
         [StringLength(255)]
         public string? TenSanPham { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
-        public decimal/*?*/ GiaBan { get; set; }
+        public decimal GiaBan { get; set; }
         [Column("MaMauSP")]
         [StringLength(10)]
         public string? MaMauSp { get; set; }

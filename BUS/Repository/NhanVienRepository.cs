@@ -51,5 +51,26 @@ namespace BUS.Repository
             context.SaveChanges();
             return true;
         }
+        public NhanVien GetNhanVienById(string id)
+        {
+            return context.NhanViens.FirstOrDefault(nv => nv.MaNhanVien == id);
+        }
+
+        public bool UpdateNhanVien(NhanVien nhanVien)
+        {
+            var existingNhanVien = context.NhanViens.FirstOrDefault(nv => nv.MaNhanVien == nhanVien.MaNhanVien);
+            if (existingNhanVien == null) return false;
+
+            existingNhanVien.Ten = nhanVien.Ten;
+            existingNhanVien.GioiTinh = nhanVien.GioiTinh;
+            existingNhanVien.NgaySinh = nhanVien.NgaySinh;
+            existingNhanVien.Sdt = nhanVien.Sdt;
+            existingNhanVien.Email = nhanVien.Email;
+            existingNhanVien.DiaChi = nhanVien.DiaChi;
+            existingNhanVien.MaChucVu = nhanVien.MaChucVu;
+
+            context.SaveChanges();
+            return true;
+        }
     }
 }

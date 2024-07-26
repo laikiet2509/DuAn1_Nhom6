@@ -5,7 +5,7 @@ namespace DuAn1_NHOM6
 {
     public partial class dangnhap : Form
     {
-        public TaiKhoanServices service;
+        private readonly TaiKhoanServices service;
         public string idWhenClick;
         public dangnhap()
         {
@@ -18,7 +18,23 @@ namespace DuAn1_NHOM6
 
         }
         private void btn_dangnhap_Click(object sender, EventArgs e)
-        {           
+        {
+            //string username = txt_taikhoan.Text;
+            //string password = txt_matkhau.Text;
+
+            //bool isValid = service.Login(username, password);
+
+            //if (isValid)
+            //{
+            //    MessageBox.Show("Đăng nhập thành công!");
+            //    // Điều hướng đến form chính
+            //    home formMoi = new home();
+            //    formMoi.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!");
+            //}
             string username = txt_taikhoan.Text;
             string password = txt_matkhau.Text;
 
@@ -26,10 +42,14 @@ namespace DuAn1_NHOM6
 
             if (isValid)
             {
+                string role = service.GetUserRole(username);
+                string fullName = service.GetUserFullName(username);
+                string userId = service.GetUserId(username); // Retrieve user ID
+
                 MessageBox.Show("Đăng nhập thành công!");
-                // Điều hướng đến form chính
-                home formMoi = new home();
-                formMoi.ShowDialog();
+
+                home formHome = new home(role, fullName, userId);
+                formHome.ShowDialog();
             }
             else
             {

@@ -24,27 +24,32 @@ namespace BUS.Services
             }
             return repos.GetAll().FindAll(x => x.TaiKhoan1.ToString().Contains(search) || x.Idtk.Contains(search));
         }
-        //public bool Dangki(string ten, string sdt, string email, string diachi, string username, string password)
-        //{
-        //    // Thêm các logic nghiệp vụ nếu cần
-        //    return repos.Dangki(ten, sdt, email, diachi, username, password);
-        //}
-
-        //public bool Login(string username, string password)
-        //{
-        //    // Thêm các logic nghiệp vụ nếu cần
-        //    return repos.ValidateUser(username, password);
-        //}
-
-        //public bool Register(string username, string password)
-        //{
-        //    // Thêm các logic nghiệp vụ nếu cần
-        //    return repos.RegisterUser(username, password);
-        //}
         public bool Login(string username, string password)
         {
             // Thêm các logic nghiệp vụ nếu cần
             return repos.ValidateUser(username, password);
+        }
+
+        public string GetUserRole(string username)
+        {
+            return repos.GetUserRole(username);
+        }
+
+        public string GetUserFullName(string username)
+        {
+            var user = repos.GetAll().FirstOrDefault(u => u.TaiKhoan1 == username);
+            return user?.MaNhanVienNavigation?.Ten;
+        }
+
+        public string GetUserId(string username)
+        {
+            var user = repos.GetAll().FirstOrDefault(u => u.TaiKhoan1 == username);
+            return user?.MaNhanVien;
+        }
+
+        public bool Register(TaiKhoan newUser)
+        {
+            return repos.RegisterUser(newUser);
         }
     }
 }

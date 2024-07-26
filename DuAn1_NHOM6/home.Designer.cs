@@ -40,6 +40,8 @@
             btn_banhang = new Button();
             pictureBox1 = new PictureBox();
             panel_top = new Panel();
+            lblten = new Label();
+            lblquyen = new Label();
             label1 = new Label();
             panel_body = new Panel();
             pictureBox2 = new PictureBox();
@@ -213,7 +215,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = SystemColors.MenuHighlight;
+            pictureBox1.BackColor = Color.FromArgb(255, 255, 192);
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -227,13 +229,37 @@
             // 
             // panel_top
             // 
-            panel_top.BackColor = Color.Lime;
+            panel_top.BackColor = Color.Silver;
+            panel_top.Controls.Add(lblten);
+            panel_top.Controls.Add(lblquyen);
             panel_top.Controls.Add(label1);
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(213, 0);
             panel_top.Name = "panel_top";
-            panel_top.Size = new Size(1237, 89);
+            panel_top.Size = new Size(1237, 102);
             panel_top.TabIndex = 1;
+            // 
+            // lblten
+            // 
+            lblten.AutoSize = true;
+            lblten.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblten.ForeColor = SystemColors.Control;
+            lblten.Location = new Point(710, 38);
+            lblten.Name = "lblten";
+            lblten.Size = new Size(47, 25);
+            lblten.TabIndex = 13;
+            lblten.Text = "Tên";
+            // 
+            // lblquyen
+            // 
+            lblquyen.AutoSize = true;
+            lblquyen.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblquyen.ForeColor = SystemColors.Control;
+            lblquyen.Location = new Point(404, 38);
+            lblquyen.Name = "lblquyen";
+            lblquyen.Size = new Size(71, 25);
+            lblquyen.TabIndex = 12;
+            lblquyen.Text = "Quyền";
             // 
             // label1
             // 
@@ -253,9 +279,9 @@
             panel_body.BackgroundImageLayout = ImageLayout.Stretch;
             panel_body.Controls.Add(pictureBox2);
             panel_body.Dock = DockStyle.Fill;
-            panel_body.Location = new Point(213, 89);
+            panel_body.Location = new Point(213, 102);
             panel_body.Name = "panel_body";
-            panel_body.Size = new Size(1237, 720);
+            panel_body.Size = new Size(1237, 707);
             panel_body.TabIndex = 2;
             // 
             // pictureBox2
@@ -266,7 +292,7 @@
             pictureBox2.Image = PRL.Properties.Resources.z5660617933883_a7cda1dc270fe23f65dc73ec3cbb81c1;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1237, 720);
+            pictureBox2.Size = new Size(1237, 707);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
@@ -280,7 +306,7 @@
             Controls.Add(panel_top);
             Controls.Add(panel_left);
             Name = "home";
-            Text = "Form2";
+            Text = "home";
             panel_left.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel_top.ResumeLayout(false);
@@ -307,5 +333,7 @@
         private Button btn_thietlap;
         private Panel panel_body;
         private PictureBox pictureBox2;
+        private Label lblten;
+        private Label lblquyen;
     }
 }
