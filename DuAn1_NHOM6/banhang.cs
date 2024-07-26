@@ -27,7 +27,7 @@ namespace PRL
         public HoaDonChiTietServices serviceHDCT;
         public DataTable dataTableSPCT;
         public DataTable dataTableHDCT;
-
+        public ThuongHieuServices serviceTH; // Thêm dịch vụ cho thương hiệu
 
         private bool daThanhToanDu = false;
         private string maNhanVien;
@@ -45,6 +45,7 @@ namespace PRL
             serviceCV = new ChucVuServices();
             serviceSP = new SanPhamServices();
             serviceHDCT = new HoaDonChiTietServices();
+            serviceTH = new ThuongHieuServices(); // Khởi tạo dịch vụ cho thương hiệu
             dataTableSPCT = new DataTable();
             dataTableHDCT = new DataTable();
             //_nhanVien = nhanVien;
@@ -81,6 +82,8 @@ namespace PRL
             dataTableSPCT.Columns.Add("KichCo", typeof(string));
             dataTableSPCT.Columns.Add("DonGia", typeof(decimal));
             dataTableSPCT.Columns.Add("SoLuong", typeof(int));
+            dataTableSPCT.Columns.Add("ThuongHieu", typeof(string)); // Thêm cột thương hiệu
+            dataTableSPCT.Columns.Add("ChatLieu", typeof(string)); // Thêm cột chất liệu
 
             LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
             LoadData_cbbHoaDonCho();
@@ -115,6 +118,7 @@ namespace PRL
                 lblTongTien.Text = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString()).ToString("#,##0.00 'VND'");
             }
         }
+        
         private void LoadData_cbbHoaDonCho()
         {
             cmbx_hoadoncho.DataSource = null;
@@ -145,6 +149,8 @@ namespace PRL
                 dr["KichCo"] = serviceKC.GetKichCoById(spct.MaKichCoSp).KichCo1;
                 dr["DonGia"] = spct.GiaBan;
                 dr["SoLuong"] = spct.SoLuongTon;
+                dr["ThuongHieu"] = serviceTH.GetThuongHieuById(spct.MaThuongHieu).TenThuongHieu; // Lấy dữ liệu thương hiệu
+                dr["ChatLieu"] = spct.ChatLieu; // Lấy dữ liệu chất liệu
                 dataTableSPCT.Rows.Add(dr);
             }
             dtgView_danhsachsanpham.DataSource = dataTableSPCT;
@@ -168,9 +174,10 @@ namespace PRL
             }
             else
             {
+                
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.MaHoaDon = "HD" + (serviceHD.GetAllHoaDons().Count + 1);
-                hoaDon.MaNhanVien = _nhanVien.MaNhanVien;
+                hoaDon.MaNhanVien = NhanVienDangNhap.MaNhanVien;
                 hoaDon.Sdt = txt_SDT.Text;
                 hoaDon.NgayLapHoaDon = DateTime.Now;
                 hoaDon.TrangThai = 0; // 0: hóa đơn chờ, 1: đã thanh toán, 2: đã hủy (tự quy định)
@@ -306,12 +313,15 @@ namespace PRL
 
             spctDangTao.SoLuongTon -= formSoLuongMua.SoLuongMua;
             serviceSP.UpdateSoLuong(spctDangTao);
-
+            // update tổng tiền cho hóa đơn chờ
+            serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString()));
+            
             // load lại dữ liệu trên 2 data grid view
             txt_search.Text = string.Empty;
             LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
             LoadData_dgvHoaDonChiTiet(serviceHDCT.GetAllHoaDonCTByMaHoaDon(cmbx_hoadoncho.SelectedValue.ToString()));
         }
+        
 
         private void txt_search_TextChanged(object sender, EventArgs e)
         {
@@ -359,7 +369,51 @@ namespace PRL
 
         private void dtgView_hoadon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (e.RowIndex >= 0)
+            {
+                var rowHienTai = dtgView_danhsachsanpham.Rows[e.RowIndex];
+                var maSPCTDangTao = rowHienTai.Cells[0].Value.ToString();
+                var spctDangTao = serviceSP.GetAllSanPhamChiTietById(maSPCTDangTao);
+
+                var hoaDonDangChon = cmbx_hoadoncho.SelectedItem as HoaDon;
+
+                NhapSoLuongSanPham formSoLuongMua = new NhapSoLuongSanPham();
+                formSoLuongMua.ShowDialog();
+
+                var hoaDonChiTietTonTai = serviceHDCT.GetHDCTById(hoaDonDangChon.MaHoaDon, maSPCTDangTao);
+
+                // chưa tồn tại sản phẩm chi tiết này trong hóa đơn chi tiết -> thêm mới
+                if (hoaDonChiTietTonTai == null)
+                {
+                    ChiTietHoaDon hoaDonChiTietDangTao = new ChiTietHoaDon();
+                    hoaDonChiTietDangTao.MaSp = maSPCTDangTao;
+                    hoaDonChiTietDangTao.MaHd = hoaDonDangChon.MaHoaDon;
+                    hoaDonChiTietDangTao.GiaBan = spctDangTao.GiaBan;
+                    hoaDonChiTietDangTao.SoLuong = formSoLuongMua.SoLuongMua;
+
+                    serviceHDCT.ThemMoiHDCT(hoaDonChiTietDangTao);
+                }
+                // nếu đã tồn tại sản phẩm chi tiết này trong hóa đơn chi tiết -> cập nhật số lượng
+                else
+                {
+                    ChiTietHoaDon hoaDonChiTietDangUpdate = new ChiTietHoaDon();
+                    hoaDonChiTietDangUpdate.MaSp = maSPCTDangTao;
+                    hoaDonChiTietDangUpdate.MaHd = hoaDonDangChon.MaHoaDon;
+                    hoaDonChiTietDangUpdate.GiaBan = spctDangTao.GiaBan;
+                    hoaDonChiTietDangUpdate.SoLuong = hoaDonChiTietTonTai.SoLuong + formSoLuongMua.SoLuongMua;
+                    hoaDonChiTietDangUpdate.SoLuong = hoaDonChiTietTonTai.SoLuong - formSoLuongMua.SoLuongMua;
+
+                    serviceHDCT.UpdateSoLuong(hoaDonChiTietDangUpdate);
+                }
+                spctDangTao.SoLuongTon += formSoLuongMua.SoLuongMua;
+                spctDangTao.SoLuongTon -= formSoLuongMua.SoLuongMua;
+                serviceSP.UpdateSoLuong(spctDangTao);
+
+                // load lại dữ liệu trên 2 data grid view
+                txt_search.Text = string.Empty;
+                LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
+                LoadData_dgvHoaDonChiTiet(serviceHDCT.GetAllHoaDonCTByMaHoaDon(cmbx_hoadoncho.SelectedValue.ToString()));
+            }
 
         }
     }

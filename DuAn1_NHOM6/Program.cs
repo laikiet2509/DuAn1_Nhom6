@@ -12,6 +12,8 @@ namespace DuAn1_NHOM6
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new dangnhap());
+
+            
         }
     }
 }

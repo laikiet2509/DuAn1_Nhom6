@@ -1,4 +1,5 @@
 ﻿using BUS.Services;
+using DAL.DomainClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,10 +56,29 @@ namespace PRL
             dtgView_hoadon.Columns[3].Name = "Tên Nhân Viên";
             dtgView_hoadon.Columns[4].Name = "Trạng Thái";
             dtgView_hoadon.Rows.Clear();
+            var lst = serviceNV.GetNhanViens().ToList();
             foreach (var hd in serviceHD.GetAllHoaDons())
             {
-                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.TongTien, serviceNV.GetNhanVienById(hd.MaNhanVien).Ten, hd.TrangThai);
+                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.TongTien,lst.First(x=>x.MaNhanVien.ToLower()==hd.MaNhanVien!.ToLower()).Ten, ConvertTrangThai(hd.TrangThai));
             }
+        }
+        // tạo 1 hàm convert trạng thái dùng switch case 
+        public string ConvertTrangThai(int? trangThai)
+        {
+            string status = string.Empty;
+            switch (trangThai)
+            {
+                case 1:
+                    status =  "Thành công";
+                    break;
+                case 2:
+                    status = "Thất bại";
+                    break;
+                default:
+                    break;
+            }
+            return status;
+
         }
         public void LoadGirdHDCT()
         {

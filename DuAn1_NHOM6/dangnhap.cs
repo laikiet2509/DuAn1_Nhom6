@@ -1,5 +1,6 @@
 ﻿using BUS.Services;
 using DAL.DomainClass;
+using PRL;
 
 namespace DuAn1_NHOM6
 {
@@ -46,8 +47,11 @@ namespace DuAn1_NHOM6
                 string fullName = service.GetUserFullName(username);
                 string userId = service.GetUserId(username); // Retrieve user ID
 
-                MessageBox.Show("Đăng nhập thành công!");
+                // gọi gàm get MaNhanVien by id của nhân viên            
+                 NhanVienDangNhap.MaNhanVien = "NV01";   //như kiểu hằng số  
 
+                MessageBox.Show("Đăng nhập thành công!");
+                
                 home formHome = new home(role, fullName, userId);
                 formHome.ShowDialog();
             }

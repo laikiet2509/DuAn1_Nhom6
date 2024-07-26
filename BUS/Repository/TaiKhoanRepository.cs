@@ -50,5 +50,6 @@ namespace BUS.Repository
             context.SaveChanges();
             return true;
         }
+        // viết 1 service get mã nhân by id của nhân viên 
     }
 }
