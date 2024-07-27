@@ -6,12 +6,12 @@ namespace DuAn1_NHOM6
 {
     public partial class dangnhap : Form
     {
-        private readonly TaiKhoanServices service;
+        private readonly NhanVienServices service;
         public string idWhenClick;
         public dangnhap()
         {
             InitializeComponent();
-            service = new TaiKhoanServices();
+            service = new NhanVienServices();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -20,44 +20,22 @@ namespace DuAn1_NHOM6
         }
         private void btn_dangnhap_Click(object sender, EventArgs e)
         {
-            //string username = txt_taikhoan.Text;
-            //string password = txt_matkhau.Text;
+            var username = txt_taikhoan.Text;
+            var password = txt_matkhau.Text;
 
-            //bool isValid = service.Login(username, password);
+            var nhanVien = service.DangNhap(username, password);
 
-            //if (isValid)
-            //{
-            //    MessageBox.Show("Đăng nhập thành công!");
-            //    // Điều hướng đến form chính
-            //    home formMoi = new home();
-            //    formMoi.ShowDialog();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!");
-            //}
-            string username = txt_taikhoan.Text;
-            string password = txt_matkhau.Text;
-
-            bool isValid = service.Login(username, password);
-
-            if (isValid)
+            if (nhanVien != null)
             {
-                string role = service.GetUserRole(username);
-                string fullName = service.GetUserFullName(username);
-                string userId = service.GetUserId(username); // Retrieve user ID
-
-                // gọi gàm get MaNhanVien by id của nhân viên            
-                 NhanVienDangNhap.MaNhanVien = "NV01";   //như kiểu hằng số  
-
-                MessageBox.Show("Đăng nhập thành công!");
-                
-                home formHome = new home(role, fullName, userId);
-                formHome.ShowDialog();
+                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                home home = new home(nhanVien);
+                home.FormClosed += home_FormClosed;
+                home.Show();
             }
             else
             {
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!");
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }   
         private void btn_thoat_Click(object sender, EventArgs e)
@@ -68,6 +46,10 @@ namespace DuAn1_NHOM6
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+        private void home_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

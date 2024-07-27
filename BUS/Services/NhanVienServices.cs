@@ -55,5 +55,9 @@ namespace BUS.Services
         {
             return repos.UpdateNhanVien(nhanVien);
         }
+        public NhanVien? DangNhap(string username, string password)
+        {
+            return repos.DangNhap(username, password);
+        }
     }
 }

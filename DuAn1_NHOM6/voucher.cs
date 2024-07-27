@@ -36,7 +36,7 @@ namespace PRL
             dgvDataVC.Rows.Clear();
             foreach (var sp in service.GetKhuyenMais(txt_search.Text))
             {
-                dgvDataVC.Rows.Add(sp.MaKhuyenMai, sp.DieuKienApDung, sp.NgayBatDau, sp.NgayKetThuc, sp.MoTaKhuyenMai);
+                dgvDataVC.Rows.Add(sp.MaKhuyenMai, sp.GiamGia, sp.NgayBatDau, sp.NgayKetThuc, sp.MoTaKhuyenMai);
             }
         }
 
@@ -44,7 +44,7 @@ namespace PRL
         {
             var sp = service.GetKhuyenMais(txt_search.Text).Find(x => x.MaKhuyenMai.ToString() == idWhenClick);
             tbxMavc.Text = sp.MaKhuyenMai;
-            tbxDieuKien.Text = sp.DieuKienApDung;
+            tbxDieuKien.Text = sp.GiamGia.ToString();
             tbcMota.Text = sp.MoTaKhuyenMai;
             dtpkNgayapdung.Text = sp.NgayBatDau.ToString();
             dtpkNKT.Text = sp.NgayKetThuc.ToString();
@@ -70,7 +70,7 @@ namespace PRL
         {
             KhuyenMai km = new KhuyenMai();
             km.MaKhuyenMai = tbxMavc.Text;
-            km.DieuKienApDung = tbxDieuKien.Text;
+            km.GiamGia = int.Parse(tbxDieuKien.Text);
             km.MoTaKhuyenMai = tbcMota.Text;
             km.NgayBatDau = DateTime.Parse(dtpkNgayapdung.Text);
             km.NgayKetThuc = DateTime.Parse(dtpkNKT.Text);
@@ -82,7 +82,7 @@ namespace PRL
         {
             var km = service.GetKhuyenMais(txt_search.Text).Find(x => x.MaKhuyenMai.ToString() == idWhenClick);
             km.MaKhuyenMai = tbxMavc.Text;
-            km.DieuKienApDung = tbxDieuKien.Text;
+            km.GiamGia = int.Parse(tbxDieuKien.Text);
             km.MoTaKhuyenMai = tbcMota.Text;
             km.NgayBatDau = DateTime.Parse(dtpkNgayapdung.Text);
             km.NgayKetThuc = DateTime.Parse(dtpkNKT.Text);

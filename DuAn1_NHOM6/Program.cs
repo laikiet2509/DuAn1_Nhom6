@@ -13,7 +13,7 @@ namespace DuAn1_NHOM6
             ApplicationConfiguration.Initialize();
             Application.Run(new dangnhap());
 
-            
+
         }
     }
 }

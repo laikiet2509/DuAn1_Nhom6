@@ -12,7 +12,6 @@ namespace DAL.DomainClass
         public NhanVien()
         {
             HoaDons = new HashSet<HoaDon>();
-            TaiKhoans = new HashSet<TaiKhoan>();
         }
 
         [Key]
@@ -34,13 +33,15 @@ namespace DAL.DomainClass
         public string? TrangThai { get; set; }
         [StringLength(10)]
         public string? MaChucVu { get; set; }
+        [StringLength(50)]
+        public string? TaiKhoan { get; set; }
+        [StringLength(50)]
+        public string? MatKhau { get; set; }
 
         [ForeignKey(nameof(MaChucVu))]
         [InverseProperty(nameof(ChucVu.NhanViens))]
         public virtual ChucVu? MaChucVuNavigation { get; set; }
         [InverseProperty(nameof(HoaDon.MaNhanVienNavigation))]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
-        [InverseProperty(nameof(TaiKhoan.MaNhanVienNavigation))]
-        public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
     }
 }

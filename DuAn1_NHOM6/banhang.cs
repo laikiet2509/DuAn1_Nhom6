@@ -14,7 +14,7 @@ namespace PRL
 {
     public partial class banhang : Form
     {
-        NhanVien _nhanVien { get; set; }
+        private NhanVien _nhanVien;
         public BanHangServices serviceBH;
         public HoaDonServices serviceHD;
         public KhachHangServices serviceKH;
@@ -31,7 +31,7 @@ namespace PRL
 
         private bool daThanhToanDu = false;
         private string maNhanVien;
-        public banhang(/*NhanVien nhanVien*/)
+        public banhang(NhanVien nhanVien)
         {
             InitializeComponent();
 
@@ -48,7 +48,7 @@ namespace PRL
             serviceTH = new ThuongHieuServices(); // Khởi tạo dịch vụ cho thương hiệu
             dataTableSPCT = new DataTable();
             dataTableHDCT = new DataTable();
-            //_nhanVien = nhanVien;
+            _nhanVien = nhanVien;
 
         }
         private decimal TinhTongTienHoaDon(string maHoaDon)
@@ -177,7 +177,8 @@ namespace PRL
                 
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.MaHoaDon = "HD" + (serviceHD.GetAllHoaDons().Count + 1);
-                hoaDon.MaNhanVien = NhanVienDangNhap.MaNhanVien;
+                //hoaDon.MaNhanVien = NhanVienDangNhap.MaNhanVien;
+                hoaDon.MaNhanVien = _nhanVien.MaNhanVien;
                 hoaDon.Sdt = txt_SDT.Text;
                 hoaDon.NgayLapHoaDon = DateTime.Now;
                 hoaDon.TrangThai = 0; // 0: hóa đơn chờ, 1: đã thanh toán, 2: đã hủy (tự quy định)

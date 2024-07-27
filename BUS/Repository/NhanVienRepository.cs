@@ -72,5 +72,10 @@ namespace BUS.Repository
             context.SaveChanges();
             return true;
         }
+        public NhanVien? DangNhap(string username, string password)
+        {
+            return context.NhanViens.FirstOrDefault(nv => nv.TaiKhoan == username
+            && nv.MatKhau == password);
+        }
     }
 }

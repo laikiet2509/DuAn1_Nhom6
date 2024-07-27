@@ -17,8 +17,8 @@ namespace DAL.DomainClass
         [Key]
         [StringLength(10)]
         public string MaKhuyenMai { get; set; } = null!;
-        [StringLength(255)]
-        public string? DieuKienApDung { get; set; }
+        [Column(TypeName = "decimal(5, 2)")]
+        public decimal GiamGia { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? NgayBatDau { get; set; }
         [Column(TypeName = "datetime")]

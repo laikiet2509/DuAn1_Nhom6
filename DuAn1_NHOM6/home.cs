@@ -17,26 +17,21 @@ namespace DuAn1_NHOM6
 {
     public partial class home : Form
     {
-        private string userRole;
-        private string userName;
-        private string userId; // Track the user ID to fetch updated info
-        private readonly TaiKhoanServices taiKhoanServices;
+        NhanVien _nhanVien { get; set; }
         private readonly NhanVienServices nhanVienServices;
+        ChucVuServices chucVuServices = new ChucVuServices();
 
-        public home(string role, string name, string id)
+        public home(NhanVien nhanVien)
         {
+            _nhanVien = nhanVien;
             InitializeComponent();
-            userRole = role;
-            userName = name;
-            userId = id;
-            taiKhoanServices = new TaiKhoanServices();
             nhanVienServices = new NhanVienServices();
             LoadUserInfo();
         }
         private void LoadUserInfo()
         {
-            lblquyen.Text = "Chức Vụ: " + userRole;
-            lblten.Text = "Tên: " + userName;
+            lblten.Text = "Chức Vụ: " +  _nhanVien.Ten;
+            lblquyen.Text = "Tên: " + chucVuServices.GetChucVuById(_nhanVien.MaChucVu).TenChucVu;
         }
         private Form currentFormChild;
         private void OpenChildForm(Form childForm)
@@ -66,10 +61,12 @@ namespace DuAn1_NHOM6
             OpenChildForm(new khachhang());
             label1.Text = btn_khachhang.Text;
         }
+        
 
         private void btn_banhang_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new banhang());
+            
+            OpenChildForm(new banhang(_nhanVien));
             label1.Text = btn_banhang.Text;
         }
 

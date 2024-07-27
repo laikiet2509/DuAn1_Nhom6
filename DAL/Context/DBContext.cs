@@ -26,7 +26,6 @@ namespace DAL.Context
         public virtual DbSet<MauSac> MauSacs { get; set; } = null!;
         public virtual DbSet<NhanVien> NhanViens { get; set; } = null!;
         public virtual DbSet<SanPham> SanPhams { get; set; } = null!;
-        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; } = null!;
         public virtual DbSet<ThuongHieu> ThuongHieus { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,7 +33,7 @@ namespace DAL.Context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source= LAPTOP-6JARI0UA\\SQLEXPRESS ;Initial Catalog= QuanLyBanHang117;Integrated Security=True;TrustServerCertificate=true");
+                optionsBuilder.UseSqlServer("Data Source= LAPTOP-6JARI0UA\\SQLEXPRESS ;Initial Catalog= QuanLyBanHang1;Integrated Security=True;TrustServerCertificate=true");
             }
         }
 
@@ -43,7 +42,7 @@ namespace DAL.Context
             modelBuilder.Entity<ChiTietHoaDon>(entity =>
             {
                 entity.HasKey(e => new { e.MaHd, e.MaSp })
-                    .HasName("PK__ChiTietH__F557F661AB9542C8");
+                    .HasName("PK__ChiTietH__F557F6614816238E");
 
                 entity.HasOne(d => d.MaHdNavigation)
                     .WithMany(p => p.ChiTietHoaDons)
@@ -61,13 +60,13 @@ namespace DAL.Context
             modelBuilder.Entity<ChucVu>(entity =>
             {
                 entity.HasKey(e => e.MaChucVu)
-                    .HasName("PK__ChucVu__D4639533A8656C10");
+                    .HasName("PK__ChucVu__D4639533A60202F8");
             });
 
             modelBuilder.Entity<HoaDon>(entity =>
             {
                 entity.HasKey(e => e.MaHoaDon)
-                    .HasName("PK__HoaDon__835ED13B272779D4");
+                    .HasName("PK__HoaDon__835ED13B14001747");
 
                 entity.HasOne(d => d.MaKhuyenMaiNavigation)
                     .WithMany(p => p.HoaDons)
@@ -88,31 +87,31 @@ namespace DAL.Context
             modelBuilder.Entity<KhachHang>(entity =>
             {
                 entity.HasKey(e => e.Sdt)
-                    .HasName("PK__KhachHan__CA1930A405387B31");
+                    .HasName("PK__KhachHan__CA1930A481A053B2");
             });
 
             modelBuilder.Entity<KhuyenMai>(entity =>
             {
                 entity.HasKey(e => e.MaKhuyenMai)
-                    .HasName("PK__KhuyenMa__6F56B3BDF377EF97");
+                    .HasName("PK__KhuyenMa__6F56B3BD82C00AC8");
             });
 
             modelBuilder.Entity<KichCo>(entity =>
             {
                 entity.HasKey(e => e.MaKichCoSp)
-                    .HasName("PK__KichCo__75335AFF5B1853D3");
+                    .HasName("PK__KichCo__75335AFFF21BB5BF");
             });
 
             modelBuilder.Entity<MauSac>(entity =>
             {
                 entity.HasKey(e => e.MaMauSp)
-                    .HasName("PK__MauSac__487A0E4C85AEB964");
+                    .HasName("PK__MauSac__487A0E4C0C289183");
             });
 
             modelBuilder.Entity<NhanVien>(entity =>
             {
                 entity.HasKey(e => e.MaNhanVien)
-                    .HasName("PK__NhanVien__77B2CA471957BF4C");
+                    .HasName("PK__NhanVien__77B2CA47923C260B");
 
                 entity.HasOne(d => d.MaChucVuNavigation)
                     .WithMany(p => p.NhanViens)
@@ -123,7 +122,7 @@ namespace DAL.Context
             modelBuilder.Entity<SanPham>(entity =>
             {
                 entity.HasKey(e => e.MaSanPham)
-                    .HasName("PK__SanPham__FAC7442DDDF02405");
+                    .HasName("PK__SanPham__FAC7442D63419348");
 
                 entity.HasOne(d => d.MaKichCoSpNavigation)
                     .WithMany(p => p.SanPhams)
@@ -141,21 +140,10 @@ namespace DAL.Context
                     .HasConstraintName("FK__SanPham__MaThuon__44FF419A");
             });
 
-            modelBuilder.Entity<TaiKhoan>(entity =>
-            {
-                entity.HasKey(e => e.Idtk)
-                    .HasName("PK__TaiKhoan__B87C3A83BB976FF1");
-
-                entity.HasOne(d => d.MaNhanVienNavigation)
-                    .WithMany(p => p.TaiKhoans)
-                    .HasForeignKey(d => d.MaNhanVien)
-                    .HasConstraintName("FK__TaiKhoan__MaNhan__52593CB8");
-            });
-
             modelBuilder.Entity<ThuongHieu>(entity =>
             {
                 entity.HasKey(e => e.MaThuongHieu)
-                    .HasName("PK__ThuongHi__A3733E2CB904E373");
+                    .HasName("PK__ThuongHi__A3733E2CDDF0BB0A");
             });
 
             OnModelCreatingPartial(modelBuilder);
