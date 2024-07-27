@@ -370,52 +370,81 @@ namespace PRL
 
         private void dtgView_hoadon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0) // Kiểm tra xem chỉ số hàng có hợp lệ không
             {
-                var rowHienTai = dtgView_danhsachsanpham.Rows[e.RowIndex];
-                var maSPCTDangTao = rowHienTai.Cells[0].Value.ToString();
-                var spctDangTao = serviceSP.GetAllSanPhamChiTietById(maSPCTDangTao);
+                var rowHienTai = dtgView_danhsachsanpham.Rows[e.RowIndex]; // Lấy hàng hiện tại từ DataGridView
+                var maSPCTDangTao = rowHienTai.Cells[0].Value.ToString(); // Lấy mã sản phẩm chi tiết từ cột đầu tiên của hàng
+                var spctDangTao = serviceSP.GetAllSanPhamChiTietById(maSPCTDangTao); // Lấy thông tin sản phẩm chi tiết từ service
 
-                var hoaDonDangChon = cmbx_hoadoncho.SelectedItem as HoaDon;
+                var hoaDonDangChon = cmbx_hoadoncho.SelectedItem as HoaDon; // Lấy hóa đơn đang chọn từ ComboBox
 
-                NhapSoLuongSanPham formSoLuongMua = new NhapSoLuongSanPham();
-                formSoLuongMua.ShowDialog();
+                NhapSoLuongSanPham formSoLuongMua = new NhapSoLuongSanPham(); // Khởi tạo form nhập số lượng sản phẩm
+                formSoLuongMua.ShowDialog(); // Hiển thị form nhập số lượng sản phẩm
 
-                var hoaDonChiTietTonTai = serviceHDCT.GetHDCTById(hoaDonDangChon.MaHoaDon, maSPCTDangTao);
+                if (formSoLuongMua.SoLuongMua < 0) // Kiểm tra xem số lượng nhập vào có âm không
+                {
+                    MessageBox.Show("Không được nhập số âm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // Hiển thị thông báo lỗi
+                    return; // Thoát khỏi phương thức nếu số lượng nhập vào là âm
+                }
+
+                if (formSoLuongMua.SoLuongMua > spctDangTao.SoLuongTon) // Kiểm tra xem số lượng nhập vào có vượt quá số lượng tồn kho không
+                {
+                    MessageBox.Show("Số lượng tồn kho không đủ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // Hiển thị thông báo lỗi
+                    return; // Thoát khỏi phương thức nếu số lượng nhập vào vượt quá số lượng tồn kho
+                }
+
+                var hoaDonChiTietTonTai = serviceHDCT.GetHDCTById(hoaDonDangChon.MaHoaDon, maSPCTDangTao); // Lấy thông tin chi tiết hóa đơn nếu đã tồn tại
 
                 // chưa tồn tại sản phẩm chi tiết này trong hóa đơn chi tiết -> thêm mới
                 if (hoaDonChiTietTonTai == null)
                 {
-                    ChiTietHoaDon hoaDonChiTietDangTao = new ChiTietHoaDon();
-                    hoaDonChiTietDangTao.MaSp = maSPCTDangTao;
-                    hoaDonChiTietDangTao.MaHd = hoaDonDangChon.MaHoaDon;
-                    hoaDonChiTietDangTao.GiaBan = spctDangTao.GiaBan;
-                    hoaDonChiTietDangTao.SoLuong = formSoLuongMua.SoLuongMua;
+                    ChiTietHoaDon hoaDonChiTietDangTao = new ChiTietHoaDon(); // Khởi tạo chi tiết hóa đơn mới
+                    hoaDonChiTietDangTao.MaSp = maSPCTDangTao; // Gán mã sản phẩm
+                    hoaDonChiTietDangTao.MaHd = hoaDonDangChon.MaHoaDon; // Gán mã hóa đơn
+                    hoaDonChiTietDangTao.GiaBan = spctDangTao.GiaBan; // Gán giá bán của sản phẩm
+                    hoaDonChiTietDangTao.SoLuong = formSoLuongMua.SoLuongMua; // Gán số lượng mua từ form nhập
 
-                    serviceHDCT.ThemMoiHDCT(hoaDonChiTietDangTao);
+                    serviceHDCT.ThemMoiHDCT(hoaDonChiTietDangTao); // Thêm mới chi tiết hóa đơn vào service
+
+                    // Giảm số lượng tồn kho
+                    spctDangTao.SoLuongTon -= formSoLuongMua.SoLuongMua; // Giảm số lượng tồn kho của sản phẩm
                 }
                 // nếu đã tồn tại sản phẩm chi tiết này trong hóa đơn chi tiết -> cập nhật số lượng
                 else
                 {
-                    ChiTietHoaDon hoaDonChiTietDangUpdate = new ChiTietHoaDon();
-                    hoaDonChiTietDangUpdate.MaSp = maSPCTDangTao;
-                    hoaDonChiTietDangUpdate.MaHd = hoaDonDangChon.MaHoaDon;
-                    hoaDonChiTietDangUpdate.GiaBan = spctDangTao.GiaBan;
-                    hoaDonChiTietDangUpdate.SoLuong = hoaDonChiTietTonTai.SoLuong + formSoLuongMua.SoLuongMua;
-                    hoaDonChiTietDangUpdate.SoLuong = hoaDonChiTietTonTai.SoLuong - formSoLuongMua.SoLuongMua;
+                    int soLuongCu = hoaDonChiTietTonTai.SoLuong; // Lấy số lượng cũ của sản phẩm trong hóa đơn chi tiết
+                    int soLuongMoi = formSoLuongMua.SoLuongMua; // Lấy số lượng mới từ form nhập
+                    int chenhLechSoLuong = soLuongMoi - soLuongCu; // Tính toán chênh lệch số lượng
 
-                    serviceHDCT.UpdateSoLuong(hoaDonChiTietDangUpdate);
+                    if (chenhLechSoLuong > 0 && chenhLechSoLuong > spctDangTao.SoLuongTon) // Kiểm tra nếu chênh lệch số lượng là dương và vượt quá số lượng tồn kho
+                    {
+                        MessageBox.Show("Số lượng tồn kho không đủ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // Hiển thị thông báo lỗi
+                        return; // Thoát khỏi phương thức nếu số lượng tồn kho không đủ
+                    }
+
+                    if (chenhLechSoLuong != 0) // Kiểm tra nếu có sự thay đổi số lượng
+                    {
+                        if (chenhLechSoLuong > 0) // Nếu tăng số lượng trong hóa đơn chi tiết
+                        {
+                            spctDangTao.SoLuongTon -= chenhLechSoLuong; // Giảm số lượng tồn kho
+                        }
+                        else // Nếu giảm số lượng trong hóa đơn chi tiết
+                        {
+                            spctDangTao.SoLuongTon += Math.Abs(chenhLechSoLuong); // Tăng số lượng tồn kho
+                        }
+
+                        hoaDonChiTietTonTai.SoLuong = soLuongMoi; // Cập nhật số lượng mới cho chi tiết hóa đơn
+                        serviceHDCT.UpdateSoLuong(hoaDonChiTietTonTai); // Cập nhật số lượng trong service
+                    }
                 }
-                spctDangTao.SoLuongTon += formSoLuongMua.SoLuongMua;
-                spctDangTao.SoLuongTon -= formSoLuongMua.SoLuongMua;
-                serviceSP.UpdateSoLuong(spctDangTao);
+
+                serviceSP.UpdateSoLuong(spctDangTao); // Cập nhật số lượng tồn kho trong service
 
                 // load lại dữ liệu trên 2 data grid view
-                txt_search.Text = string.Empty;
-                LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
-                LoadData_dgvHoaDonChiTiet(serviceHDCT.GetAllHoaDonCTByMaHoaDon(cmbx_hoadoncho.SelectedValue.ToString()));
+                txt_search.Text = string.Empty; // Xóa nội dung tìm kiếm
+                LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams()); // Tải lại dữ liệu cho DataGridView sản phẩm chi tiết
+                LoadData_dgvHoaDonChiTiet(serviceHDCT.GetAllHoaDonCTByMaHoaDon(cmbx_hoadoncho.SelectedValue.ToString())); // Tải lại dữ liệu cho DataGridView hóa đơn chi tiết
             }
-
         }
     }
 }

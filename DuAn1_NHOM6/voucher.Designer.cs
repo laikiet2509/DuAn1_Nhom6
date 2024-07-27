@@ -181,11 +181,11 @@
             // 
             lblDieuKien.AutoSize = true;
             lblDieuKien.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDieuKien.Location = new Point(48, 222);
+            lblDieuKien.Location = new Point(34, 219);
             lblDieuKien.Name = "lblDieuKien";
-            lblDieuKien.Size = new Size(81, 20);
+            lblDieuKien.Size = new Size(92, 20);
             lblDieuKien.TabIndex = 16;
-            lblDieuKien.Text = "Điều Kiện";
+            lblDieuKien.Text = "% giảm giá";
             // 
             // lblNAP
             // 

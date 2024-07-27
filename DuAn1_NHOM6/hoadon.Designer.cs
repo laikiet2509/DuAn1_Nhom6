@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            button2 = new Button();
+            btn_inhoadon = new Button();
             btn_timkiem = new Button();
             dateTimePicker2 = new DateTimePicker();
             label2 = new Label();
@@ -49,7 +49,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Linen;
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(btn_inhoadon);
             groupBox1.Controls.Add(btn_timkiem);
             groupBox1.Controls.Add(dateTimePicker2);
             groupBox1.Controls.Add(label2);
@@ -62,15 +62,16 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
-            // button2
+            // btn_inhoadon
             // 
-            button2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Image = Properties.Resources._3;
-            button2.Location = new Point(1065, 51);
-            button2.Name = "button2";
-            button2.Size = new Size(76, 61);
-            button2.TabIndex = 5;
-            button2.UseVisualStyleBackColor = true;
+            btn_inhoadon.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_inhoadon.Image = Properties.Resources._3;
+            btn_inhoadon.Location = new Point(1065, 51);
+            btn_inhoadon.Name = "btn_inhoadon";
+            btn_inhoadon.Size = new Size(76, 61);
+            btn_inhoadon.TabIndex = 5;
+            btn_inhoadon.UseVisualStyleBackColor = true;
+            btn_inhoadon.Click += btn_inhoadon_Click;
             // 
             // btn_timkiem
             // 
@@ -196,7 +197,7 @@
         #endregion
 
         private GroupBox groupBox1;
-        private Button button2;
+        private Button btn_inhoadon;
         private Button btn_timkiem;
         private DateTimePicker dateTimePicker2;
         private Label label2;

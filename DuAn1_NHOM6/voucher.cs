@@ -29,7 +29,7 @@ namespace PRL
         {
             dgvDataVC.ColumnCount = 5;
             dgvDataVC.Columns[0].Name = "Mã Khuyến Mãi";
-            dgvDataVC.Columns[1].Name = "Điều Kiện Áp Dụng";
+            dgvDataVC.Columns[1].Name = "Giảm Giá";
             dgvDataVC.Columns[2].Name = "Ngày Bắt Đầu";
             dgvDataVC.Columns[3].Name = "Ngày Kết Thúc";
             dgvDataVC.Columns[4].Name = "Mô Tả Khuyến Mãi";
@@ -70,7 +70,7 @@ namespace PRL
         {
             KhuyenMai km = new KhuyenMai();
             km.MaKhuyenMai = tbxMavc.Text;
-            km.GiamGia = int.Parse(tbxDieuKien.Text);
+            km.GiamGia = decimal.Parse(tbxDieuKien.Text);
             km.MoTaKhuyenMai = tbcMota.Text;
             km.NgayBatDau = DateTime.Parse(dtpkNgayapdung.Text);
             km.NgayKetThuc = DateTime.Parse(dtpkNKT.Text);
@@ -82,7 +82,7 @@ namespace PRL
         {
             var km = service.GetKhuyenMais(txt_search.Text).Find(x => x.MaKhuyenMai.ToString() == idWhenClick);
             km.MaKhuyenMai = tbxMavc.Text;
-            km.GiamGia = int.Parse(tbxDieuKien.Text);
+            km.GiamGia = decimal.Parse(tbxDieuKien.Text);
             km.MoTaKhuyenMai = tbcMota.Text;
             km.NgayBatDau = DateTime.Parse(dtpkNgayapdung.Text);
             km.NgayKetThuc = DateTime.Parse(dtpkNKT.Text);

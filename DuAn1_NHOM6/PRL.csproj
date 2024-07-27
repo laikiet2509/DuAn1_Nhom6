@@ -9,7 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspose.Words" Version="24.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BUS\BUS.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\..\..\Final2\DuAn1_Nhom6\Dll\Aspose.Words.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
