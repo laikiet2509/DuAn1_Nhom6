@@ -23,6 +23,12 @@ namespace PRL
             cbx_LocTheoNam.SelectedIndexChanged += new EventHandler(this.ComboBox_SelectedIndexChanged);
             cbx_LocTheoThang.SelectedIndexChanged += new EventHandler(this.ComboBox_SelectedIndexChanged);
 
+            // Gắn sự kiện Click với nút Tìm
+            btn_Tim.Click += new EventHandler(this.btn_Tim_Click);
+
+            // Gắn sự kiện Click với nút Doanh Thu Hôm Nay
+            btn_DTHomNay.Click += new EventHandler(this.btn_DTHomNay_Click);
+
         }
 
         private void thongke_Load(object sender, EventArgs e)
@@ -51,21 +57,52 @@ namespace PRL
             int currentMonth = DateTime.Now.Month;
             cbx_LocTheoThang.SelectedItem = currentMonth.ToString();
         }
+        private void UpdateStatistics(int selectedYear, int? selectedMonth)
+        {
+            using (var context = new DBContext())
+            {
+                // 1. Tính doanh thu (chỉ tính hóa đơn không bị hủy)
+                var doanhThu = context.HoaDons
+                    .Where(hd => hd.NgayLapHoaDon.Value.Year == selectedYear &&
+                                 (!selectedMonth.HasValue || hd.NgayLapHoaDon.Value.Month == selectedMonth.Value) &&
+                                 hd.TrangThai != 2)  // Thêm điều kiện lọc hóa đơn không bị hủy
+                    .Sum(hd => hd.TongTien);
+                lbl_SoDoanhThu.Text = $"{doanhThu:N0} VND"; // Sử dụng định dạng N0 để không có phần thập phân
+
+                // 2. Tính số hóa đơn
+                var soHoaDon = context.HoaDons
+                    .Count(hd => hd.NgayLapHoaDon.Value.Year == selectedYear &&
+(!selectedMonth.HasValue || hd.NgayLapHoaDon.Value.Month == selectedMonth.Value));
+                lbl_HoaDon.Text = soHoaDon.ToString();
+
+                // 3. Tính số hóa đơn hủy
+                var soDonHuy = context.HoaDons
+                    .Count(hd => hd.TrangThai == 2 &&
+                                 hd.NgayLapHoaDon.Value.Year == selectedYear &&
+                                 (!selectedMonth.HasValue || hd.NgayLapHoaDon.Value.Month == selectedMonth.Value));
+                lbl_DonHuy.Text = soDonHuy.ToString();
+
+                // 4. Tính số khách hàng
+                var soKhachHang = context.KhachHangs
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon.Value.Year == selectedYear &&
+                                                       (!selectedMonth.HasValue || hd.NgayLapHoaDon.Value.Month == selectedMonth.Value)));
+                lbl_KhachHang.Text = soKhachHang.ToString();
+            }
+        }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //// Lấy giá trị năm và tháng được chọn
-            //int selectedYear = int.Parse(cbx_LocTheoNam.SelectedItem.ToString());
-            //int selectedMonth = int.Parse(cbx_LocTheoThang.SelectedItem.ToString());
+            // Lấy giá trị năm và tháng được chọn
+            int selectedYear = int.Parse(cbx_LocTheoNam.SelectedItem.ToString());
+            int? selectedMonth = cbx_LocTheoThang.SelectedItem != null ? (int?)int.Parse(cbx_LocTheoThang.SelectedItem.ToString()) : null;
 
-            //// Gọi phương thức để cập nhật số liệu
-            //btn_Tim_Click(selectedYear, selectedMonth);
+            // Gọi phương thức để cập nhật số liệu
+            UpdateStatistics(selectedYear, selectedMonth);
+
         }
 
         private void btn_Tim_Click(object sender, EventArgs e)
         {
-            int nam = int.Parse(cbx_LocTheoNam.SelectedItem.ToString());
-            int? thang = cbx_LocTheoThang.SelectedItem != null ? (int?)int.Parse(cbx_LocTheoThang.SelectedItem.ToString()) : null;
             DateTime tu = dtp_TGTu.Value;
             DateTime den = dtp_TGDen.Value;
 
@@ -73,39 +110,26 @@ namespace PRL
             {
                 // 1. Tính doanh thu (chỉ tính hóa đơn không bị hủy)
                 var doanhThu = context.HoaDons
-                    .Where(hd => hd.NgayLapHoaDon.Value.Year == nam &&
-                                 (thang == null || hd.NgayLapHoaDon.Value.Month == thang) &&
-                                 hd.NgayLapHoaDon >= tu &&
-                                 hd.NgayLapHoaDon <= den &&
-                                 hd.TrangThai != 2)  // Thêm điều kiện lọc hóa đơn không bị hủy
+                    .Where(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den && hd.TrangThai != 2)  // Thêm điều kiện lọc hóa đơn không bị hủy
                     .Sum(hd => hd.TongTien);
                 lbl_SoDoanhThu.Text = $"{doanhThu:N0} VND"; // Sử dụng định dạng N0 để không có phần thập phân
-                //lbl_SoDoanhThu.Text = $"{doanhThu:C} VND"; //Hiện số thập phân
+
                 // 2. Tính số hóa đơn
                 var soHoaDon = context.HoaDons
-                    .Count(hd => hd.NgayLapHoaDon.Value.Year == nam &&
-                                 (thang == null || hd.NgayLapHoaDon.Value.Month == thang) &&
-                                 hd.NgayLapHoaDon >= tu &&
-                                 hd.NgayLapHoaDon <= den);
+                    .Count(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den);
                 lbl_HoaDon.Text = soHoaDon.ToString();
 
                 // 3. Tính số hóa đơn hủy
                 var soDonHuy = context.HoaDons
-                    .Count(hd => hd.TrangThai == 2 &&
-                                 hd.NgayLapHoaDon.Value.Year == nam &&
-                                 (thang == null || hd.NgayLapHoaDon.Value.Month == thang) &&
-                                 hd.NgayLapHoaDon >= tu &&
-                                 hd.NgayLapHoaDon <= den);
+                    .Count(hd => hd.TrangThai == 2 && hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den);
                 lbl_DonHuy.Text = soDonHuy.ToString();
 
                 // 4. Tính số khách hàng
                 var soKhachHang = context.KhachHangs
-                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon.Value.Year == nam &&
-                                                       (thang == null || hd.NgayLapHoaDon.Value.Month == thang) &&
-                                                       hd.NgayLapHoaDon >= tu &&
-                                                       hd.NgayLapHoaDon <= den));
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den));
                 lbl_KhachHang.Text = soKhachHang.ToString();
             }
+
         }
         private void ThongKeHomNay()
         {
@@ -115,11 +139,9 @@ namespace PRL
             {
                 // 1. Tính doanh thu (chỉ tính hóa đơn không bị hủy)
                 var doanhThu = context.HoaDons
-                    .Where(hd => hd.NgayLapHoaDon.Value.Date == today &&
-                                 hd.TrangThai != 2)  // Thêm điều kiện lọc hóa đơn không bị hủy
+                    .Where(hd => hd.NgayLapHoaDon.Value.Date == today && hd.TrangThai != 2)  // Thêm điều kiện lọc hóa đơn không bị hủy
                     .Sum(hd => hd.TongTien);
                 lbl_SoDoanhThu.Text = $"{doanhThu:N0} VND"; // Sử dụng định dạng N0 để không có phần thập phân
-                //lbl_SoDoanhThu.Text = $"{doanhThu:C} VND"; //Hiện số thập phân
 
                 // 2. Tính số hóa đơn
                 var soHoaDon = context.HoaDons
@@ -136,6 +158,7 @@ namespace PRL
                     .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon.Value.Date == today));
                 lbl_KhachHang.Text = soKhachHang.ToString();
             }
+
         }
 
         private void btn_DTHomNay_Click(object sender, EventArgs e)

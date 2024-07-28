@@ -20,7 +20,7 @@ namespace DAL.DomainClass
         public int SoLuong { get; set; }
       
         public decimal GiaBan { get; set; }
-     
+   
         public decimal? ThanhTien { get; set; }
 
         [ForeignKey(nameof(MaHd))]
