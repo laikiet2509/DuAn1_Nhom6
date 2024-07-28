@@ -50,7 +50,9 @@ namespace PRL
             dataTableSPCT = new DataTable();
             dataTableHDCT = new DataTable();
             _nhanVien = nhanVien;
-
+            LoadMauSac();
+            LoadKichCo();
+            LoadThuongHieu();
         }
         private decimal TinhTongTienHoaDon(string maHoaDon)
         {
@@ -546,5 +548,6 @@ namespace PRL
         {
             
         }
+       
     }
 }
