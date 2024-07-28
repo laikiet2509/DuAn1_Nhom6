@@ -24,6 +24,10 @@ namespace BUS.Services
             }
             return repos.GetAllKM().FindAll(x => x.MaKhuyenMai.ToString().Contains(search));
         }
+        public KhuyenMai GetKhuyenMaiByMa(string maKhuyenMai)
+        {
+            return repos.GetKhuyenMaiByMa(maKhuyenMai);
+        }
         public string ThemKM(KhuyenMai km)
         {
             if (repos.AddKM(km))

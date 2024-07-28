@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PRL
 {
@@ -118,7 +119,7 @@ namespace PRL
                 lblTongTien.Text = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString()).ToString("#,##0.00 'VND'");
             }
         }
-        
+
         private void LoadData_cbbHoaDonCho()
         {
             cmbx_hoadoncho.DataSource = null;
@@ -156,6 +157,28 @@ namespace PRL
             dtgView_danhsachsanpham.DataSource = dataTableSPCT;
 
         }
+        private void LoadMauSac()
+        {
+            var mauSacs = serviceMS.GetMauSacs();
+            cbb_mausac.DataSource = mauSacs;
+            cbb_mausac.DisplayMember = "MauSac1";
+            cbb_mausac.ValueMember = "MaMauSp";
+        }
+
+        private void LoadKichCo()
+        {
+            var kichCos = serviceKC.GetKichCos();
+            cbb_size.DataSource = kichCos;
+            cbb_size.DisplayMember = "KichCo1";
+            cbb_size.ValueMember = "MaKichCoSp";
+        }
+        private void LoadThuongHieu()
+        {
+            var thuongHieus = serviceTH.GetThuongHieus();
+            cbb_hang.DataSource = thuongHieus;
+            cbb_hang.DisplayMember = "TenThuongHieu";
+            cbb_hang.ValueMember = "MaThuongHieu";
+        }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
@@ -174,7 +197,7 @@ namespace PRL
             }
             else
             {
-                
+
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.MaHoaDon = "HD" + (serviceHD.GetAllHoaDons().Count + 1);
                 //hoaDon.MaNhanVien = NhanVienDangNhap.MaNhanVien;
@@ -193,13 +216,39 @@ namespace PRL
 
         private void txt_tienkhachdua_TextChanged(object sender, EventArgs e)
         {
-            decimal tienKhachDua = 0;
-            var tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
+            //decimal tienKhachDua = 0;
+            //var tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
 
+            string maVoucher = txt_maVoucher.Text;
+            KhuyenMai khuyenMai = LayThongTinKhuyenMai(maVoucher);
+
+            decimal tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
+            lblTongTien.Text = tongSoTien.ToString("#,##0.00 'VND'");
+
+            decimal tongSoTienSauGiam = tongSoTien;
+            if (khuyenMai != null && khuyenMai.NgayBatDau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
+            {
+                decimal tienGiam = tongSoTien * khuyenMai.GiamGia / 100;
+                //lbl_TienAddVoucher.Text = tienGiam.ToString("#,##0.00 'VND'");
+
+                // Tổng hóa đơn sau khi áp dụng khuyến mãi
+                tongSoTienSauGiam = tongSoTien - tienGiam;
+                lbl_TienAddVoucher.Text = tongSoTienSauGiam.ToString("#,##0.00 'VND'");
+            }
+            else
+            {
+                lbl_TienAddVoucher.Text = "";
+                lbl_TienAddVoucher.Text = tongSoTien.ToString("#,##0.00 'VND'");
+                MessageBox.Show("Mã Voucher không hợp lệ hoặc đã hết hạn!");
+            }
+
+            decimal tienKhachDua;
             if (decimal.TryParse(txt_tienkhachdua.Text, out tienKhachDua))
             {
-                lblTienThua.Text = (tienKhachDua - tongSoTien).ToString("#,##0.00 'VND'");
-                if (tienKhachDua >= tongSoTien)
+                decimal tienThua = tienKhachDua - tongSoTienSauGiam;
+                lblTienThua.Text = tienThua.ToString("#,##0.00 'VND'");
+
+                if (tienKhachDua >= tongSoTienSauGiam)
                 {
                     daThanhToanDu = true;
                 }
@@ -210,7 +259,7 @@ namespace PRL
             }
             else
             {
-                MessageBox.Show("Hãy nhập đúng số tiền!");
+                lblTienThua.Text = "0.00 VND";
             }
         }
 
@@ -316,13 +365,13 @@ namespace PRL
             serviceSP.UpdateSoLuong(spctDangTao);
             // update tổng tiền cho hóa đơn chờ
             serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString()));
-            
+
             // load lại dữ liệu trên 2 data grid view
             txt_search.Text = string.Empty;
             LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
             LoadData_dgvHoaDonChiTiet(serviceHDCT.GetAllHoaDonCTByMaHoaDon(cmbx_hoadoncho.SelectedValue.ToString()));
         }
-        
+
 
         private void txt_search_TextChanged(object sender, EventArgs e)
         {
@@ -445,6 +494,57 @@ namespace PRL
                 LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams()); // Tải lại dữ liệu cho DataGridView sản phẩm chi tiết
                 LoadData_dgvHoaDonChiTiet(serviceHDCT.GetAllHoaDonCTByMaHoaDon(cmbx_hoadoncho.SelectedValue.ToString())); // Tải lại dữ liệu cho DataGridView hóa đơn chi tiết
             }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_maVoucher_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private KhuyenMai LayThongTinKhuyenMai(string maKhuyenMai)
+        {
+            // Giả sử serviceKM đã được khởi tạo và có phương thức để lấy thông tin khuyến mãi
+            KhuyenMai khuyenMai = serviceKM.GetKhuyenMaiByMa(maKhuyenMai);
+            return khuyenMai;
+        }
+
+        private void txt_maVoucher_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string maVoucher = txt_maVoucher.Text;
+                KhuyenMai khuyenMai = LayThongTinKhuyenMai(maVoucher);
+
+                decimal tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
+                lblTongTien.Text = tongSoTien.ToString("#,##0.00 'VND'");
+
+                decimal tongSoTienSauGiam = tongSoTien;
+                if (khuyenMai != null && khuyenMai.NgayBatDau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
+                {
+                    decimal tienGiam = tongSoTien * khuyenMai.GiamGia / 100;
+                    lbl_TienAddVoucher.Text = tienGiam.ToString("#,##0.00 'VND'");
+
+                    // Tổng hóa đơn sau khi áp dụng khuyến mãi
+                    tongSoTienSauGiam = tongSoTien - tienGiam;
+                    lbl_TienAddVoucher.Text = tongSoTienSauGiam.ToString("#,##0.00 'VND'");
+                }
+                else
+                {
+                    lbl_TienAddVoucher.Text = "";
+                    lbl_TienAddVoucher.Text = tongSoTien.ToString("#,##0.00 'VND'");
+                    MessageBox.Show("Mã Voucher không hợp lệ hoặc đã hết hạn!");
+                }
+
+            }
+        }
+
+        private void btn_timkiem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

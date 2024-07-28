@@ -15,6 +15,11 @@ namespace BUS.Repository
         {
             context = new DBContext();
         }
+        public KhuyenMai GetKhuyenMaiByMa(string maKhuyenMai)
+        {
+            return context.KhuyenMais.FirstOrDefault(km => km.MaKhuyenMai == maKhuyenMai);
+        }
+
         public List<KhuyenMai> GetAllKM()
         {
             return context.KhuyenMais.ToList();
