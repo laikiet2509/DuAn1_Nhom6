@@ -94,7 +94,8 @@ namespace DuAn1_NHOM6
 
         private void btn_thongke_Click(object sender, EventArgs e)
         {
-            
+            OpenChildForm(new thongke());
+            label1.Text = btn_thongke.Text;
         }
 
         private void btn_nhanvien_Click(object sender, EventArgs e)
