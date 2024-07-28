@@ -53,6 +53,9 @@ namespace PRL
             LoadMauSac();
             LoadKichCo();
             LoadThuongHieu();
+            cbb_mausac.DropDown += new EventHandler(cbb_hang_DropDown);
+            cbb_size.DropDown += new EventHandler(cbb_hang_DropDown);
+            cbb_hang.DropDown += new EventHandler(cbb_hang_DropDown);
         }
         private decimal TinhTongTienHoaDon(string maHoaDon)
         {
@@ -92,6 +95,8 @@ namespace PRL
             LoadData_cbbHoaDonCho();
 
             // create datatable HDCT
+
+
             dataTableHDCT.Columns.Add("MaSPCT", typeof(string));
             dataTableHDCT.Columns.Add("MaHoaDon", typeof(string));
             dataTableHDCT.Columns.Add("DonGia", typeof(decimal));
@@ -104,18 +109,24 @@ namespace PRL
         }
         private void LoadData_dgvHoaDonChiTiet(List<ChiTietHoaDon> hoaDonChiTiets)
         {
-            dataTableHDCT.Rows.Clear();
+            dataTableHDCT.Rows.Clear(); 
+
+            var dt = new DataTable();
+            dt.Columns.Add("MaSPCT", typeof(string));
+            dt.Columns.Add("MaHoaDon", typeof(string));
+            dt.Columns.Add("DonGia", typeof(decimal));
+            dt.Columns.Add("SoLuong", typeof(int));
 
             foreach (var hdct in hoaDonChiTiets)
             {
-                DataRow dr = dataTableHDCT.NewRow();
+                DataRow dr = dt.NewRow();
                 dr["MaSPCT"] = hdct.MaSp;
                 dr["MaHoaDon"] = hdct.MaHd;
                 dr["DonGia"] = hdct.GiaBan;
                 dr["SoLuong"] = hdct.SoLuong;
-                dataTableHDCT.Rows.Add(dr);
+                dt.Rows.Add(dr);
             }
-            dtgView_hoadon.DataSource = dataTableHDCT;
+            dtgView_hoadon.DataSource = dt;
             if (cmbx_hoadoncho.SelectedValue != null)
             {
                 lblTongTien.Text = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString()).ToString("#,##0.00 'VND'");
@@ -161,25 +172,25 @@ namespace PRL
         }
         private void LoadMauSac()
         {
-            var mauSacs = serviceMS.GetMauSacs();
-            cbb_mausac.DataSource = mauSacs;
-            cbb_mausac.DisplayMember = "MauSac1";
-            cbb_mausac.ValueMember = "MaMauSp";
+            //var mauSacs = serviceMS.GetMauSacs();
+            //cbb_mausac.DataSource = mauSacs;
+            //cbb_mausac.DisplayMember = "MauSac1";
+            //cbb_mausac.ValueMember = "MaMauSp";
         }
 
         private void LoadKichCo()
         {
-            var kichCos = serviceKC.GetKichCos();
-            cbb_size.DataSource = kichCos;
-            cbb_size.DisplayMember = "KichCo1";
-            cbb_size.ValueMember = "MaKichCoSp";
+            //var kichCos = serviceKC.GetKichCos();
+            //cbb_size.DataSource = kichCos;
+            //cbb_size.DisplayMember = "KichCo1";
+            //cbb_size.ValueMember = "MaKichCoSp";
         }
         private void LoadThuongHieu()
         {
-            var thuongHieus = serviceTH.GetThuongHieus();
-            cbb_hang.DataSource = thuongHieus;
-            cbb_hang.DisplayMember = "TenThuongHieu";
-            cbb_hang.ValueMember = "MaThuongHieu";
+            //var thuongHieus = serviceTH.GetThuongHieus();
+            //cbb_hang.DataSource = thuongHieus;
+            //cbb_hang.DisplayMember = "TenThuongHieu";
+            //cbb_hang.ValueMember = "MaThuongHieu";
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
@@ -218,30 +229,31 @@ namespace PRL
 
         private void txt_tienkhachdua_TextChanged(object sender, EventArgs e)
         {
-            //decimal tienKhachDua = 0;
-            //var tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
+            // decimal tienKhachDua = 0;
+            // var tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
 
             string maVoucher = txt_maVoucher.Text;
-            KhuyenMai khuyenMai = LayThongTinKhuyenMai(maVoucher);
-
             decimal tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
             lblTongTien.Text = tongSoTien.ToString("#,##0.00 'VND'");
-
             decimal tongSoTienSauGiam = tongSoTien;
-            if (khuyenMai != null && khuyenMai.NgayBatDau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
-            {
-                decimal tienGiam = tongSoTien * khuyenMai.GiamGia / 100;
-                //lbl_TienAddVoucher.Text = tienGiam.ToString("#,##0.00 'VND'");
+            lbl_TienAddVoucher.Text = tongSoTien.ToString("#,##0.00 'VND'");
 
-                // Tổng hóa đơn sau khi áp dụng khuyến mãi
-                tongSoTienSauGiam = tongSoTien - tienGiam;
-                lbl_TienAddVoucher.Text = tongSoTienSauGiam.ToString("#,##0.00 'VND'");
-            }
-            else
+            if (!string.IsNullOrEmpty(maVoucher))
             {
-                lbl_TienAddVoucher.Text = "";
-                lbl_TienAddVoucher.Text = tongSoTien.ToString("#,##0.00 'VND'");
-                MessageBox.Show("Mã Voucher không hợp lệ hoặc đã hết hạn!");
+                KhuyenMai khuyenMai = LayThongTinKhuyenMai(maVoucher);
+                if (khuyenMai != null && khuyenMai.NgayBatDau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
+                {
+                    decimal tienGiam = tongSoTien * khuyenMai.GiamGia / 100;
+                    lbl_TienAddVoucher.Text = tienGiam.ToString("#,##0.00 'VND'");
+
+                    // Tổng hóa đơn sau khi áp dụng khuyến mãi
+                    tongSoTienSauGiam = tongSoTien - tienGiam;
+                    lbl_TienAddVoucher.Text = tongSoTienSauGiam.ToString("#,##0.00 'VND'");
+                }
+                else
+                {
+                    MessageBox.Show("Mã Voucher không hợp lệ hoặc đã hết hạn!");
+                }
             }
 
             decimal tienKhachDua;
@@ -546,8 +558,40 @@ namespace PRL
 
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
-            
+
         }
-       
+
+        private void cbb_hang_DropDown(object sender, EventArgs e)
+        {
+            if (cbb_hang.Items.Count == 0)
+            {
+                var thuongHieus = serviceTH.GetThuongHieus();
+                cbb_hang.DataSource = thuongHieus;
+                cbb_hang.DisplayMember = "TenThuongHieu";
+                cbb_hang.ValueMember = "MaThuongHieu";
+            }
+        }
+
+        private void cbb_mausac_DropDown(object sender, EventArgs e)
+        {
+            if (cbb_mausac.Items.Count == 0)
+            {
+                var mauSacs = serviceMS.GetMauSacs();
+                cbb_mausac.DataSource = mauSacs;
+                cbb_mausac.DisplayMember = "MauSac1";
+                cbb_mausac.ValueMember = "MaMauSp";
+            }
+        }
+
+        private void cbb_size_DropDown(object sender, EventArgs e)
+        {
+            if (cbb_size.Items.Count == 0)
+            {
+                var kichCos = serviceKC.GetKichCos();
+                cbb_size.DataSource = kichCos;
+                cbb_size.DisplayMember = "KichCo1";
+                cbb_size.ValueMember = "MaKichCoSp";
+            }
+        }
     }
 }

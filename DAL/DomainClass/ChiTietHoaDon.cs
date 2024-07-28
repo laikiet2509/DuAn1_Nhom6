@@ -18,9 +18,7 @@ namespace DAL.DomainClass
         [StringLength(10)]
         public string MaSp { get; set; } = null!;
         public int SoLuong { get; set; }
-   
         public decimal GiaBan { get; set; }
-      
         public decimal? ThanhTien { get; set; }
 
         [ForeignKey(nameof(MaHd))]
