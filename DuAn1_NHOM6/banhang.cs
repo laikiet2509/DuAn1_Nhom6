@@ -322,6 +322,7 @@ namespace PRL
                 if (daThanhToanDu)
                 {
                     serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 1,txt_maVoucher.Text);
+                    serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text));
                     MessageBox.Show("Đã thanh toán hóa đơn!");                  
                     RefreshToanBoForm();
                     DialogResult dialogResult = MessageBox.Show("Bạn có muốn in hóa đơn không ?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -366,13 +367,13 @@ namespace PRL
             //var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("C:\\Users\\MTu\\Desktop\\New folder (5)\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
+            Document baoCao = new Document("D:\\Final4_2\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
 
-            baoCao.MailMerge.Execute(new[] { "Ma_Hoa_Don" }, new[] { _hoaDon.MaHoaDon });
-            baoCao.MailMerge.Execute(new[] { "Ma_NhanVien" }, new[] { _hoaDon.MaNhanVien });
+            baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { _hoaDon.MaHoaDon });
+            baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { _hoaDon.MaNhanVien });
             baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaKhuyenMai + " %" : "Không áp dụng" });
             baoCao.MailMerge.Execute(new[] { "Ten_KhachHang" }, new[] { khachhang.TenKhachHang });
-            baoCao.MailMerge.Execute(new[] { "Ngay_ThanhToan" }, new[] { _hoaDon.NgayLapHoaDon.Value.ToString("dd/MM/yyyy") });
+            baoCao.MailMerge.Execute(new[] { "NGAY_THANHTOAN" }, new[] { _hoaDon.NgayLapHoaDon.Value.ToString("dd/MM/yyyy") });
             baoCao.MailMerge.Execute(new[] { "So_Dien_Thoai" }, new[] { khachhang.Sdt });
             baoCao.MailMerge.Execute(new[] { "Dia_Chi" }, new[] { khachhang.DiaChi });
 
@@ -396,8 +397,12 @@ namespace PRL
             //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MoTaKhuyenMai / 100)) : tongTien;
             baoCao.MailMerge.Execute(new[] { "Tong" }, new[] { tongTien.ToString() });
 
+            //Tính tiền thừa
+            var tienthua = hdcts.Sum(x => x.GiaBan * x.SoLuong) - (tongTien);
+            baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
+
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\MTu\Desktop\hondonn"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\ADMIN\OneDrive\Máy tính\hoadon"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{_hoaDon.MaHoaDon}.pdf";
@@ -451,7 +456,7 @@ namespace PRL
             serviceSP.UpdateSoLuong(spctDangTao);
             // update tổng tiền cho hóa đơn chờ
             var tien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text);
-            serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text));
+            //serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text));
             
             // load lại dữ liệu trên 2 data grid view
             txt_search.Text = string.Empty;

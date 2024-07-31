@@ -167,13 +167,12 @@ namespace PRL
             var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("C:\\Users\\MTu\\Desktop\\New folder (5)\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don1.docx");
-
-            baoCao.MailMerge.Execute(new[] { "Ma_Hoa_Don" }, new[] { hoadon.MaHoaDon });
-            baoCao.MailMerge.Execute(new[] { "Ma_NhanVien" }, new[] { nhanvien.MaNhanVien });
+            Document baoCao = new Document("D:\\Final4_2\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don1.docx");
+            baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { hoadon.MaHoaDon });
+            baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { hoadon.MaNhanVien });
             baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaKhuyenMai + " %" : "Không áp dụng" });
             baoCao.MailMerge.Execute(new[] { "Ten_KhachHang" }, new[] { khachhang.TenKhachHang });
-            baoCao.MailMerge.Execute(new[] { "Ngay_ThanhToan" }, new[] { hoadon.NgayLapHoaDon.Value.ToString("dd/MM/yyyy") });
+            baoCao.MailMerge.Execute(new[] { "NGAY_THANHTOAN" }, new[] { hoadon.NgayLapHoaDon.Value.ToString("dd/MM/yyyy") });
             baoCao.MailMerge.Execute(new[] { "So_Dien_Thoai" }, new[] { khachhang.Sdt });
             baoCao.MailMerge.Execute(new[] { "Dia_Chi" }, new[] { khachhang.DiaChi });
 
@@ -197,8 +196,11 @@ namespace PRL
             //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MoTaKhuyenMai / 100)) : tongTien;
             baoCao.MailMerge.Execute(new[] { "Tong" }, new[] { tongTien.ToString() });
 
+            var tienthua = hdcts.Sum(x => x.GiaBan * x.SoLuong) - (tongTien);
+            baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
+
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\MTu\Desktop\New folder (2)"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\ADMIN\OneDrive\Máy tính\hoadon_2"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{hoadon.MaHoaDon}.pdf";

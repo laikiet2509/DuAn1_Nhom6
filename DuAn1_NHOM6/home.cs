@@ -30,8 +30,8 @@ namespace DuAn1_NHOM6
         }
         private void LoadUserInfo()
         {
-            lblten.Text = "Chức Vụ: " + _nhanVien.Ten;
-            lblquyen.Text = "Tên: " + chucVuServices.GetChucVuById(_nhanVien.MaChucVu).TenChucVu;
+            lblten.Text = "Tên: " + _nhanVien.Ten;
+            lblquyen.Text = "Chức Vụ: " + chucVuServices.GetChucVuById(_nhanVien.MaChucVu).TenChucVu;
         }
         private Form currentFormChild;
         private void OpenChildForm(Form childForm)
