@@ -21,9 +21,10 @@ namespace PRL
             InitializeComponent();
             service = new KhuyenMaiServices();
             LoadGrid();
+            txt_search.TextChanged += txt_search_TextChanged;
         }
 
-        
+
 
         public void LoadGrid()
         {
@@ -95,6 +96,23 @@ namespace PRL
             tbxMavc.Clear();
             tbxDieuKien.Clear();
             tbcMota.Clear();
+        }
+        private void LoadFilteredData(string searchQuery)
+        {
+            dgvDataVC.Rows.Clear();
+            var filteredVouchers = service.GetKhuyenMais(searchQuery)
+                .Where(km => km.MaKhuyenMai.Contains(searchQuery))
+                .ToList();
+
+            foreach (var sp in filteredVouchers)
+            {
+                dgvDataVC.Rows.Add(sp.MaKhuyenMai, sp.GiamGia, sp.NgayBatDau, sp.NgayKetThuc, sp.MoTaKhuyenMai);
+            }
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+            LoadFilteredData(txt_search.Text);
         }
     }
 }

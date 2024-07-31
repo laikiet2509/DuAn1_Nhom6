@@ -33,12 +33,18 @@ namespace BUS.Repository
             context.SaveChanges();
         }
 
-        public void SuaTrangThai(string maHoaDon, int trangThai)
+        public void SuaTrangThai(string maHoaDon, int trangThai, string maVoucher)
         {
             var hoaDonSua = context.HoaDons.Find(maHoaDon);
+            var maVouch = context.KhuyenMais.Find(maVoucher);
+
             if (hoaDonSua != null)
             {
                 hoaDonSua.TrangThai = trangThai;
+                if (maVouch != null)
+                {
+                    hoaDonSua.MaKhuyenMai = maVouch.MaKhuyenMai;
+                }
             }
             context.SaveChanges();
         }
@@ -48,6 +54,17 @@ namespace BUS.Repository
             if (hoaDonSua != null)
             {
                 hoaDonSua.TongTien = tongTien;
+                
+            }
+            
+            context.SaveChanges();
+        }
+        public void SuaKhuyenMai(string maHoaDon, string maKhuyenMai)
+        {
+            var hoaDonSua = context.HoaDons.Find(maHoaDon);
+            if (hoaDonSua != null)
+            {
+                hoaDonSua.MaKhuyenMai = maKhuyenMai;
             }
             context.SaveChanges();
         }

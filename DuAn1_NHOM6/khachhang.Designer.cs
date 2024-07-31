@@ -287,6 +287,7 @@
             btn_loc.TabIndex = 18;
             btn_loc.Text = "Lọc";
             btn_loc.UseVisualStyleBackColor = true;
+            btn_loc.Click += btn_loc_Click;
             // 
             // txt_search
             // 
@@ -295,6 +296,7 @@
             txt_search.Name = "txt_search";
             txt_search.Size = new Size(253, 27);
             txt_search.TabIndex = 3;
+            txt_search.TextChanged += txt_search_TextChanged;
             // 
             // label7
             // 

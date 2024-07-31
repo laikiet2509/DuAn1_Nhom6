@@ -50,8 +50,10 @@ namespace PRL
             serviceHDCT = new HoaDonChiTietServices();
 
             LoadGirdHD();
-            LoadGirdHDCT();
+            //LoadGirdHDCT();
+
             dbContext = new DBContext();//khoi tao db
+            dtgView_hoadon.CellClick += dtgView_hoadon_CellClick;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -76,17 +78,18 @@ namespace PRL
         }
         public void LoadGirdHD()
         {
-            dtgView_hoadon.ColumnCount = 5;
+            dtgView_hoadon.ColumnCount = 6;
             dtgView_hoadon.Columns[0].Name = "Mã Hóa Đơn";
             dtgView_hoadon.Columns[1].Name = "Ngày Lập Hóa Đơn";
-            dtgView_hoadon.Columns[2].Name = "Tổng Tiền";
-            dtgView_hoadon.Columns[3].Name = "Tên Nhân Viên";
-            dtgView_hoadon.Columns[4].Name = "Trạng Thái";
+            dtgView_hoadon.Columns[2].Name = "Mã khuyễn mãi";
+            dtgView_hoadon.Columns[3].Name = "Tổng Tiền";
+            dtgView_hoadon.Columns[4].Name = "Tên Nhân Viên";
+            dtgView_hoadon.Columns[5].Name = "Trạng Thái";
             dtgView_hoadon.Rows.Clear();
             var lst = serviceNV.GetNhanViens().ToList();
             foreach (var hd in serviceHD.GetAllHoaDons())
             {
-                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.TongTien, lst.First(x => x.MaNhanVien.ToLower() == hd.MaNhanVien!.ToLower()).Ten, ConvertTrangThai(hd.TrangThai));
+                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.MaKhuyenMai, hd.TongTien, lst.First(x => x.MaNhanVien.ToLower() == hd.MaNhanVien!.ToLower()).Ten, ConvertTrangThai(hd.TrangThai));
             }
         }
         // tạo 1 hàm convert trạng thái dùng switch case 
@@ -95,11 +98,14 @@ namespace PRL
             string status = string.Empty;
             switch (trangThai)
             {
+                case 0:
+                    status = "Hóa đơn chờ";
+                    break;
                 case 1:
-                    status = "Thành công";
+                    status = "Đã thanh toán";
                     break;
                 case 2:
-                    status = "Thất bại";
+                    status = "Đã hủy";
                     break;
                 default:
                     break;
@@ -107,20 +113,37 @@ namespace PRL
             return status;
 
         }
-        public void LoadGirdHDCT()
+        //public void LoadGirdHDCT()
+        //{
+        //    dtgView_chitiethoadon.ColumnCount = 4;
+        //    dtgView_chitiethoadon.Columns[0].Name = "Mã Hóa Đơn";
+        //    dtgView_chitiethoadon.Columns[1].Name = "Mã Sản Phẩm";
+        //    dtgView_chitiethoadon.Columns[2].Name = "Số Lượng";
+        //    dtgView_chitiethoadon.Columns[3].Name = "Giá Bán";
+        //    dtgView_chitiethoadon.Rows.Clear();
+        //    foreach (var hd in serviceHDCT.GetChiTietHoaDons())
+        //    {
+        //        dtgView_chitiethoadon.Rows.Add(hd.MaHd, hd.MaSp, hd.SoLuong, hd.GiaBan);
+        //    }
+        //}
+        private void LoadGirdHDCT(string maHoaDon)
         {
-            dtgView_chitiethoadon.ColumnCount = 4;
+            dtgView_chitiethoadon.ColumnCount = 5;
             dtgView_chitiethoadon.Columns[0].Name = "Mã Hóa Đơn";
             dtgView_chitiethoadon.Columns[1].Name = "Mã Sản Phẩm";
             dtgView_chitiethoadon.Columns[2].Name = "Số Lượng";
             dtgView_chitiethoadon.Columns[3].Name = "Giá Bán";
+            dtgView_chitiethoadon.Columns[4].Name = "Thành Tiền";
             dtgView_chitiethoadon.Rows.Clear();
-            foreach (var hd in serviceHDCT.GetChiTietHoaDons())
+
+            // Lấy danh sách chi tiết hóa đơn theo mã hóa đơn
+            var hdcts = serviceHDCT.GetChiTietHoaDons().Where(x => x.MaHd == maHoaDon).ToList();
+
+            foreach (var hdct in hdcts)
             {
-                dtgView_chitiethoadon.Rows.Add(hd.MaHd, hd.MaSp, hd.SoLuong, hd.GiaBan);
+                dtgView_chitiethoadon.Rows.Add(hdct.MaHd, hdct.MaSp, hdct.SoLuong, hdct.GiaBan, hdct.ThanhTien);
             }
         }
-
         private void btn_inhoadon_Click(object sender, EventArgs e)
         {
             if (dtgView_hoadon.SelectedRows.Count == 0)
@@ -144,7 +167,7 @@ namespace PRL
             var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("C:\\Users\\pc\\source\\repos\\da1\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
+            Document baoCao = new Document("C:\\Users\\MTu\\Desktop\\New folder (5)\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don1.docx");
 
             baoCao.MailMerge.Execute(new[] { "Ma_Hoa_Don" }, new[] { hoadon.MaHoaDon });
             baoCao.MailMerge.Execute(new[] { "Ma_NhanVien" }, new[] { nhanvien.MaNhanVien });
@@ -170,12 +193,12 @@ namespace PRL
                 hanghientai++;
             }
 
-            var tongTien = hdcts.Sum(x => x.GiaBan * x.SoLuong);
+            var tongTien = dbContext.HoaDons.FirstOrDefault(x=>x.MaHoaDon==selectedHoaDonId)!.TongTien;
             //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MoTaKhuyenMai / 100)) : tongTien;
             baoCao.MailMerge.Execute(new[] { "Tong" }, new[] { tongTien.ToString() });
 
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\pc\Desktop\hoa_don"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\MTu\Desktop\New folder (2)"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{hoadon.MaHoaDon}.pdf";
@@ -183,6 +206,18 @@ namespace PRL
 
             baoCao.Save(tenTep);
             MessageBox.Show("Xuất Hóa Đơn Thành Công");
+        }
+
+        private void dtgView_hoadon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Kiểm tra nếu không phải tiêu đề cột
+            {
+                // Lấy mã hóa đơn của dòng được chọn
+                string maHoaDon = dtgView_hoadon.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                // Tải dữ liệu chi tiết hóa đơn và hiển thị trên DataGridView dtgView_chitiethoadon
+                LoadGirdHDCT(maHoaDon);
+            }
         }
     }
 }

@@ -25,6 +25,8 @@ namespace PRL
             LoadGird();
             LoadChucVu();
             LoadTrangThai();
+            txt_search.TextChanged += txt_search_TextChanged; // Add event handler for search
+            btn_loc.Click += btn_loc_Click; // Add event handler for search button
         }
         public void LoadGird()
         {
@@ -75,7 +77,7 @@ namespace PRL
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 NhanVien nv = new NhanVien
@@ -141,7 +143,6 @@ namespace PRL
 
         private void nhanvien_Load(object sender, EventArgs e)
         {
-
         }
 
         private void dtgView_nhanvien_CellClick_1(object sender, DataGridViewCellEventArgs e)
@@ -157,7 +158,7 @@ namespace PRL
 
         private void btn_loc_Click(object sender, EventArgs e)
         {
-            LoadGird();
+            SearchNhanVien(txt_search.Text);
         }
         private void LoadChucVu()
         {
@@ -171,6 +172,23 @@ namespace PRL
             cmbx_trangthai.Items.Add("Hoạt Động");
             cmbx_trangthai.Items.Add("Không Hoạt Động");
             cmbx_trangthai.SelectedIndex = 0; // Mặc định chọn trạng thái đầu tiên
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+            SearchNhanVien(txt_search.Text);
+        }
+        private void SearchNhanVien(string searchQuery)
+        {
+            var filteredNhanViens = service.GetNhanViens()
+                .Where(nv => nv.MaNhanVien.Contains(searchQuery) || nv.Ten.Contains(searchQuery))
+                .ToList();
+
+            dtgView_nhanvien.Rows.Clear();
+            foreach (var nv in filteredNhanViens)
+            {
+                dtgView_nhanvien.Rows.Add(nv.MaNhanVien, nv.Ten, nv.GioiTinh == true ? "Nam" : "Nữ", nv.NgaySinh, nv.Email, nv.Sdt, nv.DiaChi, serviceCV.GetChucVuById(nv.MaChucVu).TenChucVu, nv.TrangThai);
+            }
         }
     }
 }

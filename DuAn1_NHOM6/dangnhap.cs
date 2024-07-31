@@ -40,9 +40,14 @@ namespace DuAn1_NHOM6
         }   
         private void btn_thoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            dangky registerForm = new dangky();
+            registerForm.FormClosed += dangky_FormClosed;
+            registerForm.ShowDialog();
         }
-
+        private void dangky_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Handle any actions after the registration form is closed, if needed
+        }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             

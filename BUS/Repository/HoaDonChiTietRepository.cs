@@ -42,5 +42,14 @@ namespace BUS.Repository
         {
             return context.ChiTietHoaDons.ToList();
         }
+        public void SuaThanhTien(string MaHd, decimal thanhTien)
+        {
+            var hoaDonSua = context.ChiTietHoaDons.Find(MaHd);
+            if (hoaDonSua != null)
+            {
+                hoaDonSua.ThanhTien = thanhTien;
+            }
+            context.SaveChanges();
+        }
     }
 }

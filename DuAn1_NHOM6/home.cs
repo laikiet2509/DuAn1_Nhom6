@@ -30,7 +30,7 @@ namespace DuAn1_NHOM6
         }
         private void LoadUserInfo()
         {
-            lblten.Text = "Chức Vụ: " +  _nhanVien.Ten;
+            lblten.Text = "Chức Vụ: " + _nhanVien.Ten;
             lblquyen.Text = "Tên: " + chucVuServices.GetChucVuById(_nhanVien.MaChucVu).TenChucVu;
         }
         private Form currentFormChild;
@@ -61,11 +61,11 @@ namespace DuAn1_NHOM6
             OpenChildForm(new khachhang());
             label1.Text = btn_khachhang.Text;
         }
-        
+
 
         private void btn_banhang_Click(object sender, EventArgs e)
         {
-            
+
             OpenChildForm(new banhang(_nhanVien));
             label1.Text = btn_banhang.Text;
         }
@@ -89,7 +89,7 @@ namespace DuAn1_NHOM6
         {
             OpenChildForm(new voucher());
             label1.Text = btn_khuyenmai.Text;
-            
+
         }
 
         private void btn_thongke_Click(object sender, EventArgs e)
@@ -102,9 +102,13 @@ namespace DuAn1_NHOM6
         {
             OpenChildForm(new nhanvien());
             label1.Text = btn_nhanvien.Text;
-            
+
 
         }
-        
+
+        private void btn_thietlap_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

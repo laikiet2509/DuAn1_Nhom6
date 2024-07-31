@@ -39,37 +39,37 @@
             cbx_LocTheoThang = new ComboBox();
             groupBox1 = new GroupBox();
             cbx_LocTheoNam = new ComboBox();
-            panel4 = new Panel();
-            pictureBox4 = new PictureBox();
-            lbl_KhachHang = new Label();
-            lbl_SoKhachHang = new Label();
-            label6 = new Label();
-            panel3 = new Panel();
-            pictureBox3 = new PictureBox();
-            lbl_DonHuy = new Label();
-            lbl_SoDonHuy = new Label();
-            label5 = new Label();
-            panel2 = new Panel();
-            pictureBox2 = new PictureBox();
-            lbl_HoaDon = new Label();
-            lbl_SoHoaDon = new Label();
-            label4 = new Label();
-            panel1 = new Panel();
-            pictureBox1 = new PictureBox();
-            lbl_SoDoanhThu = new Label();
-            lbl_DoanhThu = new Label();
             label3 = new Label();
+            lbl_DoanhThu = new Label();
+            lbl_SoDoanhThu = new Label();
+            pictureBox1 = new PictureBox();
+            panel1 = new Panel();
+            label4 = new Label();
+            lbl_SoHoaDon = new Label();
+            lbl_HoaDon = new Label();
+            pictureBox2 = new PictureBox();
+            panel2 = new Panel();
+            label5 = new Label();
+            lbl_SoDonHuy = new Label();
+            lbl_DonHuy = new Label();
+            pictureBox3 = new PictureBox();
+            panel3 = new Panel();
+            label6 = new Label();
+            lbl_SoKhachHang = new Label();
+            lbl_KhachHang = new Label();
+            pictureBox4 = new PictureBox();
+            panel4 = new Panel();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // btn_Tim
@@ -78,7 +78,7 @@
             btn_Tim.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Italic, GraphicsUnit.Point);
             btn_Tim.Image = Properties.Resources.Search4;
             btn_Tim.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Tim.Location = new Point(961, 525);
+            btn_Tim.Location = new Point(925, 567);
             btn_Tim.Name = "btn_Tim";
             btn_Tim.Size = new Size(113, 47);
             btn_Tim.TabIndex = 24;
@@ -90,7 +90,7 @@
             // 
             btn_DTHomNay.BackColor = SystemColors.Control;
             btn_DTHomNay.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Italic, GraphicsUnit.Point);
-            btn_DTHomNay.Location = new Point(1114, 528);
+            btn_DTHomNay.Location = new Point(1078, 570);
             btn_DTHomNay.Name = "btn_DTHomNay";
             btn_DTHomNay.Size = new Size(144, 47);
             btn_DTHomNay.TabIndex = 32;
@@ -104,7 +104,7 @@
             groupBox3.Controls.Add(dtp_TGDen);
             groupBox3.Controls.Add(dtp_TGTu);
             groupBox3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            groupBox3.Location = new Point(79, 498);
+            groupBox3.Location = new Point(888, 347);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(823, 97);
             groupBox3.TabIndex = 31;
@@ -151,7 +151,7 @@
             // 
             groupBox2.Controls.Add(cbx_LocTheoThang);
             groupBox2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            groupBox2.Location = new Point(506, 376);
+            groupBox2.Location = new Point(1315, 150);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(396, 74);
             groupBox2.TabIndex = 30;
@@ -170,7 +170,7 @@
             // 
             groupBox1.Controls.Add(cbx_LocTheoNam);
             groupBox1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            groupBox1.Location = new Point(79, 376);
+            groupBox1.Location = new Point(888, 150);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(404, 74);
             groupBox1.TabIndex = 29;
@@ -185,147 +185,56 @@
             cbx_LocTheoNam.Size = new Size(343, 28);
             cbx_LocTheoNam.TabIndex = 0;
             // 
-            // panel4
+            // label3
             // 
-            panel4.BackColor = Color.Lime;
-            panel4.Controls.Add(pictureBox4);
-            panel4.Controls.Add(lbl_KhachHang);
-            panel4.Controls.Add(lbl_SoKhachHang);
-            panel4.Controls.Add(label6);
-            panel4.Location = new Point(883, 65);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(353, 268);
-            panel4.TabIndex = 28;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(15, 12);
+            label3.Name = "label3";
+            label3.Size = new Size(97, 23);
+            label3.TabIndex = 0;
+            label3.Text = "Doanh Thu";
             // 
-            // pictureBox4
+            // lbl_DoanhThu
             // 
-            pictureBox4.Image = Properties.Resources.khachhang;
-            pictureBox4.Location = new Point(210, 95);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(50, 50);
-            pictureBox4.TabIndex = 4;
-            pictureBox4.TabStop = false;
+            lbl_DoanhThu.AutoSize = true;
+            lbl_DoanhThu.Location = new Point(56, 63);
+            lbl_DoanhThu.Name = "lbl_DoanhThu";
+            lbl_DoanhThu.Size = new Size(0, 20);
+            lbl_DoanhThu.TabIndex = 1;
             // 
-            // lbl_KhachHang
+            // lbl_SoDoanhThu
             // 
-            lbl_KhachHang.AutoSize = true;
-            lbl_KhachHang.BackColor = Color.Lime;
-            lbl_KhachHang.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_KhachHang.Location = new Point(127, 108);
-            lbl_KhachHang.Name = "lbl_KhachHang";
-            lbl_KhachHang.Size = new Size(19, 20);
-            lbl_KhachHang.TabIndex = 2;
-            lbl_KhachHang.Text = "0";
+            lbl_SoDoanhThu.AutoSize = true;
+            lbl_SoDoanhThu.BackColor = Color.DeepSkyBlue;
+            lbl_SoDoanhThu.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_SoDoanhThu.Location = new Point(56, 154);
+            lbl_SoDoanhThu.Name = "lbl_SoDoanhThu";
+            lbl_SoDoanhThu.Size = new Size(19, 20);
+            lbl_SoDoanhThu.TabIndex = 2;
+            lbl_SoDoanhThu.Text = "0";
             // 
-            // lbl_SoKhachHang
+            // pictureBox1
             // 
-            lbl_SoKhachHang.AutoSize = true;
-            lbl_SoKhachHang.Location = new Point(87, 61);
-            lbl_SoKhachHang.Name = "lbl_SoKhachHang";
-            lbl_SoKhachHang.Size = new Size(0, 20);
-            lbl_SoKhachHang.TabIndex = 1;
+            pictureBox1.Image = Properties.Resources.doanhthu;
+            pictureBox1.Location = new Point(210, 143);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(50, 50);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
             // 
-            // label6
+            // panel1
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(15, 12);
-            label6.Name = "label6";
-            label6.Size = new Size(131, 23);
-            label6.TabIndex = 0;
-            label6.Text = "Số Khách Hàng";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Yellow;
-            panel3.Controls.Add(pictureBox3);
-            panel3.Controls.Add(lbl_DonHuy);
-            panel3.Controls.Add(lbl_SoDonHuy);
-            panel3.Controls.Add(label5);
-            panel3.Location = new Point(1281, 65);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(353, 268);
-            panel3.TabIndex = 27;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = Properties.Resources.hoadonhuy;
-            pictureBox3.Location = new Point(219, 95);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(50, 50);
-            pictureBox3.SizeMode = PictureBoxSizeMode.AutoSize;
-            pictureBox3.TabIndex = 4;
-            pictureBox3.TabStop = false;
-            // 
-            // lbl_DonHuy
-            // 
-            lbl_DonHuy.AutoSize = true;
-            lbl_DonHuy.BackColor = Color.Yellow;
-            lbl_DonHuy.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_DonHuy.Location = new Point(118, 108);
-            lbl_DonHuy.Name = "lbl_DonHuy";
-            lbl_DonHuy.Size = new Size(19, 20);
-            lbl_DonHuy.TabIndex = 2;
-            lbl_DonHuy.Text = "0";
-            // 
-            // lbl_SoDonHuy
-            // 
-            lbl_SoDonHuy.AutoSize = true;
-            lbl_SoDonHuy.Location = new Point(57, 76);
-            lbl_SoDonHuy.Name = "lbl_SoDonHuy";
-            lbl_SoDonHuy.Size = new Size(0, 20);
-            lbl_SoDonHuy.TabIndex = 1;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(15, 12);
-            label5.Name = "label5";
-            label5.Size = new Size(143, 23);
-            label5.TabIndex = 0;
-            label5.Text = "Số Hoá Đơn Huỷ";
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.Coral;
-            panel2.Controls.Add(pictureBox2);
-            panel2.Controls.Add(lbl_HoaDon);
-            panel2.Controls.Add(lbl_SoHoaDon);
-            panel2.Controls.Add(label4);
-            panel2.Location = new Point(478, 65);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(353, 268);
-            panel2.TabIndex = 26;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.hoadon;
-            pictureBox2.Location = new Point(219, 94);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(50, 50);
-            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox2.TabIndex = 4;
-            pictureBox2.TabStop = false;
-            // 
-            // lbl_HoaDon
-            // 
-            lbl_HoaDon.AutoSize = true;
-            lbl_HoaDon.BackColor = Color.Coral;
-            lbl_HoaDon.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_HoaDon.Location = new Point(118, 105);
-            lbl_HoaDon.Name = "lbl_HoaDon";
-            lbl_HoaDon.Size = new Size(19, 20);
-            lbl_HoaDon.TabIndex = 2;
-            lbl_HoaDon.Text = "0";
-            // 
-            // lbl_SoHoaDon
-            // 
-            lbl_SoHoaDon.AutoSize = true;
-            lbl_SoHoaDon.Location = new Point(39, 66);
-            lbl_SoHoaDon.Name = "lbl_SoHoaDon";
-            lbl_SoHoaDon.Size = new Size(0, 20);
-            lbl_SoHoaDon.TabIndex = 1;
+            panel1.BackColor = Color.DeepSkyBlue;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(lbl_SoDoanhThu);
+            panel1.Controls.Add(lbl_DoanhThu);
+            panel1.Controls.Add(label3);
+            panel1.Location = new Point(47, 98);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(374, 322);
+            panel1.TabIndex = 25;
             // 
             // label4
             // 
@@ -337,56 +246,148 @@
             label4.TabIndex = 0;
             label4.Text = "Số Hoá Đơn";
             // 
-            // panel1
+            // lbl_SoHoaDon
             // 
-            panel1.BackColor = Color.DeepSkyBlue;
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(lbl_SoDoanhThu);
-            panel1.Controls.Add(lbl_DoanhThu);
-            panel1.Controls.Add(label3);
-            panel1.Location = new Point(68, 65);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(353, 268);
-            panel1.TabIndex = 25;
+            lbl_SoHoaDon.AutoSize = true;
+            lbl_SoHoaDon.Location = new Point(39, 66);
+            lbl_SoHoaDon.Name = "lbl_SoHoaDon";
+            lbl_SoHoaDon.Size = new Size(0, 20);
+            lbl_SoHoaDon.TabIndex = 1;
             // 
-            // pictureBox1
+            // lbl_HoaDon
             // 
-            pictureBox1.Image = Properties.Resources.doanhthu;
-            pictureBox1.Location = new Point(210, 94);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(50, 50);
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
+            lbl_HoaDon.AutoSize = true;
+            lbl_HoaDon.BackColor = Color.Coral;
+            lbl_HoaDon.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_HoaDon.Location = new Point(118, 154);
+            lbl_HoaDon.Name = "lbl_HoaDon";
+            lbl_HoaDon.Size = new Size(19, 20);
+            lbl_HoaDon.TabIndex = 2;
+            lbl_HoaDon.Text = "0";
             // 
-            // lbl_SoDoanhThu
+            // pictureBox2
             // 
-            lbl_SoDoanhThu.AutoSize = true;
-            lbl_SoDoanhThu.BackColor = Color.DeepSkyBlue;
-            lbl_SoDoanhThu.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_SoDoanhThu.Location = new Point(56, 105);
-            lbl_SoDoanhThu.Name = "lbl_SoDoanhThu";
-            lbl_SoDoanhThu.Size = new Size(19, 20);
-            lbl_SoDoanhThu.TabIndex = 2;
-            lbl_SoDoanhThu.Text = "0";
+            pictureBox2.Image = Properties.Resources.hoadon;
+            pictureBox2.Location = new Point(219, 143);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(50, 50);
+            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
             // 
-            // lbl_DoanhThu
+            // panel2
             // 
-            lbl_DoanhThu.AutoSize = true;
-            lbl_DoanhThu.Location = new Point(56, 63);
-            lbl_DoanhThu.Name = "lbl_DoanhThu";
-            lbl_DoanhThu.Size = new Size(0, 20);
-            lbl_DoanhThu.TabIndex = 1;
+            panel2.BackColor = Color.Coral;
+            panel2.Controls.Add(pictureBox2);
+            panel2.Controls.Add(lbl_HoaDon);
+            panel2.Controls.Add(lbl_SoHoaDon);
+            panel2.Controls.Add(label4);
+            panel2.Location = new Point(457, 98);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(374, 322);
+            panel2.TabIndex = 26;
             // 
-            // label3
+            // label5
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(15, 12);
-            label3.Name = "label3";
-            label3.Size = new Size(97, 23);
-            label3.TabIndex = 0;
-            label3.Text = "Doanh Thu";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(15, 12);
+            label5.Name = "label5";
+            label5.Size = new Size(143, 23);
+            label5.TabIndex = 0;
+            label5.Text = "Số Hoá Đơn Huỷ";
+            // 
+            // lbl_SoDonHuy
+            // 
+            lbl_SoDonHuy.AutoSize = true;
+            lbl_SoDonHuy.Location = new Point(57, 76);
+            lbl_SoDonHuy.Name = "lbl_SoDonHuy";
+            lbl_SoDonHuy.Size = new Size(0, 20);
+            lbl_SoDonHuy.TabIndex = 1;
+            // 
+            // lbl_DonHuy
+            // 
+            lbl_DonHuy.AutoSize = true;
+            lbl_DonHuy.BackColor = Color.Yellow;
+            lbl_DonHuy.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_DonHuy.Location = new Point(118, 161);
+            lbl_DonHuy.Name = "lbl_DonHuy";
+            lbl_DonHuy.Size = new Size(19, 20);
+            lbl_DonHuy.TabIndex = 2;
+            lbl_DonHuy.Text = "0";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.hoadonhuy;
+            pictureBox3.Location = new Point(219, 148);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(50, 50);
+            pictureBox3.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox3.TabIndex = 4;
+            pictureBox3.TabStop = false;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Yellow;
+            panel3.Controls.Add(pictureBox3);
+            panel3.Controls.Add(lbl_DonHuy);
+            panel3.Controls.Add(lbl_SoDonHuy);
+            panel3.Controls.Add(label5);
+            panel3.Location = new Point(457, 508);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(374, 322);
+            panel3.TabIndex = 27;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(15, 12);
+            label6.Name = "label6";
+            label6.Size = new Size(131, 23);
+            label6.TabIndex = 0;
+            label6.Text = "Số Khách Hàng";
+            // 
+            // lbl_SoKhachHang
+            // 
+            lbl_SoKhachHang.AutoSize = true;
+            lbl_SoKhachHang.Location = new Point(87, 61);
+            lbl_SoKhachHang.Name = "lbl_SoKhachHang";
+            lbl_SoKhachHang.Size = new Size(0, 20);
+            lbl_SoKhachHang.TabIndex = 1;
+            // 
+            // lbl_KhachHang
+            // 
+            lbl_KhachHang.AutoSize = true;
+            lbl_KhachHang.BackColor = Color.Lime;
+            lbl_KhachHang.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_KhachHang.Location = new Point(127, 161);
+            lbl_KhachHang.Name = "lbl_KhachHang";
+            lbl_KhachHang.Size = new Size(19, 20);
+            lbl_KhachHang.TabIndex = 2;
+            lbl_KhachHang.Text = "0";
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = Properties.Resources.khachhang;
+            pictureBox4.Location = new Point(210, 148);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(50, 50);
+            pictureBox4.TabIndex = 4;
+            pictureBox4.TabStop = false;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Lime;
+            panel4.Controls.Add(pictureBox4);
+            panel4.Controls.Add(lbl_KhachHang);
+            panel4.Controls.Add(lbl_SoKhachHang);
+            panel4.Controls.Add(label6);
+            panel4.Location = new Point(47, 508);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(374, 322);
+            panel4.TabIndex = 28;
+            panel4.Paint += panel4_Paint;
             // 
             // thongke
             // 
@@ -409,18 +410,18 @@
             groupBox3.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -437,25 +438,25 @@
         private ComboBox cbx_LocTheoThang;
         private GroupBox groupBox1;
         private ComboBox cbx_LocTheoNam;
-        private Panel panel4;
-        private PictureBox pictureBox4;
-        private Label lbl_KhachHang;
-        private Label lbl_SoKhachHang;
-        private Label label6;
-        private Panel panel3;
-        private PictureBox pictureBox3;
-        private Label lbl_DonHuy;
-        private Label lbl_SoDonHuy;
-        private Label label5;
-        private Panel panel2;
-        private PictureBox pictureBox2;
-        private Label lbl_HoaDon;
-        private Label lbl_SoHoaDon;
-        private Label label4;
-        private Panel panel1;
-        private PictureBox pictureBox1;
-        private Label lbl_SoDoanhThu;
-        private Label lbl_DoanhThu;
         private Label label3;
+        private Label lbl_DoanhThu;
+        private Label lbl_SoDoanhThu;
+        private PictureBox pictureBox1;
+        private Panel panel1;
+        private Label label4;
+        private Label lbl_SoHoaDon;
+        private Label lbl_HoaDon;
+        private PictureBox pictureBox2;
+        private Panel panel2;
+        private Label label5;
+        private Label lbl_SoDonHuy;
+        private Label lbl_DonHuy;
+        private PictureBox pictureBox3;
+        private Panel panel3;
+        private Label label6;
+        private Label lbl_SoKhachHang;
+        private Label lbl_KhachHang;
+        private PictureBox pictureBox4;
+        private Panel panel4;
     }
 }

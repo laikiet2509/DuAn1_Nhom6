@@ -1,4 +1,5 @@
-﻿using BUS.Services;
+﻿using Aspose.Words;
+using BUS.Services;
 using DAL.DomainClass;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using ThuVienWinform.Report.AsposeWordExtension;
+using static System.Windows.Forms.AxHost;
+using Aspose.Words.Tables;
+using DAL.Context;
 
 namespace PRL
 {
     public partial class banhang : Form
     {
+        DBContext dbContext = new DBContext();
         private NhanVien _nhanVien;
         public BanHangServices serviceBH;
         public HoaDonServices serviceHD;
@@ -29,9 +35,10 @@ namespace PRL
         public DataTable dataTableSPCT;
         public DataTable dataTableHDCT;
         public ThuongHieuServices serviceTH; // Thêm dịch vụ cho thương hiệu
-
+        private string tenTep = "";
         private bool daThanhToanDu = false;
         private string maNhanVien;
+        private HoaDon _hoaDon;
         public banhang(NhanVien nhanVien)
         {
             InitializeComponent();
@@ -50,14 +57,11 @@ namespace PRL
             dataTableSPCT = new DataTable();
             dataTableHDCT = new DataTable();
             _nhanVien = nhanVien;
-            LoadMauSac();
-            LoadKichCo();
-            LoadThuongHieu();
             cbb_mausac.DropDown += new EventHandler(cbb_hang_DropDown);
             cbb_size.DropDown += new EventHandler(cbb_hang_DropDown);
             cbb_hang.DropDown += new EventHandler(cbb_hang_DropDown);
         }
-        private decimal TinhTongTienHoaDon(string maHoaDon)
+        private decimal TinhTongTienHoaDon(string maHoaDon, string maVoucher)
         {
             var listHDCT = serviceHDCT.GetAllHoaDonCTByMaHoaDon(maHoaDon);
             decimal tongTien = 0;
@@ -66,7 +70,16 @@ namespace PRL
             {
                 tongTien += hdct.GiaBan * hdct.SoLuong;
             }
-
+            if (!string.IsNullOrEmpty(maVoucher))
+            {
+                KhuyenMai khuyenMai = LayThongTinKhuyenMai(maVoucher);
+                if (khuyenMai != null && khuyenMai.NgayBatDau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
+                {
+                    decimal tienGiam = tongTien * khuyenMai.GiamGia / 100;
+                    // Tổng hóa đơn sau khi áp dụng khuyến mãi
+                    tongTien = tongTien - tienGiam;
+                }
+            }
             return tongTien;
         }
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -129,7 +142,7 @@ namespace PRL
             dtgView_hoadon.DataSource = dt;
             if (cmbx_hoadoncho.SelectedValue != null)
             {
-                lblTongTien.Text = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString()).ToString("#,##0.00 'VND'");
+                lblTongTien.Text = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(),"").ToString("#,##0.00 'VND'");
             }
         }
 
@@ -170,28 +183,7 @@ namespace PRL
             dtgView_danhsachsanpham.DataSource = dataTableSPCT;
 
         }
-        private void LoadMauSac()
-        {
-            //var mauSacs = serviceMS.GetMauSacs();
-            //cbb_mausac.DataSource = mauSacs;
-            //cbb_mausac.DisplayMember = "MauSac1";
-            //cbb_mausac.ValueMember = "MaMauSp";
-        }
-
-        private void LoadKichCo()
-        {
-            //var kichCos = serviceKC.GetKichCos();
-            //cbb_size.DataSource = kichCos;
-            //cbb_size.DisplayMember = "KichCo1";
-            //cbb_size.ValueMember = "MaKichCoSp";
-        }
-        private void LoadThuongHieu()
-        {
-            //var thuongHieus = serviceTH.GetThuongHieus();
-            //cbb_hang.DataSource = thuongHieus;
-            //cbb_hang.DisplayMember = "TenThuongHieu";
-            //cbb_hang.ValueMember = "MaThuongHieu";
-        }
+        
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
@@ -213,6 +205,7 @@ namespace PRL
 
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.MaHoaDon = "HD" + (serviceHD.GetAllHoaDons().Count + 1);
+                
                 //hoaDon.MaNhanVien = NhanVienDangNhap.MaNhanVien;
                 hoaDon.MaNhanVien = _nhanVien.MaNhanVien;
                 hoaDon.Sdt = txt_SDT.Text;
@@ -222,7 +215,7 @@ namespace PRL
                 serviceHD.TaoHoaDonCho(hoaDon);
 
                 MessageBox.Show("Tạo hóa đơn chờ thành công!");
-
+                _hoaDon = hoaDon;
                 LoadData_cbbHoaDonCho();
             }
         }
@@ -233,7 +226,7 @@ namespace PRL
             // var tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
 
             string maVoucher = txt_maVoucher.Text;
-            decimal tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
+            decimal tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), "");
             lblTongTien.Text = tongSoTien.ToString("#,##0.00 'VND'");
             decimal tongSoTienSauGiam = tongSoTien;
             lbl_TienAddVoucher.Text = tongSoTien.ToString("#,##0.00 'VND'");
@@ -259,6 +252,14 @@ namespace PRL
             decimal tienKhachDua;
             if (decimal.TryParse(txt_tienkhachdua.Text, out tienKhachDua))
             {
+                if (tienKhachDua < 0)
+                {
+                    MessageBox.Show("Số tiền khách đưa không được là số âm!");
+                    txt_tienkhachdua.Text = string.Empty; // Xóa nội dung trong ô nhập liệu
+                    lblTienThua.Text = "0.00 VND"; // Đặt lại nhãn tiền thừa
+                    daThanhToanDu = false; // Đặt lại trạng thái thanh toán
+                    return;
+                }
                 decimal tienThua = tienKhachDua - tongSoTienSauGiam;
                 lblTienThua.Text = tienThua.ToString("#,##0.00 'VND'");
 
@@ -289,7 +290,7 @@ namespace PRL
                 serviceSP.UpdateSoLuong(spct);
             }
 
-            serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 2);
+            serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 2,"");
             MessageBox.Show("Đã hủy hóa đơn!");
             RefreshToanBoForm();
         }
@@ -316,13 +317,20 @@ namespace PRL
 
         private void btn_thanhtoan_Click(object sender, EventArgs e)
         {
-            if (TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString()) > 0)
+            if (TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text) > 0)
             {
                 if (daThanhToanDu)
                 {
-                    serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 1);
-                    MessageBox.Show("Đã thanh toán hóa đơn!");
+                    serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 1,txt_maVoucher.Text);
+                    MessageBox.Show("Đã thanh toán hóa đơn!");                  
                     RefreshToanBoForm();
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn in hóa đơn không ?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //MessageBox.Show("Ok nhé");
+                        inhoaDon();
+                    }
+
                 }
                 else
                 {
@@ -333,6 +341,70 @@ namespace PRL
             {
                 MessageBox.Show("Hóa đơn trống!");
             }
+            
+        }
+        public void inhoaDon()
+        {
+            //if (dtgView_hoadon.SelectedRows.Count == 0)
+            //{
+            //    MessageBox.Show("Vui lòng chọn một hóa đơn để tạo báo cáo.");
+            //    return;
+            //}
+
+            //string selectedHoaDonId = dtgView_hoadon.SelectedRows[0].Cells[0].Value.ToString();
+            //var hoadon = serviceHD.GetAllHoaDons().FirstOrDefault(x => x.MaHoaDon == selectedHoaDonId);
+            //if (hoadon == null)
+            //{
+            //    MessageBox.Show("Không tìm thấy hóa đơn.");
+            //    return;
+            //}
+
+            var khachhang = serviceKH.GetKhachHangs(btn_timkiem.Text).FirstOrDefault(x => x.Sdt == _hoaDon.Sdt);
+            //var nhanvien = serviceNV.GetNhanViens().FirstOrDefault(x => x.MaNhanVien == hoadon.MaNhanVien);
+            var hdcts = serviceHDCT.GetChiTietHoaDons().Where(x => x.MaHd == _hoaDon.MaHoaDon).ToList();
+            var km = serviceKM.GetKhuyenMais(btn_timkiem.Text).FirstOrDefault(x => x.MaKhuyenMai == _hoaDon.MaKhuyenMai);
+            //var homNay = DateTime.Now;
+
+
+            Document baoCao = new Document("C:\\Users\\MTu\\Desktop\\New folder (5)\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
+
+            baoCao.MailMerge.Execute(new[] { "Ma_Hoa_Don" }, new[] { _hoaDon.MaHoaDon });
+            baoCao.MailMerge.Execute(new[] { "Ma_NhanVien" }, new[] { _hoaDon.MaNhanVien });
+            baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaKhuyenMai + " %" : "Không áp dụng" });
+            baoCao.MailMerge.Execute(new[] { "Ten_KhachHang" }, new[] { khachhang.TenKhachHang });
+            baoCao.MailMerge.Execute(new[] { "Ngay_ThanhToan" }, new[] { _hoaDon.NgayLapHoaDon.Value.ToString("dd/MM/yyyy") });
+            baoCao.MailMerge.Execute(new[] { "So_Dien_Thoai" }, new[] { khachhang.Sdt });
+            baoCao.MailMerge.Execute(new[] { "Dia_Chi" }, new[] { khachhang.DiaChi });
+
+            Table maHoaDonvsKhachHang = baoCao.GetChild(NodeType.Table, 1, true) as Table;
+            int hanghientai = 1;
+            maHoaDonvsKhachHang.InsertRows(hanghientai, hanghientai, hdcts.Count);
+
+            int stt = 1;
+            foreach (var item in hdcts)
+            {
+                var ctxe = serviceSP.GetSanPhams().FirstOrDefault(x => x.MaSanPham == item.MaSp);
+                maHoaDonvsKhachHang.PutValue(hanghientai, 0, stt++.ToString());
+                maHoaDonvsKhachHang.PutValue(hanghientai, 1, ctxe.TenSanPham);
+                maHoaDonvsKhachHang.PutValue(hanghientai, 2, item.GiaBan.ToString());
+                maHoaDonvsKhachHang.PutValue(hanghientai, 3, item.SoLuong.ToString());
+                maHoaDonvsKhachHang.PutValue(hanghientai, 4, (item.GiaBan * item.SoLuong).ToString());
+                hanghientai++;
+            }
+
+            var tongTien = TinhTongTienHoaDon(_hoaDon.MaHoaDon, txt_maVoucher.Text);
+            //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MoTaKhuyenMai / 100)) : tongTien;
+            baoCao.MailMerge.Execute(new[] { "Tong" }, new[] { tongTien.ToString() });
+
+            // Bước 4: Lưu và mở file
+            string path = @"C:\Users\MTu\Desktop\hondonn"; // đường dẫn folder có tên hoá đơn
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
+            string filename = $"{_hoaDon.MaHoaDon}.pdf";
+            tenTep = $@"{path}\{filename}";
+
+            baoCao.Save(tenTep);
+            MessageBox.Show("Xuất Hóa Đơn Thành Công");
         }
         private void dtgView_hoadon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -378,8 +450,9 @@ namespace PRL
             spctDangTao.SoLuongTon -= formSoLuongMua.SoLuongMua;
             serviceSP.UpdateSoLuong(spctDangTao);
             // update tổng tiền cho hóa đơn chờ
-            serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString()));
-
+            var tien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text);
+            serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text));
+            
             // load lại dữ liệu trên 2 data grid view
             txt_search.Text = string.Empty;
             LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
@@ -533,7 +606,7 @@ namespace PRL
                 string maVoucher = txt_maVoucher.Text;
                 KhuyenMai khuyenMai = LayThongTinKhuyenMai(maVoucher);
 
-                decimal tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
+                decimal tongSoTien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), "");
                 lblTongTien.Text = tongSoTien.ToString("#,##0.00 'VND'");
 
                 decimal tongSoTienSauGiam = tongSoTien;
@@ -593,5 +666,6 @@ namespace PRL
                 cbb_size.ValueMember = "MaKichCoSp";
             }
         }
+        
     }
 }

@@ -252,6 +252,7 @@
             txt_search.Name = "txt_search";
             txt_search.Size = new Size(226, 27);
             txt_search.TabIndex = 8;
+            txt_search.TextChanged += txt_search_TextChanged;
             // 
             // groupBox3
             // 

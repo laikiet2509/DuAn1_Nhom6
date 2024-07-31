@@ -84,8 +84,9 @@
             btn_thietlap.Name = "btn_thietlap";
             btn_thietlap.Size = new Size(213, 77);
             btn_thietlap.TabIndex = 7;
-            btn_thietlap.Text = "Thiết Lập";
+            btn_thietlap.Text = "Đăng Xuất";
             btn_thietlap.UseVisualStyleBackColor = false;
+            btn_thietlap.Click += btn_thietlap_Click;
             // 
             // btn_khachhang
             // 

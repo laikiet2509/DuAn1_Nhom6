@@ -35,5 +35,9 @@ namespace BUS.Services
         {
             return repos.GetAll();
         }
+        public void SuaThanhTien(string maHoaDon, decimal thanhTien)
+        {
+            repos.SuaThanhTien(maHoaDon, thanhTien);
+        }
     }
 }

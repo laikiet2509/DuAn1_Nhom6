@@ -60,7 +60,7 @@
             btn_thoat.Name = "btn_thoat";
             btn_thoat.Size = new Size(129, 41);
             btn_thoat.TabIndex = 4;
-            btn_thoat.Text = "Thoát";
+            btn_thoat.Text = "Đăng Ký";
             btn_thoat.UseVisualStyleBackColor = true;
             btn_thoat.Click += btn_thoat_Click;
             // 
@@ -114,7 +114,7 @@
             txt_taikhoan.Size = new Size(253, 34);
             txt_taikhoan.TabIndex = 1;
             // 
-            // Form1
+            // dangnhap
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -131,7 +131,7 @@
             Controls.Add(label1);
             Controls.Add(txt_taikhoan);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form1";
+            Name = "dangnhap";
             Text = " Phần Mềm Bán Giày Sneaker";
             FormClosed += Form1_FormClosed;
             Load += Form1_Load;

@@ -126,6 +126,7 @@
             txt_search.Name = "txt_search";
             txt_search.Size = new Size(253, 27);
             txt_search.TabIndex = 3;
+            txt_search.TextChanged += txt_search_TextChanged;
             // 
             // label7
             // 

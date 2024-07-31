@@ -35,13 +35,17 @@ namespace BUS.Services
             repos.TaoHoaDonCho(hoaDon);
         }   
 
-        public void SuaTrangThai(string maHoaDon, int trangThai)
+        public void SuaTrangThai(string maHoaDon, int trangThai,string maVoucher)
         {
-            repos.SuaTrangThai(maHoaDon, trangThai);
+            repos.SuaTrangThai(maHoaDon, trangThai, maVoucher);
         }
         public void SuaTongTien(string maHoaDon, decimal tongTien)
         {
             repos.SuaTongTien(maHoaDon, tongTien);
+        }
+        public void SuaKhuyenMai(string maHoaDon, string maKhuyenMai)
+        {
+            repos.SuaKhuyenMai(maHoaDon, maKhuyenMai);
         }
     }
 }

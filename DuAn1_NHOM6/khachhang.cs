@@ -23,6 +23,8 @@ namespace PRL
             InitializeComponent();
             service = new KhachHangServices();
             LoadGird();
+            txt_search.TextChanged += txt_search_TextChanged; // Event handler for search text change
+            btn_loc.Click += btn_loc_Click; // Event handler for search button click
         }
         public void LoadGird()
         {
@@ -60,40 +62,40 @@ namespace PRL
 
         private void dtgView_khachhang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            
-                KhachHang kh = new KhachHang
-                {
-                    TenKhachHang = txt_tenkhachhang.Text,
-                    GioiTinh = rbtn_nam.Checked,
-                    NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text),
-                    Sdt = txt_sdt.Text,
-                    DiaChi = txt_diachi.Text,
-                    GhiChu = rtxt_ghichu.Text,
+
+            KhachHang kh = new KhachHang
+            {
+                TenKhachHang = txt_tenkhachhang.Text,
+                GioiTinh = rbtn_nam.Checked,
+                NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text),
+                Sdt = txt_sdt.Text,
+                DiaChi = txt_diachi.Text,
+                GhiChu = rtxt_ghichu.Text,
             };
-                MessageBox.Show(service.Them(kh));
-                LoadGird();
-            
+            MessageBox.Show(service.Them(kh));
+            LoadGird();
+
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
-        { 
-                var kh = service.GetKhachHangs(txt_search.Text).Find(x => x.TenKhachHang == idWhenClick);
-                if (kh != null)
-                {
-                    kh.TenKhachHang = txt_tenkhachhang.Text;
-                    kh.GioiTinh = rbtn_nam.Checked;
-                    kh.NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text);
-                    kh.Sdt = txt_sdt.Text;
-                    kh.DiaChi = txt_diachi.Text;
-                    kh.GhiChu = rtxt_ghichu.Text;
-                    MessageBox.Show(service.Sua(kh));
-                    LoadGird();
-                }
+        {
+            var kh = service.GetKhachHangs(txt_search.Text).Find(x => x.TenKhachHang == idWhenClick);
+            if (kh != null)
+            {
+                kh.TenKhachHang = txt_tenkhachhang.Text;
+                kh.GioiTinh = rbtn_nam.Checked;
+                kh.NgayDangKy = DateTime.Parse(dtp_ngaydangky.Text);
+                kh.Sdt = txt_sdt.Text;
+                kh.DiaChi = txt_diachi.Text;
+                kh.GhiChu = rtxt_ghichu.Text;
+                MessageBox.Show(service.Sua(kh));
+                LoadGird();
+            }
         }
         private void btn_xoa_Click(object sender, EventArgs e)
         {
@@ -127,6 +129,28 @@ namespace PRL
             }
             idWhenClick = dtgView_khachhang.Rows[rowIndex].Cells[0].Value.ToString();
             FillData();
+        }
+        private void LoadFilteredData(string searchQuery)
+        {
+            dtgView_khachhang.Rows.Clear();
+            var filteredKhachHangs = service.GetKhachHangs(searchQuery)
+                .Where(kh => kh.TenKhachHang.Contains(searchQuery) || kh.Sdt.Contains(searchQuery))
+                .ToList();
+
+            foreach (var kh in filteredKhachHangs)
+            {
+                dtgView_khachhang.Rows.Add(kh.TenKhachHang, kh.GioiTinh ? "Nam" : "Nữ", kh.NgayDangKy, kh.Sdt, kh.DiaChi, kh.GhiChu);
+            }
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+            LoadFilteredData(txt_search.Text);
+        }
+
+        private void btn_loc_Click(object sender, EventArgs e)
+        {
+            LoadFilteredData(txt_search.Text);
         }
     }
 }
