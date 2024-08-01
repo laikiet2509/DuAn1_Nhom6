@@ -57,47 +57,94 @@ namespace PRL
             int currentMonth = DateTime.Now.Month;
             cbx_LocTheoThang.SelectedItem = currentMonth.ToString();
         }
-        private void UpdateStatistics(int selectedYear, int? selectedMonth)
+        private void UpdateDataByYear(int selectedYear)
         {
+            DateTime tu = new DateTime(selectedYear, 1, 1);
+            DateTime den = new DateTime(selectedYear, 12, 31);
+
             using (var context = new DBContext())
             {
                 // 1. Tính doanh thu (chỉ tính hóa đơn không bị hủy)
                 var doanhThu = context.HoaDons
-                    .Where(hd => hd.NgayLapHoaDon.Value.Year == selectedYear &&
-                                 (!selectedMonth.HasValue || hd.NgayLapHoaDon.Value.Month == selectedMonth.Value) &&
+                    .Where(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den &&
                                  hd.TrangThai != 2)  // Thêm điều kiện lọc hóa đơn không bị hủy
                     .Sum(hd => hd.TongTien);
                 lbl_SoDoanhThu.Text = $"{doanhThu:N0} VND"; // Sử dụng định dạng N0 để không có phần thập phân
 
                 // 2. Tính số hóa đơn
                 var soHoaDon = context.HoaDons
-                    .Count(hd => hd.NgayLapHoaDon.Value.Year == selectedYear &&
-(!selectedMonth.HasValue || hd.NgayLapHoaDon.Value.Month == selectedMonth.Value));
+                    .Count(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den);
                 lbl_HoaDon.Text = soHoaDon.ToString();
 
                 // 3. Tính số hóa đơn hủy
                 var soDonHuy = context.HoaDons
                     .Count(hd => hd.TrangThai == 2 &&
-                                 hd.NgayLapHoaDon.Value.Year == selectedYear &&
-                                 (!selectedMonth.HasValue || hd.NgayLapHoaDon.Value.Month == selectedMonth.Value));
+                                 hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den);
                 lbl_DonHuy.Text = soDonHuy.ToString();
 
                 // 4. Tính số khách hàng
                 var soKhachHang = context.KhachHangs
-                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon.Value.Year == selectedYear &&
-                                                       (!selectedMonth.HasValue || hd.NgayLapHoaDon.Value.Month == selectedMonth.Value)));
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den));
+                lbl_KhachHang.Text = soKhachHang.ToString();
+            }
+        }
+
+        private void UpdateDataByYearAndMonth(int selectedYear, int selectedMonth)
+        {
+            DateTime tu = new DateTime(selectedYear, selectedMonth, 1);
+            DateTime den = tu.AddMonths(1).AddDays(-1);
+
+            using (var context = new DBContext())
+            {
+                // 1. Tính doanh thu (chỉ tính hóa đơn không bị hủy)
+                var doanhThu = context.HoaDons
+                    .Where(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den &&
+                                 hd.TrangThai != 2)  // Thêm điều kiện lọc hóa đơn không bị hủy
+                    .Sum(hd => hd.TongTien);
+                lbl_SoDoanhThu.Text = $"{doanhThu:N0} VND"; // Sử dụng định dạng N0 để không có phần thập phân
+
+                // 2. Tính số hóa đơn
+                var soHoaDon = context.HoaDons
+                    .Count(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den);
+                lbl_HoaDon.Text = soHoaDon.ToString();
+
+                // 3. Tính số hóa đơn hủy
+                var soDonHuy = context.HoaDons
+                    .Count(hd => hd.TrangThai == 2 &&
+                                 hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den);
+                lbl_DonHuy.Text = soDonHuy.ToString();
+
+                // 4. Tính số khách hàng
+                var soKhachHang = context.KhachHangs
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den));
                 lbl_KhachHang.Text = soKhachHang.ToString();
             }
         }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Lấy giá trị năm và tháng được chọn
-            int selectedYear = int.Parse(cbx_LocTheoNam.SelectedItem.ToString());
-            int? selectedMonth = cbx_LocTheoThang.SelectedItem != null ? (int?)int.Parse(cbx_LocTheoThang.SelectedItem.ToString()) : null;
+            // Kiểm tra nếu sự kiện là từ ComboBox năm
+            if (sender == cbx_LocTheoNam)
+            {
+                // Lấy giá trị năm được chọn
+                int selectedYear = int.Parse(cbx_LocTheoNam.SelectedItem.ToString());
 
-            // Gọi phương thức để cập nhật số liệu
-            UpdateStatistics(selectedYear, selectedMonth);
+                // Cập nhật số liệu dựa trên năm được chọn
+                UpdateDataByYear(selectedYear);
+            }
+            else if (sender == cbx_LocTheoThang)
+            {
+                // Kiểm tra nếu năm đã được chọn
+                if (cbx_LocTheoNam.SelectedItem != null)
+                {
+                    // Lấy giá trị năm và tháng được chọn
+                    int selectedYear = int.Parse(cbx_LocTheoNam.SelectedItem.ToString());
+                    int selectedMonth = int.Parse(cbx_LocTheoThang.SelectedItem.ToString());
+
+                    // Cập nhật số liệu dựa trên năm và tháng được chọn
+                    UpdateDataByYearAndMonth(selectedYear, selectedMonth);
+                }
+            }
 
         }
 
