@@ -73,7 +73,7 @@ namespace PRL
 
                 // 2. Tính số hóa đơn
                 var soHoaDon = context.HoaDons
-                    .Count(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den);
+                    .Count(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den && hd.TrangThai != 2);
                 lbl_HoaDon.Text = soHoaDon.ToString();
 
                 // 3. Tính số hóa đơn hủy
@@ -105,7 +105,7 @@ namespace PRL
 
                 // 2. Tính số hóa đơn
                 var soHoaDon = context.HoaDons
-                    .Count(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den);
+                    .Count(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den && hd.TrangThai != 2);
                 lbl_HoaDon.Text = soHoaDon.ToString();
 
                 // 3. Tính số hóa đơn hủy
@@ -163,7 +163,7 @@ namespace PRL
 
                 // 2. Tính số hóa đơn
                 var soHoaDon = context.HoaDons
-                    .Count(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den);
+                    .Count(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den && hd.TrangThai != 2);
                 lbl_HoaDon.Text = soHoaDon.ToString();
 
                 // 3. Tính số hóa đơn hủy
@@ -192,7 +192,7 @@ namespace PRL
 
                 // 2. Tính số hóa đơn
                 var soHoaDon = context.HoaDons
-                    .Count(hd => hd.NgayLapHoaDon.Value.Date == today);
+                    .Count(hd => hd.NgayLapHoaDon.Value.Date == today && hd.TrangThai != 2);
                 lbl_HoaDon.Text = soHoaDon.ToString();
 
                 // 3. Tính số hóa đơn hủy
