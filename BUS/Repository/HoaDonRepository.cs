@@ -43,7 +43,7 @@ namespace BUS.Repository
                 hoaDonSua.TrangThai = trangThai;
                 if (maVouch != null)
                 {
-                    hoaDonSua.MaKhuyenMai = maVouch.MaKhuyenMai;
+                    hoaDonSua.MaVoucher = maVouch.MaVoucher;
                 }
             }
             context.SaveChanges();
@@ -64,7 +64,7 @@ namespace BUS.Repository
             var hoaDonSua = context.HoaDons.Find(maHoaDon);
             if (hoaDonSua != null)
             {
-                hoaDonSua.MaKhuyenMai = maKhuyenMai;
+                hoaDonSua.MaVoucher = maKhuyenMai;
             }
             context.SaveChanges();
         }

@@ -29,24 +29,24 @@ namespace PRL
         public void LoadGrid()
         {
             dgvDataVC.ColumnCount = 5;
-            dgvDataVC.Columns[0].Name = "Mã Khuyến Mãi";
+            dgvDataVC.Columns[0].Name = "Mã Voucher";
             dgvDataVC.Columns[1].Name = "Giảm Giá";
             dgvDataVC.Columns[2].Name = "Ngày Bắt Đầu";
             dgvDataVC.Columns[3].Name = "Ngày Kết Thúc";
-            dgvDataVC.Columns[4].Name = "Mô Tả Khuyến Mãi";
+            dgvDataVC.Columns[4].Name = "Mô Tả Voucher";
             dgvDataVC.Rows.Clear();
             foreach (var sp in service.GetKhuyenMais(txt_search.Text))
             {
-                dgvDataVC.Rows.Add(sp.MaKhuyenMai, sp.GiamGia, sp.NgayBatDau, sp.NgayKetThuc, sp.MoTaKhuyenMai);
+                dgvDataVC.Rows.Add(sp.MaVoucher, sp.GiamGia, sp.NgayBatDau, sp.NgayKetThuc, sp.MoTaVoucher);
             }
         }
 
         public void FillData()
         {
-            var sp = service.GetKhuyenMais(txt_search.Text).Find(x => x.MaKhuyenMai.ToString() == idWhenClick);
-            tbxMavc.Text = sp.MaKhuyenMai;
+            var sp = service.GetKhuyenMais(txt_search.Text).Find(x => x.MaVoucher.ToString() == idWhenClick);
+            tbxMavc.Text = sp.MaVoucher;
             tbxDieuKien.Text = sp.GiamGia.ToString();
-            tbcMota.Text = sp.MoTaKhuyenMai;
+            tbcMota.Text = sp.MoTaVoucher;
             dtpkNgayapdung.Text = sp.NgayBatDau.ToString();
             dtpkNKT.Text = sp.NgayKetThuc.ToString();
         }
@@ -70,9 +70,9 @@ namespace PRL
         private void btn_them_Click(object sender, EventArgs e)
         {
             KhuyenMai km = new KhuyenMai();
-            km.MaKhuyenMai = tbxMavc.Text;
+            km.MaVoucher = tbxMavc.Text;
             km.GiamGia = decimal.Parse(tbxDieuKien.Text);
-            km.MoTaKhuyenMai = tbcMota.Text;
+            km.MoTaVoucher = tbcMota.Text;
             km.NgayBatDau = DateTime.Parse(dtpkNgayapdung.Text);
             km.NgayKetThuc = DateTime.Parse(dtpkNKT.Text);
             MessageBox.Show(service.ThemKM(km));
@@ -81,10 +81,10 @@ namespace PRL
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
-            var km = service.GetKhuyenMais(txt_search.Text).Find(x => x.MaKhuyenMai.ToString() == idWhenClick);
-            km.MaKhuyenMai = tbxMavc.Text;
+            var km = service.GetKhuyenMais(txt_search.Text).Find(x => x.MaVoucher.ToString() == idWhenClick);
+            km.MaVoucher = tbxMavc.Text;
             km.GiamGia = decimal.Parse(tbxDieuKien.Text);
-            km.MoTaKhuyenMai = tbcMota.Text;
+            km.MoTaVoucher = tbcMota.Text;
             km.NgayBatDau = DateTime.Parse(dtpkNgayapdung.Text);
             km.NgayKetThuc = DateTime.Parse(dtpkNKT.Text);
             MessageBox.Show(service.SuaKM(km));
@@ -101,12 +101,12 @@ namespace PRL
         {
             dgvDataVC.Rows.Clear();
             var filteredVouchers = service.GetKhuyenMais(searchQuery)
-                .Where(km => km.MaKhuyenMai.Contains(searchQuery))
+                .Where(km => km.MaVoucher.Contains(searchQuery))
                 .ToList();
 
             foreach (var sp in filteredVouchers)
             {
-                dgvDataVC.Rows.Add(sp.MaKhuyenMai, sp.GiamGia, sp.NgayBatDau, sp.NgayKetThuc, sp.MoTaKhuyenMai);
+                dgvDataVC.Rows.Add(sp.MaVoucher, sp.GiamGia, sp.NgayBatDau, sp.NgayKetThuc, sp.MoTaVoucher);
             }
         }
 

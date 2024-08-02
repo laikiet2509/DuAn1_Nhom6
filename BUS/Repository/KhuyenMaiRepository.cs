@@ -17,7 +17,7 @@ namespace BUS.Repository
         }
         public KhuyenMai GetKhuyenMaiByMa(string maKhuyenMai)
         {
-            return context.KhuyenMais.FirstOrDefault(km => km.MaKhuyenMai == maKhuyenMai);
+            return context.KhuyenMais.FirstOrDefault(km => km.MaVoucher == maKhuyenMai);
         }
 
         public List<KhuyenMai> GetAllKM()

@@ -136,7 +136,7 @@ namespace BUS.Services
             {
                 return repos.GetAllKM();
             }
-            return repos.GetAllKM().FindAll(x => x.MaKhuyenMai.ToString().Contains(search));
+            return repos.GetAllKM().FindAll(x => x.MaVoucher.ToString().Contains(search));
         }
         public string ThemKM(KhuyenMai km)
         {
@@ -156,7 +156,7 @@ namespace BUS.Services
         }
         public string XoaKM(string ma)
         {
-            var km = repos.GetAllKM().Find(x => x.MaKhuyenMai.ToString() == ma);
+            var km = repos.GetAllKM().Find(x => x.MaVoucher.ToString() == ma);
             if (repos.DeleteKM(km))
             {
                 return "Xóa thành công";

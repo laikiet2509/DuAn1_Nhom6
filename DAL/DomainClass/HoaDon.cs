@@ -28,14 +28,14 @@ namespace DAL.DomainClass
         [StringLength(10)]
         public string? MaNhanVien { get; set; }
         [StringLength(10)]
-        public string? MaKhuyenMai { get; set; }
+        public string? MaVoucher { get; set; }
 
-        [ForeignKey(nameof(MaKhuyenMai))]
-        [InverseProperty(nameof(KhuyenMai.HoaDons))]
-        public virtual KhuyenMai? MaKhuyenMaiNavigation { get; set; }
         [ForeignKey(nameof(MaNhanVien))]
         [InverseProperty(nameof(NhanVien.HoaDons))]
         public virtual NhanVien? MaNhanVienNavigation { get; set; }
+        [ForeignKey(nameof(MaVoucher))]
+        [InverseProperty(nameof(KhuyenMai.HoaDons))]
+        public virtual KhuyenMai? MaVoucherNavigation { get; set; }
         [ForeignKey(nameof(Sdt))]
         [InverseProperty(nameof(KhachHang.HoaDons))]
         public virtual KhachHang? SdtNavigation { get; set; }

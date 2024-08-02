@@ -16,7 +16,7 @@ namespace DAL.DomainClass
 
         [Key]
         [StringLength(10)]
-        public string MaKhuyenMai { get; set; } = null!;
+        public string MaVoucher { get; set; } = null!;
         [Column(TypeName = "decimal(5, 2)")]
         public decimal GiamGia { get; set; }
         [Column(TypeName = "datetime")]
@@ -24,9 +24,9 @@ namespace DAL.DomainClass
         [Column(TypeName = "datetime")]
         public DateTime? NgayKetThuc { get; set; }
         [StringLength(255)]
-        public string? MoTaKhuyenMai { get; set; }
+        public string? MoTaVoucher { get; set; }
 
-        [InverseProperty(nameof(HoaDon.MaKhuyenMaiNavigation))]
+        [InverseProperty(nameof(HoaDon.MaVoucherNavigation))]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

@@ -300,8 +300,10 @@ namespace PRL
             txt_tenkhachhang.Text = string.Empty;
             txt_search.Text = string.Empty;
             txt_tienkhachdua.Text = "0";
-            lblTienThua.Text = "Tiền thừa";
-            lblTongTien.Text = "Tổng tiền";
+            lblTienThua.Text = "Tiền Thừa";
+            lblTongTien.Text = "Tổng Tiền";
+            lbl_TienAddVoucher.Text = "Tiền add Vc";
+            txt_maVoucher.Text = string.Empty;
 
             LoadData_cbbHoaDonCho();
             LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
@@ -363,15 +365,15 @@ namespace PRL
             var khachhang = serviceKH.GetKhachHangs(btn_timkiem.Text).FirstOrDefault(x => x.Sdt == _hoaDon.Sdt);
             //var nhanvien = serviceNV.GetNhanViens().FirstOrDefault(x => x.MaNhanVien == hoadon.MaNhanVien);
             var hdcts = serviceHDCT.GetChiTietHoaDons().Where(x => x.MaHd == _hoaDon.MaHoaDon).ToList();
-            var km = serviceKM.GetKhuyenMais(btn_timkiem.Text).FirstOrDefault(x => x.MaKhuyenMai == _hoaDon.MaKhuyenMai);
+            var km = serviceKM.GetKhuyenMais(btn_timkiem.Text).FirstOrDefault(x => x.MaVoucher == _hoaDon.MaVoucher);
             //var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("D:\\Final4_2\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
+            Document baoCao = new Document("C:\\Users\\pc\\source\\repos\\da1\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
 
             baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { _hoaDon.MaHoaDon });
             baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { _hoaDon.MaNhanVien });
-            baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaKhuyenMai + " %" : "Không áp dụng" });
+            baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaVoucher + " %" : "Không áp dụng" });
             baoCao.MailMerge.Execute(new[] { "Ten_KhachHang" }, new[] { khachhang.TenKhachHang });
             baoCao.MailMerge.Execute(new[] { "NGAY_THANHTOAN" }, new[] { _hoaDon.NgayLapHoaDon.Value.ToString("dd/MM/yyyy") });
             baoCao.MailMerge.Execute(new[] { "So_Dien_Thoai" }, new[] { khachhang.Sdt });
@@ -402,7 +404,7 @@ namespace PRL
             baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
 
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\ADMIN\OneDrive\Máy tính\hoadon"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\pc\Desktop\hoa_don_bh"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{_hoaDon.MaHoaDon}.pdf";
@@ -426,6 +428,17 @@ namespace PRL
 
             NhapSoLuongSanPham formSoLuongMua = new NhapSoLuongSanPham();
             formSoLuongMua.ShowDialog();
+            if (formSoLuongMua.SoLuongMua < 0) // Kiểm tra xem số lượng nhập vào có âm không
+            {
+                MessageBox.Show("Không được nhập số âm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // Hiển thị thông báo lỗi
+                return; // Thoát khỏi phương thức nếu số lượng nhập vào là âm
+            }
+
+            if (formSoLuongMua.SoLuongMua > spctDangTao.SoLuongTon) // Kiểm tra xem số lượng nhập vào có vượt quá số lượng tồn kho không
+            {
+                MessageBox.Show("Số lượng tồn kho không đủ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // Hiển thị thông báo lỗi
+                return; // Thoát khỏi phương thức nếu số lượng nhập vào vượt quá số lượng tồn kho
+            }
 
             var hoaDonChiTietTonTai = serviceHDCT.GetHDCTById(hoaDonDangChon.MaHoaDon, maSPCTDangTao);
 

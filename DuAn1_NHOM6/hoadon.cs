@@ -81,7 +81,7 @@ namespace PRL
             dtgView_hoadon.ColumnCount = 6;
             dtgView_hoadon.Columns[0].Name = "Mã Hóa Đơn";
             dtgView_hoadon.Columns[1].Name = "Ngày Lập Hóa Đơn";
-            dtgView_hoadon.Columns[2].Name = "Mã khuyễn mãi";
+            dtgView_hoadon.Columns[2].Name = "Mã Voucher";
             dtgView_hoadon.Columns[3].Name = "Tổng Tiền";
             dtgView_hoadon.Columns[4].Name = "Tên Nhân Viên";
             dtgView_hoadon.Columns[5].Name = "Trạng Thái";
@@ -89,7 +89,7 @@ namespace PRL
             var lst = serviceNV.GetNhanViens().ToList();
             foreach (var hd in serviceHD.GetAllHoaDons())
             {
-                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.MaKhuyenMai, hd.TongTien, lst.First(x => x.MaNhanVien.ToLower() == hd.MaNhanVien!.ToLower()).Ten, ConvertTrangThai(hd.TrangThai));
+                dtgView_hoadon.Rows.Add(hd.MaHoaDon, hd.NgayLapHoaDon, hd.MaVoucher, hd.TongTien, lst.First(x => x.MaNhanVien.ToLower() == hd.MaNhanVien!.ToLower()).Ten, ConvertTrangThai(hd.TrangThai));
             }
         }
         // tạo 1 hàm convert trạng thái dùng switch case 
@@ -163,14 +163,14 @@ namespace PRL
             var khachhang = serviceKH.GetKhachHangs(btn_timkiem.Text).FirstOrDefault(x => x.Sdt == hoadon.Sdt);
             var nhanvien = serviceNV.GetNhanViens().FirstOrDefault(x => x.MaNhanVien == hoadon.MaNhanVien);
             var hdcts = serviceHDCT.GetChiTietHoaDons().Where(x => x.MaHd == hoadon.MaHoaDon).ToList();
-            var km = serviceKM.GetKhuyenMais(btn_timkiem.Text).FirstOrDefault(x => x.MaKhuyenMai == hoadon.MaKhuyenMai);
+            var km = serviceKM.GetKhuyenMais(btn_timkiem.Text).FirstOrDefault(x => x.MaVoucher == hoadon.MaVoucher);
             var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("D:\\Final4_2\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don1.docx");
+            Document baoCao = new Document("C:\\Users\\pc\\source\\repos\\da1\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don1.docx");
             baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { hoadon.MaHoaDon });
             baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { hoadon.MaNhanVien });
-            baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaKhuyenMai + " %" : "Không áp dụng" });
+            baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaVoucher + " %" : "Không áp dụng" });
             baoCao.MailMerge.Execute(new[] { "Ten_KhachHang" }, new[] { khachhang.TenKhachHang });
             baoCao.MailMerge.Execute(new[] { "NGAY_THANHTOAN" }, new[] { hoadon.NgayLapHoaDon.Value.ToString("dd/MM/yyyy") });
             baoCao.MailMerge.Execute(new[] { "So_Dien_Thoai" }, new[] { khachhang.Sdt });
@@ -200,7 +200,7 @@ namespace PRL
             baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
 
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\ADMIN\OneDrive\Máy tính\hoadon_2"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\pc\Desktop\hoa_don_hd"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{hoadon.MaHoaDon}.pdf";
