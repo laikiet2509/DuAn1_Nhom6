@@ -67,7 +67,27 @@ namespace PRL
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-
+            RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexChu(txt_tenkhachhang.Text))
+            {
+                MessageBox.Show("Tên khách hàng không được chứa số, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexSo(txt_sdt.Text))
+            {
+                MessageBox.Show("SĐT khách hàng không được chứa chữ, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.Regex10so(txt_tenkhachhang.Text))
+            {
+                MessageBox.Show("SĐT khách hàng chỉ được ghi 10 số");
+                return;
+            }
+            if (!regexServices.RegexSoAm(txt_sdt.Text))
+            {
+                MessageBox.Show("SĐT khach hàng không chứa số âm");
+                return;
+            }
             KhachHang kh = new KhachHang
             {
                 TenKhachHang = txt_tenkhachhang.Text,
@@ -84,6 +104,27 @@ namespace PRL
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
+            RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexChu(txt_tenkhachhang.Text))
+            {
+                MessageBox.Show("Tên khách hàng không được chứa số, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexSo(txt_sdt.Text))
+            {
+                MessageBox.Show("SĐT khách hàng không được chứa chữ, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.Regex10so(txt_tenkhachhang.Text))
+            {
+                MessageBox.Show("SĐT khách hàng chỉ được ghi 10 số");
+                return;
+            }
+            if (!regexServices.RegexSoAm(txt_sdt.Text))
+            {
+                MessageBox.Show("SĐT khach hàng không chứa số âm");
+                return;
+            }
             var kh = service.GetKhachHangs(txt_search.Text).Find(x => x.TenKhachHang == idWhenClick);
             if (kh != null)
             {

@@ -77,6 +77,27 @@ namespace PRL
 
         private void btn_them_Click(object sender, EventArgs e)
         {
+            RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexChu(txt_tennhanvien.Text))
+            {
+                MessageBox.Show("Tên nhân viên không được chứa số, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexSo(txt_sdt.Text))
+            {
+                MessageBox.Show("SĐT nhân viên không được chứa chữ, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.Regex10so(txt_tennhanvien.Text))
+            {
+                MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số");
+                return;
+            }
+            if (!regexServices.RegexSoAm(txt_sdt.Text))
+            {
+                MessageBox.Show("SĐT nhân viên không chứa số âm");
+                return;
+            }
 
             try
             {
@@ -104,6 +125,28 @@ namespace PRL
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
+            RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexChu(txt_tennhanvien.Text))
+            {
+                MessageBox.Show("Tên nhân viên không được chứa số, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexSo(txt_sdt.Text))
+            {
+                MessageBox.Show("SĐT nhân viên không được chứa chữ, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.Regex10so(txt_tennhanvien.Text))
+            {
+                MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số");
+                return;
+            }
+            if (!regexServices.RegexSoAm(txt_sdt.Text))
+            {
+                MessageBox.Show("SĐT nhân viên không chứa số âm");
+                return;
+            }
+
             try
             {
                 var nv = service.GetNhanViens().Find(x => x.MaNhanVien == idWhenClick);

@@ -64,6 +64,8 @@ namespace BUS.Services
         {
             repos.UpdateSoLuong(spctNew);
         }
+        
+
        
     }
 }

@@ -70,6 +70,17 @@ namespace PRL
         private void btn_them_Click(object sender, EventArgs e)
         {
             KhuyenMai km = new KhuyenMai();
+            RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexSo1_99(tbxDieuKien.Text))
+            {
+                MessageBox.Show("% giảm giá chỉ được nhập từ 1 - 99%, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexSoAm(tbxDieuKien.Text))
+            {
+                MessageBox.Show("% giảm giá không được nhập số âm, Mời nhập lại");
+                return;
+            }
             km.MaVoucher = tbxMavc.Text;
             km.GiamGia = decimal.Parse(tbxDieuKien.Text);
             km.MoTaVoucher = tbcMota.Text;
@@ -81,6 +92,17 @@ namespace PRL
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
+            RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexSo1_99(tbxDieuKien.Text))
+            {
+                MessageBox.Show("% giảm giá chỉ được nhập từ 1 - 99%, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexSoAm(tbxDieuKien.Text))
+            {
+                MessageBox.Show("% giảm giá không được nhập số âm, Mời nhập lại");
+                return;
+            }
             var km = service.GetKhuyenMais(txt_search.Text).Find(x => x.MaVoucher.ToString() == idWhenClick);
             km.MaVoucher = tbxMavc.Text;
             km.GiamGia = decimal.Parse(tbxDieuKien.Text);

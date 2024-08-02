@@ -192,7 +192,7 @@ namespace PRL
                 hanghientai++;
             }
 
-            var tongTien = dbContext.HoaDons.FirstOrDefault(x=>x.MaHoaDon==selectedHoaDonId)!.TongTien;
+            var tongTien = dbContext.HoaDons.FirstOrDefault(x => x.MaHoaDon == selectedHoaDonId)!.TongTien;
             //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MoTaKhuyenMai / 100)) : tongTien;
             baoCao.MailMerge.Execute(new[] { "Tong" }, new[] { tongTien.ToString() });
 
@@ -212,13 +212,30 @@ namespace PRL
 
         private void dtgView_hoadon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Kiểm tra nếu không phải tiêu đề cột
-            {
-                // Lấy mã hóa đơn của dòng được chọn
-                string maHoaDon = dtgView_hoadon.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //if (e.RowIndex >= 0) // Kiểm tra nếu không phải tiêu đề cột
+            //{
+            //    // Lấy mã hóa đơn của dòng được chọn
+            //    string maHoaDon = dtgView_hoadon.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-                // Tải dữ liệu chi tiết hóa đơn và hiển thị trên DataGridView dtgView_chitiethoadon
-                LoadGirdHDCT(maHoaDon);
+            //    // Tải dữ liệu chi tiết hóa đơn và hiển thị trên DataGridView dtgView_chitiethoadon
+            //    LoadGirdHDCT(maHoaDon);
+            //}
+            
+        }
+
+        private void dtgView_hoadon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dtgView_hoadon.Rows.Count)
+            {
+                if (dtgView_hoadon.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    string maHoaDon = dtgView_hoadon.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    // Các xử lý tiếp theo
+                }
+                else
+                {
+                    MessageBox.Show("Ô bạn chọn không chứa dữ liệu.");
+                }
             }
         }
     }

@@ -77,8 +77,30 @@ namespace PRL
         {
 
         }
+        
         private void btn_them_Click(object sender, EventArgs e)
         {
+            RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexSo(txt_giatien.Text))
+            {
+                MessageBox.Show("Giá tiền của sản phẩm không chứa chữ, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexSo(txt_soluong.Text))
+            {
+                MessageBox.Show("Số lượng của sản phẩm không chứa chữ, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexSoAm(txt_giatien.Text))
+            {
+                MessageBox.Show("Giá tiền của sản phẩm không chứa số âm");
+                return;
+            }
+            if (!regexServices.RegexSoAm(txt_soluong.Text))
+            {
+                MessageBox.Show("Số lượng của sản phẩm không chứa số âm");
+                return;
+            }
             SanPham sp = new SanPham
             {
                 MaSanPham = txt_masanpham.Text,
@@ -101,6 +123,27 @@ namespace PRL
             var sp = service.GetSanPhams().Find(x => x.MaSanPham == idWhenClick);
             if (sp != null)
             {
+                RegexServices regexServices = new RegexServices();
+                if (!regexServices.RegexSo(txt_giatien.Text))
+                {
+                    MessageBox.Show("Giá tiền của sản phẩm không chứa chữ, Mời nhập lại");
+                    return;
+                }
+                if (!regexServices.RegexSo(txt_soluong.Text))
+                {
+                    MessageBox.Show("Số lượng của sản phẩm không chứa chữ, Mời nhập lại");
+                    return;
+                }
+                if (!regexServices.RegexSoAm(txt_giatien.Text))
+                {
+                    MessageBox.Show("Giá tiền của sản phẩm không chứa số âm");
+                    return;
+                }
+                if (!regexServices.RegexSoAm(txt_soluong.Text))
+                {
+                    MessageBox.Show("Số lượng của sản phẩm không chứa số âm");
+                    return;
+                }
                 sp.MaSanPham = txt_masanpham.Text;
                 sp.TenSanPham = txt_tensanpham.Text;
                 sp.MaMauSp = (string)cmbx_mausac.SelectedValue;
@@ -115,7 +158,7 @@ namespace PRL
                 LoadGird();
             }
         }
-
+        
         private void btn_xoa_Click(object sender, EventArgs e)
         {
         }
@@ -240,8 +283,8 @@ namespace PRL
         }
         private void LoadTrangThai()
         {
-            cmbx_trangthai.Items.Add("Còn Hàng");
-            cmbx_trangthai.Items.Add("Hết Hàng");
+            cmbx_trangthai.Items.Add("Kinh Doanh");
+            cmbx_trangthai.Items.Add("Ngưng Kinh Doanh");
             cmbx_trangthai.SelectedIndex = 0; // Mặc định chọn trạng thái đầu tiên
         }
     }

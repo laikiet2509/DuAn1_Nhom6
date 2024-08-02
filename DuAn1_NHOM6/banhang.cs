@@ -132,12 +132,15 @@ namespace PRL
 
             foreach (var hdct in hoaDonChiTiets)
             {
-                DataRow dr = dt.NewRow();
-                dr["MaSPCT"] = hdct.MaSp;
-                dr["MaHoaDon"] = hdct.MaHd;
-                dr["DonGia"] = hdct.GiaBan;
-                dr["SoLuong"] = hdct.SoLuong;
-                dt.Rows.Add(dr);
+                if (hdct.SoLuong > 0) 
+                { 
+                    DataRow dr = dt.NewRow();
+                    dr["MaSPCT"] = hdct.MaSp;
+                    dr["MaHoaDon"] = hdct.MaHd;
+                    dr["DonGia"] = hdct.GiaBan;
+                    dr["SoLuong"] = hdct.SoLuong;
+                    dt.Rows.Add(dr);
+                }
             }
             dtgView_hoadon.DataSource = dt;
             if (cmbx_hoadoncho.SelectedValue != null)
@@ -169,16 +172,20 @@ namespace PRL
 
             foreach (var spct in sanPhamChiTiets)
             {
-                DataRow dr = dataTableSPCT.NewRow();
-                dr["MaSPCT"] = spct.MaSanPham;
-                dr["TenSP"] = spct.TenSanPham;
-                dr["MauSac"] = serviceMS.GetMauSacById(spct.MaMauSp).MauSac1;
-                dr["KichCo"] = serviceKC.GetKichCoById(spct.MaKichCoSp).KichCo1;
-                dr["DonGia"] = spct.GiaBan;
-                dr["SoLuong"] = spct.SoLuongTon;
-                dr["ThuongHieu"] = serviceTH.GetThuongHieuById(spct.MaThuongHieu).TenThuongHieu; // Lấy dữ liệu thương hiệu
-                dr["ChatLieu"] = spct.ChatLieu; // Lấy dữ liệu chất liệu
-                dataTableSPCT.Rows.Add(dr);
+                // Kiểm tra nếu số lượng tồn kho > 0 thì mới thêm vào dataTableSPCT
+                if (spct.SoLuongTon > 0)
+                {
+                    DataRow dr = dataTableSPCT.NewRow();
+                    dr["MaSPCT"] = spct.MaSanPham;
+                    dr["TenSP"] = spct.TenSanPham;
+                    dr["MauSac"] = serviceMS.GetMauSacById(spct.MaMauSp).MauSac1;
+                    dr["KichCo"] = serviceKC.GetKichCoById(spct.MaKichCoSp).KichCo1;
+                    dr["DonGia"] = spct.GiaBan;
+                    dr["SoLuong"] = spct.SoLuongTon;
+                    dr["ThuongHieu"] = serviceTH.GetThuongHieuById(spct.MaThuongHieu).TenThuongHieu; // Lấy dữ liệu thương hiệu
+                    dr["ChatLieu"] = spct.ChatLieu; // Lấy dữ liệu chất liệu
+                    dataTableSPCT.Rows.Add(dr);
+                }
             }
             dtgView_danhsachsanpham.DataSource = dataTableSPCT;
 
@@ -420,6 +427,13 @@ namespace PRL
 
         private void dtgView_danhsachsanpham_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            var obj = dtgView_danhsachsanpham.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (obj == string.Empty)
+            {
+                MessageBox.Show("Ô bạn chọn không chứa dữ liệu.");
+                return;
+            }
+
             var rowHienTai = dtgView_danhsachsanpham.Rows[e.RowIndex];
             var maSPCTDangTao = rowHienTai.Cells[0].Value.ToString();
             var spctDangTao = serviceSP.GetAllSanPhamChiTietById(maSPCTDangTao);
@@ -524,6 +538,13 @@ namespace PRL
 
         private void dtgView_hoadon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            var obj = dtgView_hoadon.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if ( obj == string.Empty)
+            {  
+                MessageBox.Show("Ô bạn chọn không chứa dữ liệu.");
+                return;
+            }
+            
             if (e.RowIndex >= 0) // Kiểm tra xem chỉ số hàng có hợp lệ không
             {
                 var rowHienTai = dtgView_danhsachsanpham.Rows[e.RowIndex]; // Lấy hàng hiện tại từ DataGridView
@@ -532,6 +553,7 @@ namespace PRL
 
                 var hoaDonDangChon = cmbx_hoadoncho.SelectedItem as HoaDon; // Lấy hóa đơn đang chọn từ ComboBox
 
+                
                 NhapSoLuongSanPham formSoLuongMua = new NhapSoLuongSanPham(); // Khởi tạo form nhập số lượng sản phẩm
                 formSoLuongMua.ShowDialog(); // Hiển thị form nhập số lượng sản phẩm
 
