@@ -51,5 +51,11 @@ namespace PRL
             Regex regex = new Regex(pattern);
             return regex.IsMatch(tr);
         }
+        public bool RegexMaSanPham(string str)
+        {
+            string pattern = @"^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(str);
+        }
     }
 }

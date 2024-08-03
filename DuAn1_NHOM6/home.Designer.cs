@@ -34,7 +34,7 @@
             btn_khachhang = new Button();
             btn_nhanvien = new Button();
             btn_thongke = new Button();
-            btn_khuyenmai = new Button();
+            btn_voucher = new Button();
             btn_sanpham = new Button();
             btn_hoadon = new Button();
             btn_banhang = new Button();
@@ -59,7 +59,7 @@
             panel_left.Controls.Add(btn_khachhang);
             panel_left.Controls.Add(btn_nhanvien);
             panel_left.Controls.Add(btn_thongke);
-            panel_left.Controls.Add(btn_khuyenmai);
+            panel_left.Controls.Add(btn_voucher);
             panel_left.Controls.Add(btn_sanpham);
             panel_left.Controls.Add(btn_hoadon);
             panel_left.Controls.Add(btn_banhang);
@@ -142,23 +142,23 @@
             btn_thongke.UseVisualStyleBackColor = false;
             btn_thongke.Click += btn_thongke_Click;
             // 
-            // btn_khuyenmai
+            // btn_voucher
             // 
-            btn_khuyenmai.BackColor = Color.FromArgb(50, 52, 77);
-            btn_khuyenmai.Dock = DockStyle.Top;
-            btn_khuyenmai.FlatAppearance.BorderSize = 0;
-            btn_khuyenmai.FlatStyle = FlatStyle.Flat;
-            btn_khuyenmai.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_khuyenmai.ForeColor = SystemColors.Control;
-            btn_khuyenmai.Image = PRL.Properties.Resources.discount;
-            btn_khuyenmai.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_khuyenmai.Location = new Point(0, 415);
-            btn_khuyenmai.Name = "btn_khuyenmai";
-            btn_khuyenmai.Size = new Size(213, 77);
-            btn_khuyenmai.TabIndex = 3;
-            btn_khuyenmai.Text = "Khuyến Mãi";
-            btn_khuyenmai.UseVisualStyleBackColor = false;
-            btn_khuyenmai.Click += button3_Click;
+            btn_voucher.BackColor = Color.FromArgb(50, 52, 77);
+            btn_voucher.Dock = DockStyle.Top;
+            btn_voucher.FlatAppearance.BorderSize = 0;
+            btn_voucher.FlatStyle = FlatStyle.Flat;
+            btn_voucher.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_voucher.ForeColor = SystemColors.Control;
+            btn_voucher.Image = PRL.Properties.Resources.discount;
+            btn_voucher.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_voucher.Location = new Point(0, 415);
+            btn_voucher.Name = "btn_voucher";
+            btn_voucher.Size = new Size(213, 77);
+            btn_voucher.TabIndex = 3;
+            btn_voucher.Text = "Voucher";
+            btn_voucher.UseVisualStyleBackColor = false;
+            btn_voucher.Click += button3_Click;
             // 
             // btn_sanpham
             // 
@@ -327,7 +327,7 @@
         private Button btn_banhang;
         private Button btn_nhanvien;
         private Button btn_thongke;
-        private Button btn_khuyenmai;
+        private Button btn_voucher;
         private Button btn_sanpham;
         private Button btn_hoadon;
         private Button btn_khachhang;

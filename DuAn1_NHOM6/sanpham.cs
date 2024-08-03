@@ -49,7 +49,7 @@ namespace PRL
             dtgView_sp.Columns[8].Name = "Thương Hiệu";
             dtgView_sp.Columns[9].Name = "Trạng Thái";
             dtgView_sp.Rows.Clear();
-     
+
 
             foreach (var sp in service.GetSanPhams())
             {
@@ -75,26 +75,26 @@ namespace PRL
         }
         public void FillData()
         {
-                var sp = service.GetSanPhams().Find(x => x.MaSanPham.ToString() == idWhenClick);
-                if (sp != null)
-                {
-                    txt_masanpham.Text = sp.MaSanPham;
-                    txt_tensanpham.Text = sp.TenSanPham;
-                    cmbx_mausac.SelectedValue = sp.MaMauSp;
-                    txt_giatien.Text = sp.GiaBan.ToString();
-                    txt_chatlieu.Text = sp.ChatLieu;
-                    dtp_ngaynhap.Text = sp.NgayNhap.ToString();
-                    txt_soluong.Text = sp.SoLuongTon.ToString();
-                    cmbx_kichthuoc.SelectedValue = sp.MaKichCoSp;
-                    cmbx_thuonghieu.SelectedValue = sp.MaThuongHieu;
-                    cmbx_trangthai.Text = ConvertTrangThai(sp.TrangThai);
+            var sp = service.GetSanPhams().Find(x => x.MaSanPham.ToString() == idWhenClick);
+            if (sp != null)
+            {
+                txt_masanpham.Text = sp.MaSanPham;
+                txt_tensanpham.Text = sp.TenSanPham;
+                cmbx_mausac.SelectedValue = sp.MaMauSp;
+                txt_giatien.Text = sp.GiaBan.ToString();
+                txt_chatlieu.Text = sp.ChatLieu;
+                dtp_ngaynhap.Text = sp.NgayNhap.ToString();
+                txt_soluong.Text = sp.SoLuongTon.ToString();
+                cmbx_kichthuoc.SelectedValue = sp.MaKichCoSp;
+                cmbx_thuonghieu.SelectedValue = sp.MaThuongHieu;
+                cmbx_trangthai.Text = ConvertTrangThai(sp.TrangThai);
             }
         }
         private void dtgView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-        
+
         private void btn_them_Click(object sender, EventArgs e)
         {
             RegexServices regexServices = new RegexServices();
@@ -116,6 +116,21 @@ namespace PRL
             if (!regexServices.RegexSoAm(txt_soluong.Text))
             {
                 MessageBox.Show("Số lượng của sản phẩm không chứa số âm");
+                return;
+            }
+            if (!regexServices.RegexChu(txt_tensanpham.Text))
+            {
+                MessageBox.Show("Tên sản phẩm không được chứa số, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexChu(txt_chatlieu.Text))
+            {
+                MessageBox.Show("Chất liệu không được chứa số, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexMaSanPham(txt_masanpham.Text))
+            {
+                MessageBox.Show("Mã sản phẩm không hợp lệ, Mời nhập lại");
                 return;
             }
             SanPham sp = new SanPham
@@ -161,6 +176,21 @@ namespace PRL
                     MessageBox.Show("Số lượng của sản phẩm không chứa số âm");
                     return;
                 }
+                if (!regexServices.RegexChu(txt_tensanpham.Text))
+                {
+                    MessageBox.Show("Tên sản phẩm không được chứa số, Mời nhập lại");
+                    return;
+                }
+                if (!regexServices.RegexChu(txt_chatlieu.Text))
+                {
+                    MessageBox.Show("Chất liệu không được chứa số, Mời nhập lại");
+                    return;
+                }
+                if (!regexServices.RegexMaSanPham(txt_masanpham.Text))
+                {
+                    MessageBox.Show("Mã sản phẩm không hợp lệ, Mời nhập lại");
+                    return;
+                }
                 sp.MaSanPham = txt_masanpham.Text;
                 sp.TenSanPham = txt_tensanpham.Text;
                 sp.MaMauSp = (string)cmbx_mausac.SelectedValue;
@@ -175,7 +205,7 @@ namespace PRL
                 LoadGird();
             }
         }
-        
+
         private void btn_xoa_Click(object sender, EventArgs e)
         {
         }
@@ -196,7 +226,7 @@ namespace PRL
 
         private void dtgView_sp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -247,18 +277,12 @@ namespace PRL
 
         private void btn_chonanh_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Chọn Ảnh";
-            openFileDialog.Filter = "Image Files(*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.ImageLocation = openFileDialog.FileName;
-            }
+
         }
 
         private void sanpham_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -310,6 +334,24 @@ namespace PRL
             cmbx_trangthai.DisplayMember = "Value";
             cmbx_trangthai.ValueMember = "Key";
             cmbx_trangthai.SelectedIndex = 0; // Mặc định chọn trạng thái đầu tiên
+        }
+
+        private void btn_themms_Click(object sender, EventArgs e)
+        {
+            mausac mauSac = new mausac();
+            mauSac.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            kichco kichCo = new kichco();
+            kichCo.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            thuonghieu thuongHieu = new thuonghieu();
+            thuongHieu.ShowDialog();
         }
     }
 }

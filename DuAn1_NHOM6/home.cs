@@ -89,7 +89,7 @@ namespace DuAn1_NHOM6
         private void button3_Click(object sender, EventArgs e)
         {
             OpenChildForm(new voucher());
-            label1.Text = btn_khuyenmai.Text;
+            label1.Text = btn_voucher.Text;
 
         }
 

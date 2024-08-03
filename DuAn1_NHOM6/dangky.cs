@@ -28,6 +28,11 @@ namespace PRL
         private void btn_dangky_Click(object sender, EventArgs e)
         {
             RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexMaSanPham(txt_manhanvien.Text))
+            {
+                MessageBox.Show("Mã nhân viên không hợp lệ, Mời nhập lại");
+                return;
+            }
             if (!regexServices.RegexChu(txt_tennhanvien.Text))
             {
                 MessageBox.Show("Tên nhân viên không được chứa số, Mời nhập lại");
