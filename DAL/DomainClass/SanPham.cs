@@ -35,8 +35,7 @@ namespace DAL.DomainClass
         public int? SoLuongTon { get; set; }
         [StringLength(10)]
         public string? MaThuongHieu { get; set; }
-        [StringLength(50)]
-        public string? TrangThai { get; set; }
+        public int? TrangThai { get; set; }
 
         [ForeignKey(nameof(MaKichCoSp))]
         [InverseProperty(nameof(KichCo.SanPhams))]

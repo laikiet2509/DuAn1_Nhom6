@@ -41,9 +41,15 @@ namespace PRL
         // regex chỉ được 10 số
         public bool Regex10so(string str)
         {
-            string pattern = @"/^0\d{9}$/";
+            string pattern = @"^09\d{8}$";
             Regex regex = new Regex(pattern);
             return regex.IsMatch(str);
+        }
+        public bool RegexEmail(string tr)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(tr);
         }
     }
 }

@@ -27,12 +27,26 @@ namespace PRL
 
         private void btn_dangky_Click(object sender, EventArgs e)
         {
+            RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexChu(txt_tennhanvien.Text))
+            {
+                MessageBox.Show("Tên nhân viên không được chứa số, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.Regex10so(txt_sdt.Text))
+            {
+                MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số và bắt đầu bằng 09");
+                return;
+            }
+            if (!regexServices.RegexEmail(txt_gmail.Text))
+            {
+                MessageBox.Show("Email không hợp lệ, Mời nhập lại");
+                return;
+            }
             try
             {
                 NhanVien nv = new NhanVien
                 {
-                    TaiKhoan = txt_taikhoan.Text,
-                    MatKhau = txt_matkhau.Text,
                     MaNhanVien = txt_manhanvien.Text,
                     Ten = txt_tennhanvien.Text,
                     GioiTinh = rbtn_nam.Checked,
@@ -41,10 +55,12 @@ namespace PRL
                     DiaChi = txt_diachi.Text,
                     Email = txt_gmail.Text,
                     MaChucVu = (string)cmbx_chucvu.SelectedValue,
-                    TrangThai = cmbx_trangthai.Text
+                    TrangThai = (int)cmbx_trangthai.SelectedValue,
+                    TaiKhoan = txt_taikhoan.Text,
+                    MatKhau = txt_matkhau.Text
                 };
                 MessageBox.Show(nhanVienServices.Them(nv));
-
+                
             }
             catch (Exception ex)
             {
@@ -69,8 +85,15 @@ namespace PRL
         }
         private void LoadTrangThai()
         {
-            cmbx_trangthai.Items.Add("Hoạt Động");
-            cmbx_trangthai.Items.Add("Không Hoạt Động");
+            var trangThaiItems = new List<KeyValuePair<int, string>>
+        {
+            new KeyValuePair<int, string>(1, "Hoạt Động"),
+            new KeyValuePair<int, string>(2, "Ngưng Hoạt Động")
+        };
+
+            cmbx_trangthai.DataSource = trangThaiItems;
+            cmbx_trangthai.DisplayMember = "Value";
+            cmbx_trangthai.ValueMember = "Key";
             cmbx_trangthai.SelectedIndex = 0; // Mặc định chọn trạng thái đầu tiên
         }
 

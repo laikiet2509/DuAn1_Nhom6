@@ -308,6 +308,7 @@
             Controls.Add(panel_left);
             Name = "home";
             Text = "home";
+            FormClosed += home_FormClosed;
             panel_left.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel_top.ResumeLayout(false);

@@ -132,8 +132,8 @@ namespace PRL
 
             foreach (var hdct in hoaDonChiTiets)
             {
-                if (hdct.SoLuong > 0) 
-                { 
+                if (hdct.SoLuong > 0)
+                {
                     DataRow dr = dt.NewRow();
                     dr["MaSPCT"] = hdct.MaSp;
                     dr["MaHoaDon"] = hdct.MaHd;
@@ -173,7 +173,7 @@ namespace PRL
             foreach (var spct in sanPhamChiTiets)
             {
                 // Kiểm tra nếu số lượng tồn kho > 0 thì mới thêm vào dataTableSPCT
-                if (spct.SoLuongTon > 0)
+                if (spct.TrangThai == 1)
                 {
                     DataRow dr = dataTableSPCT.NewRow();
                     dr["MaSPCT"] = spct.MaSanPham;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dangky));
             label1 = new Label();
             txt_taikhoan = new TextBox();
             txt_matkhau = new TextBox();
@@ -309,6 +310,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(901, 867);
             Controls.Add(btn_huy);
             Controls.Add(cmbx_trangthai);

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Xml.Linq;
 using BUS.Services;
+using Microsoft.VisualBasic.Logging;
 
 namespace DuAn1_NHOM6
 {
@@ -108,7 +109,15 @@ namespace DuAn1_NHOM6
 
         private void btn_thietlap_Click(object sender, EventArgs e)
         {
+
+            // Đóng form home
             this.Close();
+
+        }
+
+        private void home_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

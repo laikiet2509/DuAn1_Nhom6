@@ -72,10 +72,18 @@ namespace BUS.Repository
             context.SaveChanges();
             return true;
         }
+        //public NhanVien? DangNhap(string username, string password)
+        //{
+        //    return context.NhanViens.FirstOrDefault(nv => nv.TaiKhoan == username
+        //    && nv.MatKhau == password);
+        //}
         public NhanVien? DangNhap(string username, string password)
         {
             return context.NhanViens.FirstOrDefault(nv => nv.TaiKhoan == username
-            && nv.MatKhau == password);
+                                                          && nv.MatKhau == password
+                                                          && nv.TrangThai == 1); // Giả sử 1 là trạng thái hoạt động
         }
+
+
     }
 }

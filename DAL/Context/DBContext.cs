@@ -33,7 +33,7 @@ namespace DAL.Context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source= LAPTOP-PH9VPOUT\\SQLEXPRESS;Initial Catalog= QuanLyBanHang11112;Integrated Security=True;TrustServerCertificate=true");
+                optionsBuilder.UseSqlServer("Data Source= LAPTOP-6JARI0UA\\SQLEXPRESS ;Initial Catalog= QuanLyBanHang111126;Integrated Security=True;TrustServerCertificate=true");
             }
         }
 
@@ -42,7 +42,7 @@ namespace DAL.Context
             modelBuilder.Entity<ChiTietHoaDon>(entity =>
             {
                 entity.HasKey(e => new { e.MaHd, e.MaSp })
-                    .HasName("PK__ChiTietH__F557F661EA3E1DD1");
+                    .HasName("PK__ChiTietH__F557F661E5015DD6");
 
                 entity.HasOne(d => d.MaHdNavigation)
                     .WithMany(p => p.ChiTietHoaDons)
@@ -60,13 +60,13 @@ namespace DAL.Context
             modelBuilder.Entity<ChucVu>(entity =>
             {
                 entity.HasKey(e => e.MaChucVu)
-                    .HasName("PK__ChucVu__D463953343FDFBD7");
+                    .HasName("PK__ChucVu__D4639533603C3A0A");
             });
 
             modelBuilder.Entity<HoaDon>(entity =>
             {
                 entity.HasKey(e => e.MaHoaDon)
-                    .HasName("PK__HoaDon__835ED13B237F7755");
+                    .HasName("PK__HoaDon__835ED13BDE16D9DB");
 
                 entity.HasOne(d => d.MaNhanVienNavigation)
                     .WithMany(p => p.HoaDons)
@@ -87,31 +87,31 @@ namespace DAL.Context
             modelBuilder.Entity<KhachHang>(entity =>
             {
                 entity.HasKey(e => e.Sdt)
-                    .HasName("PK__KhachHan__CA1930A49F996193");
+                    .HasName("PK__KhachHan__CA1930A4E034AAE3");
             });
 
             modelBuilder.Entity<KhuyenMai>(entity =>
             {
                 entity.HasKey(e => e.MaVoucher)
-                    .HasName("PK__KhuyenMa__0AAC5B1198F03E28");
+                    .HasName("PK__KhuyenMa__0AAC5B11577A71F7");
             });
 
             modelBuilder.Entity<KichCo>(entity =>
             {
                 entity.HasKey(e => e.MaKichCoSp)
-                    .HasName("PK__KichCo__75335AFF8FC001ED");
+                    .HasName("PK__KichCo__75335AFF654237F1");
             });
 
             modelBuilder.Entity<MauSac>(entity =>
             {
                 entity.HasKey(e => e.MaMauSp)
-                    .HasName("PK__MauSac__487A0E4C22551E39");
+                    .HasName("PK__MauSac__487A0E4C28E8991D");
             });
 
             modelBuilder.Entity<NhanVien>(entity =>
             {
                 entity.HasKey(e => e.MaNhanVien)
-                    .HasName("PK__NhanVien__77B2CA4754AD9068");
+                    .HasName("PK__NhanVien__77B2CA47081AFB47");
 
                 entity.HasOne(d => d.MaChucVuNavigation)
                     .WithMany(p => p.NhanViens)
@@ -122,7 +122,7 @@ namespace DAL.Context
             modelBuilder.Entity<SanPham>(entity =>
             {
                 entity.HasKey(e => e.MaSanPham)
-                    .HasName("PK__SanPham__FAC7442D5650AB09");
+                    .HasName("PK__SanPham__FAC7442DF3B09DD6");
 
                 entity.HasOne(d => d.MaKichCoSpNavigation)
                     .WithMany(p => p.SanPhams)
@@ -143,7 +143,7 @@ namespace DAL.Context
             modelBuilder.Entity<ThuongHieu>(entity =>
             {
                 entity.HasKey(e => e.MaThuongHieu)
-                    .HasName("PK__ThuongHi__A3733E2CACA8395F");
+                    .HasName("PK__ThuongHi__A3733E2CD94E5C75");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -55,14 +55,16 @@
             label6 = new Label();
             label3 = new Label();
             label2 = new Label();
-            pictureBox1 = new PictureBox();
             txt_tennhanvien = new TextBox();
             label1 = new Label();
+            txt_taikhoan = new TextBox();
+            label11 = new Label();
+            txt_matkhau = new TextBox();
+            label12 = new Label();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgView_nhanvien).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // groupBox3
@@ -141,6 +143,10 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ButtonHighlight;
+            groupBox1.Controls.Add(txt_matkhau);
+            groupBox1.Controls.Add(label12);
+            groupBox1.Controls.Add(txt_taikhoan);
+            groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(txt_manhanvien);
             groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(cmbx_trangthai);
@@ -161,7 +167,6 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(txt_tennhanvien);
             groupBox1.Controls.Add(label1);
             groupBox1.Dock = DockStyle.Left;
@@ -176,7 +181,7 @@
             // txt_manhanvien
             // 
             txt_manhanvien.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_manhanvien.Location = new Point(166, 158);
+            txt_manhanvien.Location = new Point(185, 45);
             txt_manhanvien.Name = "txt_manhanvien";
             txt_manhanvien.Size = new Size(299, 27);
             txt_manhanvien.TabIndex = 41;
@@ -185,7 +190,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(21, 161);
+            label10.Location = new Point(40, 48);
             label10.Name = "label10";
             label10.Size = new Size(114, 20);
             label10.TabIndex = 40;
@@ -195,7 +200,7 @@
             // 
             cmbx_trangthai.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             cmbx_trangthai.FormattingEnabled = true;
-            cmbx_trangthai.Location = new Point(166, 740);
+            cmbx_trangthai.Location = new Point(185, 627);
             cmbx_trangthai.Name = "cmbx_trangthai";
             cmbx_trangthai.Size = new Size(266, 28);
             cmbx_trangthai.TabIndex = 39;
@@ -204,7 +209,7 @@
             // 
             rbtn_nu.AutoSize = true;
             rbtn_nu.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            rbtn_nu.Location = new Point(323, 298);
+            rbtn_nu.Location = new Point(342, 185);
             rbtn_nu.Name = "rbtn_nu";
             rbtn_nu.Size = new Size(51, 24);
             rbtn_nu.TabIndex = 38;
@@ -216,7 +221,7 @@
             // 
             rbtn_nam.AutoSize = true;
             rbtn_nam.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            rbtn_nam.Location = new Point(166, 298);
+            rbtn_nam.Location = new Point(185, 185);
             rbtn_nam.Name = "rbtn_nam";
             rbtn_nam.Size = new Size(65, 24);
             rbtn_nam.TabIndex = 37;
@@ -227,7 +232,7 @@
             // txt_gmail
             // 
             txt_gmail.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_gmail.Location = new Point(166, 526);
+            txt_gmail.Location = new Point(185, 413);
             txt_gmail.Name = "txt_gmail";
             txt_gmail.Size = new Size(299, 27);
             txt_gmail.TabIndex = 12;
@@ -236,7 +241,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(87, 529);
+            label9.Location = new Point(106, 416);
             label9.Name = "label9";
             label9.Size = new Size(53, 20);
             label9.TabIndex = 11;
@@ -246,7 +251,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(55, 748);
+            label8.Location = new Point(74, 635);
             label8.Name = "label8";
             label8.Size = new Size(89, 20);
             label8.TabIndex = 35;
@@ -256,7 +261,7 @@
             // 
             cmbx_chucvu.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             cmbx_chucvu.FormattingEnabled = true;
-            cmbx_chucvu.Location = new Point(166, 452);
+            cmbx_chucvu.Location = new Point(185, 339);
             cmbx_chucvu.Name = "cmbx_chucvu";
             cmbx_chucvu.Size = new Size(266, 28);
             cmbx_chucvu.TabIndex = 34;
@@ -265,7 +270,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(55, 373);
+            label4.Location = new Point(74, 260);
             label4.Name = "label4";
             label4.Size = new Size(85, 20);
             label4.TabIndex = 33;
@@ -274,7 +279,7 @@
             // dtp_ngaydangky
             // 
             dtp_ngaydangky.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dtp_ngaydangky.Location = new Point(166, 373);
+            dtp_ngaydangky.Location = new Point(185, 260);
             dtp_ngaydangky.Name = "dtp_ngaydangky";
             dtp_ngaydangky.Size = new Size(266, 27);
             dtp_ngaydangky.TabIndex = 32;
@@ -283,7 +288,7 @@
             // txt_sdt
             // 
             txt_sdt.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_sdt.Location = new Point(166, 588);
+            txt_sdt.Location = new Point(185, 475);
             txt_sdt.Name = "txt_sdt";
             txt_sdt.Size = new Size(299, 27);
             txt_sdt.TabIndex = 18;
@@ -331,7 +336,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(67, 455);
+            label5.Location = new Point(86, 342);
             label5.Name = "label5";
             label5.Size = new Size(73, 20);
             label5.TabIndex = 12;
@@ -340,7 +345,7 @@
             // txt_diachi
             // 
             txt_diachi.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_diachi.Location = new Point(166, 667);
+            txt_diachi.Location = new Point(185, 554);
             txt_diachi.Name = "txt_diachi";
             txt_diachi.Size = new Size(299, 27);
             txt_diachi.TabIndex = 10;
@@ -349,7 +354,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(76, 670);
+            label6.Location = new Point(95, 557);
             label6.Name = "label6";
             label6.Size = new Size(64, 20);
             label6.TabIndex = 9;
@@ -359,7 +364,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(26, 591);
+            label3.Location = new Point(45, 478);
             label3.Name = "label3";
             label3.Size = new Size(114, 20);
             label3.TabIndex = 8;
@@ -369,24 +374,16 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(64, 298);
+            label2.Location = new Point(83, 185);
             label2.Name = "label2";
             label2.Size = new Size(76, 20);
             label2.TabIndex = 4;
             label2.Text = "Giới Tính";
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(166, 27);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(196, 114);
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
             // txt_tennhanvien
             // 
             txt_tennhanvien.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_tennhanvien.Location = new Point(166, 231);
+            txt_tennhanvien.Location = new Point(185, 118);
             txt_tennhanvien.Name = "txt_tennhanvien";
             txt_tennhanvien.Size = new Size(299, 27);
             txt_tennhanvien.TabIndex = 1;
@@ -395,11 +392,47 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(21, 234);
+            label1.Location = new Point(40, 121);
             label1.Name = "label1";
             label1.Size = new Size(119, 20);
             label1.TabIndex = 0;
             label1.Text = "Tên Nhân Viên";
+            // 
+            // txt_taikhoan
+            // 
+            txt_taikhoan.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_taikhoan.Location = new Point(185, 696);
+            txt_taikhoan.Name = "txt_taikhoan";
+            txt_taikhoan.Size = new Size(299, 27);
+            txt_taikhoan.TabIndex = 43;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(75, 699);
+            label11.Name = "label11";
+            label11.Size = new Size(84, 20);
+            label11.TabIndex = 42;
+            label11.Text = "Tài Khoản";
+            // 
+            // txt_matkhau
+            // 
+            txt_matkhau.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_matkhau.Location = new Point(185, 758);
+            txt_matkhau.Name = "txt_matkhau";
+            txt_matkhau.Size = new Size(299, 27);
+            txt_matkhau.TabIndex = 45;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(79, 761);
+            label12.Name = "label12";
+            label12.Size = new Size(80, 20);
+            label12.TabIndex = 44;
+            label12.Text = "Mật Khẩu";
             // 
             // nhanvien
             // 
@@ -418,7 +451,6 @@
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -445,7 +477,6 @@
         private Label label6;
         private Label label3;
         private Label label2;
-        private PictureBox pictureBox1;
         private TextBox txt_tennhanvien;
         private Label label1;
         private RadioButton rbtn_nu;
@@ -454,5 +485,9 @@
         private ComboBox cmbx_trangthai;
         private TextBox txt_manhanvien;
         private Label label10;
+        private TextBox txt_matkhau;
+        private Label label12;
+        private TextBox txt_taikhoan;
+        private Label label11;
     }
 }

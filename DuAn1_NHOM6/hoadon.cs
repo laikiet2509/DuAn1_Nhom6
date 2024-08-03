@@ -167,7 +167,7 @@ namespace PRL
             var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("C:\\Users\\pc\\source\\repos\\da1\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don1.docx");
+            Document baoCao = new Document("C:\\Users\\MTu\\Desktop\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
             baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { hoadon.MaHoaDon });
             baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { hoadon.MaNhanVien });
             baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaVoucher + " %" : "Không áp dụng" });
@@ -200,7 +200,7 @@ namespace PRL
             baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
 
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\pc\Desktop\hoa_don_hd"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\MTu\Desktop\New folder"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{hoadon.MaHoaDon}.pdf";
@@ -220,7 +220,7 @@ namespace PRL
             //    // Tải dữ liệu chi tiết hóa đơn và hiển thị trên DataGridView dtgView_chitiethoadon
             //    LoadGirdHDCT(maHoaDon);
             //}
-            
+
         }
 
         private void dtgView_hoadon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -230,6 +230,7 @@ namespace PRL
                 if (dtgView_hoadon.Rows[e.RowIndex].Cells[0].Value != null)
                 {
                     string maHoaDon = dtgView_hoadon.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    LoadGirdHDCT(maHoaDon);
                     // Các xử lý tiếp theo
                 }
                 else

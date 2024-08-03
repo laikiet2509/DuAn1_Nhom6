@@ -35,7 +35,7 @@ namespace DuAn1_NHOM6
             }
             else
             {
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng hoặc tài khoản của bạn ngưng hoạt động!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }   
         private void btn_thoat_Click(object sender, EventArgs e)
@@ -46,7 +46,6 @@ namespace DuAn1_NHOM6
         }
         private void dangky_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Handle any actions after the registration form is closed, if needed
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -54,7 +53,7 @@ namespace DuAn1_NHOM6
         }
         private void home_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Close();
+            this.Show();
         }
     }
 }

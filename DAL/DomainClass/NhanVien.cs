@@ -29,8 +29,7 @@ namespace DAL.DomainClass
         public string? Email { get; set; }
         [StringLength(255)]
         public string? DiaChi { get; set; }
-        [StringLength(50)]
-        public string? TrangThai { get; set; }
+        public int? TrangThai { get; set; }
         [StringLength(10)]
         public string? MaChucVu { get; set; }
         [StringLength(50)]

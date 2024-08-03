@@ -53,8 +53,25 @@ namespace PRL
 
             foreach (var sp in service.GetSanPhams())
             {
-                dtgView_sp.Rows.Add(sp.MaSanPham, sp.TenSanPham, servicesMS.GetMauSacById(sp.MaMauSp).MauSac1, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, servicesKC.GetKichCoById(sp.MaKichCoSp).KichCo1, servicesTH.GetThuongHieuById(sp.MaThuongHieu).TenThuongHieu, sp.TrangThai);
+                dtgView_sp.Rows.Add(sp.MaSanPham, sp.TenSanPham, servicesMS.GetMauSacById(sp.MaMauSp).MauSac1, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, servicesKC.GetKichCoById(sp.MaKichCoSp).KichCo1, servicesTH.GetThuongHieuById(sp.MaThuongHieu).TenThuongHieu, ConvertTrangThai(sp.TrangThai));
             }
+        }
+        public string ConvertTrangThai(int? trangThai)
+        {
+            string status = string.Empty;
+            switch (trangThai)
+            {
+                case 1:
+                    status = "Kinh Doanh";
+                    break;
+                case 2:
+                    status = "Ngưng Kinh Doanh";
+                    break;
+                default:
+                    break;
+            }
+            return status;
+
         }
         public void FillData()
         {
@@ -70,8 +87,8 @@ namespace PRL
                     txt_soluong.Text = sp.SoLuongTon.ToString();
                     cmbx_kichthuoc.SelectedValue = sp.MaKichCoSp;
                     cmbx_thuonghieu.SelectedValue = sp.MaThuongHieu;
-                    cmbx_trangthai.Text = sp.TrangThai;
-                }
+                    cmbx_trangthai.Text = ConvertTrangThai(sp.TrangThai);
+            }
         }
         private void dtgView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -112,7 +129,7 @@ namespace PRL
                 SoLuongTon = int.Parse(txt_soluong.Text),
                 MaKichCoSp = (string)cmbx_kichthuoc.SelectedValue,
                 MaThuongHieu = (string)cmbx_thuonghieu.SelectedValue,
-                TrangThai = cmbx_trangthai.Text
+                TrangThai = (int)cmbx_trangthai.SelectedValue
             };
             MessageBox.Show(service.Them(sp));
             LoadGird();
@@ -153,7 +170,7 @@ namespace PRL
                 sp.SoLuongTon = int.Parse(txt_soluong.Text);
                 sp.MaKichCoSp = (string)cmbx_kichthuoc.SelectedValue;
                 sp.MaThuongHieu = (string)cmbx_thuonghieu.SelectedValue;
-                sp.TrangThai = cmbx_trangthai.Text; // Lưu trạng thái
+                sp.TrangThai = (int)cmbx_trangthai.SelectedValue; // Lưu trạng thái
                 MessageBox.Show(service.Sua(sp));
                 LoadGird();
             }
@@ -223,7 +240,7 @@ namespace PRL
                     sp.SoLuongTon,
                     servicesKC.GetKichCoById(sp.MaKichCoSp).KichCo1,
                     servicesTH.GetThuongHieuById(sp.MaThuongHieu).TenThuongHieu,
-                    sp.TrangThai
+                    ConvertTrangThai(sp.TrangThai)
                 );
             }
         }
@@ -283,8 +300,15 @@ namespace PRL
         }
         private void LoadTrangThai()
         {
-            cmbx_trangthai.Items.Add("Kinh Doanh");
-            cmbx_trangthai.Items.Add("Ngưng Kinh Doanh");
+            var trangThaiItems = new List<KeyValuePair<int, string>>
+        {
+            new KeyValuePair<int, string>(1, "Kinh Doanh"),
+            new KeyValuePair<int, string>(2, "Ngưng Kinh Doanh")
+        };
+
+            cmbx_trangthai.DataSource = trangThaiItems;
+            cmbx_trangthai.DisplayMember = "Value";
+            cmbx_trangthai.ValueMember = "Key";
             cmbx_trangthai.SelectedIndex = 0; // Mặc định chọn trạng thái đầu tiên
         }
     }

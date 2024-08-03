@@ -30,7 +30,7 @@ namespace PRL
         }
         public void LoadGird()
         {
-            dtgView_nhanvien.ColumnCount = 9;
+            dtgView_nhanvien.ColumnCount = 11;
             dtgView_nhanvien.Columns[0].Name = "Mã Nhân Viên";
             dtgView_nhanvien.Columns[1].Name = "Tên Nhân Viên";
             dtgView_nhanvien.Columns[2].Name = "Giới tính";
@@ -39,12 +39,31 @@ namespace PRL
             dtgView_nhanvien.Columns[5].Name = "Số Điện Thoại";
             dtgView_nhanvien.Columns[6].Name = "Địa Chỉ";
             dtgView_nhanvien.Columns[7].Name = "Chức Vụ";
-            dtgView_nhanvien.Columns[8].Name = "Trạng Thái";
+            dtgView_nhanvien.Columns[8].Name = "Tài Khoản";
+            dtgView_nhanvien.Columns[9].Name = "Mật Khẩu";
+            dtgView_nhanvien.Columns[10].Name = "Trạng Thái";
             dtgView_nhanvien.Rows.Clear();
             foreach (var kh in service.GetNhanViens())
             {
-                dtgView_nhanvien.Rows.Add(kh.MaNhanVien, kh.Ten, kh.GioiTinh == true ? "Nam" : "Nữ", kh.Email, kh.NgaySinh, kh.Sdt, kh.DiaChi, serviceCV.GetChucVuById(kh.MaChucVu).TenChucVu, kh.TrangThai);
+                dtgView_nhanvien.Rows.Add(kh.MaNhanVien, kh.Ten, kh.GioiTinh == true ? "Nam" : "Nữ", kh.Email, kh.NgaySinh, kh.Sdt, kh.DiaChi, serviceCV.GetChucVuById(kh.MaChucVu).TenChucVu,kh.TaiKhoan,kh.MatKhau, ConvertTrangThai(kh.TrangThai));
             }
+        }
+        public string ConvertTrangThai(int? trangThai)
+        {
+            string status = string.Empty;
+            switch (trangThai)
+            {
+                case 1:
+                    status = "Hoạt Động";
+                    break;
+                case 2:
+                    status = "Ngưng Hoạt Động";
+                    break;
+                default:
+                    break;
+            }
+            return status;
+
         }
         public void FillData()
         {
@@ -66,7 +85,9 @@ namespace PRL
                 txt_diachi.Text = sp.DiaChi;
                 txt_gmail.Text = sp.Email;
                 cmbx_chucvu.SelectedValue = sp.MaChucVu;
-                cmbx_trangthai.Text = sp.TrangThai;
+                cmbx_trangthai.Text = ConvertTrangThai(sp.TrangThai);
+                txt_taikhoan.Text = sp.TaiKhoan;
+                txt_matkhau.Text = sp.MatKhau;
             }
         }
 
@@ -83,22 +104,16 @@ namespace PRL
                 MessageBox.Show("Tên nhân viên không được chứa số, Mời nhập lại");
                 return;
             }
-            if (!regexServices.RegexSo(txt_sdt.Text))
+            if (!regexServices.Regex10so(txt_sdt.Text))
             {
-                MessageBox.Show("SĐT nhân viên không được chứa chữ, Mời nhập lại");
+                MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số và bắt đầu bằng 09");
                 return;
             }
-            if (!regexServices.Regex10so(txt_tennhanvien.Text))
+            if (!regexServices.RegexEmail(txt_gmail.Text))
             {
-                MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số");
+                MessageBox.Show("Email không hợp lệ, Mời nhập lại");
                 return;
             }
-            if (!regexServices.RegexSoAm(txt_sdt.Text))
-            {
-                MessageBox.Show("SĐT nhân viên không chứa số âm");
-                return;
-            }
-
             try
             {
                 NhanVien nv = new NhanVien
@@ -111,7 +126,9 @@ namespace PRL
                     DiaChi = txt_diachi.Text,
                     Email = txt_gmail.Text,
                     MaChucVu = (string)cmbx_chucvu.SelectedValue,
-                    TrangThai = cmbx_trangthai.Text
+                    TrangThai = (int)cmbx_trangthai.SelectedValue,
+                    TaiKhoan = txt_taikhoan.Text,
+                    MatKhau = txt_matkhau.Text
                 };
                 MessageBox.Show(service.Them(nv));
                 LoadGird();
@@ -130,23 +147,17 @@ namespace PRL
             {
                 MessageBox.Show("Tên nhân viên không được chứa số, Mời nhập lại");
                 return;
-            }
-            if (!regexServices.RegexSo(txt_sdt.Text))
+            }   
+            if (!regexServices.Regex10so(txt_sdt.Text))
             {
-                MessageBox.Show("SĐT nhân viên không được chứa chữ, Mời nhập lại");
+                MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số và bắt đầu bằng 09");
                 return;
             }
-            if (!regexServices.Regex10so(txt_tennhanvien.Text))
+            if (!regexServices.RegexEmail(txt_gmail.Text))
             {
-                MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số");
+                MessageBox.Show("Email không hợp lệ, Mời nhập lại");
                 return;
             }
-            if (!regexServices.RegexSoAm(txt_sdt.Text))
-            {
-                MessageBox.Show("SĐT nhân viên không chứa số âm");
-                return;
-            }
-
             try
             {
                 var nv = service.GetNhanViens().Find(x => x.MaNhanVien == idWhenClick);
@@ -160,7 +171,9 @@ namespace PRL
                     nv.DiaChi = txt_diachi.Text;
                     nv.Email = txt_gmail.Text;
                     nv.MaChucVu = (string)cmbx_chucvu.SelectedValue;
-                    nv.TrangThai = cmbx_trangthai.Text;
+                    nv.TrangThai = (int)cmbx_trangthai.SelectedValue;
+                    nv.TaiKhoan = txt_taikhoan.Text;
+                    nv.MatKhau = txt_matkhau.Text;
                     MessageBox.Show(service.Sua(nv));
                     LoadGird();
                 }
@@ -180,6 +193,8 @@ namespace PRL
             txt_sdt.Clear();
             txt_diachi.Clear();
             txt_gmail.Clear();
+            txt_taikhoan.Clear();
+            txt_matkhau.Clear();
             cmbx_chucvu.SelectedIndex = -1;
             cmbx_trangthai.SelectedIndex = 0;
         }
@@ -212,8 +227,15 @@ namespace PRL
         }
         private void LoadTrangThai()
         {
-            cmbx_trangthai.Items.Add("Hoạt Động");
-            cmbx_trangthai.Items.Add("Không Hoạt Động");
+            var trangThaiItems = new List<KeyValuePair<int, string>>
+        {
+            new KeyValuePair<int, string>(1, "Hoạt Động"),
+            new KeyValuePair<int, string>(2, "Ngưng Hoạt Động")
+        };
+
+            cmbx_trangthai.DataSource = trangThaiItems;
+            cmbx_trangthai.DisplayMember = "Value";
+            cmbx_trangthai.ValueMember = "Key";
             cmbx_trangthai.SelectedIndex = 0; // Mặc định chọn trạng thái đầu tiên
         }
 
@@ -230,7 +252,7 @@ namespace PRL
             dtgView_nhanvien.Rows.Clear();
             foreach (var nv in filteredNhanViens)
             {
-                dtgView_nhanvien.Rows.Add(nv.MaNhanVien, nv.Ten, nv.GioiTinh == true ? "Nam" : "Nữ", nv.NgaySinh, nv.Email, nv.Sdt, nv.DiaChi, serviceCV.GetChucVuById(nv.MaChucVu).TenChucVu, nv.TrangThai);
+                dtgView_nhanvien.Rows.Add(nv.MaNhanVien, nv.Ten, nv.GioiTinh == true ? "Nam" : "Nữ", nv.NgaySinh, nv.Email, nv.Sdt, nv.DiaChi, serviceCV.GetChucVuById(nv.MaChucVu).TenChucVu, ConvertTrangThai(nv.TrangThai));
             }
         }
     }

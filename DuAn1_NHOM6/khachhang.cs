@@ -73,19 +73,9 @@ namespace PRL
                 MessageBox.Show("Tên khách hàng không được chứa số, Mời nhập lại");
                 return;
             }
-            if (!regexServices.RegexSo(txt_sdt.Text))
+            if (!regexServices.Regex10so(txt_sdt.Text))
             {
-                MessageBox.Show("SĐT khách hàng không được chứa chữ, Mời nhập lại");
-                return;
-            }
-            if (!regexServices.Regex10so(txt_tenkhachhang.Text))
-            {
-                MessageBox.Show("SĐT khách hàng chỉ được ghi 10 số");
-                return;
-            }
-            if (!regexServices.RegexSoAm(txt_sdt.Text))
-            {
-                MessageBox.Show("SĐT khach hàng không chứa số âm");
+                MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số và bắt đầu bằng 09");
                 return;
             }
             KhachHang kh = new KhachHang
@@ -110,19 +100,9 @@ namespace PRL
                 MessageBox.Show("Tên khách hàng không được chứa số, Mời nhập lại");
                 return;
             }
-            if (!regexServices.RegexSo(txt_sdt.Text))
+            if (!regexServices.Regex10so(txt_sdt.Text))
             {
-                MessageBox.Show("SĐT khách hàng không được chứa chữ, Mời nhập lại");
-                return;
-            }
-            if (!regexServices.Regex10so(txt_tenkhachhang.Text))
-            {
-                MessageBox.Show("SĐT khách hàng chỉ được ghi 10 số");
-                return;
-            }
-            if (!regexServices.RegexSoAm(txt_sdt.Text))
-            {
-                MessageBox.Show("SĐT khach hàng không chứa số âm");
+                MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số và bắt đầu bằng 09");
                 return;
             }
             var kh = service.GetKhachHangs(txt_search.Text).Find(x => x.TenKhachHang == idWhenClick);
