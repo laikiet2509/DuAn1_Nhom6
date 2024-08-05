@@ -282,6 +282,8 @@ namespace PRL
             else
             {
                 lblTienThua.Text = "0.00 VND";
+                lblTongTien.Text = "0.00 VNĐ";
+                lbl_TienAddVoucher.Text = "0.00 VNĐ";
             }
         }
 
@@ -307,9 +309,9 @@ namespace PRL
             txt_tenkhachhang.Text = string.Empty;
             txt_search.Text = string.Empty;
             txt_tienkhachdua.Text = "0";
-            lblTienThua.Text = "Tiền Thừa";
-            lblTongTien.Text = "Tổng Tiền";
-            lbl_TienAddVoucher.Text = "Tiền add Vc";
+            lblTienThua.Text = "0.00 VNĐ";
+            lblTongTien.Text = "0.00 VNĐ";
+            lbl_TienAddVoucher.Text = "0.00 VNĐ";
             txt_maVoucher.Text = string.Empty;
 
             LoadData_cbbHoaDonCho();
@@ -510,6 +512,12 @@ namespace PRL
 
         private void cmbx_hoadoncho_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txt_tienkhachdua.Text = "0";
+            lblTienThua.Text = "0.00 VNĐ";
+            lblTongTien.Text = "0.00 VNĐ";
+            lbl_TienAddVoucher.Text = "0.00 VNĐ";
+            txt_maVoucher.Text = string.Empty;
+
             var hoaDonDangChon = cmbx_hoadoncho.SelectedItem as HoaDon;
 
             if (hoaDonDangChon != null)
