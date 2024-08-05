@@ -128,12 +128,12 @@ namespace PRL
         //}
         private void LoadGirdHDCT(string maHoaDon)
         {
-            dtgView_chitiethoadon.ColumnCount = 5;
+            dtgView_chitiethoadon.ColumnCount = 4;
             dtgView_chitiethoadon.Columns[0].Name = "Mã Hóa Đơn";
             dtgView_chitiethoadon.Columns[1].Name = "Mã Sản Phẩm";
             dtgView_chitiethoadon.Columns[2].Name = "Số Lượng";
             dtgView_chitiethoadon.Columns[3].Name = "Giá Bán";
-            dtgView_chitiethoadon.Columns[4].Name = "Thành Tiền";
+            
             dtgView_chitiethoadon.Rows.Clear();
 
             // Lấy danh sách chi tiết hóa đơn theo mã hóa đơn
@@ -141,7 +141,7 @@ namespace PRL
 
             foreach (var hdct in hdcts)
             {
-                dtgView_chitiethoadon.Rows.Add(hdct.MaHd, hdct.MaSp, hdct.SoLuong, hdct.GiaBan, hdct.ThanhTien);
+                dtgView_chitiethoadon.Rows.Add(hdct.MaHd, hdct.MaSp, hdct.SoLuong, hdct.GiaBan);
             }
         }
         private void btn_inhoadon_Click(object sender, EventArgs e)
