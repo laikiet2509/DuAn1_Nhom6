@@ -122,7 +122,7 @@ namespace PRL
         }
         private void LoadData_dgvHoaDonChiTiet(List<ChiTietHoaDon> hoaDonChiTiets)
         {
-            dataTableHDCT.Rows.Clear(); 
+            dataTableHDCT.Rows.Clear();
 
             var dt = new DataTable();
             dt.Columns.Add("MaSPCT", typeof(string));
@@ -145,7 +145,7 @@ namespace PRL
             dtgView_hoadon.DataSource = dt;
             if (cmbx_hoadoncho.SelectedValue != null)
             {
-                lblTongTien.Text = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(),"").ToString("#,##0.00 'VND'");
+                lblTongTien.Text = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), "").ToString("#,##0.00 'VND'");
             }
         }
 
@@ -190,7 +190,7 @@ namespace PRL
             dtgView_danhsachsanpham.DataSource = dataTableSPCT;
 
         }
-        
+
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
@@ -212,7 +212,7 @@ namespace PRL
 
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.MaHoaDon = "HD" + (serviceHD.GetAllHoaDons().Count + 1);
-                
+
                 //hoaDon.MaNhanVien = NhanVienDangNhap.MaNhanVien;
                 hoaDon.MaNhanVien = _nhanVien.MaNhanVien;
                 hoaDon.Sdt = txt_SDT.Text;
@@ -299,7 +299,7 @@ namespace PRL
                 serviceSP.UpdateSoLuong(spct);
             }
 
-            serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 2,"");
+            serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 2, "");
             MessageBox.Show("Đã hủy hóa đơn!");
             RefreshToanBoForm();
         }
@@ -332,9 +332,9 @@ namespace PRL
             {
                 if (daThanhToanDu)
                 {
-                    serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 1,txt_maVoucher.Text);
+                    serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 1, txt_maVoucher.Text);
                     serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text));
-                    MessageBox.Show("Đã thanh toán hóa đơn!");                  
+                    MessageBox.Show("Đã thanh toán hóa đơn!");
                     RefreshToanBoForm();
                     DialogResult dialogResult = MessageBox.Show("Bạn có muốn in hóa đơn không ?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
@@ -353,7 +353,7 @@ namespace PRL
             {
                 MessageBox.Show("Hóa đơn trống!");
             }
-            
+
         }
         public void inhoaDon()
         {
@@ -486,7 +486,7 @@ namespace PRL
             // update tổng tiền cho hóa đơn chờ
             var tien = TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text);
             //serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text));
-            
+
             // load lại dữ liệu trên 2 data grid view
             txt_search.Text = string.Empty;
             LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
@@ -501,13 +501,13 @@ namespace PRL
 
             //var listSPCTTimKiem = serviceSP.GetSanPhams()
             //    .Where(spct => listSPTimKiem.Contains(serviceSP.GetSanPhams(spct.MaSanPham))).ToList();
-            var listSPTimKiem = serviceSP.GetSanPhams()
-            .Where(sp => sp.TenSanPham.ToLower().Contains(txt_search.Text.ToLower())).ToList();
+            //var listSPTimKiem = serviceSP.GetSanPhams()
+            //.Where(sp => sp.TenSanPham.ToLower().Contains(txt_search.Text.ToLower())).ToList();
 
-            var listSPCTTimKiem = serviceSP.GetSanPhams()
-                .Where(spct => listSPTimKiem.Any(sp => sp.MaSanPham == spct.MaSanPham)).ToList();
+            //var listSPCTTimKiem = serviceSP.GetSanPhams()
+            //    .Where(spct => listSPTimKiem.Any(sp => sp.MaSanPham == spct.MaSanPham)).ToList();
 
-            LoadData_dgvSanPhamChiTiet(listSPCTTimKiem);
+            //LoadData_dgvSanPhamChiTiet(listSPCTTimKiem);
         }
 
         private void cmbx_hoadoncho_SelectedIndexChanged(object sender, EventArgs e)
@@ -547,12 +547,12 @@ namespace PRL
         private void dtgView_hoadon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var obj = dtgView_hoadon.Rows[e.RowIndex].Cells[0].Value.ToString();
-            if ( obj == string.Empty)
-            {  
+            if (obj == string.Empty)
+            {
                 MessageBox.Show("Ô bạn chọn không chứa dữ liệu.");
                 return;
             }
-            
+
             if (e.RowIndex >= 0) // Kiểm tra xem chỉ số hàng có hợp lệ không
             {
                 var rowHienTai = dtgView_danhsachsanpham.Rows[e.RowIndex]; // Lấy hàng hiện tại từ DataGridView
@@ -561,7 +561,7 @@ namespace PRL
 
                 var hoaDonDangChon = cmbx_hoadoncho.SelectedItem as HoaDon; // Lấy hóa đơn đang chọn từ ComboBox
 
-                
+
                 NhapSoLuongSanPham formSoLuongMua = new NhapSoLuongSanPham(); // Khởi tạo form nhập số lượng sản phẩm
                 formSoLuongMua.ShowDialog(); // Hiển thị form nhập số lượng sản phẩm
 
@@ -571,7 +571,7 @@ namespace PRL
                     return; // Thoát khỏi phương thức nếu số lượng nhập vào là âm
                 }
 
-                
+
 
                 var hoaDonChiTietTonTai = serviceHDCT.GetHDCTById(hoaDonDangChon.MaHoaDon, maSPCTDangTao); // Lấy thông tin chi tiết hóa đơn nếu đã tồn tại
 
@@ -681,7 +681,18 @@ namespace PRL
 
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
+            string searchText = txt_search.Text.ToLower();
 
+            // Tìm kiếm theo tên sản phẩm hoặc mã sản phẩm
+            var listSPTimKiem = serviceSP.GetSanPhams()
+                .Where(sp => sp.TenSanPham.ToLower().Contains(searchText) || sp.MaSanPham.ToLower().Contains(searchText))
+                .ToList();
+
+            var listSPCTTimKiem = serviceSP.GetSanPhams()
+                .Where(spct => listSPTimKiem.Any(sp => sp.MaSanPham == spct.MaSanPham))
+                .ToList();
+
+            LoadData_dgvSanPhamChiTiet(listSPCTTimKiem);
         }
 
         private void cbb_hang_DropDown(object sender, EventArgs e)
@@ -716,6 +727,10 @@ namespace PRL
                 cbb_size.ValueMember = "MaKichCoSp";
             }
         }
-        
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

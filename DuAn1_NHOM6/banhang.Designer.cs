@@ -367,6 +367,7 @@
             groupBox4.TabIndex = 3;
             groupBox4.TabStop = false;
             groupBox4.Text = "Danh Sách Sản Phẩm";
+            groupBox4.Enter += groupBox4_Enter;
             // 
             // btn_timkiem
             // 
