@@ -35,6 +35,10 @@
             txt_search = new TextBox();
             label7 = new Label();
             groupBox1 = new GroupBox();
+            txt_matkhau = new TextBox();
+            label12 = new Label();
+            txt_taikhoan = new TextBox();
+            label11 = new Label();
             txt_manhanvien = new TextBox();
             label10 = new Label();
             cmbx_trangthai = new ComboBox();
@@ -57,10 +61,6 @@
             label2 = new Label();
             txt_tennhanvien = new TextBox();
             label1 = new Label();
-            txt_taikhoan = new TextBox();
-            label11 = new Label();
-            txt_matkhau = new TextBox();
-            label12 = new Label();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgView_nhanvien).BeginInit();
             groupBox2.SuspendLayout();
@@ -178,6 +178,42 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông Tin Nhân Viên";
             // 
+            // txt_matkhau
+            // 
+            txt_matkhau.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_matkhau.Location = new Point(185, 758);
+            txt_matkhau.Name = "txt_matkhau";
+            txt_matkhau.Size = new Size(299, 27);
+            txt_matkhau.TabIndex = 45;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(79, 761);
+            label12.Name = "label12";
+            label12.Size = new Size(80, 20);
+            label12.TabIndex = 44;
+            label12.Text = "Mật Khẩu";
+            // 
+            // txt_taikhoan
+            // 
+            txt_taikhoan.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_taikhoan.Location = new Point(185, 696);
+            txt_taikhoan.Name = "txt_taikhoan";
+            txt_taikhoan.Size = new Size(299, 27);
+            txt_taikhoan.TabIndex = 43;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(75, 699);
+            label11.Name = "label11";
+            label11.Size = new Size(84, 20);
+            label11.TabIndex = 42;
+            label11.Text = "Tài Khoản";
+            // 
             // txt_manhanvien
             // 
             txt_manhanvien.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
@@ -185,6 +221,7 @@
             txt_manhanvien.Name = "txt_manhanvien";
             txt_manhanvien.Size = new Size(299, 27);
             txt_manhanvien.TabIndex = 41;
+            txt_manhanvien.TextChanged += txt_manhanvien_TextChanged;
             // 
             // label10
             // 
@@ -397,42 +434,6 @@
             label1.Size = new Size(119, 20);
             label1.TabIndex = 0;
             label1.Text = "Tên Nhân Viên";
-            // 
-            // txt_taikhoan
-            // 
-            txt_taikhoan.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_taikhoan.Location = new Point(185, 696);
-            txt_taikhoan.Name = "txt_taikhoan";
-            txt_taikhoan.Size = new Size(299, 27);
-            txt_taikhoan.TabIndex = 43;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(75, 699);
-            label11.Name = "label11";
-            label11.Size = new Size(84, 20);
-            label11.TabIndex = 42;
-            label11.Text = "Tài Khoản";
-            // 
-            // txt_matkhau
-            // 
-            txt_matkhau.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_matkhau.Location = new Point(185, 758);
-            txt_matkhau.Name = "txt_matkhau";
-            txt_matkhau.Size = new Size(299, 27);
-            txt_matkhau.TabIndex = 45;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(79, 761);
-            label12.Name = "label12";
-            label12.Size = new Size(80, 20);
-            label12.TabIndex = 44;
-            label12.Text = "Mật Khẩu";
             // 
             // nhanvien
             // 

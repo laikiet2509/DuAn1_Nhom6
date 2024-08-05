@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(thuonghieu));
             dtgView_ms = new GroupBox();
             dtgView_TH = new DataGridView();
             groupBox1 = new GroupBox();
@@ -153,6 +154,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(dtgView_ms);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "thuonghieu";
             Text = "thuonghieu";
             dtgView_ms.ResumeLayout(false);

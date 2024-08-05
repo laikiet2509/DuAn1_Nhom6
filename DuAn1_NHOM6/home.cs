@@ -33,6 +33,7 @@ namespace DuAn1_NHOM6
         {
             lblten.Text = "Tên: " + _nhanVien.Ten;
             lblquyen.Text = "Chức Vụ: " + chucVuServices.GetChucVuById(_nhanVien.MaChucVu).TenChucVu;
+            
         }
         private Form currentFormChild;
         private void OpenChildForm(Form childForm)
@@ -69,6 +70,7 @@ namespace DuAn1_NHOM6
 
             OpenChildForm(new banhang(_nhanVien));
             label1.Text = btn_banhang.Text;
+
         }
 
         private void btn_hoadon_Click(object sender, EventArgs e)
@@ -101,9 +103,19 @@ namespace DuAn1_NHOM6
 
         private void btn_nhanvien_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new nhanvien());
-            label1.Text = btn_nhanvien.Text;
-
+            if (_nhanVien.MaChucVu == "CV01" && _nhanVien.TrangThai == 1)
+            {
+                OpenChildForm(new nhanvien());
+                label1.Text = btn_nhanvien.Text;
+            }
+            else if (_nhanVien.MaChucVu == "CV01" && _nhanVien.TrangThai == 2)
+            {
+                MessageBox.Show("Bạn không còn quyền truy cập!");
+            }
+            else
+            {
+                MessageBox.Show("Bạn không phải ADMIN, không có quyền truy cập!");
+            }
 
         }
 

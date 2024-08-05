@@ -71,6 +71,11 @@ namespace PRL
         {
             KhuyenMai km = new KhuyenMai();
             RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexMaSanPham(tbxMavc.Text))
+            {
+                MessageBox.Show("Mã voucher không hợp lệ, Mời nhập lại");
+                return;
+            }
             if (!regexServices.RegexSo1_99(tbxDieuKien.Text))
             {
                 MessageBox.Show("% giảm giá chỉ được nhập từ 1 - 99%, Mời nhập lại");
@@ -81,6 +86,7 @@ namespace PRL
                 MessageBox.Show("% giảm giá không được nhập số âm, Mời nhập lại");
                 return;
             }
+            
             km.MaVoucher = tbxMavc.Text;
             km.GiamGia = decimal.Parse(tbxDieuKien.Text);
             km.MoTaVoucher = tbcMota.Text;
@@ -93,6 +99,11 @@ namespace PRL
         private void btn_sua_Click(object sender, EventArgs e)
         {
             RegexServices regexServices = new RegexServices();
+            if (!regexServices.RegexMaSanPham(tbxMavc.Text))
+            {
+                MessageBox.Show("Mã voucher không hợp lệ, Mời nhập lại");
+                return;
+            }
             if (!regexServices.RegexSo1_99(tbxDieuKien.Text))
             {
                 MessageBox.Show("% giảm giá chỉ được nhập từ 1 - 99%, Mời nhập lại");
@@ -103,6 +114,7 @@ namespace PRL
                 MessageBox.Show("% giảm giá không được nhập số âm, Mời nhập lại");
                 return;
             }
+            
             var km = service.GetKhuyenMais(txt_search.Text).Find(x => x.MaVoucher.ToString() == idWhenClick);
             km.MaVoucher = tbxMavc.Text;
             km.GiamGia = decimal.Parse(tbxDieuKien.Text);
@@ -119,22 +131,23 @@ namespace PRL
             tbxDieuKien.Clear();
             tbcMota.Clear();
         }
-        private void LoadFilteredData(string searchQuery)
-        {
-            dgvDataVC.Rows.Clear();
-            var filteredVouchers = service.GetKhuyenMais(searchQuery)
-                .Where(km => km.MaVoucher.Contains(searchQuery))
-                .ToList();
+        //private void LoadFilteredData(string searchQuery)
+        //{
+        //    dgvDataVC.Rows.Clear();
+        //    var filteredVouchers = service.GetKhuyenMais(searchQuery)
+        //        .Where(km => km.MaVoucher.Contains(searchQuery))
+        //        .ToList();
 
-            foreach (var sp in filteredVouchers)
-            {
-                dgvDataVC.Rows.Add(sp.MaVoucher, sp.GiamGia, sp.NgayBatDau, sp.NgayKetThuc, sp.MoTaVoucher);
-            }
-        }
+        //    foreach (var sp in filteredVouchers)
+        //    {
+        //        dgvDataVC.Rows.Add(sp.MaVoucher, sp.GiamGia, sp.NgayBatDau, sp.NgayKetThuc, sp.MoTaVoucher);
+        //    }
+        //}
 
         private void txt_search_TextChanged(object sender, EventArgs e)
         {
-            LoadFilteredData(txt_search.Text);
+            //LoadFilteredData(txt_search.Text);
+            LoadGrid();
         }
     }
 }

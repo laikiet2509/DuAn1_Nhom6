@@ -45,7 +45,7 @@ namespace PRL
             dtgView_nhanvien.Rows.Clear();
             foreach (var kh in service.GetNhanViens())
             {
-                dtgView_nhanvien.Rows.Add(kh.MaNhanVien, kh.Ten, kh.GioiTinh == true ? "Nam" : "Nữ", kh.Email, kh.NgaySinh, kh.Sdt, kh.DiaChi, serviceCV.GetChucVuById(kh.MaChucVu).TenChucVu,kh.TaiKhoan,kh.MatKhau, ConvertTrangThai(kh.TrangThai));
+                dtgView_nhanvien.Rows.Add(kh.MaNhanVien, kh.Ten, kh.GioiTinh == true ? "Nam" : "Nữ", kh.Email, kh.NgaySinh, kh.Sdt, kh.DiaChi, serviceCV.GetChucVuById(kh.MaChucVu).TenChucVu, kh.TaiKhoan, kh.MatKhau, ConvertTrangThai(kh.TrangThai));
             }
         }
         public string ConvertTrangThai(int? trangThai)
@@ -157,7 +157,7 @@ namespace PRL
             {
                 MessageBox.Show("Tên nhân viên không được chứa số, Mời nhập lại");
                 return;
-            }   
+            }
             if (!regexServices.Regex10so(txt_sdt.Text))
             {
                 MessageBox.Show("SĐT nhân viên chỉ được ghi 10 số và bắt đầu bằng 09");
@@ -264,6 +264,11 @@ namespace PRL
             {
                 dtgView_nhanvien.Rows.Add(nv.MaNhanVien, nv.Ten, nv.GioiTinh == true ? "Nam" : "Nữ", nv.NgaySinh, nv.Email, nv.Sdt, nv.DiaChi, serviceCV.GetChucVuById(nv.MaChucVu).TenChucVu, ConvertTrangThai(nv.TrangThai));
             }
+        }
+
+        private void txt_manhanvien_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

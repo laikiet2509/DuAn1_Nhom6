@@ -339,6 +339,7 @@
             Controls.Add(label2);
             Controls.Add(txt_taikhoan);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "dangky";
             Text = "dangky";
             FormClosed += dangky_FormClosed;

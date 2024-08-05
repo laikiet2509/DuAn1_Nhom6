@@ -21,6 +21,9 @@ namespace PRL
         public KichCoServices servicesKC;
         public ThuongHieuServices servicesTH;
         public string idWhenClick;
+        public event Action OnMauSacUpdated;
+        public event Action OnKichCoUpdated;
+        public event Action OnThuongHieuUpdated;
         public sanpham()
         {
             InitializeComponent();
@@ -33,7 +36,9 @@ namespace PRL
             LoadKichCo();
             LoadThuongHieu();
             LoadTrangThai();
-
+            OnMauSacUpdated += UpdateMauSac;
+            OnKichCoUpdated += UpdateKichCo;
+            OnThuongHieuUpdated += UpdateThuongHieu;
         }
         public void LoadGird()
         {
@@ -335,22 +340,45 @@ namespace PRL
             cmbx_trangthai.ValueMember = "Key";
             cmbx_trangthai.SelectedIndex = 0; // Mặc định chọn trạng thái đầu tiên
         }
+        public void UpdateMauSac()
+        {
+            LoadMauSac();
+        }
+
+        public void UpdateKichCo()
+        {
+            LoadKichCo();
+        }
+
+        public void UpdateThuongHieu()
+        {
+            LoadThuongHieu();
+        }
 
         private void btn_themms_Click(object sender, EventArgs e)
         {
+            //mausac mauSac = new mausac();
+            //mauSac.ShowDialog();
             mausac mauSac = new mausac();
+            mauSac.FormClosed += (s, args) => OnMauSacUpdated?.Invoke();
             mauSac.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //kichco kichCo = new kichco();
+            //kichCo.ShowDialog();
             kichco kichCo = new kichco();
+            kichCo.FormClosed += (s, args) => OnKichCoUpdated?.Invoke();
             kichCo.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //thuonghieu thuongHieu = new thuonghieu();
+            //thuongHieu.ShowDialog();
             thuonghieu thuongHieu = new thuonghieu();
+            thuongHieu.FormClosed += (s, args) => OnThuongHieuUpdated?.Invoke();
             thuongHieu.ShowDialog();
         }
     }

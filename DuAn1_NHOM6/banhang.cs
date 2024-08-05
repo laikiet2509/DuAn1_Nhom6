@@ -563,17 +563,19 @@ namespace PRL
                     return; // Thoát khỏi phương thức nếu số lượng nhập vào là âm
                 }
 
-                if (formSoLuongMua.SoLuongMua > spctDangTao.SoLuongTon) // Kiểm tra xem số lượng nhập vào có vượt quá số lượng tồn kho không
-                {
-                    MessageBox.Show("Số lượng tồn kho không đủ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // Hiển thị thông báo lỗi
-                    return; // Thoát khỏi phương thức nếu số lượng nhập vào vượt quá số lượng tồn kho
-                }
+                
 
                 var hoaDonChiTietTonTai = serviceHDCT.GetHDCTById(hoaDonDangChon.MaHoaDon, maSPCTDangTao); // Lấy thông tin chi tiết hóa đơn nếu đã tồn tại
 
                 // chưa tồn tại sản phẩm chi tiết này trong hóa đơn chi tiết -> thêm mới
                 if (hoaDonChiTietTonTai == null)
                 {
+                    if (formSoLuongMua.SoLuongMua > spctDangTao.SoLuongTon) // Kiểm tra xem số lượng nhập vào có vượt quá số lượng tồn kho không
+                    {
+                        MessageBox.Show("Số lượng tồn kho không đủ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // Hiển thị thông báo lỗi
+                        return; // Thoát khỏi phương thức nếu số lượng nhập vào vượt quá số lượng tồn kho
+                    }
+
                     ChiTietHoaDon hoaDonChiTietDangTao = new ChiTietHoaDon(); // Khởi tạo chi tiết hóa đơn mới
                     hoaDonChiTietDangTao.MaSp = maSPCTDangTao; // Gán mã sản phẩm
                     hoaDonChiTietDangTao.MaHd = hoaDonDangChon.MaHoaDon; // Gán mã hóa đơn

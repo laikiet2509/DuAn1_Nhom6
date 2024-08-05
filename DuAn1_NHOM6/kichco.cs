@@ -57,7 +57,21 @@ namespace PRL
         private void btn_them_Click(object sender, EventArgs e)
         {
             RegexServices regexServices = new RegexServices();
-
+            if (!regexServices.RegexMaSanPham(txt_makco.Text))
+            {
+                MessageBox.Show("Mã kích cỡ không hợp lệ, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexSoAm(txt_kco.Text))
+            {
+                MessageBox.Show("Số lượng của kích cỡ không chứa số âm");
+                return;
+            }
+            if (!regexServices.RegexSo(txt_kco.Text))
+            {
+                MessageBox.Show("Số lượng của kích cỡ không chứa chữ, Mời nhập lại");
+                return;
+            }
             KichCo kc = new KichCo
             {
                 MaKichCoSp = txt_makco.Text,
@@ -74,7 +88,21 @@ namespace PRL
             if (kc != null)
             {
                 RegexServices regexServices = new RegexServices();
-                
+                if (!regexServices.RegexMaSanPham(txt_makco.Text))
+                {
+                    MessageBox.Show("Mã kích cỡ không hợp lệ, Mời nhập lại");
+                    return;
+                }
+                if (!regexServices.RegexSoAm(txt_kco.Text))
+                {
+                    MessageBox.Show("Số lượng của kích cỡ không chứa số âm");
+                    return;
+                }
+                if (!regexServices.RegexSo(txt_kco.Text))
+                {
+                    MessageBox.Show("Số lượng của kích cỡ không chứa chữ, Mời nhập lại");
+                    return;
+                }
                 kc.MaKichCoSp = txt_makco.Text;
                 kc.KichCo1 = txt_kco.Text;    
                 MessageBox.Show(servicesKC.SuaKC(kc));

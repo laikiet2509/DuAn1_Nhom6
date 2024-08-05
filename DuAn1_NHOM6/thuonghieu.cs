@@ -57,7 +57,16 @@ namespace PRL
         private void btn_them_Click(object sender, EventArgs e)
         {
             RegexServices regexServices = new RegexServices();
-
+            if (!regexServices.RegexMaSanPham(txt_mthuonghieu.Text))
+            {
+                MessageBox.Show("Mã thương hiệu không hợp lệ, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexChu(txt_tenthuonghieu.Text))
+            {
+                MessageBox.Show("Tên thương hiệu không được chứa số, Mời nhập lại");
+                return;
+            }
             ThuongHieu kc = new ThuongHieu
             {
                 MaThuongHieu = txt_mthuonghieu.Text,
@@ -74,7 +83,16 @@ namespace PRL
             if (kc != null)
             {
                 RegexServices regexServices = new RegexServices();
-
+                if (!regexServices.RegexMaSanPham(txt_mthuonghieu.Text))
+                {
+                    MessageBox.Show("Mã thương hiệu không hợp lệ, Mời nhập lại");
+                    return;
+                }
+                if (!regexServices.RegexChu(txt_tenthuonghieu.Text))
+                {
+                    MessageBox.Show("Tên thương hiệu không được chứa số, Mời nhập lại");
+                    return;
+                }
                 kc.MaThuongHieu = txt_mthuonghieu.Text;
                 kc.TenThuongHieu = txt_tenthuonghieu.Text;
                 MessageBox.Show(servicesTH.SuaTH(kc));

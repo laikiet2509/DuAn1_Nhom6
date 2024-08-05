@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhapSoLuongSanPham));
             label1 = new Label();
             textBox1 = new TextBox();
             SuspendLayout();
@@ -58,6 +59,7 @@
             ClientSize = new Size(567, 179);
             Controls.Add(textBox1);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "NhapSoLuongSanPham";
             Text = "NhapSoLuongSanPham";
             ResumeLayout(false);

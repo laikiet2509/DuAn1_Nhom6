@@ -57,7 +57,16 @@ namespace PRL
         private void btn_them_Click(object sender, EventArgs e)
         {
             RegexServices regexServices = new RegexServices();
-
+            if (!regexServices.RegexMaSanPham(txt_mmau.Text))
+            {
+                MessageBox.Show("Mã màu không hợp lệ, Mời nhập lại");
+                return;
+            }
+            if (!regexServices.RegexChu(txt_tenmau.Text))
+            {
+                MessageBox.Show("Tên màu không được chứa số, Mời nhập lại");
+                return;
+            }
             MauSac kc = new MauSac
             {
                 MaMauSp = txt_mmau.Text,
@@ -74,7 +83,16 @@ namespace PRL
             if (kc != null)
             {
                 RegexServices regexServices = new RegexServices();
-
+                if (!regexServices.RegexMaSanPham(txt_mmau.Text))
+                {
+                    MessageBox.Show("Mã màu không hợp lệ, Mời nhập lại");
+                    return;
+                }
+                if (!regexServices.RegexChu(txt_tenmau.Text))
+                {
+                    MessageBox.Show("Tên màu không được chứa số, Mời nhập lại");
+                    return;
+                }
                 kc.MaMauSp = txt_mmau.Text;
                 kc.MauSac1 = txt_tenmau.Text;
                 MessageBox.Show(servicesMS.SuaMS(kc));

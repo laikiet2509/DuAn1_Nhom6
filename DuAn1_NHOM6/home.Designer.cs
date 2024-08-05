@@ -306,6 +306,7 @@
             Controls.Add(panel_body);
             Controls.Add(panel_top);
             Controls.Add(panel_left);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "home";
             Text = "home";
             FormClosed += home_FormClosed;

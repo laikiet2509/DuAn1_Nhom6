@@ -114,7 +114,7 @@
             // 
             lbl_TienAddVoucher.AutoSize = true;
             lbl_TienAddVoucher.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_TienAddVoucher.Location = new Point(211, 301);
+            lbl_TienAddVoucher.Location = new Point(172, 302);
             lbl_TienAddVoucher.Name = "lbl_TienAddVoucher";
             lbl_TienAddVoucher.Size = new Size(142, 29);
             lbl_TienAddVoucher.TabIndex = 20;
@@ -124,7 +124,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(60, 301);
+            label3.Location = new Point(31, 305);
             label3.Name = "label3";
             label3.Size = new Size(145, 25);
             label3.TabIndex = 19;
@@ -207,7 +207,7 @@
             // 
             lblTongTien.AutoSize = true;
             lblTongTien.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTongTien.Location = new Point(207, 252);
+            lblTongTien.Location = new Point(142, 253);
             lblTongTien.Name = "lblTongTien";
             lblTongTien.Size = new Size(125, 29);
             lblTongTien.TabIndex = 11;
@@ -217,7 +217,7 @@
             // 
             lbl.AutoSize = true;
             lbl.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl.Location = new Point(62, 257);
+            lbl.Location = new Point(34, 257);
             lbl.Name = "lbl";
             lbl.Size = new Size(102, 25);
             lbl.TabIndex = 10;
