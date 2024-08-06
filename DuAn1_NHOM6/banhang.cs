@@ -732,5 +732,56 @@ namespace PRL
         {
 
         }
+
+        private void cbb_hang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbb_hang.SelectedValue != null)
+            {
+                // Lấy mã thương hiệu được chọn từ ComboBox
+                string maThuongHieu = cbb_hang.SelectedValue.ToString();
+
+                // Tìm kiếm các sản phẩm thuộc thương hiệu đó
+                var listSPTheoThuongHieu = serviceSP.GetSanPhams()
+                    .Where(sp => sp.MaThuongHieu == maThuongHieu)
+                    .ToList();
+
+                // Hiển thị danh sách sản phẩm trong DataGridView
+                LoadData_dgvSanPhamChiTiet(listSPTheoThuongHieu);
+            }
+        }
+
+        private void cbb_mausac_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbb_mausac.SelectedValue != null)
+            {
+                // Lấy mã màu sắc được chọn từ ComboBox
+                string maMauSac = cbb_mausac.SelectedValue.ToString();
+
+                // Tìm kiếm các sản phẩm thuộc màu sắc đó
+                var listSPTheoMauSac = serviceSP.GetSanPhams()
+                    .Where(sp => sp.MaMauSp == maMauSac)
+                    .ToList();
+
+                // Hiển thị danh sách sản phẩm trong DataGridView
+                LoadData_dgvSanPhamChiTiet(listSPTheoMauSac);
+            }
+        }
+
+        private void cbb_size_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbb_size.SelectedValue != null)
+            {
+                // Lấy mã kích cỡ được chọn từ ComboBox
+                string maSize = cbb_size.SelectedValue.ToString();
+
+                // Tìm kiếm các sản phẩm thuộc kích cỡ đó
+                var listSPTheoSize = serviceSP.GetSanPhams()
+                    .Where(sp => sp.MaKichCoSp == maSize)
+                    .ToList();
+
+                // Hiển thị danh sách sản phẩm trong DataGridView
+                LoadData_dgvSanPhamChiTiet(listSPTheoSize);
+            }
+        }
     }
 }

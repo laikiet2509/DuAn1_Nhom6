@@ -39,6 +39,7 @@ namespace PRL
             OnMauSacUpdated += UpdateMauSac;
             OnKichCoUpdated += UpdateKichCo;
             OnThuongHieuUpdated += UpdateThuongHieu;
+            RefreshForm();
         }
         public void LoadGird()
         {
@@ -60,6 +61,26 @@ namespace PRL
             {
                 dtgView_sp.Rows.Add(sp.MaSanPham, sp.TenSanPham, servicesMS.GetMauSacById(sp.MaMauSp).MauSac1, sp.ChatLieu, sp.GiaBan, sp.NgayNhap, sp.SoLuongTon, servicesKC.GetKichCoById(sp.MaKichCoSp).KichCo1, servicesTH.GetThuongHieuById(sp.MaThuongHieu).TenThuongHieu, ConvertTrangThai(sp.TrangThai));
             }
+        }
+        private void RefreshForm()
+        {
+            // Xóa các trường văn bản
+            txt_masanpham.Text = string.Empty;
+            txt_tensanpham.Text = string.Empty;
+            txt_chatlieu.Text = string.Empty;
+            txt_giatien.Text = "0";
+            txt_soluong.Text = string.Empty;
+
+            dtp_ngaynhap.Value = DateTime.Now;
+
+            // Đặt lại giá trị mặc định cho các combo box
+            cmbx_kichthuoc.SelectedIndex = -1;
+            cmbx_thuonghieu.SelectedIndex = -1;
+            cmbx_mausac.SelectedIndex = -1;
+            cmbx_trangthai.SelectedIndex = -1;
+
+            // Tải lại dữ liệu lên DataGridView
+            LoadGird();
         }
         public string ConvertTrangThai(int? trangThai)
         {
@@ -226,7 +247,7 @@ namespace PRL
             txt_soluong.Clear();
             cmbx_kichthuoc.SelectedIndex = -1; // Đặt lại giá trị của combobox Kích Thước
             cmbx_thuonghieu.SelectedIndex = -1; // Đặt lại giá trị của combobox Thương Hiệu
-            cmbx_trangthai.SelectedIndex = 0; // Đặt lại giá trị của combobox Trạng Thái về "Kích hoạt"
+            cmbx_trangthai.SelectedIndex = -1;
         }
 
         private void dtgView_sp_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -380,6 +401,61 @@ namespace PRL
             thuonghieu thuongHieu = new thuonghieu();
             thuongHieu.FormClosed += (s, args) => OnThuongHieuUpdated?.Invoke();
             thuongHieu.ShowDialog();
+        }
+        private void LoadFilteredData()
+        {
+            // Lấy giá trị từ các ComboBox
+            string selectedMauSac = cmbx_mausac.SelectedValue != null ? cmbx_mausac.SelectedValue.ToString() : null;
+            string selectedKichThuoc = cmbx_kichthuoc.SelectedValue != null ? cmbx_kichthuoc.SelectedValue.ToString() : null;
+            string selectedThuongHieu = cmbx_thuonghieu.SelectedValue != null ? cmbx_thuonghieu.SelectedValue.ToString() : null;
+
+            // Lấy tất cả sản phẩm
+            var allSanPhams = service.GetSanPhams();
+
+            // Lọc sản phẩm theo các tiêu chí đã chọn
+            var filteredSanPhams = allSanPhams
+                .Where(sp => (selectedMauSac == null || sp.MaMauSp == selectedMauSac) &&
+                             (selectedKichThuoc == null || sp.MaKichCoSp == selectedKichThuoc) &&
+                             (selectedThuongHieu == null || sp.MaThuongHieu == selectedThuongHieu))
+                .ToList();
+
+            // Hiển thị danh sách sản phẩm đã lọc trong DataGridView
+            dtgView_sp.Rows.Clear();
+            foreach (var sp in filteredSanPhams)
+            {
+                dtgView_sp.Rows.Add(
+                    sp.MaSanPham,
+                    sp.TenSanPham,
+                    servicesMS.GetMauSacById(sp.MaMauSp).MauSac1,
+                    sp.ChatLieu,
+                    sp.GiaBan,
+                    sp.NgayNhap,
+                    sp.SoLuongTon,
+                    servicesKC.GetKichCoById(sp.MaKichCoSp).KichCo1,
+                    servicesTH.GetThuongHieuById(sp.MaThuongHieu).TenThuongHieu,
+                    ConvertTrangThai(sp.TrangThai)
+                );
+            }
+        }
+
+        private void cmbx_mausac_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadFilteredData();
+        }
+
+        private void cmbx_kichthuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadFilteredData();
+        }
+
+        private void cmbx_thuonghieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadFilteredData();
+        }
+
+        private void cmbx_trangthai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

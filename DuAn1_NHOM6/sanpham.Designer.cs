@@ -158,6 +158,7 @@
             cmbx_thuonghieu.Name = "cmbx_thuonghieu";
             cmbx_thuonghieu.Size = new Size(266, 28);
             cmbx_thuonghieu.TabIndex = 37;
+            cmbx_thuonghieu.SelectedIndexChanged += cmbx_thuonghieu_SelectedIndexChanged;
             // 
             // cmbx_trangthai
             // 
@@ -167,6 +168,7 @@
             cmbx_trangthai.Name = "cmbx_trangthai";
             cmbx_trangthai.Size = new Size(266, 28);
             cmbx_trangthai.TabIndex = 36;
+            cmbx_trangthai.SelectedIndexChanged += cmbx_trangthai_SelectedIndexChanged;
             // 
             // label10
             // 
@@ -186,6 +188,7 @@
             cmbx_kichthuoc.Name = "cmbx_kichthuoc";
             cmbx_kichthuoc.Size = new Size(266, 28);
             cmbx_kichthuoc.TabIndex = 32;
+            cmbx_kichthuoc.SelectedIndexChanged += cmbx_kichthuoc_SelectedIndexChanged;
             // 
             // dtp_ngaynhap
             // 
@@ -243,6 +246,7 @@
             cmbx_mausac.Name = "cmbx_mausac";
             cmbx_mausac.Size = new Size(266, 28);
             cmbx_mausac.TabIndex = 22;
+            cmbx_mausac.SelectedIndexChanged += cmbx_mausac_SelectedIndexChanged;
             // 
             // label6
             // 

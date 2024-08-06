@@ -414,6 +414,7 @@
             cbb_size.Size = new Size(151, 30);
             cbb_size.TabIndex = 6;
             cbb_size.DropDown += cbb_size_DropDown;
+            cbb_size.SelectedIndexChanged += cbb_size_SelectedIndexChanged;
             // 
             // cbb_mausac
             // 
@@ -423,6 +424,7 @@
             cbb_mausac.Size = new Size(151, 30);
             cbb_mausac.TabIndex = 5;
             cbb_mausac.DropDown += cbb_mausac_DropDown;
+            cbb_mausac.SelectedIndexChanged += cbb_mausac_SelectedIndexChanged;
             // 
             // cbb_hang
             // 
@@ -432,6 +434,7 @@
             cbb_hang.Size = new Size(151, 30);
             cbb_hang.TabIndex = 4;
             cbb_hang.DropDown += cbb_hang_DropDown;
+            cbb_hang.SelectedIndexChanged += cbb_hang_SelectedIndexChanged;
             // 
             // txt_search
             // 
