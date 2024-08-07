@@ -167,7 +167,7 @@ namespace PRL
             var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("C:\\Users\\MTu\\Desktop\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
+            Document baoCao = new Document("D:\\FInalDUAN1\\Final4_4\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
             baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { hoadon.MaHoaDon });
             baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { hoadon.MaNhanVien });
             baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaVoucher + " %" : "Không áp dụng" });
@@ -200,7 +200,7 @@ namespace PRL
             baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
 
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\MTu\Desktop\New folder"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\ADMIN\OneDrive\Máy tính\hoadon"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{hoadon.MaHoaDon}.pdf";

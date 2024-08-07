@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(hoadon));
             groupBox1 = new GroupBox();
             btn_inhoadon = new Button();
             btn_timkiem = new Button();
@@ -185,6 +186,7 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "hoadon";
             Text = "hoadon";
             groupBox1.ResumeLayout(false);

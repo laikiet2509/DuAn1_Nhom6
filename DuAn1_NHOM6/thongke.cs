@@ -84,7 +84,7 @@ namespace PRL
 
                 // 4. Tính số khách hàng
                 var soKhachHang = context.KhachHangs
-                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den));
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den && hd.TrangThai != 2));
                 lbl_KhachHang.Text = soKhachHang.ToString();
             }
         }
@@ -116,7 +116,7 @@ namespace PRL
 
                 // 4. Tính số khách hàng
                 var soKhachHang = context.KhachHangs
-                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den));
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den && hd.TrangThai != 2));
                 lbl_KhachHang.Text = soKhachHang.ToString();
             }
         }
@@ -173,7 +173,7 @@ namespace PRL
 
                 // 4. Tính số khách hàng
                 var soKhachHang = context.KhachHangs
-                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den));
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den && hd.TrangThai != 2));
                 lbl_KhachHang.Text = soKhachHang.ToString();
             }
 
@@ -202,7 +202,7 @@ namespace PRL
 
                 // 4. Tính số khách hàng
                 var soKhachHang = context.KhachHangs
-                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon.Value.Date == today));
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon.Value.Date == today && hd.TrangThai != 2));
                 lbl_KhachHang.Text = soKhachHang.ToString();
             }
 

@@ -43,7 +43,7 @@
             // 
             pictureBox1.BackColor = SystemColors.Control;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
-            pictureBox1.Image = PRL.Properties.Resources.z5633333237850_10078fc172ecaf654b71ffee78293f12;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(86, 126);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(207, 199);

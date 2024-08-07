@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(voucher));
             groupBox1 = new GroupBox();
             btn_lammoi = new Button();
             btn_sua = new Button();
@@ -288,6 +289,7 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "voucher";
             Text = "bh";
             groupBox1.ResumeLayout(false);

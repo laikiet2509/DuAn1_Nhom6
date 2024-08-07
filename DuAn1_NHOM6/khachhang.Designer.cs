@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(khachhang));
             groupBox1 = new GroupBox();
             rbtn_nu = new RadioButton();
             rbtn_nam = new RadioButton();
@@ -342,6 +343,7 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "khachhang";
             Text = "Khách Hàng";
             Load += khachhang_Load;

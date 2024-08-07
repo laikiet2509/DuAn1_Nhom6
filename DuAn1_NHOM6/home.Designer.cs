@@ -216,7 +216,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.FromArgb(255, 255, 192);
+            pictureBox1.BackColor = Color.White;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");

@@ -281,14 +281,19 @@ namespace PRL
             }
             else
             {
-                lblTienThua.Text = "0.00 VND";
-                lblTongTien.Text = "0.00 VNĐ";
-                lbl_TienAddVoucher.Text = "0.00 VNĐ";
+                lblTienThua.Text = "0.00 VND";  
             }
         }
 
         private void btn_huy_Click(object sender, EventArgs e)
         {
+            // Kiểm tra xem có hóa đơn chờ không
+            if (cmbx_hoadoncho.SelectedValue == null || string.IsNullOrEmpty(cmbx_hoadoncho.SelectedValue.ToString()))
+            {
+                MessageBox.Show("Không có hóa đơn chờ, vui lòng tạo hóa đơn chờ!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var listHDCT = serviceHDCT.GetAllHoaDonCTByMaHoaDon(cmbx_hoadoncho.SelectedValue.ToString());
             foreach (var hdct in listHDCT)
             {
@@ -308,11 +313,11 @@ namespace PRL
             txt_SDT.Text = string.Empty;
             txt_tenkhachhang.Text = string.Empty;
             txt_search.Text = string.Empty;
-            txt_tienkhachdua.Text = "0";
+            txt_tienkhachdua.Text = string.Empty;
             lblTienThua.Text = "0.00 VNĐ";
             lblTongTien.Text = "0.00 VNĐ";
             lbl_TienAddVoucher.Text = "0.00 VNĐ";
-            txt_maVoucher.Text = string.Empty;
+            //txt_maVoucher.Text = string.Empty;
 
             LoadData_cbbHoaDonCho();
             LoadData_dgvSanPhamChiTiet(serviceSP.GetSanPhams());
@@ -328,6 +333,12 @@ namespace PRL
 
         private void btn_thanhtoan_Click(object sender, EventArgs e)
         {
+            if (cmbx_hoadoncho.SelectedValue == null)
+            {
+                MessageBox.Show("Không có hóa đơn chờ, vui lòng tạo hóa đơn chờ!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text) > 0)
             {
                 if (daThanhToanDu)
@@ -353,7 +364,7 @@ namespace PRL
             {
                 MessageBox.Show("Hóa đơn trống!");
             }
-
+            
         }
         public void inhoaDon()
         {
@@ -378,7 +389,7 @@ namespace PRL
             //var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("C:\\Users\\pc\\source\\repos\\da1\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
+            Document baoCao = new Document("D:\\FInalDUAN1\\Final4_4\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
 
             baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { _hoaDon.MaHoaDon });
             baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { _hoaDon.MaNhanVien });
@@ -405,7 +416,7 @@ namespace PRL
             }
 
             var tongTien = TinhTongTienHoaDon(_hoaDon.MaHoaDon, txt_maVoucher.Text);
-            //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MoTaKhuyenMai / 100)) : tongTien;
+            //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MaVoucher / 100)) : tongTien;
             baoCao.MailMerge.Execute(new[] { "Tong" }, new[] { tongTien.ToString() });
 
             //Tính tiền thừa
@@ -413,7 +424,7 @@ namespace PRL
             baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
 
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\pc\Desktop\hoa_don_bh"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\ADMIN\OneDrive\Máy tính\hoadon_2"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{_hoaDon.MaHoaDon}.pdf";
@@ -512,11 +523,10 @@ namespace PRL
 
         private void cmbx_hoadoncho_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txt_tienkhachdua.Text = "0";
+            txt_tienkhachdua.Text = string.Empty;
             lblTienThua.Text = "0.00 VNĐ";
             lblTongTien.Text = "0.00 VNĐ";
             lbl_TienAddVoucher.Text = "0.00 VNĐ";
-            txt_maVoucher.Text = string.Empty;
 
             var hoaDonDangChon = cmbx_hoadoncho.SelectedItem as HoaDon;
 

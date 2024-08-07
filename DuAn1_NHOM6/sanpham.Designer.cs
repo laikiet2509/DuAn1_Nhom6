@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sanpham));
             groupBox1 = new GroupBox();
             button2 = new Button();
             button1 = new Button();
@@ -454,6 +455,7 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "sanpham";
             Text = "Sản Phẩm";
             Load += sanpham_Load;

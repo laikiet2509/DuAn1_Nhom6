@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(thongke));
             btn_Tim = new Button();
             btn_DTHomNay = new Button();
             groupBox3 = new GroupBox();
@@ -403,6 +404,7 @@
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "thongke";
             Text = "thongke";
             Load += thongke_Load;

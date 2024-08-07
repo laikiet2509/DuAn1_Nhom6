@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nhanvien));
             groupBox3 = new GroupBox();
             dtgView_nhanvien = new DataGridView();
             groupBox2 = new GroupBox();
@@ -443,6 +444,7 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "nhanvien";
             Text = "nhanvien";
             Load += nhanvien_Load;

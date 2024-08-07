@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(banhang));
             groupBox1 = new GroupBox();
             groupBox6 = new GroupBox();
             lbl_TienAddVoucher = new Label();
@@ -116,9 +117,9 @@
             lbl_TienAddVoucher.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_TienAddVoucher.Location = new Point(172, 302);
             lbl_TienAddVoucher.Name = "lbl_TienAddVoucher";
-            lbl_TienAddVoucher.Size = new Size(142, 29);
+            lbl_TienAddVoucher.Size = new Size(37, 29);
             lbl_TienAddVoucher.TabIndex = 20;
-            lbl_TienAddVoucher.Text = "Tiền add Vc";
+            lbl_TienAddVoucher.Text = "....";
             // 
             // label3
             // 
@@ -169,9 +170,9 @@
             lblTienThua.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             lblTienThua.Location = new Point(201, 449);
             lblTienThua.Name = "lblTienThua";
-            lblTienThua.Size = new Size(123, 29);
+            lblTienThua.Size = new Size(43, 29);
             lblTienThua.TabIndex = 15;
-            lblTienThua.Text = "Tiền Thừa";
+            lblTienThua.Text = ".....";
             // 
             // label11
             // 
@@ -209,9 +210,9 @@
             lblTongTien.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             lblTongTien.Location = new Point(142, 253);
             lblTongTien.Name = "lblTongTien";
-            lblTongTien.Size = new Size(125, 29);
+            lblTongTien.Size = new Size(31, 29);
             lblTongTien.TabIndex = 11;
-            lblTongTien.Text = "Tổng Tiền";
+            lblTongTien.Text = "...";
             // 
             // lbl
             // 
@@ -466,6 +467,7 @@
             Controls.Add(groupBox4);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "banhang";
             Text = "banhang";
             Load += banhang_Load;
