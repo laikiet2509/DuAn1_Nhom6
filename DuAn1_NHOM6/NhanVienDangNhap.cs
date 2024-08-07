@@ -9,5 +9,6 @@ namespace PRL
     public static class NhanVienDangNhap // class này để lưu mã nhân viên đã đăng nhập
     {
         public static string MaNhanVien {  get; set; } 
+        public static decimal TienKhachDua {  get; set; } 
     }
 }

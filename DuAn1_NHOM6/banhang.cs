@@ -273,6 +273,7 @@ namespace PRL
                 if (tienKhachDua >= tongSoTienSauGiam)
                 {
                     daThanhToanDu = true;
+                    NhanVienDangNhap.TienKhachDua = tienKhachDua;
                 }
                 else
                 {
@@ -352,8 +353,9 @@ namespace PRL
                     {
                         //MessageBox.Show("Ok nhé");
                         inhoaDon();
+                        
                     }
-
+                    txt_maVoucher.Text = string.Empty;
                 }
                 else
                 {
@@ -389,7 +391,7 @@ namespace PRL
             //var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("D:\\FInalDUAN1\\Final4_4\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
+            Document baoCao = new Document("C:\\Users\\pc\\Desktop\\New folder\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
 
             baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { _hoaDon.MaHoaDon });
             baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { _hoaDon.MaNhanVien });
@@ -419,12 +421,14 @@ namespace PRL
             //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MaVoucher / 100)) : tongTien;
             baoCao.MailMerge.Execute(new[] { "Tong" }, new[] { tongTien.ToString() });
 
+            var tienkhachdua = NhanVienDangNhap.TienKhachDua;
+            baoCao.MailMerge.Execute(new[] { "Tienkhachdua" }, new[] { tienkhachdua.ToString() });
             //Tính tiền thừa
-            var tienthua = hdcts.Sum(x => x.GiaBan * x.SoLuong) - (tongTien);
+            var tienthua = NhanVienDangNhap.TienKhachDua - (tongTien);
             baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
 
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\ADMIN\OneDrive\Máy tính\hoadon_2"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\pc\Desktop\hoa_don_bh"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{_hoaDon.MaHoaDon}.pdf";
