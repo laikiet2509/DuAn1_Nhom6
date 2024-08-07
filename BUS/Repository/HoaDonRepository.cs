@@ -48,13 +48,13 @@ namespace BUS.Repository
             }
             context.SaveChanges();
         }
-        public void SuaTongTien(string maHoaDon, decimal tongTien)
+        public void SuaTongTien(string maHoaDon, decimal tongTien, decimal tienKhachDua)
         {
             var hoaDonSua = context.HoaDons.Find(maHoaDon);
             if (hoaDonSua != null)
             {
                 hoaDonSua.TongTien = tongTien;
-                
+                hoaDonSua.TienKhachDua = tienKhachDua;
             }
             
             context.SaveChanges();

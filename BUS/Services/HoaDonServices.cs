@@ -39,9 +39,9 @@ namespace BUS.Services
         {
             repos.SuaTrangThai(maHoaDon, trangThai, maVoucher);
         }
-        public void SuaTongTien(string maHoaDon, decimal tongTien)
+        public void SuaTongTien(string maHoaDon, decimal tongTien, decimal tienKhachDua)
         {
-            repos.SuaTongTien(maHoaDon, tongTien);
+            repos.SuaTongTien(maHoaDon, tongTien, tienKhachDua);
         }
         public void SuaKhuyenMai(string maHoaDon, string maKhuyenMai)
         {

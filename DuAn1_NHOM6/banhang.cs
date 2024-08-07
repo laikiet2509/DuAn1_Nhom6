@@ -344,8 +344,9 @@ namespace PRL
             {
                 if (daThanhToanDu)
                 {
+                    var tienKhachDua = decimal.Parse(txt_tienkhachdua.Text);
                     serviceHD.SuaTrangThai(cmbx_hoadoncho.SelectedValue.ToString(), 1, txt_maVoucher.Text);
-                    serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text));
+                    serviceHD.SuaTongTien(cmbx_hoadoncho.SelectedValue.ToString(), TinhTongTienHoaDon(cmbx_hoadoncho.SelectedValue.ToString(), txt_maVoucher.Text), tienKhachDua);
                     MessageBox.Show("Đã thanh toán hóa đơn!");
                     RefreshToanBoForm();
                     DialogResult dialogResult = MessageBox.Show("Bạn có muốn in hóa đơn không ?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -391,7 +392,7 @@ namespace PRL
             //var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("C:\\Users\\pc\\Desktop\\New folder\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
+            Document baoCao = new Document("C:\\Users\\MTu\\Desktop\\da\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
 
             baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { _hoaDon.MaHoaDon });
             baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { _hoaDon.MaNhanVien });
@@ -421,14 +422,15 @@ namespace PRL
             //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MaVoucher / 100)) : tongTien;
             baoCao.MailMerge.Execute(new[] { "Tong" }, new[] { tongTien.ToString() });
 
-            var tienkhachdua = NhanVienDangNhap.TienKhachDua;
+            var tienkhachdua = serviceHD.GetHoaDonbyMaHoaDon(_hoaDon.MaHoaDon)!.TienKhachDua;
             baoCao.MailMerge.Execute(new[] { "Tienkhachdua" }, new[] { tienkhachdua.ToString() });
+
             //Tính tiền thừa
-            var tienthua = NhanVienDangNhap.TienKhachDua - (tongTien);
+            var tienthua = serviceHD.GetHoaDonbyMaHoaDon(_hoaDon.MaHoaDon)!.TienKhachDua - (tongTien);
             baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
 
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\pc\Desktop\hoa_don_bh"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\MTu\Desktop\New folder (4)"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{_hoaDon.MaHoaDon}.pdf";

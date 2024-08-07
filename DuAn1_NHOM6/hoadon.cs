@@ -167,7 +167,7 @@ namespace PRL
             var homNay = DateTime.Now;
 
 
-            Document baoCao = new Document("C:\\Users\\pc\\Desktop\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don.docx");
+            Document baoCao = new Document("C:\\Users\\MTu\\Desktop\\da\\DuAn1_Nhom6\\DuAn1_NHOM6\\template\\Hoa_don1.docx");
             baoCao.MailMerge.Execute(new[] { "MA_HOA_DON" }, new[] { hoadon.MaHoaDon });
             baoCao.MailMerge.Execute(new[] { "MA_NHANVIEN" }, new[] { hoadon.MaNhanVien });
             baoCao.MailMerge.Execute(new[] { "Khuyen_Mai" }, new[] { km != null ? km.MoTaVoucher + " %" : "Không áp dụng" });
@@ -192,15 +192,19 @@ namespace PRL
                 hanghientai++;
             }
 
-            var tongTien = dbContext.HoaDons.FirstOrDefault(x => x.MaHoaDon == selectedHoaDonId)!.TongTien;
+            var obj = dbContext.HoaDons.FirstOrDefault(x => x.MaHoaDon == selectedHoaDonId);
+
+            var tongTien = obj!.TongTien;
+            var tienthua = obj!.TienKhachDua - tongTien;
+            var tienKhachDua = obj!.TienKhachDua;
+            baoCao.MailMerge.Execute(new[] { "Tienkhachdua" }, new[] { tienKhachDua.ToString() });
+
             //var tongTienSauKm = km != null ? tongTien * (1 - ((decimal)km.MoTaKhuyenMai / 100)) : tongTien;
             baoCao.MailMerge.Execute(new[] { "Tong" }, new[] { tongTien.ToString() });
-
-            var tienthua = NhanVienDangNhap.TienKhachDua - (tongTien);
             baoCao.MailMerge.Execute(new[] { "Tienthua" }, new[] { tienthua.ToString() });
 
             // Bước 4: Lưu và mở file
-            string path = @"C:\Users\pc\Desktop\hoa_don_hd"; // đường dẫn folder có tên hoá đơn
+            string path = @"C:\Users\MTu\Desktop\New folder (3)"; // đường dẫn folder có tên hoá đơn
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path); // tạo folder (Hóa đơn) mới nếu chưa có
             string filename = $"{hoadon.MaHoaDon}.pdf";

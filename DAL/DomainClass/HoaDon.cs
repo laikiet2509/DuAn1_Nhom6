@@ -30,6 +30,8 @@ namespace DAL.DomainClass
         [StringLength(10)]
         public string? MaVoucher { get; set; }
 
+        public decimal? TienKhachDua { get; set; }
+
         [ForeignKey(nameof(MaNhanVien))]
         [InverseProperty(nameof(NhanVien.HoaDons))]
         public virtual NhanVien? MaNhanVienNavigation { get; set; }
