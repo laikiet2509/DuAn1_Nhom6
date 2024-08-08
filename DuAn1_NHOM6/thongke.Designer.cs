@@ -97,6 +97,7 @@
             // 
             // dgv_SanPhamBanChay
             // 
+            dgv_SanPhamBanChay.BackgroundColor = Color.Pink;
             dgv_SanPhamBanChay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_SanPhamBanChay.Dock = DockStyle.Fill;
             dgv_SanPhamBanChay.Location = new Point(3, 3);
@@ -260,6 +261,7 @@
             // 
             // dgv_SanPhamSapHetHang
             // 
+            dgv_SanPhamSapHetHang.BackgroundColor = Color.Pink;
             dgv_SanPhamSapHetHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_SanPhamSapHetHang.Dock = DockStyle.Bottom;
             dgv_SanPhamSapHetHang.Location = new Point(3, 66);
@@ -271,12 +273,16 @@
             // 
             // btn_SanPhamSapHetHang
             // 
-            btn_SanPhamSapHetHang.Location = new Point(816, 16);
+            btn_SanPhamSapHetHang.BackColor = Color.Violet;
+            btn_SanPhamSapHetHang.ForeColor = SystemColors.ActiveCaptionText;
+            btn_SanPhamSapHetHang.Image = Properties.Resources.icons8_eye_30;
+            btn_SanPhamSapHetHang.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_SanPhamSapHetHang.Location = new Point(756, 6);
             btn_SanPhamSapHetHang.Name = "btn_SanPhamSapHetHang";
-            btn_SanPhamSapHetHang.Size = new Size(94, 29);
+            btn_SanPhamSapHetHang.Size = new Size(154, 54);
             btn_SanPhamSapHetHang.TabIndex = 34;
             btn_SanPhamSapHetHang.Text = "Show";
-            btn_SanPhamSapHetHang.UseVisualStyleBackColor = true;
+            btn_SanPhamSapHetHang.UseVisualStyleBackColor = false;
             btn_SanPhamSapHetHang.Click += btn_SanPhamSapHetHang_Click;
             // 
             // tabControl1
@@ -292,6 +298,7 @@
             // 
             // tab_SanPhamSapHetHang
             // 
+            tab_SanPhamSapHetHang.BackColor = Color.MistyRose;
             tab_SanPhamSapHetHang.Controls.Add(dgv_SanPhamSapHetHang);
             tab_SanPhamSapHetHang.Controls.Add(btn_SanPhamSapHetHang);
             tab_SanPhamSapHetHang.Location = new Point(4, 29);
@@ -300,7 +307,6 @@
             tab_SanPhamSapHetHang.Size = new Size(1740, 507);
             tab_SanPhamSapHetHang.TabIndex = 1;
             tab_SanPhamSapHetHang.Text = "Sản Phẩm Sắp Hết Hàng";
-            tab_SanPhamSapHetHang.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -470,6 +476,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.MistyRose;
             ClientSize = new Size(1748, 883);
             Controls.Add(panel2);
             Controls.Add(panel3);

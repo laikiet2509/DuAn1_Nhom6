@@ -45,6 +45,7 @@
             // 
             // dtgView_ms
             // 
+            dtgView_ms.BackColor = Color.MistyRose;
             dtgView_ms.Controls.Add(dtgView_TH);
             dtgView_ms.Dock = DockStyle.Fill;
             dtgView_ms.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -58,6 +59,7 @@
             // dtgView_TH
             // 
             dtgView_TH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgView_TH.BackgroundColor = Color.Pink;
             dtgView_TH.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_TH.Dock = DockStyle.Fill;
             dtgView_TH.Location = new Point(3, 26);
@@ -70,6 +72,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.MistyRose;
             groupBox1.Controls.Add(btn_sua);
             groupBox1.Controls.Add(btn_them);
             groupBox1.Controls.Add(txt_mthuonghieu);

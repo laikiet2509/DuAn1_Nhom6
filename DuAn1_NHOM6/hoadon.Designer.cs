@@ -49,7 +49,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = Color.Linen;
+            groupBox1.BackColor = Color.MistyRose;
             groupBox1.Controls.Add(btn_inhoadon);
             groupBox1.Controls.Add(btn_timkiem);
             groupBox1.Controls.Add(dateTimePicker2);
@@ -126,7 +126,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.BackColor = SystemColors.ButtonShadow;
+            groupBox2.BackColor = Color.MistyRose;
             groupBox2.Controls.Add(dtgView_hoadon);
             groupBox2.Dock = DockStyle.Top;
             groupBox2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point);
@@ -140,7 +140,7 @@
             // dtgView_hoadon
             // 
             dtgView_hoadon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgView_hoadon.BackgroundColor = SystemColors.Control;
+            dtgView_hoadon.BackgroundColor = Color.Pink;
             dtgView_hoadon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_hoadon.Dock = DockStyle.Fill;
             dtgView_hoadon.Location = new Point(3, 23);
@@ -154,7 +154,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.BackColor = SystemColors.ButtonShadow;
+            groupBox3.BackColor = Color.MistyRose;
             groupBox3.Controls.Add(dtgView_chitiethoadon);
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Italic, GraphicsUnit.Point);
@@ -168,7 +168,7 @@
             // dtgView_chitiethoadon
             // 
             dtgView_chitiethoadon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgView_chitiethoadon.BackgroundColor = SystemColors.Control;
+            dtgView_chitiethoadon.BackgroundColor = Color.Pink;
             dtgView_chitiethoadon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_chitiethoadon.Dock = DockStyle.Fill;
             dtgView_chitiethoadon.Location = new Point(3, 23);

@@ -459,6 +459,12 @@ namespace PRL
 
             var hoaDonDangChon = cmbx_hoadoncho.SelectedItem as HoaDon;
 
+            if (hoaDonDangChon == null)
+            {
+                MessageBox.Show("Không có hóa đơn chờ. Vui lòng tạo mới hoặc chọn một hóa đơn chờ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             NhapSoLuongSanPham formSoLuongMua = new NhapSoLuongSanPham();
             formSoLuongMua.ShowDialog();
             if (formSoLuongMua.SoLuongMua < 0) // Kiểm tra xem số lượng nhập vào có âm không

@@ -62,7 +62,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = SystemColors.ButtonHighlight;
+            groupBox1.BackColor = Color.MistyRose;
             groupBox1.Controls.Add(rbtn_nu);
             groupBox1.Controls.Add(rbtn_nam);
             groupBox1.Controls.Add(label4);
@@ -264,7 +264,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.BackColor = SystemColors.ButtonHighlight;
+            groupBox2.BackColor = Color.MistyRose;
             groupBox2.Controls.Add(btn_loc);
             groupBox2.Controls.Add(txt_search);
             groupBox2.Controls.Add(label7);
@@ -311,7 +311,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.BackColor = SystemColors.ButtonShadow;
+            groupBox3.BackColor = Color.MistyRose;
             groupBox3.Controls.Add(dtgView_khachhang);
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -325,6 +325,7 @@
             // dtgView_khachhang
             // 
             dtgView_khachhang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgView_khachhang.BackgroundColor = Color.Pink;
             dtgView_khachhang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_khachhang.Dock = DockStyle.Fill;
             dtgView_khachhang.Location = new Point(3, 23);

@@ -86,7 +86,12 @@ namespace PRL
                 MessageBox.Show("% giảm giá không được nhập số âm, Mời nhập lại");
                 return;
             }
-            
+            if (service.GetKhuyenMais(txt_search.Text).Any(kc => kc.MaVoucher.ToLower() == tbxMavc.Text.ToLower()))
+            {
+                MessageBox.Show("Mã voucher đã tồn tại, vui lòng nhập mã khác.");
+                return;
+            }
+
             km.MaVoucher = tbxMavc.Text;
             km.GiamGia = decimal.Parse(tbxDieuKien.Text);
             km.MoTaVoucher = tbcMota.Text;

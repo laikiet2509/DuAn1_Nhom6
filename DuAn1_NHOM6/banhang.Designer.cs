@@ -74,7 +74,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = Color.Linen;
+            groupBox1.BackColor = Color.MistyRose;
             groupBox1.Controls.Add(groupBox6);
             groupBox1.Controls.Add(groupBox5);
             groupBox1.Dock = DockStyle.Left;
@@ -88,6 +88,7 @@
             // 
             // groupBox6
             // 
+            groupBox6.BackColor = Color.MistyRose;
             groupBox6.Controls.Add(lbl_TienAddVoucher);
             groupBox6.Controls.Add(label3);
             groupBox6.Controls.Add(cmbx_hoadoncho);
@@ -115,7 +116,7 @@
             // 
             lbl_TienAddVoucher.AutoSize = true;
             lbl_TienAddVoucher.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_TienAddVoucher.Location = new Point(172, 302);
+            lbl_TienAddVoucher.Location = new Point(147, 299);
             lbl_TienAddVoucher.Name = "lbl_TienAddVoucher";
             lbl_TienAddVoucher.Size = new Size(37, 29);
             lbl_TienAddVoucher.TabIndex = 20;
@@ -125,7 +126,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(31, 305);
+            label3.Location = new Point(9, 302);
             label3.Name = "label3";
             label3.Size = new Size(145, 25);
             label3.TabIndex = 19;
@@ -168,7 +169,7 @@
             // 
             lblTienThua.AutoSize = true;
             lblTienThua.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTienThua.Location = new Point(201, 449);
+            lblTienThua.Location = new Point(147, 446);
             lblTienThua.Name = "lblTienThua";
             lblTienThua.Size = new Size(43, 29);
             lblTienThua.TabIndex = 15;
@@ -178,7 +179,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(68, 453);
+            label11.Location = new Point(13, 449);
             label11.Name = "label11";
             label11.Size = new Size(102, 25);
             label11.TabIndex = 14;
@@ -208,7 +209,7 @@
             // 
             lblTongTien.AutoSize = true;
             lblTongTien.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTongTien.Location = new Point(142, 253);
+            lblTongTien.Location = new Point(147, 251);
             lblTongTien.Name = "lblTongTien";
             lblTongTien.Size = new Size(31, 29);
             lblTongTien.TabIndex = 11;
@@ -218,7 +219,7 @@
             // 
             lbl.AutoSize = true;
             lbl.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl.Location = new Point(34, 257);
+            lbl.Location = new Point(12, 254);
             lbl.Name = "lbl";
             lbl.Size = new Size(102, 25);
             lbl.TabIndex = 10;
@@ -256,6 +257,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.BackColor = Color.MistyRose;
             groupBox5.Controls.Add(btn_TaoHoaDon);
             groupBox5.Controls.Add(txt_tenkhachhang);
             groupBox5.Controls.Add(label2);
@@ -323,7 +325,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.BackColor = Color.AntiqueWhite;
+            groupBox2.BackColor = Color.MistyRose;
             groupBox2.Controls.Add(dtgView_hoadon);
             groupBox2.Dock = DockStyle.Top;
             groupBox2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -337,6 +339,7 @@
             // dtgView_hoadon
             // 
             dtgView_hoadon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgView_hoadon.BackgroundColor = Color.Pink;
             dtgView_hoadon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_hoadon.Dock = DockStyle.Fill;
             dtgView_hoadon.Location = new Point(3, 24);
@@ -350,7 +353,7 @@
             // 
             // groupBox4
             // 
-            groupBox4.BackColor = Color.AntiqueWhite;
+            groupBox4.BackColor = Color.MistyRose;
             groupBox4.Controls.Add(btn_timkiem);
             groupBox4.Controls.Add(label14);
             groupBox4.Controls.Add(label13);
@@ -448,6 +451,7 @@
             // dtgView_danhsachsanpham
             // 
             dtgView_danhsachsanpham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgView_danhsachsanpham.BackgroundColor = Color.Pink;
             dtgView_danhsachsanpham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_danhsachsanpham.Dock = DockStyle.Bottom;
             dtgView_danhsachsanpham.Location = new Point(3, 117);

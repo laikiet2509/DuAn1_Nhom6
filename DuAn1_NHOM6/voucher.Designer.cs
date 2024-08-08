@@ -57,6 +57,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.MistyRose;
             groupBox1.Controls.Add(btn_lammoi);
             groupBox1.Controls.Add(btn_sua);
             groupBox1.Controls.Add(btn_them);
@@ -210,6 +211,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.MistyRose;
             groupBox2.Controls.Add(btn_timkiem);
             groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(txt_search);
@@ -257,6 +259,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.BackColor = Color.MistyRose;
             groupBox3.Controls.Add(dgvDataVC);
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -270,6 +273,7 @@
             // dgvDataVC
             // 
             dgvDataVC.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDataVC.BackgroundColor = Color.Pink;
             dgvDataVC.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDataVC.Dock = DockStyle.Fill;
             dgvDataVC.Location = new Point(3, 23);

@@ -41,7 +41,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = SystemColors.Control;
+            pictureBox1.BackColor = Color.FromArgb(252, 210, 77);
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(86, 126);

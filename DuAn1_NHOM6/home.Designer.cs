@@ -54,7 +54,7 @@
             // 
             // panel_left
             // 
-            panel_left.BackColor = Color.FromArgb(50, 52, 77);
+            panel_left.BackColor = Color.LightCoral;
             panel_left.Controls.Add(btn_thietlap);
             panel_left.Controls.Add(btn_khachhang);
             panel_left.Controls.Add(btn_nhanvien);
@@ -72,7 +72,7 @@
             // 
             // btn_thietlap
             // 
-            btn_thietlap.BackColor = Color.FromArgb(50, 52, 77);
+            btn_thietlap.BackColor = Color.LightCoral;
             btn_thietlap.Dock = DockStyle.Top;
             btn_thietlap.FlatAppearance.BorderSize = 0;
             btn_thietlap.FlatStyle = FlatStyle.Flat;
@@ -90,7 +90,7 @@
             // 
             // btn_khachhang
             // 
-            btn_khachhang.BackColor = Color.FromArgb(50, 52, 77);
+            btn_khachhang.BackColor = Color.LightCoral;
             btn_khachhang.Dock = DockStyle.Top;
             btn_khachhang.FlatAppearance.BorderSize = 0;
             btn_khachhang.FlatStyle = FlatStyle.Flat;
@@ -108,7 +108,7 @@
             // 
             // btn_nhanvien
             // 
-            btn_nhanvien.BackColor = Color.FromArgb(50, 52, 77);
+            btn_nhanvien.BackColor = Color.LightCoral;
             btn_nhanvien.Dock = DockStyle.Top;
             btn_nhanvien.FlatAppearance.BorderSize = 0;
             btn_nhanvien.FlatStyle = FlatStyle.Flat;
@@ -126,7 +126,7 @@
             // 
             // btn_thongke
             // 
-            btn_thongke.BackColor = Color.FromArgb(50, 52, 77);
+            btn_thongke.BackColor = Color.LightCoral;
             btn_thongke.Dock = DockStyle.Top;
             btn_thongke.FlatAppearance.BorderSize = 0;
             btn_thongke.FlatStyle = FlatStyle.Flat;
@@ -144,7 +144,7 @@
             // 
             // btn_voucher
             // 
-            btn_voucher.BackColor = Color.FromArgb(50, 52, 77);
+            btn_voucher.BackColor = Color.LightCoral;
             btn_voucher.Dock = DockStyle.Top;
             btn_voucher.FlatAppearance.BorderSize = 0;
             btn_voucher.FlatStyle = FlatStyle.Flat;
@@ -162,7 +162,7 @@
             // 
             // btn_sanpham
             // 
-            btn_sanpham.BackColor = Color.FromArgb(50, 52, 77);
+            btn_sanpham.BackColor = Color.LightCoral;
             btn_sanpham.Dock = DockStyle.Top;
             btn_sanpham.FlatAppearance.BorderSize = 0;
             btn_sanpham.FlatStyle = FlatStyle.Flat;
@@ -180,7 +180,7 @@
             // 
             // btn_hoadon
             // 
-            btn_hoadon.BackColor = Color.FromArgb(50, 52, 77);
+            btn_hoadon.BackColor = Color.LightCoral;
             btn_hoadon.Dock = DockStyle.Top;
             btn_hoadon.FlatAppearance.BorderSize = 0;
             btn_hoadon.FlatStyle = FlatStyle.Flat;
@@ -198,7 +198,7 @@
             // 
             // btn_banhang
             // 
-            btn_banhang.BackColor = Color.FromArgb(50, 52, 77);
+            btn_banhang.BackColor = Color.LightCoral;
             btn_banhang.Dock = DockStyle.Top;
             btn_banhang.FlatAppearance.BorderSize = 0;
             btn_banhang.FlatStyle = FlatStyle.Flat;
@@ -216,7 +216,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackColor = Color.FromArgb(252, 210, 77);
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -230,7 +230,7 @@
             // 
             // panel_top
             // 
-            panel_top.BackColor = Color.Silver;
+            panel_top.BackColor = Color.LightCoral;
             panel_top.Controls.Add(lblten);
             panel_top.Controls.Add(lblquyen);
             panel_top.Controls.Add(label1);
@@ -265,9 +265,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.Yellow;
+            label1.BackColor = Color.LightCoral;
             label1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.ForeColor = Color.White;
             label1.Location = new Point(86, 35);
             label1.Name = "label1";
             label1.Size = new Size(70, 28);

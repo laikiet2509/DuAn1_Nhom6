@@ -70,7 +70,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = Color.Gainsboro;
+            groupBox1.BackColor = Color.MistyRose;
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(btn_themms);
@@ -374,7 +374,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.BackColor = Color.Silver;
+            groupBox2.BackColor = Color.MistyRose;
             groupBox2.Controls.Add(btn_timkiem);
             groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(txt_search);
@@ -422,7 +422,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.BackColor = Color.WhiteSmoke;
+            groupBox3.BackColor = Color.MistyRose;
             groupBox3.Controls.Add(dtgView_sp);
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -437,6 +437,7 @@
             // dtgView_sp
             // 
             dtgView_sp.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgView_sp.BackgroundColor = Color.Pink;
             dtgView_sp.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgView_sp.Dock = DockStyle.Fill;
             dtgView_sp.Location = new Point(3, 23);
@@ -451,6 +452,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightCoral;
             ClientSize = new Size(1346, 883);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
