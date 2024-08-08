@@ -159,6 +159,13 @@ namespace PRL
                 MessageBox.Show("Mã sản phẩm không hợp lệ, Mời nhập lại");
                 return;
             }
+            if (service.GetSanPhams().Any(kc => kc.MaSanPham.ToLower() == txt_masanpham.Text.ToLower()))
+            {
+                MessageBox.Show("Mã sản phẩm đã tồn tại, vui lòng nhập mã khác.");
+                return;
+            }
+
+      
             SanPham sp = new SanPham
             {
                 MaSanPham = txt_masanpham.Text,
@@ -217,6 +224,14 @@ namespace PRL
                     MessageBox.Show("Mã sản phẩm không hợp lệ, Mời nhập lại");
                     return;
                 }
+                // Kiểm tra mã kích cỡ trùng (ngoại trừ chính thực thể đang được sửa)
+                if (service.GetSanPhams().Any(k => k.MaSanPham.ToLower() == txt_masanpham.Text.ToLower() && k.MaSanPham.ToLower() != idWhenClick))
+                {
+                    MessageBox.Show("Mã kích cỡ đã tồn tại, vui lòng nhập mã khác.");
+                    return;
+                }
+
+               
                 sp.MaSanPham = txt_masanpham.Text;
                 sp.TenSanPham = txt_tensanpham.Text;
                 sp.MaMauSp = (string)cmbx_mausac.SelectedValue;

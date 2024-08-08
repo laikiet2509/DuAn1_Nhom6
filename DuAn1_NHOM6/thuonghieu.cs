@@ -67,6 +67,18 @@ namespace PRL
                 MessageBox.Show("Tên thương hiệu không được chứa số, Mời nhập lại");
                 return;
             }
+            if (servicesTH.GetThuongHieus().Any(kc => kc.MaThuongHieu == txt_mthuonghieu.Text))
+            {
+                MessageBox.Show("Mã thương hiệu đã tồn tại, vui lòng nhập mã khác.");
+                return;
+            }
+
+            // Kiểm tra kích cỡ trùng
+            if (servicesTH.GetThuongHieus().Any(kc => kc.TenThuongHieu == txt_tenthuonghieu.Text))
+            {
+                MessageBox.Show("Thương hiệu đã tồn tại, vui lòng nhập thương khác.");
+                return;
+            }
             ThuongHieu kc = new ThuongHieu
             {
                 MaThuongHieu = txt_mthuonghieu.Text,
@@ -91,6 +103,19 @@ namespace PRL
                 if (!regexServices.RegexChu(txt_tenthuonghieu.Text))
                 {
                     MessageBox.Show("Tên thương hiệu không được chứa số, Mời nhập lại");
+                    return;
+                }
+                // Kiểm tra mã kích cỡ trùng (ngoại trừ chính thực thể đang được sửa)
+                if (servicesTH.GetThuongHieus().Any(k => k.MaThuongHieu == txt_mthuonghieu.Text && k.MaThuongHieu != idWhenClick))
+                {
+                    MessageBox.Show("Mã thương hiệu đã tồn tại, vui lòng nhập mã khác.");
+                    return;
+                }
+
+                // Kiểm tra kích cỡ trùng (ngoại trừ chính thực thể đang được sửa)
+                if (servicesTH.GetThuongHieus().Any(k => k.TenThuongHieu == txt_tenthuonghieu.Text && k.MaThuongHieu != idWhenClick))
+                {
+                    MessageBox.Show("Thương hiệu đã tồn tại, vui lòng nhập thương hiệu khác.");
                     return;
                 }
                 kc.MaThuongHieu = txt_mthuonghieu.Text;

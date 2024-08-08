@@ -119,6 +119,12 @@ namespace PRL
                 MessageBox.Show("Email không hợp lệ, Mời nhập lại");
                 return;
             }
+            if (service.GetNhanViens().Any(kc => kc.MaNhanVien == txt_manhanvien.Text))
+            {
+                MessageBox.Show("Mã nhân viên đã tồn tại, vui lòng nhập mã khác.");
+                return;
+            }
+
             try
             {
                 NhanVien nv = new NhanVien

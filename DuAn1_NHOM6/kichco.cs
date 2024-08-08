@@ -72,6 +72,18 @@ namespace PRL
                 MessageBox.Show("Số lượng của kích cỡ không chứa chữ, Mời nhập lại");
                 return;
             }
+            if (servicesKC.GetKichCos().Any(kc => kc.MaKichCoSp == txt_makco.Text))
+            {
+                MessageBox.Show("Mã kích cỡ đã tồn tại, vui lòng nhập mã khác.");
+                return;
+            }
+
+            // Kiểm tra kích cỡ trùng
+            if (servicesKC.GetKichCos().Any(kc => kc.KichCo1 == txt_kco.Text))
+            {
+                MessageBox.Show("Kích cỡ đã tồn tại, vui lòng nhập kích cỡ khác.");
+                return;
+            }
             KichCo kc = new KichCo
             {
                 MaKichCoSp = txt_makco.Text,
@@ -101,6 +113,19 @@ namespace PRL
                 if (!regexServices.RegexSo(txt_kco.Text))
                 {
                     MessageBox.Show("Số lượng của kích cỡ không chứa chữ, Mời nhập lại");
+                    return;
+                }
+                // Kiểm tra mã kích cỡ trùng (ngoại trừ chính thực thể đang được sửa)
+                if (servicesKC.GetKichCos().Any(k => k.MaKichCoSp == txt_makco.Text && k.MaKichCoSp != idWhenClick))
+                {
+                    MessageBox.Show("Mã kích cỡ đã tồn tại, vui lòng nhập mã khác.");
+                    return;
+                }
+
+                // Kiểm tra kích cỡ trùng (ngoại trừ chính thực thể đang được sửa)
+                if (servicesKC.GetKichCos().Any(k => k.KichCo1 == txt_kco.Text && k.MaKichCoSp != idWhenClick))
+                {
+                    MessageBox.Show("Kích cỡ đã tồn tại, vui lòng nhập kích cỡ khác.");
                     return;
                 }
                 kc.MaKichCoSp = txt_makco.Text;

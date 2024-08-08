@@ -67,6 +67,18 @@ namespace PRL
                 MessageBox.Show("Tên màu không được chứa số, Mời nhập lại");
                 return;
             }
+            if (servicesMS.GetMauSacs().Any(kc => kc.MaMauSp == txt_mmau.Text))
+            {
+                MessageBox.Show("Mã màu đã tồn tại, vui lòng nhập mã khác.");
+                return;
+            }
+
+            // Kiểm tra kích cỡ trùng
+            if (servicesMS.GetMauSacs().Any(kc => kc.MauSac1 == txt_tenmau.Text))
+            {
+                MessageBox.Show("Màu sắc đã tồn tại, vui lòng nhập màu sắc khác.");
+                return;
+            }
             MauSac kc = new MauSac
             {
                 MaMauSp = txt_mmau.Text,
@@ -91,6 +103,19 @@ namespace PRL
                 if (!regexServices.RegexChu(txt_tenmau.Text))
                 {
                     MessageBox.Show("Tên màu không được chứa số, Mời nhập lại");
+                    return;
+                }
+                // Kiểm tra mã kích cỡ trùng (ngoại trừ chính thực thể đang được sửa)
+                if (servicesMS.GetMauSacs().Any(k => k.MaMauSp == txt_mmau.Text && k.MaMauSp != idWhenClick))
+                {
+                    MessageBox.Show("Mã màu sắc đã tồn tại, vui lòng nhập mã khác.");
+                    return;
+                }
+
+                // Kiểm tra kích cỡ trùng (ngoại trừ chính thực thể đang được sửa)
+                if (servicesMS.GetMauSacs().Any(k => k.MauSac1 == txt_tenmau.Text && k.MaMauSp != idWhenClick))
+                {
+                    MessageBox.Show("Màu sắc đã tồn tại, vui lòng nhập màu sắc khác.");
                     return;
                 }
                 kc.MaMauSp = txt_mmau.Text;

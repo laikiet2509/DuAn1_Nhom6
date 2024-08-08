@@ -1,4 +1,6 @@
 ﻿using DAL.Context;
+using DAL.DomainClass;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +30,10 @@ namespace PRL
 
             // Gắn sự kiện Click với nút Doanh Thu Hôm Nay
             btn_DTHomNay.Click += new EventHandler(this.btn_DTHomNay_Click);
+
+
+            // Gắn sự kiện Click với nút Sản phẩm sắp hết hàng
+            btn_SanPhamSapHetHang.Click += new EventHandler(this.btn_SanPhamSapHetHang_Click);
 
         }
 
@@ -116,7 +122,7 @@ namespace PRL
 
                 // 4. Tính số khách hàng
                 var soKhachHang = context.KhachHangs
-                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den && hd.TrangThai != 2));
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den));
                 lbl_KhachHang.Text = soKhachHang.ToString();
             }
         }
@@ -131,6 +137,10 @@ namespace PRL
 
                 // Cập nhật số liệu dựa trên năm được chọn
                 UpdateDataByYear(selectedYear);
+
+                // Cập nhật sản phẩm bán chạy cho năm được chọn
+                var sanPhamBanChay = LaySanPhamBanChayTheoNam(selectedYear);
+                HienThiSanPhamBanChay(sanPhamBanChay);
             }
             else if (sender == cbx_LocTheoThang)
             {
@@ -143,6 +153,10 @@ namespace PRL
 
                     // Cập nhật số liệu dựa trên năm và tháng được chọn
                     UpdateDataByYearAndMonth(selectedYear, selectedMonth);
+
+                    // Cập nhật sản phẩm bán chạy cho tháng và năm được chọn
+                    var sanPhamBanChay = LaySanPhamBanChayTheoThang(selectedYear, selectedMonth);
+                    HienThiSanPhamBanChay(sanPhamBanChay); // Gọi phương thức để hiển thị sản phẩm bán chạy
                 }
             }
 
@@ -173,8 +187,12 @@ namespace PRL
 
                 // 4. Tính số khách hàng
                 var soKhachHang = context.KhachHangs
-                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den && hd.TrangThai != 2));
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon >= tu && hd.NgayLapHoaDon <= den));
                 lbl_KhachHang.Text = soKhachHang.ToString();
+
+                // Cập nhật số liệu dựa trên khoảng thời gian cụ thể
+                var sanPhamBanChay = LaySanPhamBanChayTrongKhoangThoiGian(tu, den);
+                HienThiSanPhamBanChay(sanPhamBanChay); // Gọi phương thức để hiển thị sản phẩm bán chạy
             }
 
         }
@@ -202,8 +220,10 @@ namespace PRL
 
                 // 4. Tính số khách hàng
                 var soKhachHang = context.KhachHangs
-                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon.Value.Date == today && hd.TrangThai != 2));
+                    .Count(kh => kh.HoaDons.Any(hd => hd.NgayLapHoaDon.Value.Date == today));
                 lbl_KhachHang.Text = soKhachHang.ToString();
+
+
             }
 
         }
@@ -211,11 +231,133 @@ namespace PRL
         private void btn_DTHomNay_Click(object sender, EventArgs e)
         {
             ThongKeHomNay();
+            // Lấy và hiển thị sản phẩm bán chạy trong ngày hôm nay
+            var sanPhamBanChayHomNay = LaySanPhamBanChayHomNay();
+            HienThiSanPhamBanChay(sanPhamBanChayHomNay); // Hiển thị sản phẩm bán chạy
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private List<SanPham> LaySanPhamBanChayHomNay()
+        {
+            DateTime today = DateTime.Today;
+
+            using (var context = new DBContext())
+            {
+                return context.ChiTietHoaDons
+                    .Include(cthd => cthd.MaHdNavigation)
+                    .Where(cthd => cthd.MaHdNavigation != null && cthd.MaHdNavigation.NgayLapHoaDon.Value.Date == today && cthd.MaHdNavigation.TrangThai != 2)
+                    .GroupBy(cthd => cthd.MaSp)
+                    .Select(g => new
+                    {
+                        MaSanPham = g.Key,
+                        TongSoLuongBan = g.Sum(x => x.SoLuong)
+                    })
+                    .Where(x => x.TongSoLuongBan >= 10) // Lọc sản phẩm bán chạy, điều chỉnh nếu cần
+                    .OrderByDescending(x => x.TongSoLuongBan)
+                    .Take(10)
+                    .Join(context.SanPhams,
+                          x => x.MaSanPham,
+                          sp => sp.MaSanPham,
+                          (x, sp) => sp)
+                    .ToList();
+            }
+        }
+        private List<SanPham> LaySanPhamBanChayTheoNam(int selectedYear)
+        {
+            DateTime tu = new DateTime(selectedYear, 1, 1);
+            DateTime den = new DateTime(selectedYear, 12, 31);
+
+            return LaySanPhamBanChayTrongKhoangThoiGian(tu, den);
+        }
+        private List<SanPham> LaySanPhamBanChayTheoThang(int selectedYear, int selectedMonth)
+        {
+            DateTime tu = new DateTime(selectedYear, selectedMonth, 1);
+            DateTime den = tu.AddMonths(1).AddDays(-1);
+
+            return LaySanPhamBanChayTrongKhoangThoiGian(tu, den);
+        }
+        private List<SanPham> LaySanPhamBanChayTrongKhoangThoiGian(DateTime tu, DateTime den)
+        {
+            using (var context = new DBContext())
+            {
+
+                // Tính tổng số lượng bán được của từng sản phẩm
+                var sanPhamBanChay = context.ChiTietHoaDons
+                    .Include(cthd => cthd.MaHdNavigation)
+                    .Where(cthd => cthd.MaHdNavigation != null && cthd.MaHdNavigation.NgayLapHoaDon >= tu && cthd.MaHdNavigation.NgayLapHoaDon <= den && cthd.MaHdNavigation.TrangThai != 2)
+                    .GroupBy(cthd => cthd.MaSp)
+                    .Select(g => new
+                    {
+                        MaSanPham = g.Key,
+                        TongSoLuongBan = g.Sum(x => x.SoLuong)
+                    })
+                    .Where(x => x.TongSoLuongBan >= 10)
+                    .OrderByDescending(x => x.TongSoLuongBan)
+                    .Take(10)
+                    .Join(context.SanPhams,
+                          x => x.MaSanPham,
+                          sp => sp.MaSanPham,
+                          (x, sp) => sp)
+                    .ToList();
+
+                return sanPhamBanChay;
+            }
+        }
+        public List<SanPham> LaySanPhamSapHetHang(int nguongSoLuongTon)
+        {
+            using (var context = new DBContext())
+            {
+                return context.SanPhams
+                    .Where(sp => sp.SoLuongTon <= nguongSoLuongTon)
+                    .ToList();
+            }
+        }
+
+        private void btn_SanPhamSapHetHang_Click(object sender, EventArgs e)
+        {
+            int nguongSoLuongTon = 10; // Sản phẩm có số lượng tồn nhỏ hơn hoặc bằng 10 sẽ được coi là sắp hết hàng
+
+            using (var context = new DBContext())
+            {
+                var sanPhamSapHetHang = context.SanPhams
+                    .Where(sp => sp.SoLuongTon <= nguongSoLuongTon)
+                    .ToList();
+
+                dgv_SanPhamSapHetHang.DataSource = sanPhamSapHetHang;
+
+                // Kiểm tra và ẩn các cột không cần thiết
+                if (dgv_SanPhamSapHetHang.Columns["MaKichCoSpNavigation"] != null)
+                    dgv_SanPhamSapHetHang.Columns["MaKichCoSpNavigation"].Visible = false;
+                if (dgv_SanPhamSapHetHang.Columns["MaMauSpNavigation"] != null)
+                    dgv_SanPhamSapHetHang.Columns["MaMauSpNavigation"].Visible = false;
+                if (dgv_SanPhamSapHetHang.Columns["MaThuongHieuNavigation"] != null)
+                    dgv_SanPhamSapHetHang.Columns["MaThuongHieuNavigation"].Visible = false;
+                if (dgv_SanPhamSapHetHang.Columns["ChiTietHoaDons"] != null)
+                    dgv_SanPhamSapHetHang.Columns["ChiTietHoaDons"].Visible = false;
+                if (dgv_SanPhamSapHetHang.Columns["HinhAnh"] != null)
+                    dgv_SanPhamSapHetHang.Columns["HinhAnh"].Visible = false;
+
+            }
+        }
+        private void HienThiSanPhamBanChay(List<SanPham> sanPhamBanChay)
+        {
+            dgv_SanPhamBanChay.DataSource = sanPhamBanChay;
+
+            // Kiểm tra và ẩn các cột không cần thiết
+            if (dgv_SanPhamBanChay.Columns["MaKichCoSpNavigation"] != null)
+                dgv_SanPhamBanChay.Columns["MaKichCoSpNavigation"].Visible = false;
+            if (dgv_SanPhamBanChay.Columns["MaMauSpNavigation"] != null)
+                dgv_SanPhamBanChay.Columns["MaMauSpNavigation"].Visible = false;
+            if (dgv_SanPhamBanChay.Columns["MaThuongHieuNavigation"] != null)
+                dgv_SanPhamBanChay.Columns["MaThuongHieuNavigation"].Visible = false;
+            if (dgv_SanPhamBanChay.Columns["ChiTietHoaDons"] != null)
+                dgv_SanPhamBanChay.Columns["ChiTietHoaDons"].Visible = false;
+            if (dgv_SanPhamBanChay.Columns["HinhAnh"] != null)
+                dgv_SanPhamBanChay.Columns["HinhAnh"].Visible = false;
         }
     }
 }
