@@ -48,6 +48,16 @@ namespace PRL
                 MessageBox.Show("Email không hợp lệ, Mời nhập lại");
                 return;
             }
+            if (nhanVienServices.GetNhanViens().Any(kc => kc.MaNhanVien.ToLower() == txt_manhanvien.Text.ToLower()))
+            {
+                MessageBox.Show("Mã nhân viên đã tồn tại, vui lòng nhập mã khác.");
+                return;
+            }
+            if (nhanVienServices.GetNhanViens().Any(kc => kc.TaiKhoan.ToLower() == txt_taikhoan.Text.ToLower()))
+            {
+                MessageBox.Show("Tài khoản đã tồn tại, vui lòng nhập tài khoản khác.");
+                return;
+            }
             try
             {
                 NhanVien nv = new NhanVien

@@ -124,7 +124,11 @@ namespace PRL
                 MessageBox.Show("Mã nhân viên đã tồn tại, vui lòng nhập mã khác.");
                 return;
             }
-
+            if (service.GetNhanViens().Any(kc => kc.TaiKhoan.ToLower() == txt_taikhoan.Text.ToLower()))
+            {
+                MessageBox.Show("Tài khoản đã tồn tại, vui lòng nhập tài khoản khác.");
+                return;
+            }
             try
             {
                 NhanVien nv = new NhanVien
@@ -174,11 +178,17 @@ namespace PRL
                 MessageBox.Show("Email không hợp lệ, Mời nhập lại");
                 return;
             }
+
             try
             {
                 var nv = service.GetNhanViens().Find(x => x.MaNhanVien == idWhenClick);
                 if (nv != null)
                 {
+                    if (!nv.MaNhanVien.Equals(txt_manhanvien.Text, StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("Không thể thay đổi mã nhân viên.");
+                        return;
+                    }
                     nv.MaNhanVien = txt_manhanvien.Text;
                     nv.Ten = txt_tennhanvien.Text;
                     nv.GioiTinh = rbtn_nam.Checked;
